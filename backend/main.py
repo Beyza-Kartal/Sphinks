@@ -7,11 +7,19 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from backend.db import create_db_and_tables
+from backend import models  # noqa: F401 - tablo tanimlari metadata'ya kaydolsun diye
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 os.makedirs(FRONTEND_DIR, exist_ok=True)
 
 app = FastAPI(title="HazirMisin?")
+
+
+@app.on_event("startup")
+def on_startup():
+    create_db_and_tables()
 
 
 @app.post("/api/giris")
