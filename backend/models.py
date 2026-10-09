@@ -42,6 +42,7 @@ class Sinif(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     kod: str
     ders_id: str  # orn. "fonksiyonlar" - content/soru_havuzu.json'daki ust seviye anahtar
+    unite_id: str = "fonksiyonlar_1"  # bkz. icerik_meta.UNITELER - ders_id'nin alt kumesi
     hoca_id: Optional[int] = Field(default=None, foreign_key="hoca.id")
 
 

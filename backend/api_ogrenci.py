@@ -16,6 +16,7 @@ from sqlmodel import Session, select
 
 from backend import models
 from backend.db import get_session
+from backend.icerik_meta import UNITELER
 from backend.on_test_secici import OnTestSecici
 
 router = APIRouter()
@@ -76,7 +77,12 @@ def giris(istek: GirisIstegi, session: Session = Depends(get_session)):
         session.commit()
         session.refresh(ogrenci)
 
-    return {"ogrenci_id": ogrenci.id, "sinif_id": sinif.id, "ders_id": sinif.ders_id}
+    return {
+        "ogrenci_id": ogrenci.id,
+        "sinif_id": sinif.id,
+        "ders_id": sinif.ders_id,
+        "unite_id": sinif.unite_id,
+    }
 
 
 @router.post("/api/test/basla")
@@ -92,7 +98,11 @@ def test_basla(istek: TestBaslaIstegi, session: Session = Depends(get_session)):
     session.commit()
     session.refresh(deneme)
 
-    test_paketi = _secici.test_olustur(sinif.ders_id)
+    tum_konular = _secici.test_olustur(sinif.ders_id)
+    # buse'nin test_olustur()'u dersin TUM alt konularini dondurur; biz
+    # sadece bu sinifin unitesine ait konulari aliyoruz (bkz. icerik_meta.py).
+    unite_konulari = UNITELER.get(sinif.unite_id, {}).get("konular", list(tum_konular.keys()))
+    test_paketi = {k: v for k, v in tum_konular.items() if k in unite_konulari}
     _aktif_testler[deneme.id] = test_paketi
 
     return {"deneme_id": deneme.id, "sorular": _ogrenciye_gonderilecek_sorular(test_paketi)}

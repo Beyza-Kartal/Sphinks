@@ -98,6 +98,51 @@ function durumEtiketle(durum) {
   return harita[durum] || { metin: durum || "Öğreniyor", progress: 50 };
 }
 
+// Secilen derse ait uniteleri (GET /api/hoca/uniteler) getirip "Yeni Sinif"
+// modalindaki secim kutusunu doldurur. Soru sayisi 0 olan unite (buse henuz
+// soru eklemediyse) secilemez, "(yakinda)" diye isaretlenir.
+let _uniteCache = null;
+async function doldurUniteSecici() {
+  const selectUnite = document.getElementById("selectUniteYeni");
+  selectUnite.innerHTML = `<option value="">Yükleniyor...</option>`;
+
+  const data = state.isDemo
+    ? { uniteler: [{ unite_id: "fonksiyonlar_1", ad: "Fonksiyonlar 1 (Demo)", konular: ["kumeler_ve_ikililer"], soru_sayisi: 10 }] }
+    : await apiCall("/api/hoca/uniteler");
+  _uniteCache = data.uniteler || [];
+
+  selectUnite.innerHTML = "";
+  _uniteCache.forEach((u) => {
+    const opt = document.createElement("option");
+    opt.value = u.unite_id;
+    const hazirMi = u.soru_sayisi > 0;
+    opt.textContent = hazirMi ? u.ad : `${u.ad} (yakında)`;
+    opt.disabled = !hazirMi;
+    selectUnite.appendChild(opt);
+  });
+
+  // Ilk hazir uniteyi otomatik sec
+  const ilkHazir = _uniteCache.find((u) => u.soru_sayisi > 0);
+  if (ilkHazir) selectUnite.value = ilkHazir.unite_id;
+  gosterUniteKonulari();
+}
+
+// Secilen unitenin konularini etiket (chip) olarak gosterir
+function gosterUniteKonulari() {
+  const uniteId = document.getElementById("selectUniteYeni").value;
+  const konuDiv = document.getElementById("uniteKonuListesi");
+  const unite = (_uniteCache || []).find((u) => u.unite_id === uniteId);
+
+  if (!unite) {
+    konuDiv.innerHTML = `<span style="color: var(--muted); font-size: 13px;">Ünite seçilmedi</span>`;
+    return;
+  }
+
+  konuDiv.innerHTML = unite.konular
+    .map((k) => `<span style="font-size: 12px; font-weight: 600; background: var(--mint); color: var(--green); padding: 5px 10px; border-radius: 8px;">${ALT_KONU_ETIKET[k] || k}</span>`)
+    .join("");
+}
+
 // --- Sinif Listesini Backend'den Getir ve Secim Kutusunu Doldur ---
 async function loadSiniflar(oncekiSinifId) {
   const selectClass = document.getElementById("selectClass");
@@ -183,27 +228,41 @@ async function initHocaPanel() {
     loadPanelData();
   });
 
-  // Yeni Sınıf Ekle (POST /api/hoca/sinif-ekle)
+  // Yeni Sınıf Modalını Aç (ders/ünite/konu seçimi)
   document.getElementById("btnYeniSinif").addEventListener("click", async () => {
-    const btn = document.getElementById("btnYeniSinif");
+    document.getElementById("modalYeniSinif").style.display = "flex";
+    await doldurUniteSecici();
+  });
+  document.getElementById("btnCloseYeniSinif").addEventListener("click", () => {
+    document.getElementById("modalYeniSinif").style.display = "none";
+  });
+  document.getElementById("selectUniteYeni").addEventListener("change", gosterUniteKonulari);
+
+  // Yeni Sınıf Oluştur (POST /api/hoca/sinif-ekle) — secilen uniteyle
+  document.getElementById("btnOlusturSinif").addEventListener("click", async () => {
+    const uniteId = document.getElementById("selectUniteYeni").value;
+    if (!uniteId) {
+      alert("Lütfen bir ünite seç.");
+      return;
+    }
+    const btn = document.getElementById("btnOlusturSinif");
     btn.disabled = true;
     btn.textContent = "Oluşturuluyor...";
     try {
-      // Su an icerik havuzunda tek ders var ("fonksiyonlar"); yeni ders
-      // eklenince burasi bir secim kutusuna donusturulebilir.
       const yeni = await apiCall("/api/hoca/sinif-ekle", "POST", {
         hoca_id: state.hocaId ? parseInt(state.hocaId, 10) : 1,
-        ders_id: "fonksiyonlar",
+        unite_id: uniteId,
       });
+      document.getElementById("modalYeniSinif").style.display = "none";
       await loadSiniflar(yeni.sinif_id);
       await loadPanelData();
       alert(`Yeni sınıf oluşturuldu!\nKatılım kodu: ${yeni.kod}\n\nBu kodu öğrencilerinle paylaş.`);
     } catch (err) {
-      alert("Sınıf oluşturulamadı, lütfen tekrar deneyin.");
+      alert("Sınıf oluşturulamadı — seçtiğin ünitede henüz soru olmayabilir.");
       console.error(err);
     } finally {
       btn.disabled = false;
-      btn.textContent = "+ Yeni Sınıf";
+      btn.textContent = "Oluştur";
     }
   });
 
