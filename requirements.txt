@@ -27,3 +27,4 @@ typing_extensions==4.16.0
 urllib3==2.8.0
 uvicorn==0.54.0
 youtube-transcript-api==1.2.4
+groq==1.7.0
