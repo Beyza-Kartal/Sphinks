@@ -39,3 +39,23 @@ ALT_KONU_ETIKET = {
     "dogrusal_fonksiyon_grafigi": "Doğrusal Fonksiyon Grafiği",
     "bileske_ve_ters_fonksiyon": "Bileşke ve Ters Fonksiyon",
 }
+
+
+def soru_bul(soru_id: str) -> dict | None:
+    # content/soru_havuzu.json icinde (hangi ders/alt_konu/zorlukta olursa
+    # olsun) id'si eslesen soruyu arar. "Adim adim acikla" ozelligi icin.
+    import json
+    import os
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    yol = os.path.join(base_dir, "content", "soru_havuzu.json")
+    with open(yol, encoding="utf-8") as f:
+        havuz = json.load(f)
+
+    for ders in havuz.values():
+        for alt_konu in ders.values():
+            for seviyeler in alt_konu.values():
+                for soru in seviyeler:
+                    if soru["id"] == soru_id:
+                        return soru
+    return None

@@ -28,11 +28,6 @@ def on_startup():
     create_db_and_tables()
 
 
-@app.post("/api/benzetme")
-def benzetme():
-    return {"metin": "Ortak carpan, bir pastayi esit dilimlere bolmek gibidir."}
-
-
 @app.get("/api/ozet/{deneme_id}")
 def ozet(deneme_id: int):
     return {"sonuc": "basarili", "izlenen_saniye": 60, "toplam_saniye": 90}

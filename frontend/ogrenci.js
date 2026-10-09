@@ -5,7 +5,7 @@
  *   POST /api/test/basla   → Tüm soruları tek seferde al
  *   POST /api/test/bitir   → Tüm cevapları tek seferde gönder
  *   GET  /api/teshis/{deneme_id}
- *   POST /api/benzetme
+ *   POST /api/adim-adim    (eski /api/benzetme'nin yerine gecti)
  *   POST /api/tekrar/basla
  *   GET  /api/ozet/{deneme_id}
  */
@@ -144,14 +144,12 @@ function getLocalMock(url, method, body) {
     return { bolumler: [] };
   }
 
-  if (url.includes("/api/benzetme")) {
-    const analogies = {
-      Basketbol: "Bir yarım saha ile iki çeyrek saha aynı alanı anlatır. Fonksiyonlarda da girdi-çıktı ilişkisini doğru kurmak, oyunun kurallarını bilmek gibidir.",
-      Müzik: "Her nota bir girdiye, çıkan ses ise çıktıya karşılık gelir. Fonksiyonlar da aynı şekilde bir kuralı takip eder.",
-      Oyunlar: "Oyundaki her butona basıldığında belirli bir aksiyon olur. Fonksiyonlar da böyledir: her girdi için tek bir çıktı vardır.",
-      Mutfak: "Bir tarif, malzemeleri (girdileri) alıp yemek (çıktı) üretir. Fonksiyonlar da aynı mantıkla çalışır.",
+  // POST /api/adim-adim (eski /api/benzetme'nin yerine gecti)
+  if (url.includes("/api/adim-adim")) {
+    return {
+      soru: "2x + 3 = 11 denkleminde x kaçtır?",
+      aciklama: "1. Her iki taraftan 3 çıkar: 2x = 8\n2. Her iki tarafı 2'ye böl: x = 4\n\nDoğru sonuç: 4",
     };
-    return { metin: analogies[body?.ilgi_alani] || "Fonksiyonlar, girdi ve çıktı arasındaki düzenli ilişkidir." };
   }
 
   if (url.includes("/api/tekrar/basla")) {
@@ -507,7 +505,7 @@ async function renderMinutesView() {
           <h1>${formatKonuAdi(eksikKonu)} konusunu birlikte çalışalım.</h1>
         </div>
         <button class="bridge-link" id="btnGoToBridge">
-          ✨ Bir benzetmeyle anlat
+          ✨ Bu soruyu adım adım anlat
         </button>
       </div>
       <div class="learning-grid">
@@ -606,70 +604,56 @@ async function renderMinutesView() {
 }
 
 // 5. Bilişsel Köprü (Bridge View)
+// DUZELTME (kullanici karari): "ilgi alani sec + benzetme" matematik icin
+// uygun degildi (bir denklemi basketbola benzetmek anlamsiz). Yerine:
+// ogrencinin GERCEKTEN yanlis yaptigi soruyu bulup adim adim acikliyoruz
+// (POST /api/adim-adim, bkz. GUNLUK.md).
 function renderBridgeView() {
-  document.getElementById("topStepText").textContent = "Bilişsel Köprü";
+  document.getElementById("topStepText").textContent = "Adım Adım Açıklama";
   const main = document.getElementById("mainContainer");
-  const interests = ["Basketbol", "Müzik", "Oyunlar", "Mutfak"];
 
   main.innerHTML = `
     <div class="bridge-page">
       <div class="bridge-intro">
-        <div class="eyebrow">✨ Başka bir yoldan bakalım</div>
-        <h1>Bir ilgi alanı seç.</h1>
-        <p>Konuyu zaten bildiğin bir dünyaya bağlayalım.</p>
-      </div>
-      <div class="interest-list">
-        ${interests
-          .map(
-            (intName, idx) => `
-          <button class="interest" data-interest="${intName}">
-            <span>0${idx + 1}</span>${intName} →
-          </button>
-        `
-          )
-          .join("")}
+        <div class="eyebrow">✨ Bu soruyu başka türlü düşünelim</div>
+        <h1>Yanlış yaptığın soruyu adım adım çözelim.</h1>
+        <p>Benzetme yerine, tam olarak takıldığın soruyu basit dille açıklıyoruz.</p>
       </div>
       <div id="analogyContainer">
         <div class="feedback-card" role="status">
-          <div class="feedback-icon empty">📖</div>
-          <h2>Seçimini bekliyoruz</h2>
-          <p>Benzetmeni oluşturmak için yukarıdan sana yakın gelen bir alan seç.</p>
+          <span class="spinner"></span>
+          <p>Hazırlanıyor...</p>
         </div>
       </div>
     </div>
   `;
 
-  main.querySelectorAll("button[data-interest]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const intName = btn.getAttribute("data-interest");
-      main.querySelectorAll("button[data-interest]").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+  (async () => {
+    const data = await apiCall("/api/adim-adim", "POST", { deneme_id: state.denemeId || 1 });
+    const analogyBox = document.getElementById("analogyContainer");
 
-      // POST /api/benzetme
-      const analogyBox = document.getElementById("analogyContainer");
-      analogyBox.innerHTML = `<div class="feedback-card"><span class="spinner"></span><p>Benzetme üretiliyor...</p></div>`;
-
-      const data = await apiCall("/api/benzetme", "POST", {
-        deneme_id: state.denemeId || 1,
-        ilgi_alani: intName,
-      });
-
-      state.analogyText = data.metin || "Fonksiyonlar, girdi ve çıktı arasındaki düzenli ilişkidir.";
-
+    if (!data.soru) {
+      analogyBox.innerHTML = `
+        <div class="feedback-card" role="status">
+          <h2>${data.aciklama || "Şu an gösterilecek bir şey yok."}</h2>
+          <button class="primary-button" id="btnBackToVideo">Geri dön</button>
+        </div>
+      `;
+    } else {
       analogyBox.innerHTML = `
         <section class="analogy-card">
-          <div class="analogy-label">✨ ${intName} ile düşünelim</div>
-          <blockquote>"${state.analogyText}"</blockquote>
+          <div class="analogy-label">✨ Soru: ${data.soru}</div>
+          <blockquote style="white-space: pre-line;">${data.aciklama}</blockquote>
           <button class="primary-button" id="btnBackToVideo">Şimdi videoya dön</button>
         </section>
       `;
+    }
 
-      document.getElementById("btnBackToVideo").addEventListener("click", () => {
-        state.view = "minutes";
-        renderMinutesView();
-      });
+    document.getElementById("btnBackToVideo").addEventListener("click", () => {
+      state.view = "minutes";
+      renderMinutesView();
     });
-  });
+  })();
 }
 
 // 6. Tekrar Testi (Retest View) — gercek /api/tekrar/basla sorulari,

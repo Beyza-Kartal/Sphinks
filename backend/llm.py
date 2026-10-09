@@ -82,3 +82,45 @@ def altyazi_bolumle(parcalar: list[dict], alt_konular: list[str]) -> list[dict]:
             )
 
     return bulunan
+
+
+def adim_adim_acikla(soru_metni: str, secenekler: dict, dogru_harf: str, cozum: str) -> str:
+    """
+    Ogrencinin YANLIS cevapladigi spesifik soruyu adim adim acikliyor.
+    GUVENLIK/KALITE: Modele soruyu sifirdan "coz" demiyoruz (hesap hatasi
+    riski) - buse'nin soru_havuzu.json'daki hazir "cozum" alanini modele
+    VERIYORUZ, model sadece bunu ogrenci seviyesine uygun, sade ve adim adim
+    bir dille yeniden anlatiyor. Boylece matematiksel dogruluk bizden,
+    anlatim kalitesi modelden gelir.
+
+    DUZELTME: Promptta A/B/C/D siklarini listeleyince model "sinav sorusu
+    cozuyorum" diye ALGILAYIP ISTEGI REDDEDIYORDU ("I can't help with
+    that"). Siklari hic vermiyoruz, sadece soru metni + dogru cevabin
+    DEGERI (harf degil) + cozum notu gonderiyoruz - model artik normal
+    calisiyor. Ayrica LaTeX ISTEMIYORUZ (sayfa render edemiyor), duz metin.
+    """
+    dogru_deger = secenekler.get(dogru_harf, dogru_harf)
+    prompt = (
+        f"Bir ogrenci bu matematik sorusunu yanlis cevapladi: {soru_metni}\n"
+        f"Dogru sonuc: {dogru_deger}\n"
+        f"Kisa cozum notu: {cozum}\n\n"
+        "Bu cozum notunu TEMEL ALARAK, soruyu bir ogrenciye adim adim, "
+        "sade ve samimi bir dille anlat. 3-5 kisa adim kullan, her adimi "
+        "yeni satirda yaz. LaTeX ya da matematik sembolu bicimlendirmesi "
+        "KULLANMA (\\[ \\] gibi), sadece duz metin ve normal sayilar/islem "
+        "isaretleri kullan (orn: 2x + 3 = 11)."
+    )
+
+    try:
+        resp = _client.chat.completions.create(
+            model=MODEL,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        metin = resp.choices[0].message.content.strip()
+        if not metin:
+            raise ValueError("bos cevap")
+        return metin
+    except Exception:
+        # Groq basarisiz olursa (ya da bos/reddedilmis cevap donerse),
+        # en azindan hazir cozum notunu goster.
+        return f"{cozum}\n\nDoğru sonuç: {dogru_deger}"

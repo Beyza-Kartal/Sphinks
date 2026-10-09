@@ -16,8 +16,9 @@ from sqlmodel import Session, select
 
 from backend import models
 from backend.db import get_session
-from backend.icerik_meta import UNITELER
+from backend.icerik_meta import UNITELER, soru_bul
 from backend.kavram_testi_secici import KavramTestiSecici
+from backend.llm import adim_adim_acikla
 from backend.on_test_secici import OnTestSecici
 
 router = APIRouter()
@@ -55,6 +56,10 @@ class TekrarBaslaIstegi(BaseModel):
 class TekrarBitirIstegi(BaseModel):
     deneme_id: int
     cevaplar: dict[str, str]
+
+
+class AdimAdimIstegi(BaseModel):
+    deneme_id: int
 
 
 def _ogrenciye_gonderilecek_sorular(test_paketi: dict) -> list[dict]:
@@ -197,3 +202,26 @@ def tekrar_bitir(istek: TekrarBitirIstegi, session: Session = Depends(get_sessio
 
     del _aktif_tekrar_testleri[istek.deneme_id]
     return sonuc
+
+
+@router.post("/api/adim-adim")
+def adim_adim(istek: AdimAdimIstegi, session: Session = Depends(get_session)):
+    # "Bilissel Kopru" (benzetme) yerine geldi: ilgi alani/benzetme YOK,
+    # matematik icin bu uygun degil (kullanici karariyla). Bunun yerine
+    # ogrencinin GERCEKTEN yanlis yaptigi soruyu bulup, buse'nin hazir
+    # cozum notunu temel alarak Groq'a sade bir dilde adim adim anlatiyoruz.
+    yanlis_cevap = session.exec(
+        select(models.Cevap)
+        .where(models.Cevap.deneme_id == istek.deneme_id, models.Cevap.dogru_mu == False)  # noqa: E712
+        .order_by(models.Cevap.id.desc())
+    ).first()
+
+    if not yanlis_cevap:
+        return {"soru": None, "aciklama": "Tebrikler, bu denemede yanlış cevabın yok!"}
+
+    soru = soru_bul(yanlis_cevap.soru_id)
+    if not soru:
+        return {"soru": None, "aciklama": "Bu soru için açıklama bulunamadı."}
+
+    aciklama = adim_adim_acikla(soru["soru"], soru["secenekler"], soru["cevap"], soru["cozum"])
+    return {"soru": soru["soru"], "aciklama": aciklama}
