@@ -63,7 +63,7 @@
           <p id="roleDescription">Sınıf kodunu ve adını gir, kaldığın yerden devam et.</p>
 
           <div id="errorAlert" class="inline-error" style="display: none;" role="alert">
-            <strong>Bağlantı kurulamadı.</strong>
+            <strong id="errorTitle">Bağlantı kurulamadı.</strong>
             <span id="errorMessage"></span>
           </div>
 
@@ -81,7 +81,7 @@
                 id="inputClassCode"
                 autoCapitalize="characters"
                 maxlength="8"
-                placeholder="Örn. KIV6A2"
+                placeholder="Örn. FNK101"
                 required
               />
             </label>
@@ -101,30 +101,25 @@
           <!-- Öğretmen Giriş Alanları -->
           <div id="teacherLoginFields" style="display: none;">
             <label>
-              Sınıf Kodu veya PIN
+              E-posta
               <input
-                id="inputTeacherPin"
-                placeholder="Örn. KIV6A2 veya PIN"
+                id="inputTeacherEmail"
+                type="email"
+                placeholder="Örn. ayse@ogretmen.k12.tr"
               />
             </label>
             <label>
-              Öğretmen Adı / E-posta
+              Şifre
               <input
-                id="inputTeacherName"
-                placeholder="Örn. Ayşe Öğretmen"
+                id="inputTeacherPassword"
+                type="password"
+                placeholder="Şifrenizi girin"
               />
             </label>
           </div>
 
           <!-- Öğretmen Kayıt Ol Alanları -->
           <div id="teacherRegisterFields" style="display: none;">
-            <label>
-              Ad Soyad
-              <input
-                id="inputRegTeacherName"
-                placeholder="Örn. Ayşe Yılmaz"
-              />
-            </label>
             <label>
               E-posta Adresi
               <input
@@ -134,40 +129,19 @@
               />
             </label>
             <label>
-              Branş
-              <select id="selectRegBranch">
-                <option value="Matematik" selected>Matematik</option>
-                <option value="Fen Bilimleri">Fen Bilimleri</option>
-                <option value="Türkçe">Türkçe</option>
-                <option value="İngilizce">İngilizce</option>
-                <option value="Sosyal Bilgiler">Sosyal Bilgiler</option>
-                <option value="Diğer">Diğer</option>
-              </select>
-            </label>
-            <label>
-              Sınıf Adı
+              Şifre
               <input
-                id="inputRegClassName"
-                placeholder="Örn. 6-A Sınıfı"
-              />
-            </label>
-            <label>
-              Sınıf Kodu (Öğrencilerin Katılacağı Kod)
-              <input
-                id="inputRegClassCode"
-                autoCapitalize="characters"
-                maxlength="8"
-                placeholder="Örn. KIV6A2"
-              />
-            </label>
-            <small class="input-hint">Öğrenciler derse katılırken bu kodu kullanacaktır.</small>
-            <label>
-              Giriş PIN / Şifre
-              <input
-                id="inputRegPin"
+                id="inputRegTeacherPassword"
                 type="password"
-                maxlength="8"
-                placeholder="4-6 haneli PIN belirleyin"
+                placeholder="Güçlü bir şifre belirleyin"
+              />
+            </label>
+            <label>
+              Şifre Tekrar
+              <input
+                id="inputRegTeacherPasswordConfirm"
+                type="password"
+                placeholder="Şifrenizi tekrar girin"
               />
             </label>
           </div>
@@ -217,14 +191,6 @@
       let currentRole = "student";
       let teacherMode = "login"; // login | register
 
-      // URL parametresi ile sınıf kodu otomatik alma (?sinif=MAT6A)
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlCode = urlParams.get("sinif");
-      if (urlCode) {
-        document.getElementById("inputClassCode").value = urlCode.toUpperCase();
-        document.getElementById("inputTeacherPin").value = urlCode.toUpperCase();
-      }
-
       // Tema Yönetimi
       const savedTheme = localStorage.getItem("kivilcim_theme") || "light";
       if (savedTheme === "dark") {
@@ -236,16 +202,6 @@
         document.getElementById("btnThemeToggle").textContent = isDark ? "☀️" : "🌙";
         localStorage.setItem("kivilcim_theme", isDark ? "dark" : "light");
       });
-
-      // Öğretmen için rastgele sınıf kodu üretici
-      function generateClassCode() {
-        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-        let res = "KIV";
-        for (let i = 0; i < 3; i++) {
-          res += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return res;
-      }
 
       // Sekme Değişimi
       const btnStudent = document.getElementById("btnStudentTab");
@@ -263,6 +219,19 @@
       const roleDescription = document.getElementById("roleDescription");
       const roleNote = document.getElementById("roleNote");
       const btnSubmit = document.getElementById("btnSubmit");
+      const errorAlert = document.getElementById("errorAlert");
+      const errorTitle = document.getElementById("errorTitle");
+      const errorMessage = document.getElementById("errorMessage");
+
+      function showError(title, message) {
+        errorTitle.textContent = title;
+        errorMessage.textContent = message;
+        errorAlert.style.display = "block";
+      }
+
+      function hideError() {
+        errorAlert.style.display = "none";
+      }
 
       function updateTeacherView() {
         if (teacherMode === "login") {
@@ -272,16 +241,14 @@
           teacherRegisterFields.style.display = "none";
           roleTitle.textContent = "Öğretmen Girişi";
           roleSubtext.textContent = "Sınıfını başlat";
-          roleDescription.textContent = "Sınıf kodunu ve adını gir, hoca paneline bağlan.";
+          roleDescription.textContent = "E-posta ve şifrenizi girerek hoca paneline bağlanın.";
           roleNote.textContent = "Hoca paneli üzerinden sınıfın öğrenme ilerlemesini izleyebilirsin.";
           btnSubmit.textContent = "Hoca Paneline Geç";
-          document.getElementById("inputTeacherPin").required = true;
-          document.getElementById("inputTeacherName").required = true;
-          document.getElementById("inputRegTeacherName").required = false;
+          document.getElementById("inputTeacherEmail").required = true;
+          document.getElementById("inputTeacherPassword").required = true;
           document.getElementById("inputRegTeacherEmail").required = false;
-          document.getElementById("inputRegClassName").required = false;
-          document.getElementById("inputRegClassCode").required = false;
-          document.getElementById("inputRegPin").required = false;
+          document.getElementById("inputRegTeacherPassword").required = false;
+          document.getElementById("inputRegTeacherPasswordConfirm").required = false;
         } else {
           btnTeacherLoginTab.classList.remove("active");
           btnTeacherRegisterTab.classList.add("active");
@@ -289,23 +256,14 @@
           teacherRegisterFields.style.display = "block";
           roleTitle.textContent = "Öğretmen Kaydı";
           roleSubtext.textContent = "Aramıza katıl";
-          roleDescription.textContent = "Yeni bir sınıf oluşturup öğrencilerini davet etmeye başla.";
-          roleNote.textContent = "Kayıt olduktan sonra sınıfın için otomatik kod ve tahta QR kodu oluşturulur.";
+          roleDescription.textContent = "Hesap oluşturup öğrencilerini davet etmeye başla.";
+          roleNote.textContent = "Kayıt olduktan sonra hoca panelinden sınıf oluşturabilirsin.";
           btnSubmit.textContent = "Öğretmen Hesabı Oluştur";
-
-          // Rastgele bir sınıf kodu öner
-          const regCodeInput = document.getElementById("inputRegClassCode");
-          if (!regCodeInput.value) {
-            regCodeInput.value = generateClassCode();
-          }
-
-          document.getElementById("inputTeacherPin").required = false;
-          document.getElementById("inputTeacherName").required = false;
-          document.getElementById("inputRegTeacherName").required = true;
+          document.getElementById("inputTeacherEmail").required = false;
+          document.getElementById("inputTeacherPassword").required = false;
           document.getElementById("inputRegTeacherEmail").required = true;
-          document.getElementById("inputRegClassName").required = true;
-          document.getElementById("inputRegClassCode").required = true;
-          document.getElementById("inputRegPin").required = true;
+          document.getElementById("inputRegTeacherPassword").required = true;
+          document.getElementById("inputRegTeacherPasswordConfirm").required = true;
         }
       }
 
@@ -317,16 +275,15 @@
         studentFields.style.display = "block";
         teacherLoginFields.style.display = "none";
         teacherRegisterFields.style.display = "none";
+        hideError();
 
         document.getElementById("inputClassCode").required = true;
         document.getElementById("inputStudentName").required = true;
-        document.getElementById("inputTeacherPin").required = false;
-        document.getElementById("inputTeacherName").required = false;
-        document.getElementById("inputRegTeacherName").required = false;
+        document.getElementById("inputTeacherEmail").required = false;
+        document.getElementById("inputTeacherPassword").required = false;
         document.getElementById("inputRegTeacherEmail").required = false;
-        document.getElementById("inputRegClassName").required = false;
-        document.getElementById("inputRegClassCode").required = false;
-        document.getElementById("inputRegPin").required = false;
+        document.getElementById("inputRegTeacherPassword").required = false;
+        document.getElementById("inputRegTeacherPasswordConfirm").required = false;
 
         roleTitle.textContent = "Tekrar hoş geldin";
         roleSubtext.textContent = "Hemen başlayalım";
@@ -341,6 +298,7 @@
         btnStudent.classList.remove("active");
         teacherSubSwitch.style.display = "grid";
         studentFields.style.display = "none";
+        hideError();
         document.getElementById("inputClassCode").required = false;
         document.getElementById("inputStudentName").required = false;
         updateTeacherView();
@@ -348,11 +306,13 @@
 
       btnTeacherLoginTab.addEventListener("click", () => {
         teacherMode = "login";
+        hideError();
         updateTeacherView();
       });
 
       btnTeacherRegisterTab.addEventListener("click", () => {
         teacherMode = "register";
+        hideError();
         updateTeacherView();
       });
 
@@ -361,12 +321,16 @@
         if (currentRole === "student") {
           sessionStorage.setItem("ogrenci_id", "1");
           sessionStorage.setItem("ogrenci_isim", "Deniz");
-          sessionStorage.setItem("sinif_kodu", "KIV6A2");
+          sessionStorage.setItem("sinif_kodu", "FNK101");
+          sessionStorage.setItem("sinif_id", "1");
+          sessionStorage.setItem("ders_id", "fonksiyonlar");
           sessionStorage.setItem("is_demo", "true");
           window.location.href = "./ogrenci.html?demo=1";
         } else {
-          sessionStorage.setItem("sinif_id", "KIV6A2");
+          sessionStorage.setItem("hoca_id", "1");
+          sessionStorage.setItem("hoca_email", "demo@ogretmen.k12.tr");
           sessionStorage.setItem("hoca_isim", "Ayşe Öğretmen");
+          sessionStorage.setItem("sinif_id", "FNK101");
           sessionStorage.setItem("is_demo", "true");
           window.location.href = "./hoca.html?demo=1";
         }
@@ -375,12 +339,17 @@
       // Form Gönderimi
       document.getElementById("loginForm").addEventListener("submit", async (e) => {
         e.preventDefault();
-        const errorAlert = document.getElementById("errorAlert");
-        errorAlert.style.display = "none";
+        hideError();
 
         if (currentRole === "student") {
-          const sinifKodu = document.getElementById("inputClassCode").value.trim().toUpperCase();
+          // ── Öğrenci Girişi: POST /api/giris ──
+          const sinif_kodu = document.getElementById("inputClassCode").value.trim().toUpperCase();
           const isim = document.getElementById("inputStudentName").value.trim();
+
+          if (!sinif_kodu || !isim) {
+            showError("Eksik bilgi.", "Lütfen sınıf kodu ve adınızı girin.");
+            return;
+          }
 
           btnSubmit.disabled = true;
           btnSubmit.innerHTML = `<span class="spinner small"></span> Bağlanılıyor...`;
@@ -389,82 +358,144 @@
             const res = await fetch("/api/giris", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ sinif_kodu: sinifKodu, isim: isim }),
+              body: JSON.stringify({ sinif_kodu: sinif_kodu, isim: isim }),
             });
+
+            if (res.status === 404) {
+              showError("Sınıf bulunamadı.", "Girdiğiniz sınıf kodu geçersiz. Lütfen öğretmeninize danışın.");
+              btnSubmit.disabled = false;
+              btnSubmit.textContent = "Derse gir";
+              return;
+            }
 
             if (!res.ok) throw new Error(`Sunucu yanıtı: ${res.status}`);
             const data = await res.json();
 
-            // Oturumu kaydet
+            // Oturumu kaydet — backend dönen alan adları: ogrenci_id, sinif_id, ders_id
             sessionStorage.setItem("ogrenci_id", data.ogrenci_id || "1");
             sessionStorage.setItem("ogrenci_isim", isim);
-            sessionStorage.setItem("sinif_kodu", sinifKodu);
-            if (data.konu) {
-              sessionStorage.setItem("konu", JSON.stringify(data.konu));
+            sessionStorage.setItem("sinif_kodu", sinif_kodu);
+            sessionStorage.setItem("sinif_id", data.sinif_id || "");
+            sessionStorage.setItem("ders_id", data.ders_id || "");
+
+            if (data.ders_id) {
+              const konu = { id: data.ders_id, ad: data.ders_id };
+              sessionStorage.setItem("konu", JSON.stringify(konu));
             } else {
               sessionStorage.removeItem("konu");
             }
+
             sessionStorage.removeItem("is_demo");
             window.location.href = "./ogrenci.html";
           } catch (err) {
-            // Normal modda otomatik ders EKLENMEZ
+            // Backend erişilemedi — offline modda devam et (ders yok)
             console.warn("Backend API bağlantı hatası, normal modda devam ediliyor:", err);
             sessionStorage.setItem("ogrenci_id", "1");
             sessionStorage.setItem("ogrenci_isim", isim);
-            sessionStorage.setItem("sinif_kodu", sinifKodu);
-            sessionStorage.removeItem("konu"); // Otomatik gelen ders yok!
+            sessionStorage.setItem("sinif_kodu", sinif_kodu);
+            sessionStorage.removeItem("sinif_id");
+            sessionStorage.removeItem("ders_id");
+            sessionStorage.removeItem("konu");
             sessionStorage.removeItem("is_demo");
             window.location.href = "./ogrenci.html";
           } finally {
             btnSubmit.disabled = false;
             btnSubmit.textContent = "Derse gir";
           }
+
         } else if (currentRole === "teacher" && teacherMode === "login") {
-          // Hoca Girişi
-          const sinifId = document.getElementById("inputTeacherPin").value.trim().toUpperCase() || "KIV6A2";
-          const hocaIsim = document.getElementById("inputTeacherName").value.trim() || "Öğretmen";
-          sessionStorage.setItem("sinif_id", sinifId);
-          sessionStorage.setItem("hoca_isim", hocaIsim);
-          sessionStorage.removeItem("is_demo");
-          window.location.href = "./hoca.html";
-        } else if (currentRole === "teacher" && teacherMode === "register") {
-          // Hoca Kayıt Ol
-          const hocaIsim = document.getElementById("inputRegTeacherName").value.trim();
-          const email = document.getElementById("inputRegTeacherEmail").value.trim();
-          const branch = document.getElementById("selectRegBranch").value;
-          const className = document.getElementById("inputRegClassName").value.trim();
-          const classCode = document.getElementById("inputRegClassCode").value.trim().toUpperCase();
-          const pin = document.getElementById("inputRegPin").value.trim();
+          // ── Hoca Girişi: POST /api/hoca/giris ──
+          const email = document.getElementById("inputTeacherEmail").value.trim();
+          const sifre = document.getElementById("inputTeacherPassword").value.trim();
 
-          btnSubmit.disabled = true;
-          btnSubmit.innerHTML = `<span class="spinner small"></span> Sınıf oluşturuluyor...`;
-
-          // Yerel veritabanına ve oturuma kaydet
-          try {
-            const savedClasses = JSON.parse(localStorage.getItem("kivilcim_classes") || "[]");
-            savedClasses.push({
-              code: classCode,
-              name: className,
-              branch: branch,
-              teacher: hocaIsim,
-              email: email,
-              createdAt: new Date().toISOString()
-            });
-            localStorage.setItem("kivilcim_classes", JSON.stringify(savedClasses));
-          } catch (err) {
-            console.warn("LocalStorage kayıt hatası:", err);
+          if (!email || !sifre) {
+            showError("Eksik bilgi.", "Lütfen e-posta ve şifrenizi girin.");
+            return;
           }
 
-          sessionStorage.setItem("sinif_id", classCode);
-          sessionStorage.setItem("sinif_adi", className);
-          sessionStorage.setItem("hoca_isim", hocaIsim);
-          sessionStorage.setItem("hoca_brans", branch);
-          sessionStorage.removeItem("is_demo");
+          btnSubmit.disabled = true;
+          btnSubmit.innerHTML = `<span class="spinner small"></span> Giriş yapılıyor...`;
 
-          // Kayıt başarıyla tamamlandı, hoca paneline geç
-          setTimeout(() => {
+          try {
+            const res = await fetch("/api/hoca/giris", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: email, sifre: sifre }),
+            });
+
+            if (res.status === 401) {
+              showError("Giriş başarısız.", "E-posta veya şifre yanlış. Lütfen tekrar deneyin.");
+              btnSubmit.disabled = false;
+              btnSubmit.textContent = "Hoca Paneline Geç";
+              return;
+            }
+
+            if (!res.ok) throw new Error(`Sunucu yanıtı: ${res.status}`);
+            const data = await res.json();
+
+            // Oturumu kaydet — backend dönen alan adları: hoca_id, email
+            sessionStorage.setItem("hoca_id", data.hoca_id || "");
+            sessionStorage.setItem("hoca_email", data.email || email);
+            sessionStorage.setItem("hoca_isim", data.email || email);
+            sessionStorage.removeItem("is_demo");
             window.location.href = "./hoca.html";
-          }, 300);
+          } catch (err) {
+            console.warn("Hoca giriş hatası:", err);
+            showError("Bağlantı hatası.", "Sunucuya ulaşılamadı. Lütfen daha sonra tekrar deneyin.");
+          } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Hoca Paneline Geç";
+          }
+
+        } else if (currentRole === "teacher" && teacherMode === "register") {
+          // ── Hoca Kaydı: POST /api/hoca/kayit ──
+          const email = document.getElementById("inputRegTeacherEmail").value.trim();
+          const sifre = document.getElementById("inputRegTeacherPassword").value.trim();
+          const sifreTekrar = document.getElementById("inputRegTeacherPasswordConfirm").value.trim();
+
+          if (!email || !sifre) {
+            showError("Eksik bilgi.", "Lütfen e-posta ve şifre alanlarını doldurun.");
+            return;
+          }
+
+          if (sifre !== sifreTekrar) {
+            showError("Şifreler uyuşmuyor.", "Girdiğiniz şifreler birbiriyle eşleşmiyor.");
+            return;
+          }
+
+          btnSubmit.disabled = true;
+          btnSubmit.innerHTML = `<span class="spinner small"></span> Hesap oluşturuluyor...`;
+
+          try {
+            const res = await fetch("/api/hoca/kayit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: email, sifre: sifre }),
+            });
+
+            if (res.status === 400) {
+              showError("Kayıt başarısız.", "Bu e-posta adresi zaten kayıtlı. Giriş yapmayı deneyin.");
+              btnSubmit.disabled = false;
+              btnSubmit.textContent = "Öğretmen Hesabı Oluştur";
+              return;
+            }
+
+            if (!res.ok) throw new Error(`Sunucu yanıtı: ${res.status}`);
+            const data = await res.json();
+
+            // Oturumu kaydet — backend dönen alan adları: hoca_id, email
+            sessionStorage.setItem("hoca_id", data.hoca_id || "");
+            sessionStorage.setItem("hoca_email", data.email || email);
+            sessionStorage.setItem("hoca_isim", data.email || email);
+            sessionStorage.removeItem("is_demo");
+            window.location.href = "./hoca.html";
+          } catch (err) {
+            console.warn("Hoca kayıt hatası:", err);
+            showError("Bağlantı hatası.", "Sunucuya ulaşılamadı. Lütfen daha sonra tekrar deneyin.");
+          } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Öğretmen Hesabı Oluştur";
+          }
         }
       });
     </script>

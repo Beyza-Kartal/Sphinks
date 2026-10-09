@@ -2,8 +2,8 @@
  * Kıvılcım / Hazır mısın? - Öğrenci Mantığı (ogrenci.js)
  * Sahip: B (Frontend)
  * Bağlandığı API'ler:
- *   POST /api/test/basla
- *   POST /api/cevap
+ *   POST /api/test/basla   → Tüm soruları tek seferde al
+ *   POST /api/test/bitir   → Tüm cevapları tek seferde gönder
  *   GET  /api/teshis/{deneme_id}
  *   POST /api/benzetme
  *   POST /api/tekrar/basla
@@ -14,20 +14,26 @@
 const state = {
   ogrenciId: sessionStorage.getItem("ogrenci_id") || 1,
   ogrenciIsim: sessionStorage.getItem("ogrenci_isim") || "Öğrenci",
-  sinifKodu: sessionStorage.getItem("sinif_kodu") || "KIV6A2",
+  sinifKodu: sessionStorage.getItem("sinif_kodu") || "",
+  sinifId: sessionStorage.getItem("sinif_id") || null,
+  dersId: sessionStorage.getItem("ders_id") || null,
   konu: null,
   denemeId: null,
+  // Ön test: tüm sorular bir kerede gelir
+  allQuestions: [],       // /api/test/basla'dan gelen sorular dizisi
+  cevaplar: {},           // { soru_id: "B", ... } biriktirilen cevaplar
+  questionIndex: 0,       // şu an gösterilen sorunun indexi
+  selectedOptionKey: null, // seçilen şık harfi ("A", "B", "C", "D") veya null
   view: "home", // home | pretest | diagnosis | minutes | bridge | retest | summary
-  currentQuestion: null,
-  questionNumber: 1,
-  selectedOptionIndex: null,
-  answersCount: 0,
   diagnosis: null,
   selectedChannelIndex: 0,
   analogyText: "",
   retestQuestions: [],
   retestIndex: 0,
+  retestSelectedKey: null,
   summaryData: null,
+  // Test bitir sonuçları
+  testSonuc: null,
 };
 
 // Demo kontrolü
@@ -39,12 +45,12 @@ try {
   if (storedKonu) {
     state.konu = JSON.parse(storedKonu);
   } else if (isDemo) {
-    state.konu = { id: 1, ad: "Kesirlerde Toplama ve Çıkarma", duration: 12 };
+    state.konu = { id: 1, ad: "Fonksiyonlar", duration: 12 };
   } else {
     state.konu = null; // Normal modda otomatik ders gelmez!
   }
 } catch (e) {
-  state.konu = isDemo ? { id: 1, ad: "Kesirlerde Toplama ve Çıkarma", duration: 12 } : null;
+  state.konu = isDemo ? { id: 1, ad: "Fonksiyonlar", duration: 12 } : null;
 }
 
 // --- API Çağrı Yardımcısı ---
@@ -64,58 +70,89 @@ async function apiCall(url, method = "GET", body = null) {
 
 // API sunucusu kapalıyken çalışan sözleşme uyumlu yerel yanıtlar
 function getLocalMock(url, method, body) {
+  // POST /api/test/basla — tüm sorular tek seferde döner
   if (url.includes("/api/test/basla")) {
     return {
       deneme_id: 1,
-      soru: {
-        id: 1,
-        metin: "1/3 + 1/6 işleminin sonucu kaçtır?",
-        secenekler: ["2/9", "1/2", "2/6", "1/9"],
+      sorular: [
+        {
+          soru_id: "mock_01",
+          alt_konu: "kumeler_ve_ikililer",
+          soru: "A = {a, b, c} ve B = {1, 2} kümeleri verildiğinde A × B kümesinin eleman sayısı kaçtır?",
+          secenekler: { A: "5", B: "6", C: "8", D: "9" },
+        },
+        {
+          soru_id: "mock_02",
+          alt_konu: "kumeler_ve_ikililer",
+          soru: "Boş kümenin alt küme sayısı kaçtır?",
+          secenekler: { A: "0", B: "1", C: "2", D: "Tanımsız" },
+        },
+        {
+          soru_id: "mock_03",
+          alt_konu: "cebirsel_ifadeler",
+          soru: "2x + 3 = 11 denkleminde x kaçtır?",
+          secenekler: { A: "3", B: "4", C: "5", D: "8" },
+        },
+        {
+          soru_id: "mock_04",
+          alt_konu: "cebirsel_ifadeler",
+          soru: "(x + 2)(x - 3) ifadesinin açılımı nedir?",
+          secenekler: { A: "x² - x - 6", B: "x² + x - 6", C: "x² - 5x + 6", D: "x² - x + 6" },
+        },
+        {
+          soru_id: "mock_05",
+          alt_konu: "fonksiyon_tanimi",
+          soru: "f(x) = 3x - 1 ise f(4) kaçtır?",
+          secenekler: { A: "11", B: "12", C: "13", D: "7" },
+        },
+      ],
+    };
+  }
+
+  // POST /api/test/bitir — sonuçlar
+  if (url.includes("/api/test/bitir")) {
+    return {
+      toplam_soru: 5,
+      dogru: 3,
+      yanlis: 2,
+      genel_puan: 60.0,
+      derse_hazir_mi: false,
+      eksik_alt_konular: ["kumeler_ve_ikililer", "cebirsel_ifadeler"],
+      alt_konu_detaylari: {
+        kumeler_ve_ikililer: { toplam: 2, dogru: 1, yanlis: 1, basari_yuzdesi: 50.0 },
+        cebirsel_ifadeler: { toplam: 2, dogru: 1, yanlis: 1, basari_yuzdesi: 50.0 },
+        fonksiyon_tanimi: { toplam: 1, dogru: 1, yanlis: 0, basari_yuzdesi: 100.0 },
       },
     };
   }
 
-  if (url.includes("/api/cevap")) {
-    const questions = [
-      { id: 2, metin: "3/4 − 1/2 işleminin sonucu kaçtır?", secenekler: ["2/2", "1/4", "2/4", "1/2"] },
-      { id: 3, metin: "2/5 + 1/10 işlemini yapmak için en uygun ortak payda kaçtır?", secenekler: ["5", "7", "10", "15"] },
-      { id: 4, metin: "Paydaları eşit iki kesir toplanırken ne yapılır?", secenekler: ["Paylar toplanır, payda aynen kalır", "Paydalar toplanır", "İkisi çarpılır", "Kesirler ters çevrilir"] },
-      { id: 5, metin: "5/8 − 2/8 işleminin sonucu kaçtır?", secenekler: ["3/8", "3/0", "7/8", "3/16"] },
-    ];
-    const nextQ = questions[state.questionNumber - 1];
-    if (nextQ) {
-      return { dogru_mu: false, bitti: false, soru: nextQ };
-    }
-    return { dogru_mu: true, bitti: true };
-  }
-
+  // GET /api/teshis/{deneme_id}
   if (url.includes("/api/teshis")) {
     return {
-      eksik: { id: 1, ad: "payda_esitleme", aciklama: "Farklı paydalı kesirlerde ortak payda bulma ve genişletme" },
+      eksik: "kumeler_ve_ikililer",
       videolar: [
-        { kanal_adi: "Net Anlatım", youtube_id: "9VZsMY15xeU", baslangic_sn: 52, bitis_sn: 292 },
-        { kanal_adi: "Görsel Matematik", youtube_id: "9VZsMY15xeU", baslangic_sn: 30, bitis_sn: 210 },
-        { kanal_adi: "Hızlı Tekrar", youtube_id: "9VZsMY15xeU", baslangic_sn: 15, bitis_sn: 135 },
+        { kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslik: "Kumeler Ve Ikililer", baslangic_sn: 2224, bitis_sn: 2380 },
+        { kanal_adi: "Net Anlatım", youtube_id: "9VZsMY15xeU", baslik: "Kümeler Konu Anlatımı", baslangic_sn: 30, bitis_sn: 210 },
       ],
     };
   }
 
   if (url.includes("/api/benzetme")) {
     const analogies = {
-      Basketbol: "Bir yarım saha ile iki çeyrek saha aynı alanı anlatır. Kesirlerde de toplama yapmadan önce saha çizgilerini, yani paydaları, aynı ölçüye getiririz.",
-      Müzik: "Bir yarım nota, iki çeyrek nota kadar sürer. Ritimleri toplarken vuruş birimlerini eşitlemek, kesirlerin paydalarını eşitlemeye benzer.",
-      Oyunlar: "Farklı büyüklükteki enerji barlarını toplamak için önce ikisini de aynı dilimlere bölersin. İşte bu, ortak payda bulmaktır.",
-      Mutfak: "Yarım bardak ile çeyrek bardağı toplarken ikisini de çeyrek ölçüyle düşünürüz: iki çeyrek artı bir çeyrek.",
+      Basketbol: "Bir yarım saha ile iki çeyrek saha aynı alanı anlatır. Fonksiyonlarda da girdi-çıktı ilişkisini doğru kurmak, oyunun kurallarını bilmek gibidir.",
+      Müzik: "Her nota bir girdiye, çıkan ses ise çıktıya karşılık gelir. Fonksiyonlar da aynı şekilde bir kuralı takip eder.",
+      Oyunlar: "Oyundaki her butona basıldığında belirli bir aksiyon olur. Fonksiyonlar da böyledir: her girdi için tek bir çıktı vardır.",
+      Mutfak: "Bir tarif, malzemeleri (girdileri) alıp yemek (çıktı) üretir. Fonksiyonlar da aynı mantıkla çalışır.",
     };
-    return { metin: analogies[body?.ilgi_alani] || "Ortak kat bulmak, parçaları aynı boyuta getirmektir." };
+    return { metin: analogies[body?.ilgi_alani] || "Fonksiyonlar, girdi ve çıktı arasındaki düzenli ilişkidir." };
   }
 
   if (url.includes("/api/tekrar/basla")) {
     return {
       deneme_id: 1,
       sorular: [
-        { id: 6, metin: "2/3 + 1/6 işleminin sonucu kaçtır?", secenekler: ["3/9", "3/6", "5/6", "2/9"] },
-        { id: 7, metin: "7/10 − 2/5 işleminin sonucu kaçtır?", secenekler: ["5/5", "3/10", "5/10", "1/2"] },
+        { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
+        { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
       ],
     };
   }
@@ -160,22 +197,22 @@ function renderHomeView() {
     ? `
     <section class="topic-card">
       <div class="topic-visual">
-        <div class="fraction-shape"><span>1</span><i></i><span>2</span></div>
-        <div class="fraction-shape second"><span>1</span><i></i><span>3</span></div>
+        <div class="fraction-shape"><span>f</span><i></i><span>(x)</span></div>
+        <div class="fraction-shape second"><span>→</span><i></i><span>y</span></div>
       </div>
       <div class="topic-content">
         <div class="card-kicker">Sıradaki konu</div>
-        <p class="unit">Matematik · 6. sınıf</p>
-        <h2>${state.konu?.ad || state.konu?.title || "Kesirlerde Toplama ve Çıkarma"}</h2>
+        <p class="unit">Matematik · Lise</p>
+        <h2>${state.konu?.ad || state.konu?.title || "Fonksiyonlar"}</h2>
         <div class="meta">
           <span>~${state.konu?.duration || 12} dakika</span>
-          <span>5 kısa soru</span>
+          <span>Ön test soruları</span>
         </div>
         <button class="primary-button" id="btnStartTest">Hazır mısın?</button>
       </div>
     </section>
     <div class="encouragement">
-      <span><strong>Küçük bir hatırlatma:</strong> Bilmediğin sorularda “Bilmiyorum” demen, sana daha iyi yardımcı olmamızı sağlar.</span>
+      <span><strong>Küçük bir hatırlatma:</strong> Bilmediğin sorularda "Bilmiyorum" demen, sana daha iyi yardımcı olmamızı sağlar.</span>
     </div>
     `
     : `
@@ -186,7 +223,7 @@ function renderHomeView() {
       <div class="card-kicker" style="justify-content: center;">Henüz Aktif Ders Yok</div>
       <h2 style="font-size: 26px; margin: 12px 0 10px; max-width: 480px;">Öğretmeninin ders başlatması bekleniyor</h2>
       <p style="color: var(--muted); max-width: 440px; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
-        <strong>${state.sinifKodu}</strong> sınıfı için atanmış bir konu bulunmuyor. Öğretmenin bir konu başlattığında veya etkinlik atadığında burada görebilirsin.
+        <strong>${state.sinifKodu || "—"}</strong> sınıfı için atanmış bir konu bulunmuyor. Öğretmenin bir konu başlattığında veya etkinlik atadığında burada görebilirsin.
       </p>
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center;">
         <button class="secondary-button" id="btnRefreshLesson">
@@ -221,9 +258,14 @@ function renderHomeView() {
       btn.innerHTML = `<span class="spinner small"></span> Kontrol ediliyor...`;
       try {
         const res = await apiCall("/api/giris", "POST", { sinif_kodu: state.sinifKodu, isim: state.ogrenciIsim });
-        if (res && res.konu) {
-          state.konu = res.konu;
-          sessionStorage.setItem("konu", JSON.stringify(res.konu));
+        if (res && res.ders_id) {
+          state.sinifId = res.sinif_id;
+          state.dersId = res.ders_id;
+          sessionStorage.setItem("sinif_id", res.sinif_id);
+          sessionStorage.setItem("ders_id", res.ders_id);
+          // Konu bilgisini ders_id'den çıkar
+          state.konu = { id: res.ders_id, ad: res.ders_id || "Fonksiyonlar" };
+          sessionStorage.setItem("konu", JSON.stringify(state.konu));
           renderHomeView();
           return;
         }
@@ -240,46 +282,51 @@ function renderHomeView() {
   if (document.getElementById("btnActivateDemo")) {
     document.getElementById("btnActivateDemo").addEventListener("click", () => {
       sessionStorage.setItem("is_demo", "true");
-      state.konu = { id: 1, ad: "Kesirlerde Toplama ve Çıkarma", duration: 12 };
+      state.konu = { id: 1, ad: "Fonksiyonlar", duration: 12 };
       renderHomeView();
     });
   }
 }
 
-// 2. Ön Test (Pretest View)
+// 2. Ön Test (Pretest View) — secenekler artık sözlük {A: "...", B: "...", C: "...", D: "..."}
 function renderPretestView() {
   document.getElementById("topStepText").textContent = "Ön Test";
   const main = document.getElementById("mainContainer");
-  const q = state.currentQuestion;
-  const progressPercent = (state.questionNumber / 5) * 100;
+  const q = state.allQuestions[state.questionIndex];
+  const totalQ = state.allQuestions.length;
+  const currentNum = state.questionIndex + 1;
+  const progressPercent = (currentNum / totalQ) * 100;
+
+  // secenekler bir sözlüktür: { A: "...", B: "...", C: "...", D: "..." }
+  const secenekKeys = Object.keys(q.secenekler); // ["A", "B", "C", "D"]
 
   main.innerHTML = `
     <div class="quiz-page">
       <div class="progress-wrap">
-        <div class="progress-copy"><span>Ön test</span><strong>${state.questionNumber}/5</strong></div>
+        <div class="progress-copy"><span>Ön test</span><strong>${currentNum}/${totalQ}</strong></div>
         <div class="progress-track"><span style="width: ${progressPercent}%;"></span></div>
       </div>
       <section class="question-card">
-        <div class="question-number">Soru ${state.questionNumber}</div>
-        <h1>${q.metin}</h1>
+        <div class="question-number">Soru ${currentNum}</div>
+        <h1>${q.soru}</h1>
         <div class="options">
-          ${q.secenekler
+          ${secenekKeys
             .map(
-              (opt, idx) => `
-            <button class="option ${state.selectedOptionIndex === idx ? "selected" : ""}" data-index="${idx}">
-              <span>${String.fromCharCode(65 + idx)}</span>${opt}
+              (key) => `
+            <button class="option ${state.selectedOptionKey === key ? "selected" : ""}" data-key="${key}">
+              <span>${key}</span>${q.secenekler[key]}
             </button>
           `
             )
             .join("")}
-          <button class="option unknown ${state.selectedOptionIndex === -1 ? "selected" : ""}" data-index="-1">
+          <button class="option unknown ${state.selectedOptionKey === "?" ? "selected" : ""}" data-key="?">
             <span>?</span>Bilmiyorum
           </button>
         </div>
         <div class="quiz-actions">
           <p>Cevabından emin olmasan da sorun değil.</p>
-          <button class="primary-button" id="btnSubmitAnswer" ${state.selectedOptionIndex === null ? "disabled" : ""}>
-            ${state.questionNumber === 5 ? "Testi tamamla" : "Sonraki soru"}
+          <button class="primary-button" id="btnSubmitAnswer" ${state.selectedOptionKey === null ? "disabled" : ""}>
+            ${currentNum === totalQ ? "Testi tamamla" : "Sonraki soru"}
           </button>
         </div>
       </section>
@@ -287,51 +334,105 @@ function renderPretestView() {
   `;
 
   // Şık tıklama
-  main.querySelectorAll("button[data-index]").forEach((btn) => {
+  main.querySelectorAll("button[data-key]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      state.selectedOptionIndex = parseInt(btn.getAttribute("data-index"), 10);
+      state.selectedOptionKey = btn.getAttribute("data-key");
       renderPretestView();
     });
   });
 
-  // Cevabı gönder (POST /api/cevap)
+  // Cevabı kaydet ve ilerle
   document.getElementById("btnSubmitAnswer").addEventListener("click", submitAnswer);
 }
 
-// 3. Teşhis Ekranı (Diagnosis View)
+// 3. Teşhis Ekranı (Diagnosis View) — yeni format
 function renderDiagnosisView() {
   document.getElementById("topStepText").textContent = "Teşhis";
   const main = document.getElementById("mainContainer");
-  const eksik = state.diagnosis?.eksik || { ad: "payda_esitleme", aciklama: "Farklı paydalı kesirlerde ortak payda bulma" };
+  const sonuc = state.testSonuc;
+  const eksikler = sonuc?.eksik_alt_konular || [];
+  const detaylar = sonuc?.alt_konu_detaylari || {};
+  const puan = sonuc?.genel_puan || 0;
+  const hazir = sonuc?.derse_hazir_mi || false;
+
+  // Eksik konuları güzel isimlere çevir
+  function formatKonuAdi(slug) {
+    const map = {
+      kumeler_ve_ikililer: "Kümeler ve İkililer",
+      cebirsel_ifadeler: "Cebirsel İfadeler",
+      fonksiyon_tanimi: "Fonksiyon Tanımı",
+      denklemler: "Denklemler",
+      esitsizlikler: "Eşitsizlikler",
+    };
+    return map[slug] || slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
+  // Detay satırlarını oluştur
+  let detaySatirlari = "";
+  for (const [konu, det] of Object.entries(detaylar)) {
+    const isEksik = eksikler.includes(konu);
+    detaySatirlari += `
+      <div class="diagnosis-row">
+        <span class="status-icon ${isEksik ? "focus" : "okay"}">${isEksik ? "⚡" : "✓"}</span>
+        <div>
+          <small>${isEksik ? "Birlikte tamamlayacağız" : "Gayet iyi"}</small>
+          <strong>${formatKonuAdi(konu)} — %${det.basari_yuzdesi.toFixed(0)} (${det.dogru}/${det.toplam})</strong>
+        </div>
+      </div>
+      <div class="diagnosis-line"></div>
+    `;
+  }
 
   main.innerHTML = `
     <div class="center-page">
       <div class="success-orbit">
-        <div style="font-size: 28px;">✨</div>
+        <div style="font-size: 28px;">${hazir ? "🎉" : "✨"}</div>
       </div>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Tam olarak bulduk</div>
-      <h1>Eksik olan küçük bir bağlantı.</h1>
-      <p class="lead">Kesirleri toplarken <strong>${eksik.aciklama}</strong> adımında desteğe ihtiyacın var.</p>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> ${hazir ? "Harika!" : "Tam olarak bulduk"}</div>
+      <h1>${hazir ? "Derse hazırsın!" : "Eksik olan küçük bir bağlantı."}</h1>
+      <p class="lead">
+        Genel puanın: <strong>%${puan.toFixed(1)}</strong> — ${sonuc?.dogru || 0} doğru, ${sonuc?.yanlis || 0} yanlış (${sonuc?.toplam_soru || 0} soru)
+      </p>
+      ${
+        eksikler.length > 0
+          ? `
+        <p class="lead">Eksik konuların: <strong>${eksikler.map(formatKonuAdi).join(", ")}</strong></p>
+      `
+          : ""
+      }
       <section class="diagnosis-card">
-        <div class="diagnosis-row">
-          <span class="status-icon okay">✓</span>
-          <div><small>Gayet iyi</small><strong>Kesrin pay ve paydasını tanıyorsun</strong></div>
-        </div>
-        <div class="diagnosis-line"></div>
-        <div class="diagnosis-row">
-          <span class="status-icon focus">⚡</span>
-          <div><small>Birlikte tamamlayacağız</small><strong>${eksik.aciklama}</strong></div>
-        </div>
+        ${detaySatirlari}
       </section>
-      <p class="microcopy">Sana özel seçtiğimiz anlatımla bu boşluğu kapatalım.</p>
-      <button class="primary-button" id="btnGoToMinutes">Dakikalarımı göster</button>
+      ${
+        hazir
+          ? `
+        <p class="microcopy">Tüm alt konularda yeterli başarıyı gösterdin. Tebrikler!</p>
+        <button class="primary-button" id="btnGoHome">Ana Sayfaya Dön</button>
+      `
+          : `
+        <p class="microcopy">Sana özel seçtiğimiz anlatımla bu boşluğu kapatalım.</p>
+        <button class="primary-button" id="btnGoToMinutes">Dakikalarımı göster</button>
+      `
+      }
     </div>
   `;
 
-  document.getElementById("btnGoToMinutes").addEventListener("click", () => {
-    state.view = "minutes";
-    renderMinutesView();
-  });
+  if (document.getElementById("btnGoToMinutes")) {
+    document.getElementById("btnGoToMinutes").addEventListener("click", async () => {
+      // GET /api/teshis/{deneme_id} — en öncelikli eksik ve videoları al
+      const teshisData = await apiCall(`/api/teshis/${state.denemeId || 1}`);
+      state.diagnosis = teshisData;
+      state.view = "minutes";
+      renderMinutesView();
+    });
+  }
+
+  if (document.getElementById("btnGoHome")) {
+    document.getElementById("btnGoHome").addEventListener("click", () => {
+      state.view = "home";
+      renderHomeView();
+    });
+  }
 }
 
 // 4. Öğrenme Dakikaları (Minutes View)
@@ -339,16 +440,30 @@ function renderMinutesView() {
   document.getElementById("topStepText").textContent = "Öğrenme Dakikaları";
   const main = document.getElementById("mainContainer");
   const videolar = state.diagnosis?.videolar || [
-    { kanal_adi: "Net Anlatım", youtube_id: "9VZsMY15xeU", baslangic_sn: 52, bitis_sn: 292 },
+    { kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslangic_sn: 2224, bitis_sn: 2380 },
   ];
+  const eksikKonu = state.diagnosis?.eksik || "Eksik konu";
   const activeVideo = videolar[state.selectedChannelIndex] || videolar[0];
+
+  function formatKonuAdi(slug) {
+    if (!slug) return "Konu";
+    const map = {
+      kumeler_ve_ikililer: "Kümeler ve İkililer",
+      cebirsel_ifadeler: "Cebirsel İfadeler",
+      fonksiyon_tanimi: "Fonksiyon Tanımı",
+    };
+    return map[slug] || slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
+  const sureSn = (activeVideo.bitis_sn || 0) - (activeVideo.baslangic_sn || 0);
+  const sureDk = Math.ceil(sureSn / 60);
 
   main.innerHTML = `
     <div class="video-page">
       <div class="video-heading">
         <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Sana özel 4 dakika</div>
-          <h1>Paydaları birlikte eşitleyelim.</h1>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Sana özel ${sureDk} dakika</div>
+          <h1>${formatKonuAdi(eksikKonu)} konusunu birlikte çalışalım.</h1>
         </div>
         <button class="bridge-link" id="btnGoToBridge">
           ✨ Bir benzetmeyle anlat
@@ -360,16 +475,16 @@ function renderMinutesView() {
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-              src="https://www.youtube.com/embed/${activeVideo.youtube_id}?start=${activeVideo.baslangic_sn || 0}&end=${activeVideo.bitis_sn || 292}&rel=0"
+              src="https://www.youtube.com/embed/${activeVideo.youtube_id}?start=${activeVideo.baslangic_sn || 0}&end=${activeVideo.bitis_sn || 300}&rel=0"
               title="${activeVideo.kanal_adi}"
             ></iframe>
           </div>
           <details class="transcript">
-            <summary>Video transkriptini aç <span>4:00</span></summary>
+            <summary>Video bilgisi <span>${sureDk} dk</span></summary>
             <div>
-              <p><time>00:52</time> Farklı paydalı kesirleri toplamak için önce parçaların aynı büyüklükte olmasını sağlamalıyız.</p>
-              <p><time>01:34</time> Bunun için paydaların ortak katını buluyor ve kesirleri genişletiyoruz.</p>
-              <p><time>02:48</time> Paydalar eşitlendiğinde artık yalnızca payları toplayabiliriz.</p>
+              <p><strong>Kanal:</strong> ${activeVideo.kanal_adi}</p>
+              <p><strong>Başlık:</strong> ${activeVideo.baslik || "Konu Anlatımı"}</p>
+              <p><strong>Süre:</strong> ${Math.floor(activeVideo.baslangic_sn / 60)}:${String(activeVideo.baslangic_sn % 60).padStart(2, "0")} – ${Math.floor(activeVideo.bitis_sn / 60)}:${String(activeVideo.bitis_sn % 60).padStart(2, "0")}</p>
             </div>
           </details>
         </section>
@@ -382,7 +497,7 @@ function renderMinutesView() {
                 (v, idx) => `
               <button class="channel ${state.selectedChannelIndex === idx ? "active" : ""}" data-vid-index="${idx}">
                 <span class="channel-avatar">${idx + 1}</span>
-                <span><strong>${v.kanal_adi}</strong><small>Kişiselleştirilmiş video</small></span>
+                <span><strong>${v.kanal_adi}</strong><small>${v.baslik || "Kişiselleştirilmiş video"}</small></span>
               </button>
             `
               )
@@ -462,15 +577,12 @@ function renderBridgeView() {
         ilgi_alani: intName,
       });
 
-      state.analogyText = data.metin || "Paydaları eşitlemek parçaları birbiriyle uyumlu hale getirmektir.";
+      state.analogyText = data.metin || "Fonksiyonlar, girdi ve çıktı arasındaki düzenli ilişkidir.";
 
       analogyBox.innerHTML = `
         <section class="analogy-card">
           <div class="analogy-label">✨ ${intName} ile düşünelim</div>
-          <blockquote>“${state.analogyText}”</blockquote>
-          <div class="analogy-equation">
-            <span>1/2</span><b>=</b><span>2/4</span><b>+</b><span>1/4</span><b>=</b><strong>3/4</strong>
-          </div>
+          <blockquote>"${state.analogyText}"</blockquote>
           <button class="primary-button" id="btnBackToVideo">Şimdi videoya dön</button>
         </section>
       `;
@@ -490,8 +602,8 @@ function renderRetestView() {
   const total = state.retestQuestions.length || 2;
   const current = state.retestIndex + 1;
   const q = state.retestQuestions[state.retestIndex] || {
-    metin: "2/3 + 1/6 işleminin sonucu kaçtır?",
-    secenekler: ["3/9", "3/6", "5/6", "2/9"],
+    metin: "A ∩ B kümesi neyi ifade eder?",
+    secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"],
   };
   const progressPercent = (current / total) * 100;
 
@@ -508,7 +620,7 @@ function renderRetestView() {
           ${q.secenekler
             .map(
               (opt, idx) => `
-            <button class="option ${state.selectedOptionIndex === idx ? "selected" : ""}" data-index="${idx}">
+            <button class="option ${state.retestSelectedKey === idx ? "selected" : ""}" data-index="${idx}">
               <span>${String.fromCharCode(65 + idx)}</span>${opt}
             </button>
           `
@@ -517,7 +629,7 @@ function renderRetestView() {
         </div>
         <div class="quiz-actions">
           <p>Cevabından emin olmasan da sorun değil.</p>
-          <button class="primary-button" id="btnNextRetest" ${state.selectedOptionIndex === null ? "disabled" : ""}>
+          <button class="primary-button" id="btnNextRetest" ${state.retestSelectedKey === null ? "disabled" : ""}>
             ${current === total ? "Testi tamamla" : "Sonraki soru"}
           </button>
         </div>
@@ -527,7 +639,7 @@ function renderRetestView() {
 
   main.querySelectorAll("button[data-index]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      state.selectedOptionIndex = parseInt(btn.getAttribute("data-index"), 10);
+      state.retestSelectedKey = parseInt(btn.getAttribute("data-index"), 10);
       renderRetestView();
     });
   });
@@ -539,7 +651,7 @@ function renderRetestView() {
 function renderSummaryView() {
   document.getElementById("topStepText").textContent = "Sonuç & Özet";
   const main = document.getElementById("mainContainer");
-  const konuAd = state.konu?.ad || "Kesirlerde Toplama ve Çıkarma";
+  const konuAd = state.konu?.ad || "Fonksiyonlar";
 
   main.innerHTML = `
     <div class="summary-page">
@@ -557,7 +669,7 @@ function renderSummaryView() {
         <i>Bugünkü hedefin tamamlandı</i>
       </section>
       <div class="summary-stats">
-        <div><strong>2/2</strong><span>Tekrar testi</span></div>
+        <div><strong>${state.retestQuestions.length || 2}/${state.retestQuestions.length || 2}</strong><span>Tekrar testi</span></div>
         <div><strong>1</strong><span>Kapatılan eksik</span></div>
         <div><strong>4 dk</strong><span>Öğrenme süresi</span></div>
       </div>
@@ -575,7 +687,7 @@ function renderSummaryView() {
 
 // --- AKIŞ AKSİYONLARI ---
 
-// Teste Başla: POST /api/test/basla
+// Teste Başla: POST /api/test/basla — tüm soruları tek seferde al
 async function startTest() {
   const btn = document.getElementById("btnStartTest");
   if (btn) {
@@ -584,44 +696,62 @@ async function startTest() {
   }
 
   const data = await apiCall("/api/test/basla", "POST", {
-    ogrenci_id: state.ogrenciId,
-    konu_id: state.konu?.id || 1,
+    ogrenci_id: parseInt(state.ogrenciId, 10) || 1,
+    sinif_id: parseInt(state.sinifId, 10) || 1,
   });
 
   state.denemeId = data.deneme_id || 1;
-  state.currentQuestion = data.soru || {
-    id: 1,
-    metin: "1/3 + 1/6 işleminin sonucu kaçtır?",
-    secenekler: ["2/9", "1/2", "2/6", "1/9"],
-  };
-  state.questionNumber = 1;
-  state.selectedOptionIndex = null;
+  state.allQuestions = data.sorular || [];
+  state.cevaplar = {};
+  state.questionIndex = 0;
+  state.selectedOptionKey = null;
   state.view = "pretest";
+
+  if (state.allQuestions.length === 0) {
+    alert("Henüz soru bulunamadı. Lütfen daha sonra tekrar deneyin.");
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Hazır mısın?";
+    }
+    return;
+  }
+
   renderPretestView();
 }
 
-// Ön Test Cevapla: POST /api/cevap
+// Ön Test Cevapla — cevabı biriktir, son soruda /api/test/bitir'e gönder
 async function submitAnswer() {
   const btn = document.getElementById("btnSubmitAnswer");
   if (btn) btn.disabled = true;
 
-  const data = await apiCall("/api/cevap", "POST", {
-    deneme_id: state.denemeId || 1,
-    soru_id: state.currentQuestion.id,
-    secilen_index: state.selectedOptionIndex,
-  });
+  const currentQ = state.allQuestions[state.questionIndex];
 
-  if (data.bitti || state.questionNumber >= 5) {
-    // Teşhis çek: GET /api/teshis/{deneme_id}
-    const teshisData = await apiCall(`/api/teshis/${state.denemeId || 1}`);
-    state.diagnosis = teshisData;
+  // Cevabı biriktir ("?" = bilmiyorum → boş string olarak gönderilebilir)
+  if (state.selectedOptionKey === "?") {
+    // Bilmiyorum: boş bırak (backend'e gönderilmeyecek veya boş string olarak gönderilebilir)
+    state.cevaplar[currentQ.soru_id] = "";
+  } else {
+    state.cevaplar[currentQ.soru_id] = state.selectedOptionKey;
+  }
+
+  state.questionIndex++;
+  state.selectedOptionKey = null;
+
+  if (state.questionIndex < state.allQuestions.length) {
+    // Sonraki soruya geç
+    renderPretestView();
+  } else {
+    // Tüm sorular cevaplandı — POST /api/test/bitir ile hepsini gönder
+    if (btn) btn.innerHTML = `<span class="spinner small"></span> Sonuçlar hesaplanıyor...`;
+
+    const sonuc = await apiCall("/api/test/bitir", "POST", {
+      deneme_id: state.denemeId,
+      cevaplar: state.cevaplar,
+    });
+
+    state.testSonuc = sonuc;
     state.view = "diagnosis";
     renderDiagnosisView();
-  } else {
-    state.currentQuestion = data.soru;
-    state.questionNumber++;
-    state.selectedOptionIndex = null;
-    renderPretestView();
   }
 }
 
@@ -635,11 +765,11 @@ async function startRetest() {
   });
 
   state.retestQuestions = data.sorular || [
-    { id: 6, metin: "2/3 + 1/6 işleminin sonucu kaçtır?", secenekler: ["3/9", "3/6", "5/6", "2/9"] },
-    { id: 7, metin: "7/10 − 2/5 işleminin sonucu kaçtır?", secenekler: ["5/5", "3/10", "5/10", "1/2"] },
+    { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
+    { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
   ];
   state.retestIndex = 0;
-  state.selectedOptionIndex = null;
+  state.retestSelectedKey = null;
   state.view = "retest";
   renderRetestView();
 }
@@ -654,7 +784,7 @@ async function submitRetestAnswer() {
     renderSummaryView();
   } else {
     state.retestIndex++;
-    state.selectedOptionIndex = null;
+    state.retestSelectedKey = null;
     renderRetestView();
   }
 }
