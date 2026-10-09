@@ -439,10 +439,33 @@ function renderDiagnosisView() {
 function renderMinutesView() {
   document.getElementById("topStepText").textContent = "Öğrenme Dakikaları";
   const main = document.getElementById("mainContainer");
-  const videolar = state.diagnosis?.videolar || [
-    { kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslangic_sn: 2224, bitis_sn: 2380 },
-  ];
   const eksikKonu = state.diagnosis?.eksik || "Eksik konu";
+
+  // DUZELTME: bos dizi ([]) JS'te "truthy"dir, "|| varsayilan" hic
+  // devreye girmiyordu; backend video bulamazsa activeVideo undefined
+  // olup sayfa sessizce cokuyordu (JS hatasi, hicbir sey olmuyor gibi
+  // gorunuyordu). Artik dizinin GERCEKTEN dolu olup olmadigina bakiyoruz
+  // ve hic video yoksa kullaniciya acik bir mesaj gosteriyoruz.
+  const gelenVideolar = state.diagnosis?.videolar || [];
+  const videolar =
+    gelenVideolar.length > 0
+      ? gelenVideolar
+      : [{ kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslangic_sn: 2224, bitis_sn: 2380 }];
+
+  if (gelenVideolar.length === 0) {
+    main.innerHTML = `
+      <div class="center-page">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Video hazırlanıyor</div>
+        <h1>Bu konu için video henüz hazırlanmadı.</h1>
+        <p class="lead">Öğretmenin bu konuya bir video eklediğinde burada otomatik görünecek.</p>
+        <button class="primary-button" id="btnGoHomeFromMinutes">Ana Sayfaya Dön</button>
+      </div>
+    `;
+    const btn = document.getElementById("btnGoHomeFromMinutes");
+    if (btn) btn.addEventListener("click", () => { state.view = "home"; renderHomeView(); });
+    return;
+  }
+
   const activeVideo = videolar[state.selectedChannelIndex] || videolar[0];
 
   function formatKonuAdi(slug) {
@@ -764,10 +787,16 @@ async function startRetest() {
     deneme_id: state.denemeId || 1,
   });
 
-  state.retestQuestions = data.sorular || [
-    { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
-    { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
-  ];
+  // DUZELTME: bos dizi "truthy" oldugu icin "|| varsayilan" calismiyordu
+  // (bkz. renderMinutesView'daki ayni hata). data.sorular boyutuna gore
+  // kontrol ediyoruz.
+  state.retestQuestions =
+    data.sorular && data.sorular.length > 0
+      ? data.sorular
+      : [
+          { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
+          { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
+        ];
   state.retestIndex = 0;
   state.retestSelectedKey = null;
   state.view = "retest";
