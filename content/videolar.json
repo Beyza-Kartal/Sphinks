@@ -1,0 +1,55 @@
+{
+  "videolar": [
+    {
+      "id": 1,
+      "konu_id": 1,
+      "kanal_adi": "Net Anlatım",
+      "youtube_id": "9VZsMY15xeU",
+      "toplam_sure": 240,
+      "bolumler": [
+        {
+          "id": 1,
+          "eksik_id": 1,
+          "baslik": "Paydaları Eşitleme ve Genişletme",
+          "baslangic_sn": 52,
+          "bitis_sn": 292,
+          "transkript": "Farklı paydalı kesirleri toplamak için önce parçaların aynı büyüklükte olmasını sağlamalıyız. Bunun için paydaların ortak katını buluyor ve kesirleri genişletiyoruz."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "konu_id": 1,
+      "kanal_adi": "Görsel Matematik",
+      "youtube_id": "9VZsMY15xeU",
+      "toplam_sure": 300,
+      "bolumler": [
+        {
+          "id": 2,
+          "eksik_id": 1,
+          "baslik": "Modellerle Kesirlerde Toplama",
+          "baslangic_sn": 30,
+          "bitis_sn": 210,
+          "transkript": "Şekil modelleri üzerinde iki kesrin ortak paydada nasıl birleştiğini görsel olarak görebilirsiniz."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "konu_id": 1,
+      "kanal_adi": "Hızlı Tekrar",
+      "youtube_id": "9VZsMY15xeU",
+      "toplam_sure": 180,
+      "bolumler": [
+        {
+          "id": 3,
+          "eksik_id": 1,
+          "baslik": "Pratik Payda Eşitleme İpuçları",
+          "baslangic_sn": 15,
+          "bitis_sn": 135,
+          "transkript": "En küçük ortak katı hızlıca bulup paydaları çarparak genişletme kuralı."
+        }
+      ]
+    }
+  ]
+}

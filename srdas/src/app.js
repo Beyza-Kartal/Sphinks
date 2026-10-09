@@ -109,7 +109,11 @@ const state = {
   pretestQuestions: [...PRETEST_QUESTIONS],
   pretestAnswers: {},
   classCode: "KIV6A2",
-  classes: ["KIV6A2"],
+  className: "6-A Sınıfı",
+  classes: [
+    { code: "KIV6A2", name: "6-A Sınıfı" },
+    { code: "KIV6B1", name: "6-B Sınıfı" },
+  ],
   channelId: "net",
   interest: "",
   streak: 0,
@@ -176,19 +180,19 @@ async function postJson(url, body) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    if (!response.ok) throw new Error(`Sunucu ${response.status} yanıtını verdi.`);
-    return await response.json();
-  } catch (error) {
-    // Backend sunucusu henüz çalışmıyorsa veya yerel dosya ortamındaysa otomatik fallback
-    if (
-      window.location.protocol === "file:" ||
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1"
-    ) {
-      await new Promise((resolve) => setTimeout(resolve, 200));
+    if (!response.ok) {
+      // Backend bulunamadı veya hata döndürdüyse mock veriye düş
       return mockApi(url, body);
     }
-    throw error;
+    return await response.json();
+  } catch (error) {
+    // Ağ bağlantısı yoksa, port farklıysa veya Vite dev ortamındaysa mockApi ile devam et
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 150));
+      return mockApi(url, body);
+    } catch (mockErr) {
+      throw mockErr;
+    }
   }
 }
 
@@ -443,6 +447,30 @@ function renderTeacherRegisterScreen() {
             />
           </label>
           <label>
+            Sınıf Adı
+            <input
+              id="reg-class-name"
+              ${state.status === "loading" ? "disabled" : ""}
+              placeholder="Örn. 6-A Matematik"
+              required
+            />
+          </label>
+          <label>
+            Sınıf Katılım Kodu
+            <input
+              id="reg-class-code"
+              autoCapitalize="characters"
+              maxlength="8"
+              ${state.status === "loading" ? "disabled" : ""}
+              placeholder="Örn. KIV6A2"
+              value="KIV6A2"
+              required
+            />
+          </label>
+          <small style="color: var(--muted); font-size: 11px; margin-top: -6px; margin-bottom: 14px; display: block;">
+            Öğrenciler derse girerken bu kodu kullanır. Sınıf ismi ve kodu tamamen bağımsızdır.
+          </small>
+          <label>
             Okul Adı
             <input
               id="reg-school"
@@ -530,7 +558,7 @@ function renderTeacherQrScreen() {
         <p style="margin: 12px 0 4px; color: var(--muted);">Sınıf kodu</p>
         <strong class="class-code" style="font-size: 28px; letter-spacing: 2px; color: var(--green); display: block; margin-bottom: 8px;">${state.classCode}</strong>
         <small style="color: var(--muted); margin-bottom: 20px; display: block;">QR çalışmazsa öğrenciler bu kodla da katılabilir.</small>
-        <button class="primary-button" id="btn-qr-to-dashboard" ${!state.qrUrl ? "disabled" : ""}>
+        <button class="primary-button" id="btn-qr-to-dashboard">
           Öğretmen paneline geç
         </button>
       </section>
@@ -555,7 +583,7 @@ function renderTeacherDashboardScreen() {
         <div>
           <div class="eyebrow"><span class="eyebrow-dot"></span> Canlı sınıf görünümü</div>
           <h1>Günaydın, ${state.name}.</h1>
-          <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
             ${
               state.isRenaming
                 ? `
@@ -563,7 +591,8 @@ function renderTeacherDashboardScreen() {
                 <input
                   id="input-rename-class"
                   value="${state.editName}"
-                  style="padding: 8px 12px; border-radius: 8px; border: 1px solid var(--green); font-family: inherit; font-size: 15px; font-weight: 700; width: 160px;"
+                  placeholder="Sınıf Adı"
+                  style="padding: 8px 12px; border-radius: 8px; border: 1px solid var(--green); font-family: inherit; font-size: 15px; font-weight: 700; width: 170px;"
                   autofocus
                 />
                 <button type="submit" class="text-button" style="padding: 4px 8px;">Kaydet</button>
@@ -575,27 +604,26 @@ function renderTeacherDashboardScreen() {
                 id="select-class"
                 style="padding: 8px 32px 8px 16px; border-radius: 12px; border: 1px solid var(--line); background: #fff; font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer;"
               >
-                ${
-                  !state.classes.includes(state.classCode)
-                    ? `<option value="${state.classCode}">${state.classCode} Sınıfı</option>`
-                    : ""
-                }
                 ${state.classes
-                  .map(
-                    (c) =>
-                      `<option value="${c}" ${c === state.classCode ? "selected" : ""}>${c} Sınıfı</option>`
-                  )
+                  .map((c) => {
+                    const code = typeof c === "object" ? c.code : c;
+                    const name = typeof c === "object" ? c.name : `${c} Sınıfı`;
+                    return `<option value="${code}" ${code === state.classCode ? "selected" : ""}>${name}</option>`;
+                  })
                   .join("")}
               </select>
+              <span style="font-size: 12px; font-weight: 700; background: var(--mint); color: var(--green); padding: 5px 10px; border-radius: 8px;">
+                Katılım Kodu: <strong style="letter-spacing: 1px;">${state.classCode}</strong>
+              </span>
               <button
                 class="text-button"
                 id="btn-start-rename"
                 title="Sınıf Adını Değiştir"
-                style="padding: 4px; display: flex; align-items: center; gap: 6px;"
+                style="padding: 4px; display: flex; align-items: center; gap: 6px; font-size: 13px;"
               >
-                ${getIcon("edit", 16)} Düzenle
+                ${getIcon("edit", 15)} Adı Düzenle
               </button>
-              <p style="margin: 0; color: var(--muted);">öğrenme yolculuğunu buradan takip edebilirsin.</p>
+              <p style="margin: 0; color: var(--muted); font-size: 14px;">öğrenme yolculuğunu buradan takip edebilirsin.</p>
             `
             }
           </div>
@@ -833,16 +861,10 @@ function renderHomeScreen() {
       <div class="feedback-card" role="status">
         <div class="feedback-icon empty">${getIcon("book")}</div>
         <h2>Sıradaki konu henüz hazır değil</h2>
-        <p>Öğretmenin henüz yeni bir konu atamadı. Daha sonra tekrar kontrol et.</p>
-        ${
-          state.isDemo
-            ? `
-          <div class="feedback-actions">
-            <button class="text-button" id="btn-home-demo">Demo verileriyle devam et</button>
-          </div>
-        `
-            : ""
-        }
+        <p>Öğretmenin henüz bu sınıf (${state.classCode}) için yeni bir konu atamadı.</p>
+        <div class="feedback-actions" style="margin-top: 16px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="primary-button" id="btn-start-demo-topic">Örnek Konuyu Başlat</button>
+        </div>
       </div>
     `
         : `
@@ -1292,9 +1314,12 @@ function render() {
 }
 
 // --- Global Event Listener & Aksiyon Bağlantıları ---
+let listenersInitialized = false;
 function initEventListeners() {
+  if (listenersInitialized) return;
   const app = document.getElementById("app");
   if (!app) return;
+  listenersInitialized = true;
 
   // Tıklama Olayları (Event Delegation)
   app.addEventListener("click", async (e) => {
@@ -1336,7 +1361,12 @@ function initEventListeners() {
         state.isDemo = true;
         state.name = "Ayşe Öğretmen";
         state.classCode = "KIV6A2";
-        state.classes = ["KIV6A2", "KIV6B1", "KIV7A1", "MAT8C"];
+        state.className = "6-A Matematik";
+        state.classes = [
+          { code: "KIV6A2", name: "6-A Matematik" },
+          { code: "KIV6B1", name: "6-B Matematik" },
+          { code: "KIV7A1", name: "7-A Fen Bilgisi" },
+        ];
         state.topic = DEMO_TOPIC;
         state.status = "idle";
         state.screen = "teacher-dashboard";
@@ -1407,7 +1437,7 @@ function initEventListeners() {
 
     if (target.closest("#btn-start-rename")) {
       state.isRenaming = true;
-      state.editName = state.classCode;
+      state.editName = state.className;
       render();
       return;
     }
@@ -1437,6 +1467,12 @@ function initEventListeners() {
     }
 
     // Öğrenci Akışı Butonları
+    if (target.closest("#btn-start-demo-topic")) {
+      state.topic = DEMO_TOPIC;
+      render();
+      return;
+    }
+
     if (target.closest("#btn-start-pretest")) {
       state.questionIndex = 0;
       state.selected = "";
@@ -1542,7 +1578,10 @@ function initEventListeners() {
   // Seçim Kutusu Değişikliği (Sınıf Seçimi)
   app.addEventListener("change", (e) => {
     if (e.target.id === "select-class") {
-      state.classCode = e.target.value;
+      const selectedCode = e.target.value;
+      state.classCode = selectedCode;
+      const found = state.classes.find((c) => (typeof c === "object" ? c.code : c) === selectedCode);
+      state.className = found ? (typeof found === "object" ? found.name : `${found} Sınıfı`) : `${selectedCode} Sınıfı`;
       if (typeof window !== "undefined") {
         const saved = localStorage.getItem(`kivilcim_topic_${state.classCode}`);
         state.topic = saved ? JSON.parse(saved) : null;
@@ -1557,15 +1596,22 @@ function initEventListeners() {
 
     // 1. Giriş Formu
     if (e.target.id === "form-login") {
-      state.status = "loading";
-      state.error = "";
-      render();
-
       if (state.role === "student") {
         const codeInput = document.getElementById("input-class-code");
         const nameInput = document.getElementById("input-student-name");
         const code = codeInput ? codeInput.value.trim().toUpperCase() : "";
         const studentName = nameInput ? nameInput.value.trim() : "";
+
+        if (!code || !studentName) {
+          state.status = "error";
+          state.error = "Lütfen sınıf kodunu ve adınızı girin.";
+          render();
+          return;
+        }
+
+        state.status = "loading";
+        state.error = "";
+        render();
 
         try {
           const res = await postJson("/api/giris", { sinifKodu: code, isim: studentName });
@@ -1585,18 +1631,30 @@ function initEventListeners() {
         const email = emailInput ? emailInput.value.trim() : "";
         const pwd = pwdInput ? pwdInput.value : "";
 
+        if (!email || !pwd) {
+          state.status = "error";
+          state.error = "Lütfen e-posta ve şifrenizi girin.";
+          render();
+          return;
+        }
+
+        state.status = "loading";
+        state.error = "";
+        render();
+
         try {
           const res = await postJson("/api/ogretmen-giris", { email, sifre: pwd });
           state.isDemo = false;
           state.name = res.isim || email.split("@")[0];
           state.classCode = res.sinifKodu || "KIV6A2";
-          state.classes = [state.classCode];
+          state.className = res.sinifAdi || "6-A Sınıfı";
+          state.classes = [{ code: state.classCode, name: state.className }];
           if (typeof window !== "undefined") {
             const saved = localStorage.getItem(`kivilcim_topic_${state.classCode}`);
             state.topic = saved ? JSON.parse(saved) : null;
           }
           state.status = "idle";
-          state.screen = "teacher-qr";
+          state.screen = "teacher-dashboard";
           loadQrCode();
         } catch (err) {
           state.status = "error";
@@ -1609,12 +1667,27 @@ function initEventListeners() {
 
     // 2. Kayıt Formu
     if (e.target.id === "form-register") {
-      const name = document.getElementById("reg-name").value.trim();
-      const school = document.getElementById("reg-school").value.trim();
-      const email = document.getElementById("reg-email").value.trim();
-      const pwd = document.getElementById("reg-password").value;
-      const confirmPwd = document.getElementById("reg-confirm-password").value;
+      const nameInput = document.getElementById("reg-name");
+      const classNameInput = document.getElementById("reg-class-name");
+      const classCodeInput = document.getElementById("reg-class-code");
+      const schoolInput = document.getElementById("reg-school");
+      const emailInput = document.getElementById("reg-email");
+      const pwdInput = document.getElementById("reg-password");
+      const confirmPwdInput = document.getElementById("reg-confirm-password");
 
+      const name = nameInput ? nameInput.value.trim() : "";
+      const customClassName = classNameInput ? classNameInput.value.trim() : "";
+      const customClassCode = classCodeInput ? classCodeInput.value.trim().toUpperCase() : "";
+      const school = schoolInput ? schoolInput.value.trim() : "";
+      const email = emailInput ? emailInput.value.trim() : "";
+      const pwd = pwdInput ? pwdInput.value : "";
+      const confirmPwd = confirmPwdInput ? confirmPwdInput.value : "";
+
+      if (!name || !email || !pwd) {
+        state.error = "Lütfen tüm zorunlu alanları doldurun.";
+        render();
+        return;
+      }
       if (pwd !== confirmPwd) {
         state.error = "Şifreler eşleşmiyor.";
         render();
@@ -1634,11 +1707,12 @@ function initEventListeners() {
         const res = await postJson("/api/ogretmen-kayit", { isim: name, email, sifre: pwd, okul: school });
         state.isDemo = false;
         state.name = res.isim || name;
-        state.classCode = res.sinifKodu || "KIV6A2";
-        state.classes = [state.classCode];
+        state.classCode = customClassCode || res.sinifKodu || "KIV6A2";
+        state.className = customClassName || (school ? `${school} Sınıfı` : "Yeni Sınıf");
+        state.classes = [{ code: state.classCode, name: state.className }];
         state.topic = null;
         state.status = "idle";
-        state.screen = "teacher-qr";
+        state.screen = "teacher-dashboard";
         loadQrCode();
       } catch (err) {
         state.status = "error";
@@ -1652,10 +1726,13 @@ function initEventListeners() {
     if (e.target.id === "form-rename-class") {
       const input = document.getElementById("input-rename-class");
       const newName = input ? input.value.trim() : "";
-      if (newName && newName !== state.classCode) {
-        const oldCode = state.classCode;
-        state.classes = state.classes.map((c) => (c === oldCode ? newName : c));
-        state.classCode = newName;
+      if (newName) {
+        state.className = newName;
+        state.classes = state.classes.map((c) => {
+          const code = typeof c === "object" ? c.code : c;
+          return code === state.classCode ? { code: code, name: newName } : (typeof c === "object" ? c : { code: c, name: `${c} Sınıfı` });
+        });
+        // Sınıf kodu ve sınıf ismi tamamen bağımsızdır; kod ASLA değişmez.
       }
       state.isRenaming = false;
       render();

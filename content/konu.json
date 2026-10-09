@@ -1,0 +1,92 @@
+{
+  "konu": {
+    "id": 1,
+    "ad": "Kesirlerde Toplama ve Çıkarma",
+    "sira": 1,
+    "durum": "acik"
+  },
+  "eksikler": [
+    {
+      "id": 1,
+      "konu_id": 1,
+      "ad": "payda_esitleme",
+      "aciklama": "Farklı paydalı kesirlerde ortak payda bulma ve genişletme"
+    },
+    {
+      "id": 2,
+      "konu_id": 1,
+      "ad": "tam_sayili_kesir",
+      "aciklama": "Tam sayılı kesirleri bileşik kesre çevirme"
+    }
+  ],
+  "sorular": [
+    {
+      "id": 1,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "ontest",
+      "metin": "1/3 + 1/6 işleminin sonucu kaçtır?",
+      "secenekler": ["2/9", "1/2", "2/6", "1/9"],
+      "dogru_index": 1
+    },
+    {
+      "id": 2,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "ontest",
+      "metin": "3/4 − 1/2 işleminin sonucu kaçtır?",
+      "secenekler": ["2/2", "1/4", "2/4", "1/2"],
+      "dogru_index": 1
+    },
+    {
+      "id": 3,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "ontest",
+      "metin": "2/5 + 1/10 işlemini yapmak için en uygun ortak payda kaçtır?",
+      "secenekler": ["5", "7", "10", "15"],
+      "dogru_index": 2
+    },
+    {
+      "id": 4,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "ontest",
+      "metin": "Paydaları eşit iki kesir toplanırken ne yapılır?",
+      "secenekler": [
+        "Paylar toplanır, payda aynen kalır",
+        "Paydalar toplanır",
+        "İkisi de birbiriyle çarpılır",
+        "Kesirler ters çevrilir"
+      ],
+      "dogru_index": 0
+    },
+    {
+      "id": 5,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "ontest",
+      "metin": "5/8 − 2/8 işleminin sonucu kaçtır?",
+      "secenekler": ["3/8", "3/0", "7/8", "3/16"],
+      "dogru_index": 0
+    },
+    {
+      "id": 6,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "tekrar1",
+      "metin": "2/3 + 1/6 işleminin sonucu kaçtır?",
+      "secenekler": ["3/9", "3/6", "5/6", "2/9"],
+      "dogru_index": 2
+    },
+    {
+      "id": 7,
+      "konu_id": 1,
+      "eksik_id": 1,
+      "tur": "tekrar1",
+      "metin": "7/10 − 2/5 işleminin sonucu kaçtır?",
+      "secenekler": ["5/5", "3/10", "5/10", "1/2"],
+      "dogru_index": 1
+    }
+  ]
+}

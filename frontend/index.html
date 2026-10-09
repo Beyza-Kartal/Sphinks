@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kıvılcım – Hazır mısın?</title>
+    <meta
+      name="description"
+      content="Öğrencilerin öğrenme eksiklerini tespit edip kişiselleştirilmiş içeriklerle gidermesini sağlayan akıllı eğitim platformu."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="login-layout">
+      <!-- Sol Panel: Sanat & Mesaj -->
+      <section class="login-art">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">
+            <span></span><span></span><span></span>
+          </div>
+          Kıvılcım
+        </a>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="art-copy">
+          <div class="eyebrow light">
+            <svg aria-hidden="true" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-width="2"><path d="m12 3 1.4 4.6L18 9l-4.6 1.4L12 15l-1.4-4.6L6 9l4.6-1.4L12 3Zm6 11 .7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7L18 14Z" /></svg>
+            Sana özel öğrenme yolu
+          </div>
+          <h1>Anlamak bazen<br />tek bir <em>kıvılcıma</em> bakar.</h1>
+          <p>Nerede takıldığını bulalım, sana en uygun anlatımla birlikte çözelim.</p>
+        </div>
+        <div class="floating-note note-one">12 dakikada konu tamam</div>
+        <div class="floating-note note-two">
+          <svg aria-hidden="true" fill="none" height="15" viewBox="0 0 24 24" width="15" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6" /></svg>
+          Kişisel öğrenme planın
+        </div>
+      </section>
+
+      <!-- Sağ Panel: Giriş Formu -->
+      <section class="login-panel">
+        <div class="mobile-brand">
+          <div class="brand">
+            <div class="brand-mark">
+              <span></span><span></span><span></span>
+            </div>
+            Kıvılcım
+          </div>
+        </div>
+
+        <form class="login-card" id="loginForm">
+          <div class="role-switch" aria-label="Giriş türü">
+            <button class="active" id="btnStudentTab" type="button">Öğrenci</button>
+            <button id="btnTeacherTab" type="button">Öğretmen</button>
+          </div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span id="roleSubtext">Hemen başlayalım</span>
+          </div>
+
+          <h2 id="roleTitle">Tekrar hoş geldin</h2>
+          <p id="roleDescription">Sınıf kodunu ve adını gir, kaldığın yerden devam et.</p>
+
+          <div id="errorAlert" class="inline-error" style="display: none;" role="alert">
+            <strong>Bağlantı kurulamadı.</strong>
+            <span id="errorMessage"></span>
+          </div>
+
+          <!-- Öğretmen Alt Sekmesi (Giriş / Kayıt Ol) -->
+          <div id="teacherSubSwitch" class="sub-switch" style="display: none;">
+            <button class="active" id="btnTeacherLoginTab" type="button">Giriş Yap</button>
+            <button id="btnTeacherRegisterTab" type="button">Kayıt Ol</button>
+          </div>
+
+          <!-- Öğrenci Alanları -->
+          <div id="studentFields">
+            <label>
+              Sınıf kodu
+              <input
+                id="inputClassCode"
+                autoCapitalize="characters"
+                maxlength="8"
+                placeholder="Örn. KIV6A2"
+                required
+              />
+            </label>
+            <label>
+              Adın
+              <div class="input-with-icon">
+                <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 24 24" width="20" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3" /><path d="M5.5 20a6.5 6.5 0 0 1 13 0" /></svg>
+                <input
+                  id="inputStudentName"
+                  placeholder="Adını yaz"
+                  required
+                />
+              </div>
+            </label>
+          </div>
+
+          <!-- Öğretmen Giriş Alanları -->
+          <div id="teacherLoginFields" style="display: none;">
+            <label>
+              Sınıf Kodu veya PIN
+              <input
+                id="inputTeacherPin"
+                placeholder="Örn. KIV6A2 veya PIN"
+              />
+            </label>
+            <label>
+              Öğretmen Adı / E-posta
+              <input
+                id="inputTeacherName"
+                placeholder="Örn. Ayşe Öğretmen"
+              />
+            </label>
+          </div>
+
+          <!-- Öğretmen Kayıt Ol Alanları -->
+          <div id="teacherRegisterFields" style="display: none;">
+            <label>
+              Ad Soyad
+              <input
+                id="inputRegTeacherName"
+                placeholder="Örn. Ayşe Yılmaz"
+              />
+            </label>
+            <label>
+              E-posta Adresi
+              <input
+                id="inputRegTeacherEmail"
+                type="email"
+                placeholder="Örn. ayse@ogretmen.k12.tr"
+              />
+            </label>
+            <label>
+              Branş
+              <select id="selectRegBranch">
+                <option value="Matematik" selected>Matematik</option>
+                <option value="Fen Bilimleri">Fen Bilimleri</option>
+                <option value="Türkçe">Türkçe</option>
+                <option value="İngilizce">İngilizce</option>
+                <option value="Sosyal Bilgiler">Sosyal Bilgiler</option>
+                <option value="Diğer">Diğer</option>
+              </select>
+            </label>
+            <label>
+              Sınıf Adı
+              <input
+                id="inputRegClassName"
+                placeholder="Örn. 6-A Sınıfı"
+              />
+            </label>
+            <label>
+              Sınıf Kodu (Öğrencilerin Katılacağı Kod)
+              <input
+                id="inputRegClassCode"
+                autoCapitalize="characters"
+                maxlength="8"
+                placeholder="Örn. KIV6A2"
+              />
+            </label>
+            <small class="input-hint">Öğrenciler derse katılırken bu kodu kullanacaktır.</small>
+            <label>
+              Giriş PIN / Şifre
+              <input
+                id="inputRegPin"
+                type="password"
+                maxlength="8"
+                placeholder="4-6 haneli PIN belirleyin"
+              />
+            </label>
+          </div>
+
+          <button class="primary-button" id="btnSubmit" type="submit">
+            Derse gir
+          </button>
+
+          <button class="text-button centered" id="btnDemo" type="button" style="margin-top: 10px;">
+            Demo verileriyle devam et
+          </button>
+
+          <small id="roleNote" style="text-align: center; color: var(--muted); margin-top: 14px; font-size: 12px;">
+            Giriş yaparak sınıfındaki öğrenme planına katılırsın.
+          </small>
+        </form>
+      </section>
+    </div>
+
+    <!-- Tema Değiştirme Butonu -->
+    <button
+      id="btnThemeToggle"
+      style="
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 16px rgba(23,108,88,0.3);
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      title="Temayı Değiştir"
+    >
+      🌙
+    </button>
+
+    <script>
+      let currentRole = "student";
+      let teacherMode = "login"; // login | register
+
+      // URL parametresi ile sınıf kodu otomatik alma (?sinif=MAT6A)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCode = urlParams.get("sinif");
+      if (urlCode) {
+        document.getElementById("inputClassCode").value = urlCode.toUpperCase();
+        document.getElementById("inputTeacherPin").value = urlCode.toUpperCase();
+      }
+
+      // Tema Yönetimi
+      const savedTheme = localStorage.getItem("kivilcim_theme") || "light";
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.getElementById("btnThemeToggle").textContent = "☀️";
+      }
+      document.getElementById("btnThemeToggle").addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        document.getElementById("btnThemeToggle").textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("kivilcim_theme", isDark ? "dark" : "light");
+      });
+
+      // Öğretmen için rastgele sınıf kodu üretici
+      function generateClassCode() {
+        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+        let res = "KIV";
+        for (let i = 0; i < 3; i++) {
+          res += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return res;
+      }
+
+      // Sekme Değişimi
+      const btnStudent = document.getElementById("btnStudentTab");
+      const btnTeacher = document.getElementById("btnTeacherTab");
+      const teacherSubSwitch = document.getElementById("teacherSubSwitch");
+      const btnTeacherLoginTab = document.getElementById("btnTeacherLoginTab");
+      const btnTeacherRegisterTab = document.getElementById("btnTeacherRegisterTab");
+
+      const studentFields = document.getElementById("studentFields");
+      const teacherLoginFields = document.getElementById("teacherLoginFields");
+      const teacherRegisterFields = document.getElementById("teacherRegisterFields");
+
+      const roleSubtext = document.getElementById("roleSubtext");
+      const roleTitle = document.getElementById("roleTitle");
+      const roleDescription = document.getElementById("roleDescription");
+      const roleNote = document.getElementById("roleNote");
+      const btnSubmit = document.getElementById("btnSubmit");
+
+      function updateTeacherView() {
+        if (teacherMode === "login") {
+          btnTeacherLoginTab.classList.add("active");
+          btnTeacherRegisterTab.classList.remove("active");
+          teacherLoginFields.style.display = "block";
+          teacherRegisterFields.style.display = "none";
+          roleTitle.textContent = "Öğretmen Girişi";
+          roleSubtext.textContent = "Sınıfını başlat";
+          roleDescription.textContent = "Sınıf kodunu ve adını gir, hoca paneline bağlan.";
+          roleNote.textContent = "Hoca paneli üzerinden sınıfın öğrenme ilerlemesini izleyebilirsin.";
+          btnSubmit.textContent = "Hoca Paneline Geç";
+          document.getElementById("inputTeacherPin").required = true;
+          document.getElementById("inputTeacherName").required = true;
+          document.getElementById("inputRegTeacherName").required = false;
+          document.getElementById("inputRegTeacherEmail").required = false;
+          document.getElementById("inputRegClassName").required = false;
+          document.getElementById("inputRegClassCode").required = false;
+          document.getElementById("inputRegPin").required = false;
+        } else {
+          btnTeacherLoginTab.classList.remove("active");
+          btnTeacherRegisterTab.classList.add("active");
+          teacherLoginFields.style.display = "none";
+          teacherRegisterFields.style.display = "block";
+          roleTitle.textContent = "Öğretmen Kaydı";
+          roleSubtext.textContent = "Aramıza katıl";
+          roleDescription.textContent = "Yeni bir sınıf oluşturup öğrencilerini davet etmeye başla.";
+          roleNote.textContent = "Kayıt olduktan sonra sınıfın için otomatik kod ve tahta QR kodu oluşturulur.";
+          btnSubmit.textContent = "Öğretmen Hesabı Oluştur";
+
+          // Rastgele bir sınıf kodu öner
+          const regCodeInput = document.getElementById("inputRegClassCode");
+          if (!regCodeInput.value) {
+            regCodeInput.value = generateClassCode();
+          }
+
+          document.getElementById("inputTeacherPin").required = false;
+          document.getElementById("inputTeacherName").required = false;
+          document.getElementById("inputRegTeacherName").required = true;
+          document.getElementById("inputRegTeacherEmail").required = true;
+          document.getElementById("inputRegClassName").required = true;
+          document.getElementById("inputRegClassCode").required = true;
+          document.getElementById("inputRegPin").required = true;
+        }
+      }
+
+      btnStudent.addEventListener("click", () => {
+        currentRole = "student";
+        btnStudent.classList.add("active");
+        btnTeacher.classList.remove("active");
+        teacherSubSwitch.style.display = "none";
+        studentFields.style.display = "block";
+        teacherLoginFields.style.display = "none";
+        teacherRegisterFields.style.display = "none";
+
+        document.getElementById("inputClassCode").required = true;
+        document.getElementById("inputStudentName").required = true;
+        document.getElementById("inputTeacherPin").required = false;
+        document.getElementById("inputTeacherName").required = false;
+        document.getElementById("inputRegTeacherName").required = false;
+        document.getElementById("inputRegTeacherEmail").required = false;
+        document.getElementById("inputRegClassName").required = false;
+        document.getElementById("inputRegClassCode").required = false;
+        document.getElementById("inputRegPin").required = false;
+
+        roleTitle.textContent = "Tekrar hoş geldin";
+        roleSubtext.textContent = "Hemen başlayalım";
+        roleDescription.textContent = "Sınıf kodunu ve adını gir, kaldığın yerden devam et.";
+        roleNote.textContent = "Giriş yaparak sınıfındaki öğrenme planına katılırsın.";
+        btnSubmit.textContent = "Derse gir";
+      });
+
+      btnTeacher.addEventListener("click", () => {
+        currentRole = "teacher";
+        btnTeacher.classList.add("active");
+        btnStudent.classList.remove("active");
+        teacherSubSwitch.style.display = "grid";
+        studentFields.style.display = "none";
+        document.getElementById("inputClassCode").required = false;
+        document.getElementById("inputStudentName").required = false;
+        updateTeacherView();
+      });
+
+      btnTeacherLoginTab.addEventListener("click", () => {
+        teacherMode = "login";
+        updateTeacherView();
+      });
+
+      btnTeacherRegisterTab.addEventListener("click", () => {
+        teacherMode = "register";
+        updateTeacherView();
+      });
+
+      // Demo Butonu
+      document.getElementById("btnDemo").addEventListener("click", () => {
+        if (currentRole === "student") {
+          sessionStorage.setItem("ogrenci_id", "1");
+          sessionStorage.setItem("ogrenci_isim", "Deniz");
+          sessionStorage.setItem("sinif_kodu", "KIV6A2");
+          sessionStorage.setItem("is_demo", "true");
+          window.location.href = "./ogrenci.html?demo=1";
+        } else {
+          sessionStorage.setItem("sinif_id", "KIV6A2");
+          sessionStorage.setItem("hoca_isim", "Ayşe Öğretmen");
+          sessionStorage.setItem("is_demo", "true");
+          window.location.href = "./hoca.html?demo=1";
+        }
+      });
+
+      // Form Gönderimi
+      document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const errorAlert = document.getElementById("errorAlert");
+        errorAlert.style.display = "none";
+
+        if (currentRole === "student") {
+          const sinifKodu = document.getElementById("inputClassCode").value.trim().toUpperCase();
+          const isim = document.getElementById("inputStudentName").value.trim();
+
+          btnSubmit.disabled = true;
+          btnSubmit.innerHTML = `<span class="spinner small"></span> Bağlanılıyor...`;
+
+          try {
+            const res = await fetch("/api/giris", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ sinif_kodu: sinifKodu, isim: isim }),
+            });
+
+            if (!res.ok) throw new Error(`Sunucu yanıtı: ${res.status}`);
+            const data = await res.json();
+
+            // Oturumu kaydet
+            sessionStorage.setItem("ogrenci_id", data.ogrenci_id || "1");
+            sessionStorage.setItem("ogrenci_isim", isim);
+            sessionStorage.setItem("sinif_kodu", sinifKodu);
+            if (data.konu) {
+              sessionStorage.setItem("konu", JSON.stringify(data.konu));
+            } else {
+              sessionStorage.removeItem("konu");
+            }
+            sessionStorage.removeItem("is_demo");
+            window.location.href = "./ogrenci.html";
+          } catch (err) {
+            // Normal modda otomatik ders EKLENMEZ
+            console.warn("Backend API bağlantı hatası, normal modda devam ediliyor:", err);
+            sessionStorage.setItem("ogrenci_id", "1");
+            sessionStorage.setItem("ogrenci_isim", isim);
+            sessionStorage.setItem("sinif_kodu", sinifKodu);
+            sessionStorage.removeItem("konu"); // Otomatik gelen ders yok!
+            sessionStorage.removeItem("is_demo");
+            window.location.href = "./ogrenci.html";
+          } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Derse gir";
+          }
+        } else if (currentRole === "teacher" && teacherMode === "login") {
+          // Hoca Girişi
+          const sinifId = document.getElementById("inputTeacherPin").value.trim().toUpperCase() || "KIV6A2";
+          const hocaIsim = document.getElementById("inputTeacherName").value.trim() || "Öğretmen";
+          sessionStorage.setItem("sinif_id", sinifId);
+          sessionStorage.setItem("hoca_isim", hocaIsim);
+          sessionStorage.removeItem("is_demo");
+          window.location.href = "./hoca.html";
+        } else if (currentRole === "teacher" && teacherMode === "register") {
+          // Hoca Kayıt Ol
+          const hocaIsim = document.getElementById("inputRegTeacherName").value.trim();
+          const email = document.getElementById("inputRegTeacherEmail").value.trim();
+          const branch = document.getElementById("selectRegBranch").value;
+          const className = document.getElementById("inputRegClassName").value.trim();
+          const classCode = document.getElementById("inputRegClassCode").value.trim().toUpperCase();
+          const pin = document.getElementById("inputRegPin").value.trim();
+
+          btnSubmit.disabled = true;
+          btnSubmit.innerHTML = `<span class="spinner small"></span> Sınıf oluşturuluyor...`;
+
+          // Yerel veritabanına ve oturuma kaydet
+          try {
+            const savedClasses = JSON.parse(localStorage.getItem("kivilcim_classes") || "[]");
+            savedClasses.push({
+              code: classCode,
+              name: className,
+              branch: branch,
+              teacher: hocaIsim,
+              email: email,
+              createdAt: new Date().toISOString()
+            });
+            localStorage.setItem("kivilcim_classes", JSON.stringify(savedClasses));
+          } catch (err) {
+            console.warn("LocalStorage kayıt hatası:", err);
+          }
+
+          sessionStorage.setItem("sinif_id", classCode);
+          sessionStorage.setItem("sinif_adi", className);
+          sessionStorage.setItem("hoca_isim", hocaIsim);
+          sessionStorage.setItem("hoca_brans", branch);
+          sessionStorage.removeItem("is_demo");
+
+          // Kayıt başarıyla tamamlandı, hoca paneline geç
+          setTimeout(() => {
+            window.location.href = "./hoca.html";
+          }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>

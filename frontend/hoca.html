@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kıvılcım – Öğretmen Paneli</title>
+    <meta
+      name="description"
+      content="Sınıfın anlık öğrenme durumunu ve ortak eksiklerini takip eden hoca paneli."
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Üst Bar -->
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">
+            <span></span><span></span><span></span>
+          </div>
+          Kıvılcım
+        </a>
+        <div class="top-step" id="topStepText">Canlı Sınıf Takibi</div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div class="profile-pill">
+            <span id="teacherInitial">Ö</span>
+            <span id="teacherNameText">Öğretmen</span>
+          </div>
+          <button class="text-button" id="btnLogout" style="font-size: 13px; padding: 6px 12px; color: var(--coral);">
+            Çıkış
+          </button>
+        </div>
+      </header>
+
+      <!-- Ana İçerik -->
+      <main class="page">
+        <div class="teacher-page">
+          <!-- Başlık ve Aksiyonlar -->
+          <div class="teacher-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-dot"></span> Sınıf Yönetimi</div>
+              <h1 id="welcomeText">Günaydın, Öğretmen.</h1>
+              <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
+                <select id="selectClass" style="padding: 8px 24px 8px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-card); font-weight: 700; color: var(--ink);">
+                  <option value="KIV6A2" selected>6-A Sınıfı</option>
+                  <option value="KIV6B1">6-B Sınıfı</option>
+                </select>
+                <span style="font-size: 12px; font-weight: 700; background: var(--mint); color: var(--green); padding: 6px 12px; border-radius: 8px;">
+                  Katılım Kodu: <strong id="badgeClassCode" style="letter-spacing: 1px;">KIV6A2</strong>
+                </span>
+                <p style="margin: 0; color: var(--muted); font-size: 14px;">öğrenme yolculuğunu buradan takip edebilirsin.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button class="primary-button" id="btnAddVideo">
+                + Video / Konu Ekle
+              </button>
+              <button class="secondary-button" id="btnShowQr">
+                Tahta QR Kodu
+              </button>
+            </div>
+          </div>
+
+          <!-- Canlı İstatistikler -->
+          <div class="teacher-stats">
+            <article>
+              <span>Sınıf Hazır Oranı</span>
+              <strong id="statHazirOrani">%0</strong>
+              <small id="statHazirDetail">Hesaplanıyor</small>
+            </article>
+            <article>
+              <span>Derse Katılan</span>
+              <strong id="statKatilanSayisi">0</strong>
+              <small id="statKatilanDetail">Öğrenci</small>
+            </article>
+            <article>
+              <span>Ortak Eksik</span>
+              <strong id="statOrtakEksik">—</strong>
+              <small id="statEksikDetail">Veri toplanıyor</small>
+            </article>
+          </div>
+
+          <!-- Tablo ve İçgörü Izgarası -->
+          <div class="dashboard-grid">
+            <!-- Öğrenci Tablosu -->
+            <section class="student-table">
+              <div class="section-heading">
+                <div>
+                  <p class="card-kicker">Canlı takip</p>
+                  <h2>Öğrenci İlerlemesi</h2>
+                </div>
+                <span><i id="onlineDot"></i> <span id="onlineCountText">0 çevrimiçi</span></span>
+              </div>
+              <div id="studentListContainer">
+                <!-- Öğrenciler hoca.js tarafından buraya yerleştirilir -->
+              </div>
+            </section>
+
+            <!-- Sınıf İçgörüsü -->
+            <aside class="insight-panel" id="insightPanel">
+              <div class="insight-icon">⚡</div>
+              <p class="card-kicker">Sınıf İçgörüsü</p>
+              <h2 id="insightTitle">Veri Toplanıyor</h2>
+              <p id="insightDesc">Öğrenciler ön test ve etkinlikleri tamamladıkça sınıfın zorlandığı ortak eksikler burada analiz edilecektir.</p>
+              <button class="secondary-button" id="btnInsightDetail" disabled style="opacity: 0.6; cursor: not-allowed;">
+                Detay Bekleniyor
+              </button>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- QR Kod Modalı -->
+    <div id="modalQr" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+        <div class="eyebrow" style="justify-content: center;"><span class="eyebrow-dot"></span> Canlı Tahta QR Kodu</div>
+        <h2 style="font-size: 26px; margin: 8px 0;">Öğrencilerini Davet Et</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Öğrenciler telefon kamerasıyla tarayarak doğrudan bu sınıfa katılır.</p>
+        <div id="qrFrameBox" style="width: 280px; height: 280px; margin: 0 auto 16px; background: #fafafa; border-radius: 16px; display: grid; place-items: center; overflow: hidden;">
+          <span class="spinner"></span>
+        </div>
+        <p style="color: var(--muted); font-size: 12px; margin: 0;">Sınıf Kodu</p>
+        <strong id="modalClassCode" style="font-size: 32px; letter-spacing: 4px; color: var(--green); display: block; margin: 4px 0 16px;">KIV6A2</strong>
+        <button class="primary-button" id="btnCloseQr" style="width: 100%;">Pano Görünümüne Dön</button>
+      </div>
+    </div>
+
+    <!-- Video Ekleme Modalı (POST /api/video-ekle) -->
+    <div id="modalAddVideo" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Otomatik Bölümleme</div>
+        <h2 style="font-size: 24px; margin: 8px 0 16px;">YouTube Dersi Ekle</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Eklediğin video AI ile transkriptlenir ve eksik konulara göre otomatik bölümlere ayrılır.</p>
+        <form id="formAddVideo">
+          <label style="display: flex; flex-direction: column; gap: 8px; font-weight: 700; font-size: 13px; margin-bottom: 16px;">
+            YouTube Video Linki / ID
+            <input
+              id="inputYoutubeUrl"
+              placeholder="https://www.youtube.com/watch?v=..."
+              required
+              style="height: 50px; border-radius: 12px; border: 1px solid var(--line); padding: 0 14px; background: var(--bg-input);"
+            />
+          </label>
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <button class="primary-button" type="submit" id="btnSubmitVideo">
+              Bölümle ve Ekle
+            </button>
+            <button class="text-button" type="button" id="btnCloseAddVideo">
+              İptal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tema Değiştirme Butonu -->
+    <button
+      id="btnThemeToggle"
+      style="
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 16px rgba(23,108,88,0.3);
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      title="Temayı Değiştir"
+    >
+      🌙
+    </button>
+
+    <script src="./hoca.js"></script>
+  </body>
+</html>
