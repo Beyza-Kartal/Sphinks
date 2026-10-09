@@ -58,7 +58,9 @@ class Deneme(SQLModel, table=True):
     sinif_id: int = Field(foreign_key="sinif.id")
     durum: str = "basladi"  # basladi | test_bitti
     bulunan_alt_konu: Optional[str] = None
-    izlenen_saniye: int = 0
+    son_tekrar_dogru: Optional[int] = None
+    son_tekrar_toplam: Optional[int] = None
+    son_tekrar_puan: Optional[float] = None
 
 
 class Cevap(SQLModel, table=True):

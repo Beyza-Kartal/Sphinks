@@ -28,9 +28,4 @@ def on_startup():
     create_db_and_tables()
 
 
-@app.get("/api/ozet/{deneme_id}")
-def ozet(deneme_id: int):
-    return {"sonuc": "basarili", "izlenen_saniye": 60, "toplam_saniye": 90}
-
-
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

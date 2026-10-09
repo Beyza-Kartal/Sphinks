@@ -167,7 +167,7 @@ function getLocalMock(url, method, body) {
   }
 
   if (url.includes("/api/ozet")) {
-    return { sonuc: "basarili", izlenen_saniye: 240, toplam_saniye: 240 };
+    return { durum: "test_bitti", hazir_mi: true, eksik_konu: null, son_tekrar_dogru: 6, son_tekrar_toplam: 6, son_tekrar_puan: 100.0 };
   }
 
   return {};

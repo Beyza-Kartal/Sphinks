@@ -194,11 +194,16 @@ def tekrar_bitir(istek: TekrarBitirIstegi, session: Session = Depends(get_sessio
 
     sonuc = _kavram_secici.cevaplari_degerlendir(test_verisi, istek.cevaplar)
 
+    # Sonucu Deneme'ye kaydediyoruz (/api/ozet bunu okuyor, sayfa yenilense
+    # ya da hoca sonradan baksa bile gercek son tekrar sonucu kalici olsun).
+    deneme.son_tekrar_dogru = sonuc["dogru"]
+    deneme.son_tekrar_toplam = sonuc["toplam_soru"]
+    deneme.son_tekrar_puan = sonuc["puan"]
     if sonuc["calisma_ise_yaradi_mi"]:
         # eksik kapandi, ogrenci artik bu konuda "hazir"
         deneme.bulunan_alt_konu = None
-        session.add(deneme)
-        session.commit()
+    session.add(deneme)
+    session.commit()
 
     del _aktif_tekrar_testleri[istek.deneme_id]
     return sonuc
@@ -225,3 +230,23 @@ def adim_adim(istek: AdimAdimIstegi, session: Session = Depends(get_session)):
 
     aciklama = adim_adim_acikla(soru["soru"], soru["secenekler"], soru["cevap"], soru["cozum"])
     return {"soru": soru["soru"], "aciklama": aciklama}
+
+
+@router.get("/api/ozet/{deneme_id}")
+def ozet(deneme_id: int, session: Session = Depends(get_session)):
+    # Denemenin su anki gercek durumunu doner: hazir mi, eksigi var mi,
+    # en son tekrar testi sonucu neydi. (Video artik embed degil, dis link
+    # oldugu icin "izlenen saniye" olcumu kaldirildi - bkz. GUNLUK.md.)
+    deneme = session.get(models.Deneme, deneme_id)
+    if not deneme:
+        raise HTTPException(status_code=404, detail="Deneme bulunamadi")
+
+    hazir = deneme.durum == "test_bitti" and not deneme.bulunan_alt_konu
+    return {
+        "durum": deneme.durum,
+        "hazir_mi": hazir,
+        "eksik_konu": deneme.bulunan_alt_konu,
+        "son_tekrar_dogru": deneme.son_tekrar_dogru,
+        "son_tekrar_toplam": deneme.son_tekrar_toplam,
+        "son_tekrar_puan": deneme.son_tekrar_puan,
+    }
