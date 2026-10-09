@@ -53,13 +53,4 @@ def video_ekle():
     return {"video_id": 2, "yeni_secenek": {"kanal_adi": "Kanal B", "youtube_id": "dQw4w9WgXcQ"}}
 
 
-@app.get("/api/hoca/panel/{sinif_id}")
-def hoca_panel(sinif_id: int):
-    return {
-        "hazir_orani": 0.4,
-        "eksik_dagilimi": {"ortak_carpan": 3, "carpanlara_ayirma": 1},
-        "ogrenciler": [{"isim": "Ornek Ogrenci", "durum": "teshis"}],
-    }
-
-
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

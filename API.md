@@ -157,6 +157,48 @@ Gerçek e-posta gönderimi YOK — direkt yeni şifre kaydedilir.
 
 ---
 
+### `POST /api/hoca/sinif-ekle`
+Hoca yeni bir sınıf (şube) açar. **Kodu hoca uydurmaz, backend otomatik üretir.**
+**Gönder:**
+```json
+{ "hoca_id": 1, "ders_id": "fonksiyonlar" }
+```
+**Döner:**
+```json
+{ "sinif_id": 1, "kod": "Q8AVSY", "ders_id": "fonksiyonlar" }
+```
+Bu `kod`'u öğrencilere QR/link olarak verin — `/api/giris`'te `sinif_kodu` olarak kullanılır.
+
+---
+
+### `GET /api/hoca/sinif-listesi/{hoca_id}`
+Hocanın SADECE kendi sınıflarını döner (başka hocanın sınıfları görünmez).
+**Döner:**
+```json
+{ "siniflar": [ { "sinif_id": 1, "kod": "Q8AVSY", "ders_id": "fonksiyonlar" } ] }
+```
+
+---
+
+### `GET /api/hoca/panel/{sinif_id}`
+**Artık gerçek veri döner** (eskiden sahteydi, şimdi gerçek).
+**Döner:**
+```json
+{
+  "sinif_id": 1,
+  "kod": "Q8AVSY",
+  "hazir_orani": 0.5,
+  "eksik_dagilimi": { "kumeler_ve_ikililer": 1 },
+  "ogrenciler": [
+    { "isim": "Ayşe", "durum": "hazir" },
+    { "isim": "Mehmet", "durum": "eksigi_var" }
+  ]
+}
+```
+`durum` değerleri: `hic_baslamadi` | `test_suruyor` | `eksigi_var` | `hazir`.
+
+---
+
 ## 🚧 HENÜZ SAHTE (hardcoded) — bağlanabilirsiniz ama veri gerçek değil, yakında değişecek
 
 | Uç | Durum |
@@ -165,7 +207,6 @@ Gerçek e-posta gönderimi YOK — direkt yeni şifre kaydedilir.
 | `POST /api/benzetme` | Sahte. EK2, Groq ile yazılacak. |
 | `GET /api/ozet/{deneme_id}` | Sahte. |
 | `POST /api/video-ekle` | Sahte. EK2. |
-| `GET /api/hoca/panel/{sinif_id}` | Sahte. Gerçek hoca paneli (hazır oranı, öğrenci listesi) sıradaki işim. |
 
 ---
 
