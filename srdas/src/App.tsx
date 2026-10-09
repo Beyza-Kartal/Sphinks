@@ -169,22 +169,37 @@ function Shell({
   children,
   name,
   step,
+  onLogout,
 }: {
   children: ReactNode;
   name?: string;
   step?: string;
+  onLogout?: () => void;
 }) {
   return (
     <div className="app-shell">
       <header className="topbar">
         <Brand />
         {step && <span className="top-step">{step}</span>}
-        {name && (
-          <div className="profile-pill">
-            <span>{name.slice(0, 1).toLocaleUpperCase("tr-TR")}</span>
-            {name}
-          </div>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {name && (
+            <div className="profile-pill">
+              <span>{name.slice(0, 1).toLocaleUpperCase("tr-TR")}</span>
+              {name}
+            </div>
+          )}
+          {onLogout && (
+            <button
+              className="text-button"
+              onClick={onLogout}
+              style={{ fontSize: "13px", padding: "6px 10px", color: "var(--muted)" }}
+              title="Çıkış yap"
+              type="button"
+            >
+              Çıkış
+            </button>
+          )}
+        </div>
       </header>
       <main className="page">{children}</main>
     </div>
@@ -365,11 +380,14 @@ function Login({
           <PrimaryButton disabled={status === "loading"} type="submit">
             {status === "loading" ? <><span className="spinner small" /> Hazırlanıyor</> : role === "teacher" ? "QR kodu oluştur" : "Derse gir"}
           </PrimaryButton>
-          {status === "error" && (
-            <button className="text-button centered" onClick={role === "teacher" ? onTeacherDemo : onDemo} type="button">
-              Demo verileriyle devam et
-            </button>
-          )}
+          <button
+            className="text-button centered"
+            onClick={role === "teacher" ? onTeacherDemo : onDemo}
+            type="button"
+            style={{ marginTop: "8px" }}
+          >
+            Demo verileriyle devam et
+          </button>
           <small>{role === "teacher" ? "QR kodu yalnızca bu ders oturumu için oluşturulur." : "Giriş yaparak sınıfındaki öğrenme planına katılırsın."}</small>
         </form>
       </section>
@@ -432,19 +450,23 @@ function TeacherDashboard({
   name,
   classCode,
   classes,
+  topic,
   onChangeClass,
   onRenameClass,
   onLogout,
   onAddTopic,
+  onRemoveTopic,
   onShowQr,
 }: {
   name: string;
   classCode: string;
   classes: string[];
+  topic: Topic | null;
   onChangeClass: (newClassCode: string) => void;
   onRenameClass: (oldName: string, newName: string) => void;
   onLogout: () => void;
   onAddTopic: () => void;
+  onRemoveTopic: () => void;
   onShowQr: () => void;
 }) {
   const [isRenaming, setIsRenaming] = useState(false);
@@ -534,6 +556,57 @@ function TeacherDashboard({
             <button className="secondary-button" onClick={onLogout}>Çıkış</button>
           </div>
         </div>
+        {topic ? (
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "16px 20px",
+            background: "var(--bg-card)",
+            border: "1px solid var(--line)",
+            borderRadius: "16px",
+            marginBottom: "20px"
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+              <span style={{
+                padding: "4px 10px",
+                borderRadius: "8px",
+                background: "var(--mint)",
+                color: "var(--green)",
+                fontSize: "12px",
+                fontWeight: 700
+              }}>Aktif Konu</span>
+              <strong style={{ fontSize: "15px" }}>{topic.title}</strong>
+              <span style={{ color: "var(--muted)", fontSize: "13px" }}>({topic.unit} · ~{topic.duration} dk)</span>
+            </div>
+            <button
+              className="text-button"
+              onClick={onRemoveTopic}
+              style={{ color: "var(--coral)", padding: "4px 8px", fontSize: "13px" }}
+              type="button"
+            >
+              Konuyu Kaldır
+            </button>
+          </div>
+        ) : (
+          <div style={{
+            padding: "16px 20px",
+            background: "var(--bg-card)",
+            border: "1px dashed var(--line)",
+            borderRadius: "16px",
+            marginBottom: "20px",
+            color: "var(--muted)",
+            fontSize: "13px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+            <span>Bu sınıf için henüz atanmış bir ders konusu yok.</span>
+            <button className="text-button" onClick={onAddTopic} style={{ padding: "4px 8px" }} type="button">
+              + Yeni Konu Ata
+            </button>
+          </div>
+        )}
         <div className="teacher-stats">
           <article><span>Katılan öğrenci</span><strong>24</strong><small>28 öğrenciden</small></article>
           <article><span>Konuyu tamamlayan</span><strong>17</strong><small className="positive">Son 10 dk. +6</small></article>
@@ -589,27 +662,34 @@ function TeacherDashboard({
 function Home({
   name,
   topic,
+  streak = 0,
   onStart,
+  onDemo,
+  onLogout,
 }: {
   name: string;
   topic: Topic | null;
+  streak?: number;
   onStart: () => void;
+  onDemo?: () => void;
+  onLogout?: () => void;
 }) {
   return (
-    <Shell name={name}>
+    <Shell name={name} onLogout={onLogout}>
       <div className="home-hero">
         <div>
           <div className="eyebrow"><span className="eyebrow-dot" /> Bugünün çalışma planı</div>
           <h1>Merhaba, {name}.</h1>
           <p>Bugün küçük bir adımla büyük bir fark yaratabiliriz.</p>
         </div>
-        <div className="streak-card"><span>3</span><small>günlük seri</small></div>
+        <div className="streak-card"><span>{streak}</span><small>günlük seri</small></div>
       </div>
       {!topic ? (
         <FeedbackState
           detail="Öğretmenin henüz yeni bir konu atamadı. Daha sonra tekrar kontrol et."
           kind="empty"
           title="Sıradaki konu henüz hazır değil"
+          onDemo={onDemo}
         />
       ) : (
         <section className="topic-card">
@@ -941,7 +1021,7 @@ function TeacherAddTopic({
           </div>
         </div>
         <div className="dashboard-grid" style={{ gridTemplateColumns: "1fr" }}>
-          <section className="login-card" style={{ maxWidth: "540px", width: "100%", margin: "0 auto", padding: "40px", backgroundColor: "#fff", borderRadius: "24px", border: "1px solid var(--line)", boxShadow: "0 14px 45px rgba(34,64,56,.05)" }}>
+          <section className="login-card" style={{ maxWidth: "540px", width: "100%", margin: "0 auto", padding: "40px", backgroundColor: "var(--bg-card)", borderRadius: "24px", border: "1px solid var(--line)", boxShadow: "0 14px 45px rgba(34,64,56,.05)" }}>
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
               <label>
                 Ders / Ünite
@@ -1020,7 +1100,18 @@ function mockApi<T>(url: string, body: unknown): T {
   if (url === "/api/giris") {
     const payload = body as { sinifKodu?: string; isim?: string };
     if (!payload.sinifKodu || !payload.isim) throw new Error("Sınıf kodu ve isim gerekli.");
-    return { konu: DEMO_TOPIC } as T;
+    let activeTopic: Topic | null = null;
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem(`kivilcim_topic_${payload.sinifKodu}`) || localStorage.getItem("kivilcim_custom_topic");
+      if (stored) {
+        try {
+          activeTopic = JSON.parse(stored);
+        } catch {
+          activeTopic = null;
+        }
+      }
+    }
+    return { konu: activeTopic } as T;
   }
 
   if (url === "/api/ogretmen-giris") {
@@ -1094,13 +1185,13 @@ export default function App() {
     setStatus("loading");
     setError("");
     try {
-      const result = await postJson<{ konu?: Partial<Topic>; topic?: Partial<Topic> }>("/api/giris", {
+      const result = await postJson<{ konu?: Topic | null; topic?: Topic | null }>("/api/giris", {
         sinifKodu: code,
         isim: studentName,
       });
-      const received = result.konu ?? result.topic;
+      const received = result.konu ?? result.topic ?? null;
       setName(studentName);
-      setTopic(received ? { ...DEMO_TOPIC, ...received } : null);
+      setTopic(received);
       setScreen("home");
       setStatus("idle");
     } catch (caught) {
@@ -1230,9 +1321,55 @@ export default function App() {
 
       {screen === "login" && <Login error={error} onDemo={useDemo} onSubmit={login} onTeacherDemo={useTeacherDemo} onTeacherSubmit={teacherLogin} status={status} />}
       {screen === "teacher-qr" && <TeacherQr classCode={classCode} name={name} onContinue={() => setScreen("teacher-dashboard")} />}
-      {screen === "teacher-dashboard" && <TeacherDashboard classCode={classCode} classes={classes} name={name} onChangeClass={setClassCode} onRenameClass={handleRenameClass} onAddTopic={() => setScreen("teacher-add-topic")} onShowQr={() => setScreen("teacher-qr")} onLogout={() => { setStatus("idle"); setScreen("login"); }} />}
-      {screen === "teacher-add-topic" && <TeacherAddTopic name={name} onCancel={() => setScreen("teacher-dashboard")} onSave={(newTopic) => { setTopic(newTopic); setScreen("teacher-dashboard"); }} />}
-      {screen === "home" && <Home name={name} onStart={() => { setQuestionIndex(0); setPretestAnswers({}); setSelected(""); setScreen("pretest"); }} topic={topic} />}
+      {screen === "teacher-dashboard" && (
+        <TeacherDashboard
+          classCode={classCode}
+          classes={classes}
+          name={name}
+          topic={topic}
+          onChangeClass={(newCode) => {
+            setClassCode(newCode);
+            if (typeof window !== "undefined") {
+              const saved = localStorage.getItem(`kivilcim_topic_${newCode}`);
+              setTopic(saved ? JSON.parse(saved) : null);
+            }
+          }}
+          onRenameClass={handleRenameClass}
+          onAddTopic={() => setScreen("teacher-add-topic")}
+          onRemoveTopic={() => {
+            setTopic(null);
+            if (typeof window !== "undefined") {
+              localStorage.removeItem(`kivilcim_topic_${classCode}`);
+              localStorage.removeItem("kivilcim_custom_topic");
+            }
+          }}
+          onShowQr={() => setScreen("teacher-qr")}
+          onLogout={() => { setStatus("idle"); setScreen("login"); }}
+        />
+      )}
+      {screen === "teacher-add-topic" && (
+        <TeacherAddTopic
+          name={name}
+          onCancel={() => setScreen("teacher-dashboard")}
+          onSave={(newTopic) => {
+            setTopic(newTopic);
+            if (typeof window !== "undefined") {
+              localStorage.setItem(`kivilcim_topic_${classCode}`, JSON.stringify(newTopic));
+              localStorage.setItem("kivilcim_custom_topic", JSON.stringify(newTopic));
+            }
+            setScreen("teacher-dashboard");
+          }}
+        />
+      )}
+      {screen === "home" && (
+        <Home
+          name={name}
+          onStart={() => { setQuestionIndex(0); setPretestAnswers({}); setSelected(""); setScreen("pretest"); }}
+          topic={topic}
+          onDemo={useDemo}
+          onLogout={() => { setStatus("idle"); setScreen("login"); }}
+        />
+      )}
       {screen === "pretest" && <Quiz index={questionIndex} mode="Ön test" name={name} onDemo={advancePretest} onNext={answerPretest} onRetry={() => { setStatus("idle"); setSelected(lastAnswer); }} onSelect={setSelected} questions={pretestQuestions} selected={selected} status={status} />}
       {screen === "pretest-result" && <PretestResult answers={pretestAnswers} name={name} onContinue={() => setScreen("diagnosis")} questions={pretestQuestions} />}
       {screen === "diagnosis" && <Diagnosis name={name} onContinue={() => setScreen("minutes")} />}
