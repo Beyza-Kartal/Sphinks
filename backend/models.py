@@ -48,11 +48,19 @@ class Bolum(SQLModel, table=True):
     transkript: str = ""
 
 
+# NOT: Bu tablo plandaki orijinal "mimari ve yapim plani" dokumaninda yok.
+# Hoca login + sifre degistirme ekrani takimca sonradan eklenmesi istendi (bkz. GUNLUK.md).
+class Hoca(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    email: str
+    sifre_hash: str
+
+
 class Sinif(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     kod: str
     konu_id: int = Field(foreign_key="konu.id")
-    hoca_pin: str
+    hoca_id: Optional[int] = Field(default=None, foreign_key="hoca.id")
 
 
 class Ogrenci(SQLModel, table=True):

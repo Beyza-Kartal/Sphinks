@@ -10,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from backend.db import create_db_and_tables
 from backend import models  # noqa: F401 - tablo tanimlari metadata'ya kaydolsun diye
 from backend.api_ogrenci import router as ogrenci_router
+from backend.api_hoca import router as hoca_router
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
@@ -17,6 +18,7 @@ os.makedirs(FRONTEND_DIR, exist_ok=True)
 
 app = FastAPI(title="HazirMisin?")
 app.include_router(ogrenci_router)
+app.include_router(hoca_router)
 
 
 @app.on_event("startup")
