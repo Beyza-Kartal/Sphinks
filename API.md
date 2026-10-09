@@ -2,7 +2,24 @@
 
 Bu dosya, şu an backend'de **gerçekten çalışan** uçları ve tam olarak hangi alan adlarını beklediğini/döndürdüğünü gösterir. Orijinal plan dosyasındaki API tablosu (bölüm 5.2) artık **güncelliğini kaybetti** — soru sistemi JSON havuzuna geçti, hoca login eklendi. Arayüz (B, C) kodunu **buradaki** isimlere göre yazmalı.
 
-Son güncelleme: bugün, saat ~19:15. Değişirse bu dosya tekrar güncellenecek.
+Son güncelleme: bugün, saat ~19:4x. Değişirse bu dosya tekrar güncellenecek.
+
+---
+
+## 🔴 ŞU AN KODUNUZDA GÖRDÜĞÜM EKSİKLER (frontend/ klasörüne bakıldı, saat ~19:4x)
+
+Bunlar şu an `frontend/ogrenci.js`, `frontend/index.html` içinde bulunan, düzeltilmesi gereken noktalar:
+
+1. **`ogrenci.js` hâlâ `/api/cevap`'ı çağırıyor** (satır ~78, ~297, ~608). Bu uç **artık yok**. Onun yerine:
+   - Önce `/api/test/basla` çağırıp **tüm soruları** al (tek seferde gelir, tek tek değil).
+   - Öğrenci arayüzde soruları istediğiniz gibi tek tek gösterebilirsiniz (ilerleme çubuğu dahil, sorun değil) — ama cevapları biriktirip **hepsini birden** `/api/test/bitir`'e gönderin (bkz. aşağıdaki örnek).
+   - `/api/cevap` çağrısını tamamen kaldırın.
+
+2. **Hoca girişi/kaydı (`index.html`) şu an backend'e hiç bağlı değil** — sadece `localStorage`'a yazıyor, `/api/hoca/giris` veya `/api/hoca/kayit`'e hiç `fetch` atmıyor. Ben "sınıf oluştur" ucunu (`/api/hoca/sinif-ekle`) bitirene kadar bekleyin, bitirince burada haber vereceğim, tam o zaman gerçek `fetch` çağrılarına geçin.
+
+3. **`srdas`'ın eklediği `content/konu.json` kullanılmıyor, SİLİNEBİLİR.** Eski formatta ("Kesirlerde Toplama ve Çıkarma" konusu), backend bu dosyayı hiç okumuyor. Gerçek içerik `content/soru_havuzu.json` (buse'nin 480 sorusu, "fonksiyonlar" dersi). Karışıklık olmasın diye bu dosyayı silmenizi öneririm.
+
+4. **`/api/ogretmen-giris` / `/api/ogretmen-kayit` isimleri hiçbir yerde kullanılmasın** — bunlar eski/yanlış isimlerdi (ilk React denemesinde vardı). `frontend/` klasöründeki güncel dosyalarda artık görünmüyorlar, iyi — ama tekrar eklenmesin diye not ediyorum.
 
 ---
 
@@ -45,6 +62,32 @@ Hata: sınıf kodu yoksa `404`.
 }
 ```
 ⚠️ `secenekler` bir **sözlük** (A/B/C/D anahtarlı), liste değil. ⚠️ Doğru cevap burada **hiç gönderilmiyor** (güvenlik).
+
+**Arayüzde tek tek soru göstermek için örnek yaklaşım (backend'e tek seferde gelen 12 soruyu, siz istediğiniz hızda ekranda gösterirsiniz):**
+```js
+const { deneme_id, sorular } = await apiCall("/api/test/basla", "POST", { ogrenci_id, sinif_id });
+let index = 0;
+const cevaplar = {};  // { soru_id: "B", ... } - kullanıcı her soruyu cevapladığında buraya ekleyin
+
+function soruyuGoster() {
+  const soru = sorular[index];
+  // soru.soru, soru.secenekler (A/B/C/D) ile ekranı doldurun
+  // "ilerleme" göstergesi icin: index+1 / sorular.length
+}
+
+function sonrakiSoru(secilenHarf) {
+  cevaplar[sorular[index].soru_id] = secilenHarf;
+  index++;
+  if (index < sorular.length) {
+    soruyuGoster();
+  } else {
+    // hepsi cevaplandi, simdi hepsini birden gonder:
+    apiCall("/api/test/bitir", "POST", { deneme_id, cevaplar }).then(sonuc => {
+      // sonuc.eksik_alt_konular, sonuc.genel_puan vs. - teshis ekranina gecin
+    });
+  }
+}
+```
 
 ---
 
