@@ -24,6 +24,15 @@ def _alt_konular(ders_id: str) -> list[str]:
     return list(havuz.get(ders_id, {}).keys())
 
 
+def _transkript_metni(parcalar: list[dict], baslangic_sn: float, bitis_sn: float) -> str:
+    # Bolumun saniye araligina denk gelen altyazi parcalarini birlestirip
+    # okunabilir bir transkript metni uretir (EK2: "transkript goruntuleme").
+    cumleler = [
+        p["metin"] for p in parcalar if p["baslangic"] >= baslangic_sn and p["baslangic"] < bitis_sn
+    ]
+    return " ".join(cumleler)
+
+
 def _en_uzun_bolumler(bolumler: list[dict]) -> list[dict]:
     # Groq ayni alt konuyu birden cok parcada bulabilir; her alt konu icin
     # en uzun sureli (en bilgilendirici) bolumu seciyoruz.
@@ -79,6 +88,7 @@ def isle():
                         baslik=b["alt_konu"].replace("_", " ").title(),
                         baslangic_sn=int(b["baslangic_sn"]),
                         bitis_sn=int(b["bitis_sn"]),
+                        transkript=_transkript_metni(altyazi["parcalar"], b["baslangic_sn"], b["bitis_sn"]),
                     )
                 )
             session.commit()

@@ -35,6 +35,7 @@ def teshis(deneme_id: int, session: Session = Depends(get_session)):
             "baslik": bolum.baslik,
             "baslangic_sn": bolum.baslangic_sn,
             "bitis_sn": bolum.bitis_sn,
+            "transkript": bolum.transkript,
         }
         for bolum, video in bolumler
     ]

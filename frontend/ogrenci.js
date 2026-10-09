@@ -508,17 +508,25 @@ function renderMinutesView() {
               title="${activeVideo.kanal_adi}"
             ></iframe>
           </div>
-          <p class="microcopy" style="margin-top: 10px;">
-            Anlamadığın yere gelince oynatma çubuğunu kullanarak geri alabilirsin.
-            Videonun diğer bölümlerini de görmek istersen:
-            <a href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}" target="_blank" rel="noopener">tam videoyu YouTube'da aç →</a>
-          </p>
+          <a
+            href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}&t=${activeVideo.baslangic_sn || 0}s"
+            target="_blank" rel="noopener"
+            class="secondary-button"
+            style="display: inline-flex; margin-top: 12px; text-decoration: none;"
+          >
+            ↗ Videoyu YouTube'da aç (tam kontrol + tüm dakikalar)
+          </a>
           <details class="transcript">
-            <summary>Video bilgisi <span>${sureDk} dk</span></summary>
+            <summary>Video bilgisi ve transkript <span>${sureDk} dk</span></summary>
             <div>
               <p><strong>Kanal:</strong> ${activeVideo.kanal_adi}</p>
               <p><strong>Başlık:</strong> ${activeVideo.baslik || "Konu Anlatımı"}</p>
               <p><strong>Süre:</strong> ${Math.floor(activeVideo.baslangic_sn / 60)}:${String(activeVideo.baslangic_sn % 60).padStart(2, "0")} – ${Math.floor(activeVideo.bitis_sn / 60)}:${String(activeVideo.bitis_sn % 60).padStart(2, "0")}</p>
+              ${
+                activeVideo.transkript
+                  ? `<p><strong>Bu bölümde anlatılanlar:</strong></p><p style="color: var(--muted); line-height: 1.6;">${activeVideo.transkript}</p>`
+                  : `<p style="color: var(--muted);">Bu bölüm için transkript henüz hazırlanmadı.</p>`
+              }
             </div>
           </details>
         </section>
