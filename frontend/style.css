@@ -57,9 +57,14 @@ h1, h2, .brand { font-family: "Manrope", sans-serif; }
 .brand-mark span:nth-child(1) { height: 8px; transform: rotate(-22deg); }
 .brand-mark span:nth-child(2) { height: 15px; }
 .brand-mark span:nth-child(3) { height: 9px; transform: rotate(22deg); }
-.profile-pill { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 14px; }
-.profile-pill > span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--mint); color: var(--green); }
-.top-step { color: var(--muted); font-size: 14px; font-weight: 600; position: absolute; left: 50%; transform: translateX(-50%); }
+.profile-pill { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.profile-pill > span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--mint); color: var(--green); flex-shrink: 0; }
+.profile-pill > span + span { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* DUZELTME: eskiden position:absolute + left:50% idi; flex akisinin disinda
+   kaldigi icin uzun metinlerde (ornek: uzun e-posta, DEMO etiketi) sagdaki
+   Cikis butonuyla ust uste biniyordu. Artik normal bir flex ogesi, kendi
+   alanini paylasiyor, tasarsa kirpiliyor (ellipsis), cakisma olmuyor. */
+.top-step { color: var(--muted); font-size: 14px; font-weight: 600; flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 12px; }
 .page { max-width: 1124px; margin: 0 auto; padding: 70px 28px; }
 
 .primary-button { border: 0; min-height: 54px; border-radius: 14px; padding: 0 20px 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; background: var(--green); color: #fff; font-weight: 700; box-shadow: 0 8px 18px rgba(23,108,88,.16); transition: .2s ease; text-decoration: none; }

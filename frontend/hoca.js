@@ -2,13 +2,23 @@
  * Kıvılcım / Hazır mısın? - Hoca Mantığı (hoca.js)
  * Sahip: C (İçerik + Hoca + Sunum)
  * Bağlandığı API'ler:
+ *   GET  /api/hoca/sinif-listesi/{hoca_id}
+ *   POST /api/hoca/sinif-ekle
  *   GET  /api/hoca/panel/{sinif_id}
  *   POST /api/video-ekle
+ *
+ * DUZELTME (21:xx): sinifId artik backend'in gercek INT id'si (eskiden
+ * "KIV6A2" gibi sabit bir kod kullaniliyordu, bu /api/hoca/panel icin
+ * gecersizdi ve sessizce eski/sahte demo verisine dusuyordu). Sinif listesi
+ * artik /api/hoca/sinif-listesi'nden gercek olarak cekiliyor, "+ Yeni Sinif"
+ * butonu /api/hoca/sinif-ekle'yi cagiriyor.
  */
 
 const state = {
-  hocaIsim: sessionStorage.getItem("hoca_isim") || "Ayşe Öğretmen",
-  sinifId: sessionStorage.getItem("sinif_id") || "KIV6A2",
+  hocaId: sessionStorage.getItem("hoca_id") || null,
+  hocaIsim: sessionStorage.getItem("hoca_isim") || "Öğretmen",
+  sinifId: null, // gercek int id, sinif listesi yuklenince doldurulur
+  sinifKodu: null,
   isDemo: new URLSearchParams(window.location.search).get("demo") === "1" || sessionStorage.getItem("is_demo") === "true",
   panelData: null,
 };
@@ -29,17 +39,27 @@ async function apiCall(url, method = "GET", body = null) {
 }
 
 // Sunucu yoksa veya demo modundaysa sözleşme 5.2 formatında mock
+// DUZELTME: tema artik gercek icerikle ayni ("fonksiyonlar" dersi, eski
+// "payda_esitleme/kesirler" temasi kaldirildi, karisikliga yol aciyordu.
 function getHocaMock(url, method, body) {
+  if (url.includes("/api/hoca/sinif-listesi")) {
+    return { siniflar: state.isDemo ? [{ sinif_id: 1, kod: "DEMO01", ders_id: "fonksiyonlar" }] : [] };
+  }
+
+  if (url.includes("/api/hoca/sinif-ekle")) {
+    return { sinif_id: 1, kod: "DEMO01", ders_id: "fonksiyonlar" };
+  }
+
   if (url.includes("/api/hoca/panel")) {
     if (state.isDemo) {
       return {
         hazir_orani: 0.68,
-        eksik_dagilimi: { "payda_esitleme": 12, "tam_sayili_kesir": 4 },
+        eksik_dagilimi: { "kumeler_ve_ikililer": 12, "cebirsel_ifadeler": 4 },
         ogrenciler: [
-          { isim: "Deniz A.", durum: "Ön test", progress: 40 },
-          { isim: "Ece K.", durum: "Öğreniyor", progress: 68 },
-          { isim: "Mert D.", durum: "Tamamladı", progress: 100 },
-          { isim: "Selin Y.", durum: "Teşhis", progress: 52 },
+          { isim: "Deniz A.", durum: "test_suruyor", progress: 40 },
+          { isim: "Ece K.", durum: "eksigi_var", progress: 68 },
+          { isim: "Mert D.", durum: "hazir", progress: 100 },
+          { isim: "Selin Y.", durum: "eksigi_var", progress: 52 },
         ],
       };
     } else {
@@ -66,12 +86,70 @@ function getHocaMock(url, method, body) {
   return {};
 }
 
+// Backend'in durum degerlerini (hic_baslamadi/test_suruyor/eksigi_var/hazir)
+// okunabilir Turkce etikete ve ilerleme yuzdesine cevirir.
+function durumEtiketle(durum) {
+  const harita = {
+    hic_baslamadi: { metin: "Henüz başlamadı", progress: 0 },
+    test_suruyor: { metin: "Test sürüyor", progress: 40 },
+    eksigi_var: { metin: "Eksiği var", progress: 65 },
+    hazir: { metin: "Hazır", progress: 100 },
+  };
+  return harita[durum] || { metin: durum || "Öğreniyor", progress: 50 };
+}
+
+// --- Sinif Listesini Backend'den Getir ve Secim Kutusunu Doldur ---
+async function loadSiniflar(oncekiSinifId) {
+  const selectClass = document.getElementById("selectClass");
+  const badgeWrap = document.getElementById("badgeClassCodeWrap");
+  const badgeClassCode = document.getElementById("badgeClassCode");
+
+  let siniflar = [];
+  if (state.isDemo) {
+    siniflar = getHocaMock("/api/hoca/sinif-listesi").siniflar;
+  } else if (state.hocaId) {
+    const data = await apiCall(`/api/hoca/sinif-listesi/${state.hocaId}`);
+    siniflar = data.siniflar || [];
+  }
+
+  selectClass.innerHTML = "";
+
+  if (siniflar.length === 0) {
+    selectClass.innerHTML = `<option value="">Henüz sınıfın yok</option>`;
+    state.sinifId = null;
+    state.sinifKodu = null;
+    badgeWrap.style.display = "none";
+    return;
+  }
+
+  siniflar.forEach((s) => {
+    const opt = document.createElement("option");
+    opt.value = s.sinif_id;
+    opt.textContent = `${s.kod} (${ALT_KONU_ETIKET[s.ders_id] || s.ders_id})`;
+    opt.dataset.kod = s.kod;
+    selectClass.appendChild(opt);
+  });
+
+  const secilecek = siniflar.find((s) => String(s.sinif_id) === String(oncekiSinifId)) || siniflar[0];
+  selectClass.value = secilecek.sinif_id;
+  state.sinifId = secilecek.sinif_id;
+  state.sinifKodu = secilecek.kod;
+  badgeWrap.style.display = "inline-flex";
+  badgeClassCode.textContent = secilecek.kod;
+  document.getElementById("modalClassCode").textContent = secilecek.kod;
+}
+
 // --- Sayfa Başlatıcı ---
 async function initHocaPanel() {
   document.getElementById("teacherInitial").textContent = state.hocaIsim ? state.hocaIsim[0].toUpperCase() : "Ö";
   document.getElementById("teacherNameText").textContent = state.hocaIsim;
   document.getElementById("welcomeText").textContent = `Günaydın, ${state.hocaIsim}.`;
-  document.getElementById("modalClassCode").textContent = state.sinifId;
+
+  if (state.isDemo) {
+    // Gercek veriyle karistirilmasin diye acikca etiketliyoruz.
+    const topStep = document.getElementById("topStepText");
+    if (topStep) topStep.textContent = "⚠️ DEMO MODU — veriler gerçek değil";
+  }
 
   // Çıkış Butonu
   document.getElementById("btnLogout").addEventListener("click", () => {
@@ -91,40 +169,42 @@ async function initHocaPanel() {
     localStorage.setItem("kivilcim_theme", isDark ? "dark" : "light");
   });
 
-  // Sınıf Seçiciyi doldur
+  // Sınıf Seçici — artık gerçek backend'den dolduruluyor
   const selectClass = document.getElementById("selectClass");
-  const badgeClassCode = document.getElementById("badgeClassCode");
-
-  try {
-    const savedClasses = JSON.parse(localStorage.getItem("kivilcim_classes") || "[]");
-    savedClasses.forEach((c) => {
-      if (!Array.from(selectClass.options).some((opt) => opt.value === c.code)) {
-        const opt = document.createElement("option");
-        opt.value = c.code;
-        opt.textContent = c.name || `${c.code} Sınıfı`;
-        selectClass.appendChild(opt);
-      }
-    });
-  } catch (e) {
-    console.warn("Kayıtlı sınıflar okunamadı:", e);
-  }
-
-  if (state.sinifId) {
-    if (!Array.from(selectClass.options).some((opt) => opt.value === state.sinifId)) {
-      const opt = document.createElement("option");
-      opt.value = state.sinifId;
-      opt.textContent = sessionStorage.getItem("sinif_adi") || `${state.sinifId} Sınıfı`;
-      selectClass.appendChild(opt);
-    }
-    selectClass.value = state.sinifId;
-    if (badgeClassCode) badgeClassCode.textContent = state.sinifId;
-  }
+  await loadSiniflar();
+  await loadPanelData();
 
   selectClass.addEventListener("change", (e) => {
+    const secilen = e.target.selectedOptions[0];
     state.sinifId = e.target.value;
-    if (badgeClassCode) badgeClassCode.textContent = state.sinifId;
-    document.getElementById("modalClassCode").textContent = state.sinifId;
+    state.sinifKodu = secilen ? secilen.dataset.kod : null;
+    document.getElementById("badgeClassCode").textContent = state.sinifKodu || "—";
+    document.getElementById("modalClassCode").textContent = state.sinifKodu || "—";
     loadPanelData();
+  });
+
+  // Yeni Sınıf Ekle (POST /api/hoca/sinif-ekle)
+  document.getElementById("btnYeniSinif").addEventListener("click", async () => {
+    const btn = document.getElementById("btnYeniSinif");
+    btn.disabled = true;
+    btn.textContent = "Oluşturuluyor...";
+    try {
+      // Su an icerik havuzunda tek ders var ("fonksiyonlar"); yeni ders
+      // eklenince burasi bir secim kutusuna donusturulebilir.
+      const yeni = await apiCall("/api/hoca/sinif-ekle", "POST", {
+        hoca_id: state.hocaId ? parseInt(state.hocaId, 10) : 1,
+        ders_id: "fonksiyonlar",
+      });
+      await loadSiniflar(yeni.sinif_id);
+      await loadPanelData();
+      alert(`Yeni sınıf oluşturuldu!\nKatılım kodu: ${yeni.kod}\n\nBu kodu öğrencilerinle paylaş.`);
+    } catch (err) {
+      alert("Sınıf oluşturulamadı, lütfen tekrar deneyin.");
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "+ Yeni Sınıf";
+    }
   });
 
   // QR Modal Butonları
@@ -156,13 +236,26 @@ async function initHocaPanel() {
     document.getElementById("modalAddVideo").style.display = "none";
     alert("Video başarıyla eklendi ve AI tarafından eksik konulara göre bölümlendi!");
   });
-
-  // Verileri Yükle
-  await loadPanelData();
 }
+
+// "fonksiyonlar" dersindeki 8 alt konunun okunabilir Turkce karsiliklari
+const ALT_KONU_ETIKET = {
+  kumeler_ve_ikililer: "Kümeler ve Sıralı İkililer",
+  cebirsel_ifadeler: "Cebirsel İfadeler",
+  koordinat_sistemi: "Koordinat Sistemi",
+  birinci_derece_denklemler: "Birinci Derece Denklemler",
+  fonksiyon_tanimi_ve_deger: "Fonksiyon Tanımı ve Değeri",
+  fonksiyon_turleri: "Fonksiyon Türleri",
+  dogrusal_fonksiyon_grafigi: "Doğrusal Fonksiyon Grafiği",
+  bileske_ve_ters_fonksiyon: "Bileşke ve Ters Fonksiyon",
+};
 
 // --- Panel Verilerini Getir (GET /api/hoca/panel/{sinif_id}) ---
 async function loadPanelData() {
+  if (!state.sinifId) {
+    renderDashboard({ hazir_orani: 0, eksik_dagilimi: {}, ogrenciler: [] });
+    return;
+  }
   const data = await apiCall(`/api/hoca/panel/${state.sinifId}`);
   state.panelData = data;
   renderDashboard(data);
@@ -185,7 +278,7 @@ function renderDashboard(data) {
   const enCokEksikKey = Object.keys(eksikler).reduce((a, b) => (eksikler[a] > eksikler[b] ? a : b), null);
   if (enCokEksikKey) {
     document.getElementById("statOrtakEksik").textContent = `%${Math.round((eksikler[enCokEksikKey] / (ogrenciler.length || 1)) * 100)}`;
-    document.getElementById("statEksikDetail").textContent = enCokEksikKey === "payda_esitleme" ? "Paydaları eşitleme" : enCokEksikKey;
+    document.getElementById("statEksikDetail").textContent = ALT_KONU_ETIKET[enCokEksikKey] || enCokEksikKey;
   } else {
     document.getElementById("statOrtakEksik").textContent = "—";
     document.getElementById("statEksikDetail").textContent = "Veri toplanıyor";
@@ -210,11 +303,11 @@ function renderDashboard(data) {
       </div>
       ${ogrenciler
         .map((s) => {
-          const prog = s.progress || (s.durum === "Tamamladı" ? 100 : 50);
+          const { metin, progress: prog } = durumEtiketle(s.durum);
           return `
           <div class="student-row">
             <span class="student-name"><i>${s.isim ? s.isim[0] : "Ö"}</i>${s.isim}</span>
-            <span><b class="state-tag ${prog === 100 ? "state-100" : ""}">${s.durum || "Öğreniyor"}</b></span>
+            <span><b class="state-tag ${prog === 100 ? "state-100" : ""}">${metin}</b></span>
             <span class="mini-progress">
               <i><b style="width: ${prog}%;"></b></i>
               <em>%${prog}</em>
@@ -231,7 +324,7 @@ function renderDashboard(data) {
         <strong style="display: block; color: var(--ink); margin-bottom: 4px; font-size: 15px;">
           Henüz derse katılan öğrenci yok
         </strong>
-        <span>Öğrencileriniz tahtadaki QR kodu okutarak veya <strong>${state.sinifId}</strong> kodunu girerek bağlandığında burada canlı olarak listelenecektir.</span>
+        <span>Öğrencileriniz tahtadaki QR kodu okutarak veya <strong>${state.sinifKodu || "—"}</strong> kodunu girerek bağlandığında burada canlı olarak listelenecektir.</span>
       </div>
     `;
   }
@@ -268,7 +361,7 @@ async function openQrModal() {
   modal.style.display = "flex";
   box.innerHTML = `<span class="spinner"></span>`;
 
-  const joinUrl = `${window.location.origin}/index.html?sinif=${encodeURIComponent(state.sinifId)}`;
+  const joinUrl = `${window.location.origin}/index.html?sinif=${encodeURIComponent(state.sinifKodu || "")}`;
   try {
     if (window.QRCode && typeof window.QRCode.toDataURL === "function") {
       const dataUrl = await window.QRCode.toDataURL(joinUrl, {
