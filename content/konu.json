@@ -1,0 +1,60 @@
+{
+  "konu_id": "fonksiyonlar",
+  "baslik": "10. Sınıf Matematik - Fonksiyonlar",
+  "aciklama": "Fonksiyon kavramı, tanım ve değer kümeleri, fonksiyon grafikleri ve temel özellikler.",
+  "eksikler": [
+    {
+      "id": "kumeler_ve_ikililer",
+      "baslik": "Kümeler ve Sıralı İkililer",
+      "aciklama": "A'dan B'ye bağıntı kurabilmek için küme elemanları ve sıralı ikililerin kavranması.",
+      "anahtar_kelimeler": ["küme", "eleman", "boş küme", "sıralı ikili", "kartezyen çarpım"]
+    },
+    {
+      "id": "cebirsel_ifadeler",
+      "baslik": "Cebirsel İfadeler ve Değer Koyma",
+      "aciklama": "f(x) kuralında x yerine sayı koyma, katsayılar ve harfli işlemlerin yapılması.",
+      "anahtar_kelimeler": ["cebirsel ifade", "katsayı", "sabit terim", "harfli ifade", "dağılma"]
+    },
+    {
+      "id": "koordinat_sistemi",
+      "baslik": "Koordinat Sistemi ve Nokta Gösterimi",
+      "aciklama": "Fonksiyon grafiklerini çizebilmek ve okuyabilmek için apsis, ordinat ve analitik düzlem bilgisi.",
+      "anahtar_kelimeler": ["koordinat", "apsis", "ordinat", "analitik düzlem", "orijin", "eksen"]
+    },
+    {
+      "id": "birinci_derece_denklemler",
+      "baslik": "Birinci Dereceden Denklemler",
+      "aciklama": "f(x) = k denklemini çözerek ters işlem yapabilmek ve fonksiyonun köklerini bulabilmek.",
+      "anahtar_kelimeler": ["denklem", "birinci derece", "bilinmeyen", "kök", "eşitlik"]
+    }
+  ],
+  "diger_dersler": [
+    {
+      "konu_id": "fonksiyonlar_2",
+      "baslik": "10. Sınıf Matematik - Fonksiyonlar 2 (Grafikler ve Öteleme)",
+      "aciklama": "Fonksiyon türleri, grafik çizimleri, öteleme, simetri, bileşke ve ters fonksiyon.",
+      "eksikler": [
+        {
+          "id": "fonksiyon_tanimi_ve_deger",
+          "baslik": "Fonksiyon Tanımı ve Değer Bulma",
+          "aciklama": "Temel fonksiyonlarda f(x) değerlerini hesaplama ve görüntü kümesi oluşturma."
+        },
+        {
+          "id": "fonksiyon_turleri",
+          "baslik": "Fonksiyon Türleri",
+          "aciklama": "Birebir, örten, birim ve sabit fonksiyonların kuralları."
+        },
+        {
+          "id": "dogrusal_fonksiyon_grafigi",
+          "baslik": "Doğrusal Fonksiyon ve Grafikler",
+          "aciklama": "f(x) = ax + b doğrusal fonksiyonunun grafiği ve eksen kesimleri."
+        },
+        {
+          "id": "bileske_ve_ters_fonksiyon",
+          "baslik": "Bileşke ve Ters Fonksiyon",
+          "aciklama": "(f o g)(x) bileşke işlemi ve f⁻¹(x) ters alma mantığı."
+        }
+      ]
+    }
+  ]
+}
