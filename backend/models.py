@@ -1,38 +1,20 @@
 # Sahip: A (Beyza)
-# Gorev: tablolar (konu, eksik, soru, video, bolum, sinif, ogrenci, deneme, cevap)
+# Gorev: tablolar.
+#
+# NOT - MIMARI DEGISIKLIGI (18:xx): konu/eksik/soru tablolari KALDIRILDI.
+# Sebep: buse (C) soru icerigini content/soru_havuzu.json dosyasinda
+# (ders_id -> alt_konu_id -> zorluk -> soru listesi) hazirladi; sorular artik
+# veritabaninda degil, dogrudan bu JSON dosyasindan okunuyor (bkz. on_test_secici.py).
+# Bu yuzden "sinif" artik bir Konu satirina degil, dogrudan ders_id (string,
+# orn. "fonksiyonlar") degerine bagli. Detay: GUNLUK.md.
 from typing import List, Optional
 
-from sqlalchemy import JSON, Column
 from sqlmodel import Field, SQLModel
-
-
-class Konu(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    ad: str
-    sira: int = 0
-    durum: str = "acik"  # acik | yakinda
-
-
-class Eksik(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    konu_id: int = Field(foreign_key="konu.id")
-    ad: str
-    aciklama: str = ""
-
-
-class Soru(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    konu_id: int = Field(foreign_key="konu.id")
-    eksik_id: int = Field(foreign_key="eksik.id")
-    tur: str  # ontest | tekrar1 | tekrar2
-    metin: str
-    secenekler: List[str] = Field(sa_column=Column(JSON))
-    dogru_index: int
 
 
 class Video(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    konu_id: int = Field(foreign_key="konu.id")
+    ders_id: str
     kanal_adi: str
     youtube_id: str
     toplam_sure: int = 0
@@ -41,7 +23,7 @@ class Video(SQLModel, table=True):
 class Bolum(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     video_id: int = Field(foreign_key="video.id")
-    eksik_id: int = Field(foreign_key="eksik.id")
+    alt_konu_id: str
     baslik: str
     baslangic_sn: int
     bitis_sn: int
@@ -59,7 +41,7 @@ class Hoca(SQLModel, table=True):
 class Sinif(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     kod: str
-    konu_id: int = Field(foreign_key="konu.id")
+    ders_id: str  # orn. "fonksiyonlar" - content/soru_havuzu.json'daki ust seviye anahtar
     hoca_id: Optional[int] = Field(default=None, foreign_key="hoca.id")
 
 
@@ -72,15 +54,16 @@ class Ogrenci(SQLModel, table=True):
 class Deneme(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     ogrenci_id: int = Field(foreign_key="ogrenci.id")
-    konu_id: int = Field(foreign_key="konu.id")
-    durum: str = "basladi"
-    bulunan_eksik_id: Optional[int] = Field(default=None, foreign_key="eksik.id")
+    sinif_id: int = Field(foreign_key="sinif.id")
+    durum: str = "basladi"  # basladi | test_bitti
+    bulunan_alt_konu: Optional[str] = None
     izlenen_saniye: int = 0
 
 
 class Cevap(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     deneme_id: int = Field(foreign_key="deneme.id")
-    soru_id: int = Field(foreign_key="soru.id")
-    secilen_index: int
+    soru_id: str
+    alt_konu_id: str
+    secilen_harf: str
     dogru_mu: bool

@@ -11,6 +11,7 @@ from backend.db import create_db_and_tables
 from backend import models  # noqa: F401 - tablo tanimlari metadata'ya kaydolsun diye
 from backend.api_ogrenci import router as ogrenci_router
 from backend.api_hoca import router as hoca_router
+from backend.teshis import router as teshis_router
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
@@ -19,21 +20,12 @@ os.makedirs(FRONTEND_DIR, exist_ok=True)
 app = FastAPI(title="HazirMisin?")
 app.include_router(ogrenci_router)
 app.include_router(hoca_router)
+app.include_router(teshis_router)
 
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-
-
-@app.get("/api/teshis/{deneme_id}")
-def teshis(deneme_id: int):
-    return {
-        "eksik": {"id": 1, "ad": "ortak_carpan", "aciklama": "Ortak carpan parantezine alma"},
-        "videolar": [
-            {"kanal_adi": "Kanal A", "youtube_id": "dQw4w9WgXcQ", "baslangic_sn": 30, "bitis_sn": 90},
-        ],
-    }
 
 
 @app.post("/api/tekrar/basla")

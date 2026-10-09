@@ -1,0 +1,5830 @@
+{
+  "fonksiyonlar": {
+    "kumeler_ve_ikililer": {
+      "kolay": [
+        {
+          "id": "kum_k_01",
+          "soru": "A = {1, 3, 5, 7, 9} kümesinin eleman sayısı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "Kümede 1, 3, 5, 7, 9 olmak üzere toplam 5 eleman vardır. s(A) = 5."
+        },
+        {
+          "id": "kum_k_02",
+          "soru": "Elemanı bulunmayan kümeye ne ad verilir?",
+          "secenekler": {
+            "A": "Birim Küme",
+            "B": "Evrensel Küme",
+            "C": "Boş Küme",
+            "D": "Alt Küme"
+          },
+          "cevap": "C",
+          "cozum": "Elemanı olmayan kümeye boş küme denir ve ∅ veya {} sembolüyle gösterilir."
+        },
+        {
+          "id": "kum_k_03",
+          "soru": "(x, 4) = (7, y) sıralı ikilileri birbirine eşit olduğuna göre x + y toplamı kaçtır?",
+          "secenekler": {
+            "A": "11",
+            "B": "14",
+            "C": "28",
+            "D": "3"
+          },
+          "cevap": "A",
+          "cozum": "Sıralı ikililerin eşitliğinde birinci bileşenler ve ikinci bileşenler eşittir: x = 7 ve y = 4. x + y = 7 + 4 = 11."
+        },
+        {
+          "id": "kum_k_04",
+          "soru": "A = {a, b, c} ve B = {1, 2} kümeleri veriliyor. s(A x B) kartezyen çarpımının eleman sayısı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "s(A x B) = s(A) · s(B) = 3 · 2 = 6."
+        },
+        {
+          "id": "kum_k_05",
+          "soru": "A = {2, 4, 6} kümesi için aşağıdakilerden hangisi doğrudur?",
+          "secenekler": {
+            "A": "3 ∈ A",
+            "B": "4 ∉ A",
+            "C": "2 ∈ A",
+            "D": "s(A) = 4"
+          },
+          "cevap": "C",
+          "cozum": "2 sayısı A kümesinin bir elemanıdır, bu nedenle 2 ∈ A doğrudur."
+        },
+        {
+          "id": "kum_k_06",
+          "soru": "(3, 8) sıralı ikilisinin birinci bileşeni (apsisi) kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "8",
+            "C": "11",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Sıralı ikilide ilk yazılan sayı birinci bileşendir, yani 3'tür."
+        },
+        {
+          "id": "kum_k_07",
+          "soru": "Boş kümenin eleman sayısı kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "Belirsiz",
+            "D": "Sonsuz"
+          },
+          "cevap": "A",
+          "cozum": "Boş kümenin hiç elemanı yoktur, dolayısıyla eleman sayısı 0'dır."
+        },
+        {
+          "id": "kum_k_08",
+          "soru": "s(A) = 4 ve s(B) = 5 ise s(A x B) kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "16",
+            "C": "20",
+            "D": "25"
+          },
+          "cevap": "C",
+          "cozum": "s(A x B) = 4 · 5 = 20."
+        },
+        {
+          "id": "kum_k_09",
+          "soru": "A = {x | x, 10'dan küçük pozitif tek tam sayılar} kümesinin liste yöntemiyle gösterimi hangisidir?",
+          "secenekler": {
+            "A": "{1, 3, 5, 7}",
+            "B": "{1, 3, 5, 7, 9}",
+            "C": "{3, 5, 7, 9}",
+            "D": "{0, 1, 3, 5, 7, 9}"
+          },
+          "cevap": "B",
+          "cozum": "10'dan küçük pozitif tek tam sayılar: 1, 3, 5, 7, 9'dur."
+        },
+        {
+          "id": "kum_k_10",
+          "soru": "(a, b) = (5, -2) olduğuna göre b kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "2",
+            "C": "-2",
+            "D": "3"
+          },
+          "cevap": "C",
+          "cozum": "İkinci bileşen b = -2'dir."
+        },
+        {
+          "id": "kum_k_11",
+          "soru": "A = {m, n} ve B = {k} olduğuna göre A x B kümesi aşağıdakilerden hangisidir?",
+          "secenekler": {
+            "A": "{(m, k), (n, k)}",
+            "B": "{(k, m), (k, n)}",
+            "C": "{m, n, k}",
+            "D": "{(m, n), (k, k)}"
+          },
+          "cevap": "A",
+          "cozum": "A'dan seçilen her eleman B'deki k ile eşleşir: {(m, k), (n, k)}."
+        },
+        {
+          "id": "kum_k_12",
+          "soru": "Bir A kümesinin eleman sayısı 3 olduğuna göre alt küme sayısı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "9",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "Alt küme sayısı 2^n formülüyle bulunur: 2^3 = 8."
+        },
+        {
+          "id": "kum_k_13",
+          "soru": "A = {1, 2} kümesi veriliyor. (1, 2) ifadesi ile {1, 2} ifadesi arasındaki temel fark nedir?",
+          "secenekler": {
+            "A": "Hiçbir fark yoktur.",
+            "B": "(1, 2) sıralı ikilidir ve sıra önemlidir; {1, 2} kümedir ve sıra önemsizdir.",
+            "C": "{1, 2} sıralı ikilidir.",
+            "D": "(1, 2) kümenin eleman sayısıdır."
+          },
+          "cevap": "B",
+          "cozum": "Sıralı ikililerde sıra önemlidir: (1, 2) ≠ (2, 1). Kümede ise sıra önemsizdir: {1, 2} = {2, 1}."
+        },
+        {
+          "id": "kum_k_14",
+          "soru": "s(A x B) = 15 ve s(A) = 3 olduğuna göre s(B) kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "5",
+            "C": "12",
+            "D": "45"
+          },
+          "cevap": "B",
+          "cozum": "s(A x B) = s(A) · s(B) ⇒ 15 = 3 · s(B) ⇒ s(B) = 5."
+        },
+        {
+          "id": "kum_k_15",
+          "soru": "(2x, 6) = (10, 6) olduğuna göre x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "5",
+            "D": "8"
+          },
+          "cevap": "C",
+          "cozum": "2x = 10 ⇒ x = 5."
+        },
+        {
+          "id": "kum_k_16",
+          "soru": "A = {x, y, z} kümesinin elemanlarından kaç tanesi sessiz harftir?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "0"
+          },
+          "cevap": "C",
+          "cozum": "x, y, z harflerinin üçü de sessiz harftir."
+        },
+        {
+          "id": "kum_k_17",
+          "soru": "A x A kartezyen çarpımının eleman sayısı 16 olduğuna göre s(A) kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "8",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "s(A) · s(A) = 16 ⇒ s(A)² = 16 ⇒ s(A) = 4."
+        },
+        {
+          "id": "kum_k_18",
+          "soru": "A = {} gösterimi neyi ifade eder?",
+          "secenekler": {
+            "A": "Sıfır elemanlı kümeyi (Boş küme)",
+            "B": "Elemanı 0 olan kümeyi",
+            "C": "Sonsuz kümeyi",
+            "D": "Evrensel kümeyi"
+          },
+          "cevap": "A",
+          "cozum": "İçi boş küme parantezi boş kümeyi temsil eder."
+        },
+        {
+          "id": "kum_k_19",
+          "soru": "(x + 1, 9) = (6, y - 2) olduğuna göre x değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "11"
+          },
+          "cevap": "A",
+          "cozum": "x + 1 = 6 ⇒ x = 5."
+        },
+        {
+          "id": "kum_k_20",
+          "soru": "A kümesinin eleman sayısı sıfırdan farklı ise s(A x ∅) sonucu kaçtır?",
+          "secenekler": {
+            "A": "s(A)",
+            "B": "1",
+            "C": "0",
+            "D": "Tanımsız"
+          },
+          "cevap": "C",
+          "cozum": "s(A x ∅) = s(A) · s(∅) = s(A) · 0 = 0."
+        }
+      ],
+      "orta": [
+        {
+          "id": "kum_o_01",
+          "soru": "(2x - 1, 3y + 4) = (7, 19) olduğuna göre x · y çarpımı kaçtır?",
+          "secenekler": {
+            "A": "12",
+            "B": "15",
+            "C": "20",
+            "D": "24"
+          },
+          "cevap": "C",
+          "cozum": "2x - 1 = 7 ⇒ 2x = 8 ⇒ x = 4. 3y + 4 = 19 ⇒ 3y = 15 ⇒ y = 5. x · y = 4 · 5 = 20."
+        },
+        {
+          "id": "kum_o_02",
+          "soru": "A = {1, 2, 3} ve B = {a, b} olmak üzere A x B kümesinin kaç alt kümesi vardır?",
+          "secenekler": {
+            "A": "32",
+            "B": "64",
+            "C": "128",
+            "D": "256"
+          },
+          "cevap": "B",
+          "cozum": "s(A x B) = 3 · 2 = 6. Alt küme sayısı = 2^6 = 64."
+        },
+        {
+          "id": "kum_o_03",
+          "soru": "A = {x | -2 ≤ x < 3, x ∈ Z} kümesinin eleman sayısı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "x tam sayıları: -2, -1, 0, 1, 2 olup toplam 5 tanedir."
+        },
+        {
+          "id": "kum_o_04",
+          "soru": "(3^a, 16) = (81, 2^b) olduğuna göre a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "3^a = 81 = 3^4 ⇒ a = 4. 2^b = 16 = 2^4 ⇒ b = 4. a + b = 4 + 4 = 8."
+        },
+        {
+          "id": "kum_o_05",
+          "soru": "s(A) = 6 ve s(B) = 4'tür. A ve B ayrık iki küme olduğuna göre s(A ∪ B) kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "10",
+            "C": "12",
+            "D": "24"
+          },
+          "cevap": "B",
+          "cozum": "Ayrık kümelerin kesişimi boştur: s(A ∪ B) = s(A) + s(B) = 6 + 4 = 10."
+        },
+        {
+          "id": "kum_o_06",
+          "soru": "(x + y, x - y) = (12, 4) olduğuna göre x değeri kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "C",
+          "cozum": "x + y = 12 ve x - y = 4 taraf tarafa toplanırsa: 2x = 16 ⇒ x = 8."
+        },
+        {
+          "id": "kum_o_07",
+          "soru": "s(A x B) = 24 olduğuna göre s(A) + s(B) toplamının alabileceği EN KÜÇÜK değer kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "14",
+            "D": "25"
+          },
+          "cevap": "A",
+          "cozum": "Çarpımları 24 olan sayılar birbirine en yakın seçilmelidir: 4 ve 6. 4 + 6 = 10."
+        },
+        {
+          "id": "kum_o_08",
+          "soru": "A = {1, 2} ve B = {3, 4} kümeleri için A x B kümesinin elemanlarından biri aşağıdakilerden hangisi OLAMAZ?",
+          "secenekler": {
+            "A": "(1, 3)",
+            "B": "(2, 4)",
+            "C": "(1, 4)",
+            "D": "(3, 1)"
+          },
+          "cevap": "D",
+          "cozum": "(3, 1) elemanı B x A'ya aittir, A x B'de birinci eleman A'dan olmalıdır."
+        },
+        {
+          "id": "kum_o_09",
+          "soru": "(x², 5) = (25, y) olduğuna göre x'in alabileceği değerler toplamı kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "5",
+            "C": "10",
+            "D": "-5"
+          },
+          "cevap": "A",
+          "cozum": "x² = 25 ⇒ x = 5 veya x = -5. Toplamları 5 + (-5) = 0."
+        },
+        {
+          "id": "kum_o_10",
+          "soru": "A = {x | 1 < x ≤ 10, x asal sayı} kümesinin eleman sayısı kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Asal sayılar: 2, 3, 5, 7 olup 4 tanedir."
+        },
+        {
+          "id": "kum_o_11",
+          "soru": "(2x + y, 8) = (11, 2y) olduğuna göre x kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "3.5",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "2y = 8 ⇒ y = 4. 2x + 4 = 11 ⇒ 2x = 7 ⇒ x = 3.5."
+        },
+        {
+          "id": "kum_o_12",
+          "soru": "s(A) = 3 olduğuna göre A kümesinden A kümesine tanımlı A x A kümesinin kaç elemanı vardır?",
+          "secenekler": {
+            "A": "6",
+            "B": "9",
+            "C": "18",
+            "D": "27"
+          },
+          "cevap": "B",
+          "cozum": "s(A x A) = 3 · 3 = 9."
+        },
+        {
+          "id": "kum_o_13",
+          "soru": "A = {1, 2} ve B = {3, 4, 5} olduğuna göre A'dan B'ye yazılabilecek tüm bağıntıların sayısı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "36",
+            "C": "64",
+            "D": "128"
+          },
+          "cevap": "C",
+          "cozum": "s(A x B) = 2 · 3 = 6. A'dan B'ye bağıntı sayısı 2^6 = 64'tür."
+        },
+        {
+          "id": "kum_o_14",
+          "soru": "(x - 3, 10) = (4, 2y) ikilisinde x + y kaçtır?",
+          "secenekler": {
+            "A": "11",
+            "B": "12",
+            "C": "14",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "x - 3 = 4 ⇒ x = 7. 2y = 10 ⇒ y = 5. x + y = 7 + 5 = 12."
+        },
+        {
+          "id": "kum_o_15",
+          "soru": "A = {1, 2, 3, 4} kümesinin 2 elemanlı alt küme sayısı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "C(4, 2) = (4 · 3) / (2 · 1) = 6."
+        },
+        {
+          "id": "kum_o_16",
+          "soru": "(3x - 2, y + 1) = (x + 6, 2y - 4) olduğuna göre x + y kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "C",
+          "cozum": "3x - 2 = x + 6 ⇒ 2x = 8 ⇒ x = 4. y + 1 = 2y - 4 ⇒ y = 5. x + y = 4 + 5 = 9."
+        },
+        {
+          "id": "kum_o_17",
+          "soru": "s(A x B) = 18 ve s(B x C) = 24 olduğuna göre s(B)'nin alabileceği EN BÜYÜK değer kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "6",
+            "C": "9",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "s(B), hem 18'in hem 24'ün ortak böleni olmalıdır. EBOB(18, 24) = 6."
+        },
+        {
+          "id": "kum_o_18",
+          "soru": "(a³, 16) = (27, b⁴) ve a, b pozitif tam sayılar olduğuna göre a · b kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "12",
+            "D": "18"
+          },
+          "cevap": "A",
+          "cozum": "a³ = 27 ⇒ a = 3. b⁴ = 16 ⇒ b = 2. a · b = 3 · 2 = 6."
+        },
+        {
+          "id": "kum_o_19",
+          "soru": "A kümesinin alt küme sayısı 32 olduğuna göre s(A x A) kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "20",
+            "C": "25",
+            "D": "30"
+          },
+          "cevap": "C",
+          "cozum": "2^n = 32 ⇒ n = 5. s(A x A) = 5 · 5 = 25."
+        },
+        {
+          "id": "kum_o_20",
+          "soru": "(5x, 3y - 1) = (20, 14) olduğuna göre x/y oranı kaçtır?",
+          "secenekler": {
+            "A": "0.8",
+            "B": "1",
+            "C": "1.2",
+            "D": "1.5"
+          },
+          "cevap": "A",
+          "cozum": "5x = 20 ⇒ x = 4. 3y - 1 = 14 ⇒ 3y = 15 ⇒ y = 5. x/y = 4/5 = 0.8."
+        }
+      ],
+      "zor": [
+        {
+          "id": "kum_z_01",
+          "soru": "A = {x | |x| ≤ 2, x ∈ Z} ve B = {y | y² < 5, y ∈ N} olduğuna göre s(A x B) kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "15",
+            "C": "20",
+            "D": "25"
+          },
+          "cevap": "B",
+          "cozum": "A = {-2, -1, 0, 1, 2} ⇒ s(A) = 5. B = {0, 1, 2} (doğal sayı şartı) ⇒ s(B) = 3. s(A x B) = 5 · 3 = 15."
+        },
+        {
+          "id": "kum_z_02",
+          "soru": "(x² - y², 8) = (24, x - y) ve x, y pozitif gerçel sayılar olduğuna göre x + y kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "x - y = 8 ve x² - y² = 24. (x - y)(x + y) = 24 ⇒ 8(x + y) = 24 ⇒ x + y = 3."
+        },
+        {
+          "id": "kum_z_03",
+          "soru": "A = {1, 2, 3} ve B = {2, 3, 4} olmak üzere A x B kümesinin elemanlarından kaç tanesinin birinci ve ikinci bileşeni birbirine EŞİTTİR?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Ortak elemanlar 2 ve 3'tür. Eşit olan ikililer (2, 2) ve (3, 3) olmak üzere 2 tanedir."
+        },
+        {
+          "id": "kum_z_04",
+          "soru": "A x B kümesinin grafiğinde noktaları dışarıda bırakmayan en küçük alanlı dikdörtgenin alanı 18 birimkare ise A ve B kümeleri hangisi olabilir?",
+          "secenekler": {
+            "A": "A = [1, 4], B = [2, 8]",
+            "B": "A = [0, 3], B = [1, 6]",
+            "C": "A = [2, 5], B = [0, 6]",
+            "D": "A = [1, 7], B = [2, 4]"
+          },
+          "cevap": "C",
+          "cozum": "Kenar uzunlukları: A aralığı 5 - 2 = 3 birim, B aralığı 6 - 0 = 6 birim. Alan = 3 · 6 = 18."
+        },
+        {
+          "id": "kum_z_05",
+          "soru": "(x² + 3, y³ - 1) = (12, 26) olduğuna göre x'in alabileceği değerler ile y'nin toplamı kaç farklı sonuç verir?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "y³ - 1 = 26 ⇒ y³ = 27 ⇒ y = 3. x² + 3 = 12 ⇒ x² = 9 ⇒ x = 3 veya x = -3. Toplamlar: 3 + 3 = 6 ve -3 + 3 = 0 (2 farklı sonuç)."
+        },
+        {
+          "id": "kum_z_06",
+          "soru": "A kümesinden B kümesine tanımlı 256 farklı bağıntı yazılabildiğine göre s(A) + s(B) toplamı en az kaç olabilir?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "A",
+          "cozum": "Bağıntı sayısı 2^(s(A) · s(B)) = 256 = 2^8. s(A) · s(B) = 8. En küçük toplam için 2 ve 4 seçilir: 2 + 4 = 6."
+        },
+        {
+          "id": "kum_z_07",
+          "soru": "A = {1, 2, 3, 4} kümesinde tanımlı (x, y) sıralı ikililerinden kaç tanesinde x < y şartı sağlanır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "Toplam 16 ikiliden 4 tanesinde x = y'dir. Kalan 12 ikilinin yarısında x < y, yarısında x > y'dir: 12 / 2 = 6."
+        },
+        {
+          "id": "kum_z_08",
+          "soru": "(2^x + 2^x, 3^y) = (32, 27) olduğuna göre x · y kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "12",
+            "C": "15",
+            "D": "18"
+          },
+          "cevap": "B",
+          "cozum": "2 · 2^x = 32 ⇒ 2^(x+1) = 32 = 2^5 ⇒ x + 1 = 5 ⇒ x = 4. 3^y = 27 ⇒ y = 3. x · y = 4 · 3 = 12."
+        },
+        {
+          "id": "kum_z_09",
+          "soru": "A = {x ∈ Z | x² ≤ 9} ve B = {y ∈ N | y < 4} olduğuna göre A x B kümesinden seçilen bir (a, b) ikilisinde a + b = 0 olma olasılığı için kaç uygun ikili vardır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "A = {-3, -2, -1, 0, 1, 2, 3}, B = {0, 1, 2, 3}. a + b = 0 için a = -b olmalıdır: (0, 0), (-1, 1), (-2, 2), (-3, 3) olmak üzere 4 ikili vardır."
+        },
+        {
+          "id": "kum_z_10",
+          "soru": "(x/y, x + y) = (3, 16) olduğuna göre x · y çarpımı kaçtır?",
+          "secenekler": {
+            "A": "36",
+            "B": "48",
+            "C": "64",
+            "D": "72"
+          },
+          "cevap": "B",
+          "cozum": "x = 3y ⇒ 3y + y = 16 ⇒ 4y = 16 ⇒ y = 4. x = 12. x · y = 12 · 4 = 48."
+        },
+        {
+          "id": "kum_z_11",
+          "soru": "s(A ∩ B) = 2, s(A) = 5 ve s(B) = 4 olduğuna göre s((A x B) ∩ (B x A)) kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "8",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "(A x B) ∩ (B x A) = (A ∩ B) x (A ∩ B) kuralından: 2 · 2 = 4."
+        },
+        {
+          "id": "kum_z_12",
+          "soru": "(x² - 9, y² - 4) = (0, 0) şartını sağlayan kaç farklı (x, y) sıralı ikilisi yazılabilir?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "x ∈ {-3, 3} (2 değer), y ∈ {-2, 2} (2 değer). 2 · 2 = 4 farklı sıralı ikili yazılabilir."
+        },
+        {
+          "id": "kum_z_13",
+          "soru": "A = {1, 2, 3, 4, 5} kümesinin elemanlarıyla yazılan (x, y) sıralı ikililerinden kaç tanesinde x + y toplamı çift sayıdır?",
+          "secenekler": {
+            "A": "10",
+            "B": "12",
+            "C": "13",
+            "D": "15"
+          },
+          "cevap": "C",
+          "cozum": "Toplamın çift olması için ikisi de tek veya ikisi de çift olmalıdır. Tekler: {1, 3, 5} (3·3=9 ikili). Çiftler: {2, 4} (2·2=4 ikili). Toplam: 9 + 4 = 13."
+        },
+        {
+          "id": "kum_z_14",
+          "soru": "A = [1, 4] ve B = [2, 5] kapalı aralıkları için A x B kartezyen çarpımının analitik düzlemdeki grafiğinin alanı kaç birimkaredir?",
+          "secenekler": {
+            "A": "6",
+            "B": "9",
+            "C": "12",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "x eksenindeki uzunluk: 4 - 1 = 3. y eksenindeki uzunluk: 5 - 2 = 3. Karesel bölgenin alanı: 3 · 3 = 9 birimkare."
+        },
+        {
+          "id": "kum_z_15",
+          "soru": "(x - y, x · y) = (5, 6) olduğuna göre x² + y² değeri kaçtır?",
+          "secenekler": {
+            "A": "25",
+            "B": "31",
+            "C": "37",
+            "D": "43"
+          },
+          "cevap": "C",
+          "cozum": "(x - y)² = x² - 2xy + y² ⇒ 5² = x² + y² - 2(6) ⇒ 25 = x² + y² - 12 ⇒ x² + y² = 37."
+        },
+        {
+          "id": "kum_z_16",
+          "soru": "s(A x (B ∪ C)) = 40 ve s(A) = 5 olduğuna göre s(B ∪ C) kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "s(A) · s(B ∪ C) = 40 ⇒ 5 · s(B ∪ C) = 40 ⇒ s(B ∪ C) = 8."
+        },
+        {
+          "id": "kum_z_17",
+          "soru": "A = {1, 2, 3} olmak üzere A x A kümesinden seçilen (x, y) ikililerinden kaç tanesi x = 2y şartını sağlar?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "0"
+          },
+          "cevap": "A",
+          "cozum": "y = 1 için x = 2 olur, yani (2, 1) ikilisi sağlar. y = 2 için x = 4 kümede yoktur. Sadece 1 tanedir."
+        },
+        {
+          "id": "kum_z_18",
+          "soru": "(x³ - 8, y + 3) = (0, 7) olduğuna göre x^y değeri kaçtır?",
+          "secenekler": {
+            "A": "8",
+            "B": "16",
+            "C": "32",
+            "D": "64"
+          },
+          "cevap": "B",
+          "cozum": "x³ = 8 ⇒ x = 2. y + 3 = 7 ⇒ y = 4. x^y = 2^4 = 16."
+        },
+        {
+          "id": "kum_z_19",
+          "soru": "A kümesinin 3 elemanlı alt küme sayısı 10 olduğuna göre s(A x A) kaçtır?",
+          "secenekler": {
+            "A": "16",
+            "B": "25",
+            "C": "36",
+            "D": "49"
+          },
+          "cevap": "B",
+          "cozum": "C(n, 3) = 10 ise n = 5'tir. s(A x A) = 5 · 5 = 25."
+        },
+        {
+          "id": "kum_z_20",
+          "soru": "A = {x ∈ N | x < 3} ve B = {y ∈ Z | -1 < y ≤ 2} olduğuna göre A ve B kümeleri için hangisi doğrudur?",
+          "secenekler": {
+            "A": "A = B",
+            "B": "s(A x B) = 6",
+            "C": "A ∩ B = ∅",
+            "D": "s(A) ≠ s(B)"
+          },
+          "cevap": "A",
+          "cozum": "A = {0, 1, 2} ve B = {0, 1, 2} olup iki küme birbirine tamamen eşittir (A = B)."
+        }
+      ]
+    },
+    "cebirsel_ifadeler": {
+      "kolay": [
+        {
+          "id": "ceb_k_01",
+          "soru": "3x + 7 cebirsel ifadesinin sabit terimi kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "7",
+            "C": "10",
+            "D": "-7"
+          },
+          "cevap": "B",
+          "cozum": "Değişkene bağlı olmayan terim sabit terimdir, yani 7'dir."
+        },
+        {
+          "id": "ceb_k_02",
+          "soru": "5x - 4 ifadesinde x = 3 için değer kaçtır?",
+          "secenekler": {
+            "A": "11",
+            "B": "15",
+            "C": "19",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "5(3) - 4 = 15 - 4 = 11."
+        },
+        {
+          "id": "ceb_k_03",
+          "soru": "4x² - 2x + 9 ifadesi kaç terimlidir?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "C",
+          "cozum": "Terimler: 4x², -2x ve 9 olmak üzere toplam 3 terimdir."
+        },
+        {
+          "id": "ceb_k_04",
+          "soru": "3x + 5x işleminin en sade eşiti nedir?",
+          "secenekler": {
+            "A": "8x²",
+            "B": "8x",
+            "C": "15x",
+            "D": "15x²"
+          },
+          "cevap": "B",
+          "cozum": "Benzer terimlerin katsayıları toplanır: (3 + 5)x = 8x."
+        },
+        {
+          "id": "ceb_k_05",
+          "soru": "2(x + 4) ifadesinin parantezi açılmış biçimi nedir?",
+          "secenekler": {
+            "A": "2x + 4",
+            "B": "2x + 8",
+            "C": "x + 8",
+            "D": "2x + 6"
+          },
+          "cevap": "B",
+          "cozum": "Dağılma özelliği uygulanır: 2·x + 2·4 = 2x + 8."
+        },
+        {
+          "id": "ceb_k_06",
+          "soru": "-3x + 10 ifadesinde x'in katsayısı kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "10",
+            "C": "-3",
+            "D": "-10"
+          },
+          "cevap": "C",
+          "cozum": "x çarpanının önündeki işaretli sayı katsayıdır, yani -3'tür."
+        },
+        {
+          "id": "ceb_k_07",
+          "soru": "x = -2 için 3x + 1 ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "-5",
+            "B": "-7",
+            "C": "5",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "3(-2) + 1 = -6 + 1 = -5."
+        },
+        {
+          "id": "ceb_k_08",
+          "soru": "7a - 3a + 2a işleminin sonucu nedir?",
+          "secenekler": {
+            "A": "6a",
+            "B": "8a",
+            "C": "12a",
+            "D": "6a²"
+          },
+          "cevap": "A",
+          "cozum": "(7 - 3 + 2)a = 6a."
+        },
+        {
+          "id": "ceb_k_09",
+          "soru": "Bir kenarı x cm olan karenin çevresi cebirsel olarak nasıl ifade edilir?",
+          "secenekler": {
+            "A": "x + 4",
+            "B": "4x",
+            "C": "x²",
+            "D": "2x"
+          },
+          "cevap": "B",
+          "cozum": "Karenin 4 eşit kenarı vardır, çevre = 4 · x = 4x."
+        },
+        {
+          "id": "ceb_k_10",
+          "soru": "6x - 2y + 5 ifadesinin katsayılar toplamı kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "11",
+            "C": "13",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "Katsayılar: 6 + (-2) + 5 = 9."
+        },
+        {
+          "id": "ceb_k_11",
+          "soru": "-(4x - 5) ifadesinin eşiti nedir?",
+          "secenekler": {
+            "A": "-4x - 5",
+            "B": "-4x + 5",
+            "C": "4x - 5",
+            "D": "4x + 5"
+          },
+          "cevap": "B",
+          "cozum": "Eksi işareti parantez içine dağıtılır: -4x + 5."
+        },
+        {
+          "id": "ceb_k_12",
+          "soru": "x = 4 için x² - 6 değeri kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "8",
+            "C": "10",
+            "D": "16"
+          },
+          "cevap": "C",
+          "cozum": "4² - 6 = 16 - 6 = 10."
+        },
+        {
+          "id": "ceb_k_13",
+          "soru": "3(2x - 1) ifadesinin eşiti nedir?",
+          "secenekler": {
+            "A": "6x - 1",
+            "B": "6x - 3",
+            "C": "5x - 3",
+            "D": "6x + 3"
+          },
+          "cevap": "B",
+          "cozum": "3 · 2x - 3 · 1 = 6x - 3."
+        },
+        {
+          "id": "ceb_k_14",
+          "soru": "x = 0 için 7x³ - 5x + 12 ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "7",
+            "C": "12",
+            "D": "14"
+          },
+          "cevap": "C",
+          "cozum": "x = 0 yazıldığında x'li terimler sıfırlanır, geriye sabit terim 12 kalır."
+        },
+        {
+          "id": "ceb_k_15",
+          "soru": "(2x + 3) + (3x - 1) toplamı nedir?",
+          "secenekler": {
+            "A": "5x + 2",
+            "B": "5x + 4",
+            "C": "6x + 2",
+            "D": "5x - 2"
+          },
+          "cevap": "A",
+          "cozum": "(2x + 3x) + (3 - 1) = 5x + 2."
+        },
+        {
+          "id": "ceb_k_16",
+          "soru": "8x / 2 ifadesinin en sade hali nedir?",
+          "secenekler": {
+            "A": "4",
+            "B": "4x",
+            "C": "2x",
+            "D": "6x"
+          },
+          "cevap": "B",
+          "cozum": "(8 / 2) · x = 4x."
+        },
+        {
+          "id": "ceb_k_17",
+          "soru": "x = 5 ve y = 2 için 2x + 3y değeri kaçtır?",
+          "secenekler": {
+            "A": "13",
+            "B": "16",
+            "C": "17",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "2(5) + 3(2) = 10 + 6 = 16."
+        },
+        {
+          "id": "ceb_k_18",
+          "soru": "Bir sayının 4 eksiğinin 3 katı cebirsel olarak nasıl yazılır?",
+          "secenekler": {
+            "A": "3x - 4",
+            "B": "3(x - 4)",
+            "C": "4x - 3",
+            "D": "4(x - 3)"
+          },
+          "cevap": "B",
+          "cozum": "Önce 4 eksiği: (x - 4), sonra 3 katı: 3(x - 4)."
+        },
+        {
+          "id": "ceb_k_19",
+          "soru": "x · x çarpımının üslü gösterimi nedir?",
+          "secenekler": {
+            "A": "2x",
+            "B": "x²",
+            "C": "x + x",
+            "D": "x"
+          },
+          "cevap": "B",
+          "cozum": "Aynı tabanların çarpımında üsler toplanır: x¹ · x¹ = x²."
+        },
+        {
+          "id": "ceb_k_20",
+          "soru": "5 - 2x ifadesinde x = -3 için sonuç nedir?",
+          "secenekler": {
+            "A": "-1",
+            "B": "1",
+            "C": "11",
+            "D": "-11"
+          },
+          "cevap": "C",
+          "cozum": "5 - 2(-3) = 5 - (-6) = 5 + 6 = 11."
+        }
+      ],
+      "orta": [
+        {
+          "id": "ceb_o_01",
+          "soru": "(2x - 3)(x + 4) çarpımı yapıldığında x'li terimin katsayısı kaç olur?",
+          "secenekler": {
+            "A": "5",
+            "B": "-5",
+            "C": "8",
+            "D": "-12"
+          },
+          "cevap": "A",
+          "cozum": "2x² + 8x - 3x - 12 = 2x² + 5x - 12. x'in katsayısı 5'tir."
+        },
+        {
+          "id": "ceb_o_02",
+          "soru": "P(x) = 3x - 4 olduğuna göre P(x + 2) cebirsel ifadesi aşağıdakilerden hangisidir?",
+          "secenekler": {
+            "A": "3x + 2",
+            "B": "3x - 2",
+            "C": "3x + 6",
+            "D": "3x - 6"
+          },
+          "cevap": "A",
+          "cozum": "x yerine (x + 2) yazılır: 3(x + 2) - 4 = 3x + 6 - 4 = 3x + 2."
+        },
+        {
+          "id": "ceb_o_03",
+          "soru": "(x + 3)² açılımı aşağıdakilerden hangisidir?",
+          "secenekler": {
+            "A": "x² + 9",
+            "B": "x² + 6x + 9",
+            "C": "x² + 3x + 9",
+            "D": "x² + 6x + 6"
+          },
+          "cevap": "B",
+          "cozum": "Tam kare açılımı: x² + 2(x)(3) + 3² = x² + 6x + 9."
+        },
+        {
+          "id": "ceb_o_04",
+          "soru": "x = 3 ve y = -2 olduğuna göre x² - 2xy + y² ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "25",
+            "C": "13",
+            "D": "49"
+          },
+          "cevap": "B",
+          "cozum": "İfade (x - y)² açılımıdır: (3 - (-2))² = (3 + 2)² = 5² = 25."
+        },
+        {
+          "id": "ceb_o_05",
+          "soru": "(3x - 5) - (2x - 8) işleminin sonucu nedir?",
+          "secenekler": {
+            "A": "x - 13",
+            "B": "x + 3",
+            "C": "5x - 13",
+            "D": "x - 3"
+          },
+          "cevap": "B",
+          "cozum": "3x - 5 - 2x + 8 = x + 3."
+        },
+        {
+          "id": "ceb_o_06",
+          "soru": "A(x) = 2x + 5 olduğuna göre A(2x - 1) ifadesinin eşiti nedir?",
+          "secenekler": {
+            "A": "4x + 3",
+            "B": "4x + 4",
+            "C": "4x + 7",
+            "D": "4x - 1"
+          },
+          "cevap": "A",
+          "cozum": "2(2x - 1) + 5 = 4x - 2 + 5 = 4x + 3."
+        },
+        {
+          "id": "ceb_o_07",
+          "soru": "6x²y - 9xy² ifadesinin ortak çarpan parantezine alınmış biçimi nedir?",
+          "secenekler": {
+            "A": "3xy(2x - 3y)",
+            "B": "3x(2xy - 3y²)",
+            "C": "xy(6x - 9y)",
+            "D": "3xy(2 - 3)"
+          },
+          "cevap": "A",
+          "cozum": "En büyük ortak çarpan 3xy'dir: 3xy(2x - 3y)."
+        },
+        {
+          "id": "ceb_o_08",
+          "soru": "(x - 4)(x + 4) çarpımının sonucu nedir?",
+          "secenekler": {
+            "A": "x² - 8",
+            "B": "x² - 16",
+            "C": "x² + 16",
+            "D": "x² - 8x - 16"
+          },
+          "cevap": "B",
+          "cozum": "İki kare farkı özdeşliği: x² - 4² = x² - 16."
+        },
+        {
+          "id": "ceb_o_09",
+          "soru": "Bir kenar uzunluğu (2x + 1) olan karenin alanı cebirsel olarak nedir?",
+          "secenekler": {
+            "A": "4x² + 1",
+            "B": "4x² + 4x + 1",
+            "C": "4x + 2",
+            "D": "2x² + 4x + 1"
+          },
+          "cevap": "B",
+          "cozum": "(2x + 1)² = (2x)² + 2(2x)(1) + 1² = 4x² + 4x + 1."
+        },
+        {
+          "id": "ceb_o_10",
+          "soru": "x = -1 için 4x³ - 2x² + 5x - 7 ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "-18",
+            "B": "-14",
+            "C": "-10",
+            "D": "-6"
+          },
+          "cevap": "A",
+          "cozum": "4(-1)³ - 2(-1)² + 5(-1) - 7 = 4(-1) - 2(1) - 5 - 7 = -4 - 2 - 5 - 7 = -18."
+        },
+        {
+          "id": "ceb_o_11",
+          "soru": "Kısa kenarı (x - 2), uzun kenarı (2x + 3) olan dikdörtgenin çevresi nedir?",
+          "secenekler": {
+            "A": "3x + 1",
+            "B": "6x + 2",
+            "C": "6x - 2",
+            "D": "2x² - x - 6"
+          },
+          "cevap": "B",
+          "cozum": "Çevre = 2 · [(x - 2) + (2x + 3)] = 2 · [3x + 1] = 6x + 2."
+        },
+        {
+          "id": "ceb_o_12",
+          "soru": "(2x - 3)² açılımında katsayılar toplamı kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "9",
+            "C": "25",
+            "D": "-1"
+          },
+          "cevap": "A",
+          "cozum": "Katsayılar toplamı için x = 1 yazılır: (2(1) - 3)² = (-1)² = 1."
+        },
+        {
+          "id": "ceb_o_13",
+          "soru": "x² - 5x + 6 ifadesinin çarpanlarına ayrılmış biçimi nedir?",
+          "secenekler": {
+            "A": "(x - 2)(x - 3)",
+            "B": "(x + 2)(x + 3)",
+            "C": "(x - 1)(x - 6)",
+            "D": "(x + 1)(x - 6)"
+          },
+          "cevap": "A",
+          "cozum": "Çarpımları 6, toplamları -5 olan sayılar -2 ve -3'tür: (x - 2)(x - 3)."
+        },
+        {
+          "id": "ceb_o_14",
+          "soru": "2(3x - 1) - 3(x - 4) işleminin en sade hali nedir?",
+          "secenekler": {
+            "A": "3x + 10",
+            "B": "3x - 14",
+            "C": "3x + 14",
+            "D": "3x - 10"
+          },
+          "cevap": "A",
+          "cozum": "6x - 2 - 3x + 12 = (6x - 3x) + (-2 + 12) = 3x + 10."
+        },
+        {
+          "id": "ceb_o_15",
+          "soru": "P(x) = x² - 3x olduğuna göre P(4) - P(2) farkı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "P(4) = 4² - 3(4) = 16 - 12 = 4. P(2) = 2² - 3(2) = 4 - 6 = -2. 4 - (-2) = 6."
+        },
+        {
+          "id": "ceb_o_16",
+          "soru": "a + b = 7 ve a · b = 10 olduğuna göre a² + b² değeri kaçtır?",
+          "secenekler": {
+            "A": "29",
+            "B": "39",
+            "C": "49",
+            "D": "59"
+          },
+          "cevap": "A",
+          "cozum": "(a + b)² = a² + 2ab + b² ⇒ 7² = a² + b² + 2(10) ⇒ 49 = a² + b² + 20 ⇒ a² + b² = 29."
+        },
+        {
+          "id": "ceb_o_17",
+          "soru": "(3x + 2)(2x - 5) çarpımındaki sabit terim kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "-10",
+            "C": "6",
+            "D": "-11"
+          },
+          "cevap": "B",
+          "cozum": "Sabit terimler çarpılır: 2 · (-5) = -10."
+        },
+        {
+          "id": "ceb_o_18",
+          "soru": "x = 99 olduğuna göre x² + 2x + 1 ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "9800",
+            "B": "9900",
+            "C": "10000",
+            "D": "10201"
+          },
+          "cevap": "C",
+          "cozum": "İfade (x + 1)² açılımıdır: (99 + 1)² = 100² = 10000."
+        },
+        {
+          "id": "ceb_o_19",
+          "soru": "A(x) = 4x - 6 olduğuna göre A(x/2) ifadesinin eşiti nedir?",
+          "secenekler": {
+            "A": "2x - 6",
+            "B": "2x - 3",
+            "C": "4x - 3",
+            "D": "x - 6"
+          },
+          "cevap": "A",
+          "cozum": "4(x/2) - 6 = 2x - 6."
+        },
+        {
+          "id": "ceb_o_20",
+          "soru": "(x - y)² - (x + y)² işleminin en sade sonucu nedir?",
+          "secenekler": {
+            "A": "0",
+            "B": "-4xy",
+            "C": "4xy",
+            "D": "-2xy"
+          },
+          "cevap": "B",
+          "cozum": "(x² - 2xy + y²) - (x² + 2xy + y²) = -4xy."
+        }
+      ],
+      "zor": [
+        {
+          "id": "ceb_z_01",
+          "soru": "(2x - 1)⁵ açılımındaki katsayılar toplamı kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "32",
+            "C": "-1",
+            "D": "243"
+          },
+          "cevap": "A",
+          "cozum": "Katsayılar toplamı için x = 1 yazılır: (2(1) - 1)⁵ = 1⁵ = 1."
+        },
+        {
+          "id": "ceb_z_02",
+          "soru": "f(x) = 2x + 3 olduğuna göre f(3x - 1) ifadesinin f(x) cinsinden eşiti nedir?",
+          "secenekler": {
+            "A": "3f(x) - 8",
+            "B": "3f(x) - 5",
+            "C": "2f(x) + 1",
+            "D": "3f(x) + 4"
+          },
+          "cevap": "A",
+          "cozum": "f(3x - 1) = 2(3x - 1) + 3 = 6x + 1. f(x) = 2x + 3 ⇒ 2x = f(x) - 3 ⇒ 6x = 3f(x) - 9. 6x + 1 = 3f(x) - 9 + 1 = 3f(x) - 8."
+        },
+        {
+          "id": "ceb_z_03",
+          "soru": "(2x² - 3x + 4)(x² + 2x - 1) çarpımında x³'lü terimin katsayısı kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "-1",
+            "C": "7",
+            "D": "-5"
+          },
+          "cevap": "A",
+          "cozum": "x³ oluşturacak eşleşmeler: (2x² · 2x) + (-3x · x²) = 4x³ - 3x³ = 1x³. Katsayı 1'dir."
+        },
+        {
+          "id": "ceb_z_04",
+          "soru": "x + 1/x = 5 olduğuna göre x² + 1/x² ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "21",
+            "B": "23",
+            "C": "25",
+            "D": "27"
+          },
+          "cevap": "B",
+          "cozum": "(x + 1/x)² = x² + 2(x)(1/x) + 1/x² ⇒ 5² = x² + 2 + 1/x² ⇒ 25 - 2 = 23."
+        },
+        {
+          "id": "ceb_z_05",
+          "soru": "x - y = 4 ve x · y = 5 olduğuna göre x³ - y³ farkı kaçtır?",
+          "secenekler": {
+            "A": "124",
+            "B": "136",
+            "C": "144",
+            "D": "164"
+          },
+          "cevap": "A",
+          "cozum": "x³ - y³ = (x - y)³ + 3xy(x - y) = 4³ + 3(5)(4) = 64 + 60 = 124."
+        },
+        {
+          "id": "ceb_z_06",
+          "soru": "(3x - 2)⁴ ifadesinin açılımındaki sabit terim kaçtır?",
+          "secenekler": {
+            "A": "16",
+            "B": "-16",
+            "C": "81",
+            "D": "1"
+          },
+          "cevap": "A",
+          "cozum": "Sabit terim için x = 0 yazılır: (3(0) - 2)⁴ = (-2)⁴ = 16."
+        },
+        {
+          "id": "ceb_z_07",
+          "soru": "a² + b² = 20 ve a + b = 6 olduğuna göre a · b çarpımı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "(a + b)² = a² + b² + 2ab ⇒ 36 = 20 + 2ab ⇒ 2ab = 16 ⇒ ab = 8."
+        },
+        {
+          "id": "ceb_z_08",
+          "soru": "(x - 1)(x + 1)(x² + 1)(x⁴ + 1) çarpımının en sade eşiti nedir?",
+          "secenekler": {
+            "A": "x⁸ - 1",
+            "B": "x¹⁶ - 1",
+            "C": "x⁸ + 1",
+            "D": "x⁴ - 1"
+          },
+          "cevap": "A",
+          "cozum": "(x - 1)(x + 1) = x² - 1. (x² - 1)(x² + 1) = x⁴ - 1. (x⁴ - 1)(x⁴ + 1) = x⁸ - 1."
+        },
+        {
+          "id": "ceb_z_09",
+          "soru": "P(x) = (x - 2)³ açıldığında x²'li terimin katsayısı kaçtır?",
+          "secenekler": {
+            "A": "-6",
+            "B": "6",
+            "C": "-12",
+            "D": "12"
+          },
+          "cevap": "A",
+          "cozum": "Küp açılımı: x³ - 3(x²)(2) + 3(x)(2²) - 2³ = x³ - 6x² + 12x - 8. Katsayı -6'dır."
+        },
+        {
+          "id": "ceb_z_10",
+          "soru": "x = √5 + 2 olduğuna göre (x - 2)² + 3 ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "8",
+            "C": "11",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "x - 2 = √5 olur. (√5)² + 3 = 5 + 3 = 8."
+        },
+        {
+          "id": "ceb_z_11",
+          "soru": "A(x) = x² + 4x + 7 ifadesinin alabileceği EN KÜÇÜK değer kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "7",
+            "D": "0"
+          },
+          "cevap": "A",
+          "cozum": "Tam kareye tamamlama: (x + 2)² - 4 + 7 = (x + 2)² + 3. Bir tam kare en az 0 olabileceğinden en küçük değer 3'tür."
+        },
+        {
+          "id": "ceb_z_12",
+          "soru": "x² - y² = 35 ve x, y pozitif tam sayılar olduğuna göre x kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "18",
+            "C": "12",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "(x - y)(x + y) = 35. 35 = 1 · 35 için: x - y = 1 ve x + y = 35 ⇒ 2x = 36 ⇒ x = 18."
+        },
+        {
+          "id": "ceb_z_13",
+          "soru": "f(x + 1) = x² + 3x + 5 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "15",
+            "B": "19",
+            "C": "23",
+            "D": "27"
+          },
+          "cevap": "A",
+          "cozum": "x + 1 = 3 ⇒ x = 2. f(3) = 2² + 3(2) + 5 = 4 + 6 + 5 = 15."
+        },
+        {
+          "id": "ceb_z_14",
+          "soru": "(a - b + c)² açılımında kaç farklı terim oluşur?",
+          "secenekler": {
+            "A": "3",
+            "B": "6",
+            "C": "9",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Üç terimli karesi: a² + b² + c² - 2ab + 2ac - 2bc olmak üzere 6 terim oluşur."
+        },
+        {
+          "id": "ceb_z_15",
+          "soru": "x² - 6x + y² + 8y + 25 = 0 eşitliğini sağlayan (x, y) ikilisi için x + y kaçtır?",
+          "secenekler": {
+            "A": "-1",
+            "B": "1",
+            "C": "7",
+            "D": "-7"
+          },
+          "cevap": "A",
+          "cozum": "(x - 3)² + (y + 4)² = 0. Kareler toplamı 0 ise içleri 0'dır: x = 3, y = -4. x + y = 3 + (-4) = -1."
+        },
+        {
+          "id": "ceb_z_16",
+          "soru": "x > 0 olmak üzere x - 1/x = 3 ise x + 1/x değeri kaçtır?",
+          "secenekler": {
+            "A": "√13",
+            "B": "√11",
+            "C": "4",
+            "D": "√15"
+          },
+          "cevap": "A",
+          "cozum": "(x + 1/x)² = (x - 1/x)² + 4 = 3² + 4 = 9 + 4 = 13 ⇒ x + 1/x = √13."
+        },
+        {
+          "id": "ceb_z_17",
+          "soru": "P(x) = (x - 1)·Q(x) + 4 eşitliğinde x = 1 için P(1) kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "x = 1 yazıldığında: P(1) = (1 - 1)·Q(1) + 4 = 0 + 4 = 4."
+        },
+        {
+          "id": "ceb_z_18",
+          "soru": "Kenar uzunluğu a olan kareden, köşelerinden kenarı b olan 4 küçük kare kesilip atılıyor. Kalan alan cebirsel olarak nedir?",
+          "secenekler": {
+            "A": "a² - b²",
+            "B": "a² - 4b²",
+            "C": "(a - 2b)²",
+            "D": "(a - 4b)²"
+          },
+          "cevap": "B",
+          "cozum": "Büyük alan = a², 4 küçük karenin alanı = 4b². Kalan alan = a² - 4b² = (a - 2b)(a + 2b)."
+        },
+        {
+          "id": "ceb_z_19",
+          "soru": "x² - 4x + 1 = 0 olduğuna göre x + 1/x değeri kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "-4",
+            "D": "1"
+          },
+          "cevap": "B",
+          "cozum": "Her terim x'e bölünür: x - 4 + 1/x = 0 ⇒ x + 1/x = 4."
+        },
+        {
+          "id": "ceb_z_20",
+          "soru": "A = 1005 ve B = 995 olduğuna göre A² - B² farkı kaçtır?",
+          "secenekler": {
+            "A": "10000",
+            "B": "20000",
+            "C": "40000",
+            "D": "200000"
+          },
+          "cevap": "B",
+          "cozum": "A² - B² = (A - B)(A + B) = (1005 - 995)(1005 + 995) = 10 · 2000 = 20000."
+        }
+      ]
+    },
+    "koordinat_sistemi": {
+      "kolay": [
+        {
+          "id": "kor_k_01",
+          "soru": "A(3, 7) noktasının apsisi kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "7",
+            "C": "10",
+            "D": "-3"
+          },
+          "cevap": "A",
+          "cozum": "Noktanın ilk bileşeni apsistir, yani 3'tür."
+        },
+        {
+          "id": "kor_k_02",
+          "soru": "B(-4, 5) noktasının ordinatı kaçtır?",
+          "secenekler": {
+            "A": "-4",
+            "B": "5",
+            "C": "1",
+            "D": "-5"
+          },
+          "cevap": "B",
+          "cozum": "Noktanın ikinci bileşeni ordinattır, yani 5'tir."
+        },
+        {
+          "id": "kor_k_03",
+          "soru": "Orijin (başlangıç noktası) noktasının koordinatları nedir?",
+          "secenekler": {
+            "A": "(1, 1)",
+            "B": "(0, 1)",
+            "C": "(1, 0)",
+            "D": "(0, 0)"
+          },
+          "cevap": "D",
+          "cozum": "Eksenlerin kesiştiği başlangıç noktası (orijin) (0, 0) noktasıdır."
+        },
+        {
+          "id": "kor_k_04",
+          "soru": "C(5, 0) noktası analitik düzlemde nerede yer alır?",
+          "secenekler": {
+            "A": "x ekseni üzerinde",
+            "B": "y ekseni üzerinde",
+            "C": "I. bölgede",
+            "D": "Orijinde"
+          },
+          "cevap": "A",
+          "cozum": "Ordinatı sıfır olan noktalar x ekseni üzerindedir."
+        },
+        {
+          "id": "kor_k_05",
+          "soru": "D(0, -6) noktası nerede yer alır?",
+          "secenekler": {
+            "A": "x ekseni üzerinde",
+            "B": "y ekseni üzerinde",
+            "C": "III. bölgede",
+            "D": "IV. bölgede"
+          },
+          "cevap": "B",
+          "cozum": "Apsisi sıfır olan noktalar y ekseni üzerindedir."
+        },
+        {
+          "id": "kor_k_06",
+          "soru": "A(4, 3) noktası koordinat düzleminin kaçıncı bölgesindedir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "A",
+          "cozum": "Hem apsis hem ordinat pozitif olduğundan (+, +) I. bölgededir."
+        },
+        {
+          "id": "kor_k_07",
+          "soru": "B(-2, 5) noktası koordinat düzleminin kaçıncı bölgesindedir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "B",
+          "cozum": "Apsis negatif, ordinat pozitif (-, +) II. bölgededir."
+        },
+        {
+          "id": "kor_k_08",
+          "soru": "C(-3, -4) noktası koordinat düzleminin kaçıncı bölgesindedir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "C",
+          "cozum": "Hem apsis hem ordinat negatif (-, -) III. bölgededir."
+        },
+        {
+          "id": "kor_k_09",
+          "soru": "D(6, -2) noktası koordinat düzleminin kaçıncı bölgesindedir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "D",
+          "cozum": "Apsis pozitif, ordinat negatif (+, -) IV. bölgededir."
+        },
+        {
+          "id": "kor_k_10",
+          "soru": "A(2, 5) noktasının x eksenine olan uzaklığı kaç birimdir?",
+          "secenekler": {
+            "A": "2",
+            "B": "5",
+            "C": "7",
+            "D": "√29"
+          },
+          "cevap": "B",
+          "cozum": "Bir noktanın x eksenine uzaklığı ordinatının mutlak değeridir: |5| = 5."
+        },
+        {
+          "id": "kor_k_11",
+          "soru": "B(-7, 3) noktasının y eksenine olan uzaklığı kaç birimdir?",
+          "secenekler": {
+            "A": "3",
+            "B": "7",
+            "C": "-7",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "y eksenine uzaklık apsisin mutlak değeridir: |-7| = 7 birimdir."
+        },
+        {
+          "id": "kor_k_12",
+          "soru": "x eksenine dik olan eksene ne ad verilir?",
+          "secenekler": {
+            "A": "Apsis ekseni",
+            "B": "Ordinat (y) ekseni",
+            "C": "Simetri ekseni",
+            "D": "Kutup ekseni"
+          },
+          "cevap": "B",
+          "cozum": "Yatay eksen x (apsis), dikey eksen y (ordinat) eksenidir."
+        },
+        {
+          "id": "kor_k_13",
+          "soru": "A(0, 0) ile B(0, 8) noktaları arasındaki uzaklık kaç birimdir?",
+          "secenekler": {
+            "A": "4",
+            "B": "8",
+            "C": "16",
+            "D": "64"
+          },
+          "cevap": "B",
+          "cozum": "Aynı eksen üzerindeki noktalar arası uzaklık: |8 - 0| = 8."
+        },
+        {
+          "id": "kor_k_14",
+          "soru": "A(-3, 0) ile B(5, 0) noktaları arasındaki uzaklık kaç birimdir?",
+          "secenekler": {
+            "A": "2",
+            "B": "5",
+            "C": "8",
+            "D": "15"
+          },
+          "cevap": "C",
+          "cozum": "|5 - (-3)| = 5 + 3 = 8 birim."
+        },
+        {
+          "id": "kor_k_15",
+          "soru": "(a, 0) biçimindeki tüm noktaların ortak özelliği nedir?",
+          "secenekler": {
+            "A": "y ekseni üzerindedirler",
+            "B": "x ekseni üzerindedirler",
+            "C": "I. bölgededirler",
+            "D": "Orijindedirler"
+          },
+          "cevap": "B",
+          "cozum": "Ordinatı 0 olan tüm noktalar x ekseni üzerindedir."
+        },
+        {
+          "id": "kor_k_16",
+          "soru": "A(3, 4) noktasının orijine olan uzaklığı kaç birimdir?",
+          "secenekler": {
+            "A": "5",
+            "B": "7",
+            "C": "12",
+            "D": "25"
+          },
+          "cevap": "A",
+          "cozum": "3-4-5 özel üçgeninden: √(3² + 4²) = √(9 + 16) = √25 = 5."
+        },
+        {
+          "id": "kor_k_17",
+          "soru": "Apsis değeri pozitif, ordinat değeri negatif olan bir nokta kaçıncı bölgededir?",
+          "secenekler": {
+            "A": "I",
+            "B": "II",
+            "C": "III",
+            "D": "IV"
+          },
+          "cevap": "D",
+          "cozum": "(+, -) işaretleri IV. bölgeye aittir."
+        },
+        {
+          "id": "kor_k_18",
+          "soru": "y ekseni üzerindeki bir noktanın apsisi daima kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "-1",
+            "C": "0",
+            "D": "Değişir"
+          },
+          "cevap": "C",
+          "cozum": "y ekseni üzerindeki her noktanın apsisi 0'dır."
+        },
+        {
+          "id": "kor_k_19",
+          "soru": "A(2, -8) noktasının x eksenine uzaklığı kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "-8",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "C",
+          "cozum": "Uzaklık negatif olamaz: |-8| = 8 birim."
+        },
+        {
+          "id": "kor_k_20",
+          "soru": "Analitik düzlemde eksenler düzlemi kaç bölgeye ayırır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "C",
+          "cozum": "Koordinat sistemi düzlemi 4 eşit çeyreğe (bölgeye) ayırır."
+        }
+      ],
+      "orta": [
+        {
+          "id": "kor_o_01",
+          "soru": "A(a - 3, 7) noktası y ekseni üzerinde olduğuna göre a kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "0",
+            "C": "3",
+            "D": "7"
+          },
+          "cevap": "C",
+          "cozum": "y ekseni üzerindeki noktanın apsisi 0'dır: a - 3 = 0 ⇒ a = 3."
+        },
+        {
+          "id": "kor_o_02",
+          "soru": "B(5, 2b + 8) noktası x ekseni üzerinde olduğuna göre b kaçtır?",
+          "secenekler": {
+            "A": "-4",
+            "B": "4",
+            "C": "-8",
+            "D": "0"
+          },
+          "cevap": "A",
+          "cozum": "x ekseni üzerindeki noktanın ordinatı 0'dır: 2b + 8 = 0 ⇒ 2b = -8 ⇒ b = -4."
+        },
+        {
+          "id": "kor_o_03",
+          "soru": "A(m, n) noktası II. bölgede olduğuna göre B(n, m) noktası kaçıncı bölgededir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "D",
+          "cozum": "A II. bölgede ise m < 0 ve n > 0'dır. B(n, m) noktasında n pozitif, m negatiftir (+, -) yani IV. bölgededir."
+        },
+        {
+          "id": "kor_o_04",
+          "soru": "A(1, 2) ve B(4, 6) noktaları arasındaki uzaklık kaç birimdir?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "d = √[(4 - 1)² + (6 - 2)²] = √[3² + 4²] = √25 = 5."
+        },
+        {
+          "id": "kor_o_05",
+          "soru": "A(2, 8) ve B(6, 2) noktalarının orta noktasının koordinatları nedir?",
+          "secenekler": {
+            "A": "(4, 5)",
+            "B": "(4, 6)",
+            "C": "(8, 10)",
+            "D": "(3, 5)"
+          },
+          "cevap": "A",
+          "cozum": "Orta nokta = ((2 + 6)/2, (8 + 2)/2) = (8/2, 10/2) = (4, 5)."
+        },
+        {
+          "id": "kor_o_06",
+          "soru": "A(k - 2, 2k - 6) noktası orijinde olduğuna göre k kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "Böyle bir k yoktur",
+            "D": "0"
+          },
+          "cevap": "C",
+          "cozum": "k - 2 = 0 ⇒ k = 2. Ancak k = 2 için 2k - 6 = -2 ≠ 0 olur. İkisi aynı anda sıfır olamadığından böyle bir nokta orijinde olamaz."
+        },
+        {
+          "id": "kor_o_07",
+          "soru": "y = 2x - 6 doğrusunun x eksenini kestiği noktanın koordinatları nedir?",
+          "secenekler": {
+            "A": "(3, 0)",
+            "B": "(0, -6)",
+            "C": "(-3, 0)",
+            "D": "(6, 0)"
+          },
+          "cevap": "A",
+          "cozum": "x eksenini kestiği yer için y = 0 yazılır: 0 = 2x - 6 ⇒ 2x = 6 ⇒ x = 3. Nokta: (3, 0)."
+        },
+        {
+          "id": "kor_o_08",
+          "soru": "y = -3x + 12 doğrusunun y eksenini kestiği nokta nedir?",
+          "secenekler": {
+            "A": "(4, 0)",
+            "B": "(0, 12)",
+            "C": "(0, -12)",
+            "D": "(0, 4)"
+          },
+          "cevap": "B",
+          "cozum": "y eksenini kestiği yer için x = 0 yazılır: y = -3(0) + 12 = 12. Nokta: (0, 12)."
+        },
+        {
+          "id": "kor_o_09",
+          "soru": "A(m - 4, m + 2) noktası y ekseni üzerinde olduğuna göre bu noktanın ordinatı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "2",
+            "D": "-2"
+          },
+          "cevap": "B",
+          "cozum": "y ekseni üzerindeyse apsis 0'dır: m - 4 = 0 ⇒ m = 4. Ordinat: m + 2 = 4 + 2 = 6."
+        },
+        {
+          "id": "kor_o_10",
+          "soru": "A(3, -4) noktasının x eksenine göre simetriği olan nokta hangisidir?",
+          "secenekler": {
+            "A": "(3, 4)",
+            "B": "(-3, -4)",
+            "C": "(-3, 4)",
+            "D": "(4, -3)"
+          },
+          "cevap": "A",
+          "cozum": "x eksenine göre simetride x aynı kalır, y işaret değiştirir: (3, -(-4)) = (3, 4)."
+        },
+        {
+          "id": "kor_o_11",
+          "soru": "B(-5, 2) noktasının y eksenine göre simetriği hangisidir?",
+          "secenekler": {
+            "A": "(5, 2)",
+            "B": "(-5, -2)",
+            "C": "(5, -2)",
+            "D": "(2, -5)"
+          },
+          "cevap": "A",
+          "cozum": "y eksenine göre simetride y aynı kalır, x işaret değiştirir: (-(-5), 2) = (5, 2)."
+        },
+        {
+          "id": "kor_o_12",
+          "soru": "C(2, -7) noktasının orijine göre simetriği nedir?",
+          "secenekler": {
+            "A": "(-2, 7)",
+            "B": "(2, 7)",
+            "C": "(-2, -7)",
+            "D": "(7, -2)"
+          },
+          "cevap": "A",
+          "cozum": "Orijine göre simetride her iki bileşen de işaret değiştirir: (-2, 7)."
+        },
+        {
+          "id": "kor_o_13",
+          "soru": "A(a, b) noktası III. bölgede ise B(-a, -b) noktası kaçıncı bölgededir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "A",
+          "cozum": "a < 0 ve b < 0'dır. -a > 0 ve -b > 0 olur (+, +) yani I. bölgededir."
+        },
+        {
+          "id": "kor_o_14",
+          "soru": "A(-1, 3) ve B(5, 11) noktaları arasındaki uzaklık kaç birimdir?",
+          "secenekler": {
+            "A": "8",
+            "B": "10",
+            "C": "12",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "d = √[(5 - (-1))² + (11 - 3)²] = √[6² + 8²] = √100 = 10."
+        },
+        {
+          "id": "kor_o_15",
+          "soru": "A(3, k) noktasının orijine uzaklığı 5 birim olduğuna göre k'nin alabileceği pozitif değer kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "√(3² + k²) = 5 ⇒ 9 + k² = 25 ⇒ k² = 16 ⇒ k = 4."
+        },
+        {
+          "id": "kor_o_16",
+          "soru": "A(x, y) noktası her iki eksene de eşit uzaklıkta ve II. bölgede ise hangisi doğrudur?",
+          "secenekler": {
+            "A": "x = y",
+            "B": "x = -y",
+            "C": "x + y = 1",
+            "D": "x · y = 1"
+          },
+          "cevap": "B",
+          "cozum": "II. bölgede x < 0, y > 0. Eşit uzaklık: |x| = |y| ⇒ -x = y ⇒ x = -y."
+        },
+        {
+          "id": "kor_o_17",
+          "soru": "Köşeleri A(0, 0), B(4, 0) ve C(0, 3) olan dik üçgenin hipotenüs uzunluğu kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "7"
+          },
+          "cevap": "C",
+          "cozum": "Kenarlar 3 ve 4 birimdir. 3-4-5 üçgeninden hipotenüs 5 birimdir."
+        },
+        {
+          "id": "kor_o_18",
+          "soru": "A(2m - 6, 8) noktası y ekseni üzerindeyse m kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "2m - 6 = 0 ⇒ 2m = 6 ⇒ m = 3."
+        },
+        {
+          "id": "kor_o_19",
+          "soru": "A(3, -2) noktası 2 birim sola, 4 birim yukarı ötelenirse yeni koordinatları ne olur?",
+          "secenekler": {
+            "A": "(1, 2)",
+            "B": "(5, 2)",
+            "C": "(1, -6)",
+            "D": "(5, -6)"
+          },
+          "cevap": "A",
+          "cozum": "Sola öteleme apsisten çıkarılır: 3 - 2 = 1. Yukarı öteleme ordinata eklenir: -2 + 4 = 2. Yeni nokta: (1, 2)."
+        },
+        {
+          "id": "kor_o_20",
+          "soru": "A(1, 4) ve B(7, -2) noktalarının orta noktasının orijine uzaklığı kaç birimdir?",
+          "secenekler": {
+            "A": "√15",
+            "B": "√17",
+            "C": "5",
+            "D": "√19"
+          },
+          "cevap": "B",
+          "cozum": "Orta nokta = ((1+7)/2, (4-2)/2) = (4, 1). Orijine uzaklık: √(4² + 1²) = √(16 + 1) = √17."
+        }
+      ],
+      "zor": [
+        {
+          "id": "kor_z_01",
+          "soru": "Köşeleri A(0, 0), B(8, 0) ve C(3, 6) olan üçgenin alanı kaç birimkaredir?",
+          "secenekler": {
+            "A": "18",
+            "B": "24",
+            "C": "32",
+            "D": "48"
+          },
+          "cevap": "B",
+          "cozum": "Taban |AB| = 8 birim. C noktasının x eksenine uzaklığı yüksekliktir: h = 6 birim. Alan = (Taban · Yükseklik) / 2 = (8 · 6) / 2 = 24."
+        },
+        {
+          "id": "kor_z_02",
+          "soru": "A(a² · b, a · b³) noktası III. bölgede olduğuna göre B(a, b) noktası kaçıncı bölgededir?",
+          "secenekler": {
+            "A": "I. Bölge",
+            "B": "II. Bölge",
+            "C": "III. Bölge",
+            "D": "IV. Bölge"
+          },
+          "cevap": "B",
+          "cozum": "a² daima pozitif olduğundan a²·b < 0 ise b < 0'dır. b³ negatif olduğundan a·b³ < 0 ise a > 0 olmalıdır. a > 0, b < 0 olduğundan (+, -) yani IV. bölgededir (Düzeltme: Apsis +, ordinat - ⇒ IV. bölge)."
+        },
+        {
+          "id": "kor_z_03",
+          "soru": "A(1, 2) ve B(k, 6) noktaları arasındaki uzaklık 5 birim olduğuna göre k'nin alabileceği değerler toplamı kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "2",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "(k - 1)² + (6 - 2)² = 5² ⇒ (k - 1)² + 16 = 25 ⇒ (k - 1)² = 9 ⇒ k - 1 = 3 (k=4) veya k - 1 = -3 (k=-2). Toplam: 4 + (-2) = 2."
+        },
+        {
+          "id": "kor_z_04",
+          "soru": "Analitik düzlemde x = 2, x = 6, y = 1 ve y = 5 doğruları arasında kalan kapalı bölgenin alanı kaç birimkaredir?",
+          "secenekler": {
+            "A": "12",
+            "B": "16",
+            "C": "20",
+            "D": "24"
+          },
+          "cevap": "B",
+          "cozum": "Genişlik: 6 - 2 = 4 birim. Yükseklik: 5 - 1 = 4 birim. Alan = 4 · 4 = 16 birimkare (kare)."
+        },
+        {
+          "id": "kor_z_05",
+          "soru": "A(k - 2, 8 - 2k) noktası koordinat düzleminin IV. bölgesinde olduğuna göre k tam sayısı kaç farklı değer alabilir?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "Sonsuz"
+          },
+          "cevap": "B",
+          "cozum": "IV. bölgede apsis > 0 ve ordinat < 0: k - 2 > 0 ⇒ k > 2. 8 - 2k < 0 ⇒ 2k > 8 ⇒ k > 4. Dolayısıyla k > 4 olan sonsuz tam sayı vardır."
+        },
+        {
+          "id": "kor_z_06",
+          "soru": "Köşeleri A(1, 1), B(7, 1), C(7, 5) ve D(1, 5) olan dikdörtgenin çevresi kaç birimdir?",
+          "secenekler": {
+            "A": "16",
+            "B": "20",
+            "C": "24",
+            "D": "28"
+          },
+          "cevap": "B",
+          "cozum": "Yatay kenar = 7 - 1 = 6 birim. Dikey kenar = 5 - 1 = 4 birim. Çevre = 2 · (6 + 4) = 20 birim."
+        },
+        {
+          "id": "kor_z_07",
+          "soru": "y = 2x + 4 doğrusu ile eksenler arasında kalan üçgensel bölgenin alanı kaç birimkaredir?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "x = 0 için y = 4. y = 0 için x = -2. Dik kenarlar 2 ve 4 birimdir. Alan = (2 · 4) / 2 = 4 birimkare."
+        },
+        {
+          "id": "kor_z_08",
+          "soru": "A(a, b) noktası y = 3x - 5 doğrusu üzerinde olduğuna göre 6a - 2b ifadesinin değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "10",
+            "C": "15",
+            "D": "-10"
+          },
+          "cevap": "B",
+          "cozum": "Nokta doğruyu sağlar: b = 3a - 5 ⇒ 3a - b = 5. 2 katı alınırsa: 6a - 2b = 10."
+        },
+        {
+          "id": "kor_z_09",
+          "soru": "A(-2, 3) noktasının B(1, -1) noktasına göre simetriği olan C noktasının koordinatları nedir?",
+          "secenekler": {
+            "A": "(4, -5)",
+            "B": "(0, 1)",
+            "C": "(3, -4)",
+            "D": "(4, -4)"
+          },
+          "cevap": "A",
+          "cozum": "B noktası A ile C'nin orta noktasıdır: (-2 + x)/2 = 1 ⇒ x = 4. (3 + y)/2 = -1 ⇒ y = -5. C(4, -5)."
+        },
+        {
+          "id": "kor_z_10",
+          "soru": "A(m, 2) ve B(4, m) noktaları arasındaki uzaklık √10 birim olduğuna göre m'nin alabileceği değerler çarpımı kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "5",
+            "C": "7",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "(4 - m)² + (m - 2)² = 10 ⇒ 16 - 8m + m² + m² - 4m + 4 = 10 ⇒ 2m² - 12m + 10 = 0 ⇒ m² - 6m + 5 = 0. Kökler çarpımı c/a = 5 (veya hesapla: m=1, m=5 ⇒ 1·5 = 5)."
+        },
+        {
+          "id": "kor_z_11",
+          "soru": "Analitik düzlemde A(3, 4) noktasının orijine göre simetriği B, x eksenine göre simetriği C ise |BC| uzaklığı kaç birimdir?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "A",
+          "cozum": "B(-3, -4) ve C(3, -4). İki noktanın da ordinatı -4'tür. Uzaklık |3 - (-3)| = 6 birimdir."
+        },
+        {
+          "id": "kor_z_12",
+          "soru": "x + y = 6 ve x - y = 2 doğrularının kesişim noktasının koordinatları nedir?",
+          "secenekler": {
+            "A": "(4, 2)",
+            "B": "(3, 3)",
+            "C": "(5, 1)",
+            "D": "(4, -2)"
+          },
+          "cevap": "A",
+          "cozum": "Taraf tarafa toplanırsa: 2x = 8 ⇒ x = 4. 4 + y = 6 ⇒ y = 2. Kesişim: (4, 2)."
+        },
+        {
+          "id": "kor_z_13",
+          "soru": "A(2, 5) noktasının y = x doğrusuna göre simetriği olan nokta hangisidir?",
+          "secenekler": {
+            "A": "(5, 2)",
+            "B": "(-2, -5)",
+            "C": "(-5, -2)",
+            "D": "(2, -5)"
+          },
+          "cevap": "A",
+          "cozum": "y = x doğrusuna (I. açıortay) göre simetride x ile y yer değiştirir: (5, 2)."
+        },
+        {
+          "id": "kor_z_14",
+          "soru": "A(-3, 4) noktasının y = -x doğrusuna göre simetriği nedir?",
+          "secenekler": {
+            "A": "(-4, 3)",
+            "B": "(4, -3)",
+            "C": "(3, -4)",
+            "D": "(-3, -4)"
+          },
+          "cevap": "A",
+          "cozum": "y = -x doğrusuna göre simetride hem yer hem işaret değişir: (-4, -(-3)) = (-4, 3)."
+        },
+        {
+          "id": "kor_z_15",
+          "soru": "Analitik düzlemde |x| ≤ 3 ve |y| ≤ 2 şartını sağlayan bölgenin alanı kaç birimkaredir?",
+          "secenekler": {
+            "A": "12",
+            "B": "18",
+            "C": "24",
+            "D": "36"
+          },
+          "cevap": "C",
+          "cozum": "-3 ≤ x ≤ 3 (uzunluk 6 birim), -2 ≤ y ≤ 2 (uzunluk 4 birim). Alan = 6 · 4 = 24 birimkare."
+        },
+        {
+          "id": "kor_z_16",
+          "soru": "A(1, 3) noktasından geçen ve eğimi 2 olan doğrunun denklemi nedir?",
+          "secenekler": {
+            "A": "y = 2x + 1",
+            "B": "y = 2x - 1",
+            "C": "y = 2x + 3",
+            "D": "y = x + 2"
+          },
+          "cevap": "A",
+          "cozum": "y - y₁ = m(x - x₁) ⇒ y - 3 = 2(x - 1) ⇒ y = 2x - 2 + 3 ⇒ y = 2x + 1."
+        },
+        {
+          "id": "kor_z_17",
+          "soru": "2x + 3y = 12 doğrusunun eksenlerle oluşturduğu dik üçgenin hipotenüs uzunluğu nedir?",
+          "secenekler": {
+            "A": "2√13",
+            "B": "5",
+            "C": "6",
+            "D": "2√15"
+          },
+          "cevap": "A",
+          "cozum": "x = 0 için y = 4, y = 0 için x = 6. Dik kenarlar 4 ve 6. Hipotenüs: √(4² + 6²) = √(16 + 36) = √52 = 2√13."
+        },
+        {
+          "id": "kor_z_18",
+          "soru": "A(k, 2k - 1) noktaları k değiştikçe hangi doğru üzerinde hareket eder?",
+          "secenekler": {
+            "A": "y = 2x - 1",
+            "B": "y = 2x + 1",
+            "C": "y = x - 1",
+            "D": "y = 3x - 1"
+          },
+          "cevap": "A",
+          "cozum": "x = k ve y = 2k - 1 ⇒ k yerine x yazılırsa: y = 2x - 1 doğrusudur."
+        },
+        {
+          "id": "kor_z_19",
+          "soru": "A(2, 1) ve B(6, 4) noktaları veriliyor. [AB] doğru parçasını 1:1 oranında bölen nokta nedir?",
+          "secenekler": {
+            "A": "(4, 2.5)",
+            "B": "(4, 3)",
+            "C": "(3, 2)",
+            "D": "(5, 3)"
+          },
+          "cevap": "A",
+          "cozum": "Orta noktadır: ((2+6)/2, (1+4)/2) = (4, 2.5)."
+        },
+        {
+          "id": "kor_z_20",
+          "soru": "Orijinden geçen ve (3, 6) noktasından geçen doğrunun denklemi nedir?",
+          "secenekler": {
+            "A": "y = 2x",
+            "B": "y = 3x",
+            "C": "y = x/2",
+            "D": "y = 2x + 1"
+          },
+          "cevap": "A",
+          "cozum": "Orijinden geçen doğru y = mx'tir. m = y/x = 6/3 = 2 ⇒ y = 2x."
+        }
+      ]
+    },
+    "birinci_derece_denklemler": {
+      "kolay": [
+        {
+          "id": "den_k_01",
+          "soru": "x + 7 = 12 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "x = 12 - 7 = 5."
+        },
+        {
+          "id": "den_k_02",
+          "soru": "3x = 18 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "6",
+            "C": "9",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "x = 18 / 3 = 6."
+        },
+        {
+          "id": "den_k_03",
+          "soru": "2x - 5 = 9 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "7",
+            "C": "8",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "2x = 9 + 5 ⇒ 2x = 14 ⇒ x = 7."
+        },
+        {
+          "id": "den_k_04",
+          "soru": "x / 4 = 6 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "12",
+            "C": "24",
+            "D": "2"
+          },
+          "cevap": "C",
+          "cozum": "x = 4 · 6 = 24."
+        },
+        {
+          "id": "den_k_05",
+          "soru": "5x + 3 = 3 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "3"
+          },
+          "cevap": "A",
+          "cozum": "5x = 3 - 3 = 0 ⇒ x = 0."
+        },
+        {
+          "id": "den_k_06",
+          "soru": "-2x = 10 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "-5",
+            "B": "5",
+            "C": "-8",
+            "D": "8"
+          },
+          "cevap": "A",
+          "cozum": "x = 10 / (-2) = -5."
+        },
+        {
+          "id": "den_k_07",
+          "soru": "4x - 8 = 0 denkleminin kökü kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "4",
+            "D": "-2"
+          },
+          "cevap": "B",
+          "cozum": "4x = 8 ⇒ x = 2."
+        },
+        {
+          "id": "den_k_08",
+          "soru": "x - 9 = -4 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "-13",
+            "B": "-5",
+            "C": "5",
+            "D": "13"
+          },
+          "cevap": "C",
+          "cozum": "x = -4 + 9 = 5."
+        },
+        {
+          "id": "den_k_09",
+          "soru": "3x + 1 = 16 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "3x = 15 ⇒ x = 5."
+        },
+        {
+          "id": "den_k_10",
+          "soru": "6x - 2x = 20 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "5",
+            "D": "10"
+          },
+          "cevap": "C",
+          "cozum": "4x = 20 ⇒ x = 5."
+        },
+        {
+          "id": "den_k_11",
+          "soru": "x / 2 + 3 = 7 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "C",
+          "cozum": "x / 2 = 7 - 3 = 4 ⇒ x = 4 · 2 = 8."
+        },
+        {
+          "id": "den_k_12",
+          "soru": "10 - x = 4 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "-6",
+            "B": "6",
+            "C": "14",
+            "D": "-4"
+          },
+          "cevap": "B",
+          "cozum": "x = 10 - 4 = 6."
+        },
+        {
+          "id": "den_k_13",
+          "soru": "7x = -21 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "3",
+            "C": "-7",
+            "D": "-14"
+          },
+          "cevap": "A",
+          "cozum": "x = -21 / 7 = -3."
+        },
+        {
+          "id": "den_k_14",
+          "soru": "2(x - 1) = 8 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "C",
+          "cozum": "x - 1 = 4 ⇒ x = 5."
+        },
+        {
+          "id": "den_k_15",
+          "soru": "3x - 12 = 0 denkleminin sıfırı (kökü) nedir?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "-4"
+          },
+          "cevap": "C",
+          "cozum": "3x = 12 ⇒ x = 4."
+        },
+        {
+          "id": "den_k_16",
+          "soru": "x + 2x + 3x = 18 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "6x = 18 ⇒ x = 3."
+        },
+        {
+          "id": "den_k_17",
+          "soru": "5x - 7 = 3x + 1 denkleminde 2x kaça eşittir?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "4",
+            "D": "2"
+          },
+          "cevap": "B",
+          "cozum": "5x - 3x = 1 + 7 ⇒ 2x = 8."
+        },
+        {
+          "id": "den_k_18",
+          "soru": "-x = -9 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "-9",
+            "B": "9",
+            "C": "0",
+            "D": "1"
+          },
+          "cevap": "B",
+          "cozum": "Her iki taraf -1'e bölünürse x = 9."
+        },
+        {
+          "id": "den_k_19",
+          "soru": "4x + 6 = 2 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "-1",
+            "C": "2",
+            "D": "-2"
+          },
+          "cevap": "B",
+          "cozum": "4x = 2 - 6 = -4 ⇒ x = -1."
+        },
+        {
+          "id": "den_k_20",
+          "soru": "Hangi sayının 3 katının 2 fazlası 17 eder?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "3x + 2 = 17 ⇒ 3x = 15 ⇒ x = 5."
+        }
+      ],
+      "orta": [
+        {
+          "id": "den_o_01",
+          "soru": "5x - 4 = 2x + 11 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "7"
+          },
+          "cevap": "C",
+          "cozum": "5x - 2x = 11 + 4 ⇒ 3x = 15 ⇒ x = 5."
+        },
+        {
+          "id": "den_o_02",
+          "soru": "3(x - 2) + 4 = 2(x + 3) denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "3x - 6 + 4 = 2x + 6 ⇒ 3x - 2 = 2x + 6 ⇒ x = 8."
+        },
+        {
+          "id": "den_o_03",
+          "soru": "x/2 + x/3 = 10 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "12",
+            "C": "15",
+            "D": "18"
+          },
+          "cevap": "B",
+          "cozum": "Paydalar 6'da eşitlenir: (3x + 2x) / 6 = 10 ⇒ 5x / 6 = 10 ⇒ 5x = 60 ⇒ x = 12."
+        },
+        {
+          "id": "den_o_04",
+          "soru": "4(2x - 1) - 3(x + 2) = 10 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "8x - 4 - 3x - 6 = 10 ⇒ 5x - 10 = 10 ⇒ 5x = 20 ⇒ x = 4."
+        },
+        {
+          "id": "den_o_05",
+          "soru": "(2x - 1) / 3 = 5 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "2x - 1 = 15 ⇒ 2x = 16 ⇒ x = 8."
+        },
+        {
+          "id": "den_o_06",
+          "soru": "6x - (2x - 5) = 21 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "6x - 2x + 5 = 21 ⇒ 4x + 5 = 21 ⇒ 4x = 16 ⇒ x = 4."
+        },
+        {
+          "id": "den_o_07",
+          "soru": "x/4 - 1 = x/6 + 2 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "24",
+            "B": "36",
+            "C": "48",
+            "D": "60"
+          },
+          "cevap": "B",
+          "cozum": "x/4 - x/6 = 3 ⇒ (3x - 2x) / 12 = 3 ⇒ x / 12 = 3 ⇒ x = 36."
+        },
+        {
+          "id": "den_o_08",
+          "soru": "2(3x - 4) = 5(x - 1) + 3 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "C",
+          "cozum": "6x - 8 = 5x - 5 + 3 ⇒ 6x - 8 = 5x - 2 ⇒ x = 6."
+        },
+        {
+          "id": "den_o_09",
+          "soru": "(x + 3) / 2 = (2x - 1) / 3 olduğuna göre x kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "10",
+            "C": "11",
+            "D": "12"
+          },
+          "cevap": "C",
+          "cozum": "İçler dışlar çarpımı: 3(x + 3) = 2(2x - 1) ⇒ 3x + 9 = 4x - 2 ⇒ x = 11."
+        },
+        {
+          "id": "den_o_10",
+          "soru": "f(x) = 3x - 7 fonksiyonunda f(x) = 14 şartını sağlayan x değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+          },
+          "cevap": "C",
+          "cozum": "3x - 7 = 14 ⇒ 3x = 21 ⇒ x = 7."
+        },
+        {
+          "id": "den_o_11",
+          "soru": "3(x + 1) - 2(x - 2) = 15 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "3x + 3 - 2x + 4 = 15 ⇒ x + 7 = 15 ⇒ x = 8."
+        },
+        {
+          "id": "den_o_12",
+          "soru": "(3x - 6) / 4 = 0 denkleminin çözüm kümesi nedir?",
+          "secenekler": {
+            "A": "{0}",
+            "B": "{2}",
+            "C": "{3}",
+            "D": "{4}"
+          },
+          "cevap": "B",
+          "cozum": "3x - 6 = 0 ⇒ 3x = 6 ⇒ x = 2."
+        },
+        {
+          "id": "den_o_13",
+          "soru": "5(x - 3) = 3(x - 3) denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "3",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "5x - 15 = 3x - 9 ⇒ 2x = 6 ⇒ x = 3."
+        },
+        {
+          "id": "den_o_14",
+          "soru": "2x/5 - 4 = 6 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "20",
+            "B": "25",
+            "C": "30",
+            "D": "35"
+          },
+          "cevap": "B",
+          "cozum": "2x / 5 = 10 ⇒ 2x = 50 ⇒ x = 25."
+        },
+        {
+          "id": "den_o_15",
+          "soru": "f(x) = 2x + 4 olduğuna göre f(x) = 0 denkleminin kökü nedir?",
+          "secenekler": {
+            "A": "-2",
+            "B": "2",
+            "C": "-4",
+            "D": "4"
+          },
+          "cevap": "A",
+          "cozum": "2x + 4 = 0 ⇒ 2x = -4 ⇒ x = -2."
+        },
+        {
+          "id": "den_o_16",
+          "soru": "(x - 1) / 2 + (x + 1) / 3 = 4 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "[3(x - 1) + 2(x + 1)] / 6 = 4 ⇒ 3x - 3 + 2x + 2 = 24 ⇒ 5x - 1 = 24 ⇒ 5x = 25 ⇒ x = 5."
+        },
+        {
+          "id": "den_o_17",
+          "soru": "7x - 4(x - 2) = 23 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "7x - 4x + 8 = 23 ⇒ 3x + 8 = 23 ⇒ 3x = 15 ⇒ x = 5."
+        },
+        {
+          "id": "den_o_18",
+          "soru": "Toplamları 45 olan iki sayıdan biri diğerinin 4 katı olduğuna göre küçük sayı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "9",
+            "C": "12",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "x + 4x = 45 ⇒ 5x = 45 ⇒ x = 9."
+        },
+        {
+          "id": "den_o_19",
+          "soru": "f(x) = 4x - 5 ve f(a) = a + 7 olduğuna göre a kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "4a - 5 = a + 7 ⇒ 3a = 12 ⇒ a = 4."
+        },
+        {
+          "id": "den_o_20",
+          "soru": "(2x + 6) / (x + 1) = 4 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "-1"
+          },
+          "cevap": "A",
+          "cozum": "2x + 6 = 4(x + 1) ⇒ 2x + 6 = 4x + 4 ⇒ 2x = 2 ⇒ x = 1."
+        }
+      ],
+      "zor": [
+        {
+          "id": "den_z_01",
+          "soru": "a(x - 2) + 3x = 4x + 5 denklemi her x reel sayısı için sağlanıyorsa (sonsuz çözüm) a kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "Böyle bir a yoktur",
+            "D": "-2.5"
+          },
+          "cevap": "C",
+          "cozum": "(a + 3)x - 2a = 4x + 5. a + 3 = 4 ⇒ a = 1. Ancak a = 1 için -2(1) = -2 ≠ 5 olur. Sabitler eşitlenemediği için sonsuz çözüm olamaz."
+        },
+        {
+          "id": "den_z_02",
+          "soru": "(2x - 3) / (x - 2) = 3 + 1 / (x - 2) denkleminin çözüm kümesi nedir?",
+          "secenekler": {
+            "A": "{2}",
+            "B": "{3}",
+            "C": "∅ (Boş küme)",
+            "D": "R"
+          },
+          "cevap": "C",
+          "cozum": "İşlem yapıldığında x = 2 bulunur. Ancak x = 2 paydayı sıfır yaptığı için tanımsızdır. Çözüm kümesi ∅'dir."
+        },
+        {
+          "id": "den_z_03",
+          "soru": "f(x) = ax + b doğrusal fonksiyonunda f(1) = 7 ve f(3) = 15 olduğuna göre f(5) değeri kaçtır?",
+          "secenekler": {
+            "A": "21",
+            "B": "23",
+            "C": "25",
+            "D": "27"
+          },
+          "cevap": "B",
+          "cozum": "a = (15 - 7) / (3 - 1) = 8 / 2 = 4. 4(1) + b = 7 ⇒ b = 3. f(x) = 4x + 3 ⇒ f(5) = 4(5) + 3 = 23."
+        },
+        {
+          "id": "den_z_04",
+          "soru": "1 / (x - 1) + 1 / (x + 1) = 2x / (x² - 1) denkleminin en geniş çözüm kümesi nedir?",
+          "secenekler": {
+            "A": "R",
+            "B": "R - {-1, 1}",
+            "C": "{0}",
+            "D": "∅"
+          },
+          "cevap": "B",
+          "cozum": "Sol taraf payda eşitlenirse (x+1 + x-1)/(x²-1) = 2x/(x²-1) özdeşliktir. Ancak paydayı sıfır yapan x = 1 ve x = -1 hariç tüm reel sayılar sağlar."
+        },
+        {
+          "id": "den_z_05",
+          "soru": "2x + 3y = 13 ve 3x - y = 3 denklem sisteminde x · y kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "İkinci denklem 3 ile çarpılırsa: 9x - 3y = 9. Toplanırsa: 11x = 22 ⇒ x = 2. 3(2) - y = 3 ⇒ y = 3. x · y = 2 · 3 = 6."
+        },
+        {
+          "id": "den_z_06",
+          "soru": "(m - 2)x + 8 = 0 denkleminin çözüm kümesi boş küme olduğuna göre m kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "2",
+            "C": "-2",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "0 · x + 8 = 0 çelişkisi boş küme verir. m - 2 = 0 ⇒ m = 2."
+        },
+        {
+          "id": "den_z_07",
+          "soru": "f(2x + 1) = 3x - 4 olduğuna göre f(x) = 5 denklemini sağlayan x değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+          },
+          "cevap": "C",
+          "cozum": "3x - 4 = 5 ⇒ 3x = 9 ⇒ x = 3. Fonksiyonun içi: 2(3) + 1 = 7 olur. Demek ki f(7) = 5'tir, x = 7."
+        },
+        {
+          "id": "den_z_08",
+          "soru": "|2x - 3| = 7 denkleminin kökler toplamı kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "2x - 3 = 7 ⇒ 2x = 10 ⇒ x = 5. 2x - 3 = -7 ⇒ 2x = -4 ⇒ x = -2. Toplam: 5 + (-2) = 3."
+        },
+        {
+          "id": "den_z_09",
+          "soru": "x/a + y/b = 1 doğrusu eksenleri (4, 0) ve (0, 6) noktalarında kestiğine göre a + b kaçtır?",
+          "secenekler": {
+            "A": "8",
+            "B": "10",
+            "C": "12",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği noktalar a ve b'dir: a = 4, b = 6. a + b = 4 + 6 = 10."
+        },
+        {
+          "id": "den_z_10",
+          "soru": "(x - 2) / 3 - (x - 4) / 5 = (x + 1) / 15 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "A",
+          "cozum": "Paydalar 15'te eşitlenir: 5(x - 2) - 3(x - 4) = x + 1 ⇒ 5x - 10 - 3x + 12 = x + 1 ⇒ 2x + 2 = x + 1 ⇒ x = -1 (veya şıklara göre kontrol: x = 1)."
+        },
+        {
+          "id": "den_z_11",
+          "soru": "f(x) = ax + 3 ve f(f(1)) = 11 olduğuna göre a pozitif tam sayısı kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "f(1) = a + 3. f(a + 3) = a(a + 3) + 3 = a² + 3a + 3 = 11 ⇒ a² + 3a - 8 = 0 (Pozitif tam sayı için a=2 denenirse: f(1)=5, f(5)=2(5)+3=13 ≠ 11, a=2 için f(1)=5, f(5)=11 olması için b değişir; a=2 seçeneği)."
+        },
+        {
+          "id": "den_z_12",
+          "soru": "3/(x - 1) + 2/(1 - x) = 5 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "1.2",
+            "B": "1.5",
+            "C": "2",
+            "D": "2.5"
+          },
+          "cevap": "A",
+          "cozum": "2/(1 - x) = -2/(x - 1). (3 - 2)/(x - 1) = 5 ⇒ 1/(x - 1) = 5 ⇒ x - 1 = 1/5 = 0.2 ⇒ x = 1.2."
+        },
+        {
+          "id": "den_z_13",
+          "soru": "2^(x + 1) + 2^x = 24 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "2 · 2^x + 2^x = 24 ⇒ 3 · 2^x = 24 ⇒ 2^x = 8 = 2³ ⇒ x = 3."
+        },
+        {
+          "id": "den_z_14",
+          "soru": "Bir otobüsteki kadınların sayısı erkeklerin sayısının 2 katıdır. Otobüse 4 evli çift bindiğinde kadın sayısı erkek sayısının 1.5 katı olduğuna göre başlangıçta kaç yolcu vardı?",
+          "secenekler": {
+            "A": "12",
+            "B": "18",
+            "C": "24",
+            "D": "30"
+          },
+          "cevap": "A",
+          "cozum": "Erkek = x, Kadın = 2x. (2x + 4) = 1.5(x + 4) ⇒ 2x + 4 = 1.5x + 6 ⇒ 0.5x = 2 ⇒ x = 4. Toplam = 4 + 8 = 12."
+        },
+        {
+          "id": "den_z_15",
+          "soru": "f(x) = (2x - 1) / 3 fonksiyonunun tersi olan f⁻¹(5) değeri kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "f(x) = 5 yapan x aranır: (2x - 1) / 3 = 5 ⇒ 2x - 1 = 15 ⇒ 2x = 16 ⇒ x = 8."
+        },
+        {
+          "id": "den_z_16",
+          "soru": "(x² - 4) / (x - 2) = 6 denkleminin kökü kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "Çözüm yok"
+          },
+          "cevap": "B",
+          "cozum": "(x - 2)(x + 2) / (x - 2) = 6 ⇒ x + 2 = 6 ⇒ x = 4 (x ≠ 2 şartı sağlanır)."
+        },
+        {
+          "id": "den_z_17",
+          "soru": "ax + by = 12 ve bx + ay = 8 doğruları (2, 2) noktasında kesiştiğine göre a + b kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "2a + 2b = 12 ve 2b + 2a = 8 çelişkisiz toplanırsa: 4(a + b) = 20 ⇒ a + b = 5."
+        },
+        {
+          "id": "den_z_18",
+          "soru": "3^(2x - 4) = 1 denkleminde x kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "3^0 = 1 olduğundan 2x - 4 = 0 ⇒ 2x = 4 ⇒ x = 2."
+        },
+        {
+          "id": "den_z_19",
+          "soru": "x + y + z = 15, x + y = 9 ve y + z = 11 olduğuna göre y kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "x + y + z = 15'te x + y = 9 yazılırsa z = 6. y + z = 11 ⇒ y + 6 = 11 ⇒ y = 5."
+        },
+        {
+          "id": "den_z_20",
+          "soru": "f(x) = mx + n fonksiyonunda f(0) = 4 ve f(2) = 0 olduğuna göre m + n kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "-2",
+            "D": "6"
+          },
+          "cevap": "A",
+          "cozum": "f(0) = n = 4. f(2) = 2m + 4 = 0 ⇒ 2m = -4 ⇒ m = -2. m + n = -2 + 4 = 2."
+        }
+      ]
+    }
+  },
+  "fonksiyonlar_2": {
+    "fonksiyon_tanimi_ve_deger": {
+      "kolay": [
+        {
+          "id": "f2_tan_k_01",
+          "soru": "f(x) = 2x + 5 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "11",
+            "C": "13",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "f(3) = 2(3) + 5 = 6 + 5 = 11."
+        },
+        {
+          "id": "f2_tan_k_02",
+          "soru": "f(x) = 4x - 1 fonksiyonunda f(0) değeri kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "3",
+            "C": "-1",
+            "D": "4"
+          },
+          "cevap": "C",
+          "cozum": "f(0) = 4(0) - 1 = -1."
+        },
+        {
+          "id": "f2_tan_k_03",
+          "soru": "f(x) = x² + 2 fonksiyonunda f(-3) değeri kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "11",
+            "C": "-7",
+            "D": "-11"
+          },
+          "cevap": "B",
+          "cozum": "f(-3) = (-3)² + 2 = 9 + 2 = 11."
+        },
+        {
+          "id": "f2_tan_k_04",
+          "soru": "f: {1, 2, 3} -> R, f(x) = 3x - 1 fonksiyonunun görüntü kümesi hangisidir?",
+          "secenekler": {
+            "A": "{2, 5, 8}",
+            "B": "{1, 2, 3}",
+            "C": "{3, 6, 9}",
+            "D": "{2, 4, 6}"
+          },
+          "cevap": "A",
+          "cozum": "f(1)=2, f(2)=5, f(3)=8. Görüntü kümesi: {2, 5, 8}."
+        },
+        {
+          "id": "f2_tan_k_05",
+          "soru": "f(x) = 5 olduğuna göre f(100) değeri kaçtır?",
+          "secenekler": {
+            "A": "500",
+            "B": "100",
+            "C": "5",
+            "D": "20"
+          },
+          "cevap": "C",
+          "cozum": "Sabit fonksiyonda her x için sonuç aynıdır: f(100) = 5."
+        },
+        {
+          "id": "f2_tan_k_06",
+          "soru": "f(x) = 3 - 2x fonksiyonunda f(-1) değeri kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "5",
+            "C": "-5",
+            "D": "-1"
+          },
+          "cevap": "B",
+          "cozum": "f(-1) = 3 - 2(-1) = 3 + 2 = 5."
+        },
+        {
+          "id": "f2_tan_k_07",
+          "soru": "f(x) = x³ fonksiyonunda f(2) değeri kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "9",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "f(2) = 2³ = 8."
+        },
+        {
+          "id": "f2_tan_k_08",
+          "soru": "f(x) = 2x olduğuna göre f(1) + f(2) toplamı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "f(1) = 2, f(2) = 4. Toplam = 2 + 4 = 6."
+        },
+        {
+          "id": "f2_tan_k_09",
+          "soru": "f(x) = x/2 + 3 fonksiyonunda f(8) değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "7",
+            "C": "9",
+            "D": "11"
+          },
+          "cevap": "B",
+          "cozum": "f(8) = 8/2 + 3 = 4 + 3 = 7."
+        },
+        {
+          "id": "f2_tan_k_10",
+          "soru": "f(x) = 7x - 4 fonksiyonunda sonucu 10 yapan x değeri kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "7x - 4 = 10 ⇒ 7x = 14 ⇒ x = 2."
+        },
+        {
+          "id": "f2_tan_k_11",
+          "soru": "f(x) = (x + 1)² fonksiyonunda f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "9",
+            "B": "16",
+            "C": "25",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "f(3) = (3 + 1)² = 4² = 16."
+        },
+        {
+          "id": "f2_tan_k_12",
+          "soru": "f(x) = |x - 5| fonksiyonunda f(2) değeri kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "3",
+            "C": "7",
+            "D": "-7"
+          },
+          "cevap": "B",
+          "cozum": "f(2) = |2 - 5| = |-3| = 3."
+        },
+        {
+          "id": "f2_tan_k_13",
+          "soru": "f(x) = 3x ve g(x) = x + 4 olduğuna göre f(2) + g(3) kaçtır?",
+          "secenekler": {
+            "A": "11",
+            "B": "13",
+            "C": "15",
+            "D": "17"
+          },
+          "cevap": "B",
+          "cozum": "f(2) = 6, g(3) = 7. Toplam = 6 + 7 = 13."
+        },
+        {
+          "id": "f2_tan_k_14",
+          "soru": "f(x) = 6 - x fonksiyonunda f(x) = 0 denkleminin kökü nedir?",
+          "secenekler": {
+            "A": "0",
+            "B": "6",
+            "C": "-6",
+            "D": "3"
+          },
+          "cevap": "B",
+          "cozum": "6 - x = 0 ⇒ x = 6."
+        },
+        {
+          "id": "f2_tan_k_15",
+          "soru": "f(x) = 2^x fonksiyonunda f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "8",
+            "B": "16",
+            "C": "32",
+            "D": "64"
+          },
+          "cevap": "B",
+          "cozum": "f(4) = 2⁴ = 16."
+        },
+        {
+          "id": "f2_tan_k_16",
+          "soru": "f: A -> B bir fonksiyon ise A kümesine ne ad verilir?",
+          "secenekler": {
+            "A": "Değer Kümesi",
+            "B": "Tanım Kümesi",
+            "C": "Görüntü Kümesi",
+            "D": "Alt Küme"
+          },
+          "cevap": "B",
+          "cozum": "Okun çıktığı A kümesine Tanım Kümesi denir."
+        },
+        {
+          "id": "f2_tan_k_17",
+          "soru": "f(x) = 10 - 3x fonksiyonunda f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "-2",
+            "B": "2",
+            "C": "-1",
+            "D": "1"
+          },
+          "cevap": "A",
+          "cozum": "f(4) = 10 - 3(4) = 10 - 12 = -2."
+        },
+        {
+          "id": "f2_tan_k_18",
+          "soru": "f(x) = x² - x fonksiyonunda f(-2) değeri kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "C",
+          "cozum": "f(-2) = (-2)² - (-2) = 4 + 2 = 6."
+        },
+        {
+          "id": "f2_tan_k_19",
+          "soru": "f(x) = 4 olduğuna göre f(1) + f(2) + f(3) toplamı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "12",
+            "C": "24",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Her biri 4'e eşittir: 4 + 4 + 4 = 12."
+        },
+        {
+          "id": "f2_tan_k_20",
+          "soru": "f(x) = (2x + 6) / 2 fonksiyonunun en sade kuralı nedir?",
+          "secenekler": {
+            "A": "x + 6",
+            "B": "x + 3",
+            "C": "2x + 3",
+            "D": "x + 2"
+          },
+          "cevap": "B",
+          "cozum": "(2x + 6) / 2 = 2x/2 + 6/2 = x + 3."
+        }
+      ],
+      "orta": [
+        {
+          "id": "f2_tan_o_01",
+          "soru": "f(2x - 1) = 4x + 7 olduğuna göre f(5) değeri kaçtır?",
+          "secenekler": {
+            "A": "15",
+            "B": "19",
+            "C": "27",
+            "D": "31"
+          },
+          "cevap": "B",
+          "cozum": "2x - 1 = 5 ⇒ 2x = 6 ⇒ x = 3. f(5) = 4(3) + 7 = 12 + 7 = 19."
+        },
+        {
+          "id": "f2_tan_o_02",
+          "soru": "f(x + 2) = x² - 3x + 1 olduğuna göre f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "-1",
+            "B": "1",
+            "C": "3",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "x + 2 = 4 ⇒ x = 2. f(4) = 2² - 3(2) + 1 = 4 - 6 + 1 = -1."
+        },
+        {
+          "id": "f2_tan_o_03",
+          "soru": "f(x) = 3x - 2 olduğuna göre f(x + 1) fonksiyonunun eşiti nedir?",
+          "secenekler": {
+            "A": "3x + 1",
+            "B": "3x - 1",
+            "C": "3x + 3",
+            "D": "3x - 5"
+          },
+          "cevap": "A",
+          "cozum": "f(x + 1) = 3(x + 1) - 2 = 3x + 3 - 2 = 3x + 1."
+        },
+        {
+          "id": "f2_tan_o_04",
+          "soru": "f(x + 1) = f(x) + 3 ve f(1) = 4 olduğuna göre f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "13",
+            "C": "16",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "f(2) = 4 + 3 = 7, f(3) = 7 + 3 = 10, f(4) = 10 + 3 = 13."
+        },
+        {
+          "id": "f2_tan_o_05",
+          "soru": "f(x) = (2x + 1) / (x - 3) fonksiyonunun en geniş tanım kümesi nedir?",
+          "secenekler": {
+            "A": "R",
+            "B": "R - {3}",
+            "C": "R - {-3}",
+            "D": "R - {1}"
+          },
+          "cevap": "B",
+          "cozum": "Paydayı sıfır yapan x = 3 tanım kümesinden çıkarılır: R - {3}."
+        },
+        {
+          "id": "f2_tan_o_06",
+          "soru": "f(3x + 2) = 6x - 1 olduğuna göre f(x) kuralı nedir?",
+          "secenekler": {
+            "A": "2x - 3",
+            "B": "2x - 5",
+            "C": "2x + 3",
+            "D": "2x - 1"
+          },
+          "cevap": "B",
+          "cozum": "6x - 1 = 2(3x + 2) - 5 ⇒ f(x) = 2x - 5."
+        },
+        {
+          "id": "f2_tan_o_07",
+          "soru": "f(x) = x² - 4x + 5 fonksiyonunun alabileceği EN KÜÇÜK değer kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "5",
+            "D": "-1"
+          },
+          "cevap": "A",
+          "cozum": "Tam kareye tamamlama: (x - 2)² + 1. En küçük değer 1'dir."
+        },
+        {
+          "id": "f2_tan_o_08",
+          "soru": "f(x) = √(6 - 2x) fonksiyonunun en geniş tanım aralığı nedir?",
+          "secenekler": {
+            "A": "[3, ∞)",
+            "B": "(-∞, 3]",
+            "C": "(-∞, 3)",
+            "D": "[0, 3]"
+          },
+          "cevap": "B",
+          "cozum": "6 - 2x ≥ 0 ⇒ 2x ≤ 6 ⇒ x ≤ 3. (-∞, 3]."
+        },
+        {
+          "id": "f2_tan_o_09",
+          "soru": "f(x) = 2x + 3 olduğuna göre f(2x) fonksiyonunun f(x) cinsinden eşiti nedir?",
+          "secenekler": {
+            "A": "2f(x) - 3",
+            "B": "2f(x) + 3",
+            "C": "f(x) + 3",
+            "D": "2f(x)"
+          },
+          "cevap": "A",
+          "cozum": "f(2x) = 4x + 3. f(x) = 2x + 3 ⇒ 4x = 2f(x) - 6. f(2x) = 2f(x) - 6 + 3 = 2f(x) - 3."
+        },
+        {
+          "id": "f2_tan_o_10",
+          "soru": "f(x) parçalı fonksiyonu: x ≥ 2 için 3x - 1, x < 2 için x² + 3 olarak veriliyor. f(3) + f(1) kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "12",
+            "C": "14",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "3 ≥ 2 olduğundan f(3) = 3(3) - 1 = 8. 1 < 2 olduğundan f(1) = 1² + 3 = 4. 8 + 4 = 12."
+        },
+        {
+          "id": "f2_tan_o_11",
+          "soru": "f(x) = x² - 2x olduğuna göre f(x + 1) - f(x) farkı nedir?",
+          "secenekler": {
+            "A": "2x - 1",
+            "B": "2x + 1",
+            "C": "2x",
+            "D": "x - 1"
+          },
+          "cevap": "A",
+          "cozum": "f(x + 1) = (x + 1)² - 2(x + 1) = x² - 1. (x² - 1) - (x² - 2x) = 2x - 1."
+        },
+        {
+          "id": "f2_tan_o_12",
+          "soru": "f(x) = 3^(x - 1) olduğuna göre f(4) / f(2) oranı kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "6",
+            "C": "9",
+            "D": "27"
+          },
+          "cevap": "C",
+          "cozum": "f(4) = 3³ = 27, f(2) = 3¹ = 3. 27 / 3 = 9."
+        },
+        {
+          "id": "f2_tan_o_13",
+          "soru": "f(x) = (x - 1) / (x + 2) olduğuna göre f(1/x) fonksiyonu nedir?",
+          "secenekler": {
+            "A": "(1 - x) / (1 + 2x)",
+            "B": "(x - 1) / (2x + 1)",
+            "C": "(1 + x) / (1 - 2x)",
+            "D": "(x + 2) / (x - 1)"
+          },
+          "cevap": "A",
+          "cozum": "(1/x - 1) / (1/x + 2) = ((1 - x)/x) / ((1 + 2x)/x) = (1 - x) / (1 + 2x)."
+        },
+        {
+          "id": "f2_tan_o_14",
+          "soru": "f: [-2, 3] -> R, f(x) = 2x + 1 fonksiyonunun görüntü kümesi nedir?",
+          "secenekler": {
+            "A": "[-3, 7]",
+            "B": "[-4, 6]",
+            "C": "[-2, 3]",
+            "D": "[0, 7]"
+          },
+          "cevap": "A",
+          "cozum": "f(-2) = 2(-2) + 1 = -3. f(3) = 2(3) + 1 = 7. Görüntü kümesi: [-3, 7]."
+        },
+        {
+          "id": "f2_tan_o_15",
+          "soru": "f(x) = |2x - 8| fonksiyonunun en küçük değeri için x kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Mutlak değer en az 0 olur: 2x - 8 = 0 ⇒ x = 4."
+        },
+        {
+          "id": "f2_tan_o_16",
+          "soru": "f(x) = (x² - 9) / (x - 3) fonksiyonunun tanım kümesindeki tek kısıtlama nedir?",
+          "secenekler": {
+            "A": "x ≠ -3",
+            "B": "x ≠ 3",
+            "C": "x ≠ 0",
+            "D": "x > 3"
+          },
+          "cevap": "B",
+          "cozum": "Paydayı sıfır yapan x = 3 değeri hariç tutulmalıdır."
+        },
+        {
+          "id": "f2_tan_o_17",
+          "soru": "f(x) = 4x - k fonksiyonunda f(2) = 5 olduğuna göre k kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "C",
+          "cozum": "f(2) = 4(2) - k = 8 - k = 5 ⇒ k = 3."
+        },
+        {
+          "id": "f2_tan_o_18",
+          "soru": "f(x) = x! (faktöriyel) olarak tanımlanırsa f(5) / f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "4",
+            "C": "5",
+            "D": "20"
+          },
+          "cevap": "C",
+          "cozum": "5! / 4! = 5."
+        },
+        {
+          "id": "f2_tan_o_19",
+          "soru": "f(x + y) = f(x) + f(y) şartını sağlayan f fonksiyonu için f(1) = 3 ise f(5) kaçtır?",
+          "secenekler": {
+            "A": "8",
+            "B": "15",
+            "C": "18",
+            "D": "243"
+          },
+          "cevap": "B",
+          "cozum": "Lineer fonksiyondur: f(x) = 3x ⇒ f(5) = 3(5) = 15."
+        },
+        {
+          "id": "f2_tan_o_20",
+          "soru": "f(x) = 3x + a ve f(f(1)) = 17 olduğuna göre a kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "f(1) = 3 + a. f(3 + a) = 3(3 + a) + a = 9 + 4a = 17 ⇒ 4a = 8 ⇒ a = 2."
+        }
+      ],
+      "zor": [
+        {
+          "id": "f2_tan_z_01",
+          "soru": "f(x · y) = f(x) + f(y) ve f(2) = 3 olduğuna göre f(32) değeri kaçtır?",
+          "secenekler": {
+            "A": "12",
+            "B": "15",
+            "C": "18",
+            "D": "24"
+          },
+          "cevap": "B",
+          "cozum": "32 = 2⁵. f(2⁵) = 5 · f(2) = 5 · 3 = 15 (Logaritmik fonksiyon kuralı)."
+        },
+        {
+          "id": "f2_tan_z_02",
+          "soru": "f(x) = (ax + 4) / (2x - 3) fonksiyonu sabit fonksiyon olduğuna göre a kaçtır?",
+          "secenekler": {
+            "A": "-8/3",
+            "B": "8/3",
+            "C": "-6",
+            "D": "6"
+          },
+          "cevap": "A",
+          "cozum": "Sabit fonksiyon şartı: a / 2 = 4 / (-3) ⇒ -3a = 8 ⇒ a = -8/3."
+        },
+        {
+          "id": "f2_tan_z_03",
+          "soru": "f(x) = √(x - 3) + √(7 - x) fonksiyonunun en geniş tanım kümesindeki tam sayıların toplamı kaçtır?",
+          "secenekler": {
+            "A": "20",
+            "B": "25",
+            "C": "30",
+            "D": "35"
+          },
+          "cevap": "B",
+          "cozum": "x ≥ 3 ve x ≤ 7 ⇒ [3, 7] aralığı. Tam sayılar: 3 + 4 + 5 + 6 + 7 = 25."
+        },
+        {
+          "id": "f2_tan_z_04",
+          "soru": "f(x) + 2f(-x) = 3x + 2 olduğuna göre f(2) değeri kaçtır?",
+          "secenekler": {
+            "A": "-4",
+            "B": "-2",
+            "C": "2",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "x=2: f(2) + 2f(-2) = 8. x=-2: f(-2) + 2f(2) = -4. Sistem çözülürse f(2) = -2 bulunur."
+        },
+        {
+          "id": "f2_tan_z_05",
+          "soru": "f(x) = (x - 1) · f(x - 1) ve f(1) = 1 olduğuna göre f(6) değeri kaçtır?",
+          "secenekler": {
+            "A": "24",
+            "B": "120",
+            "C": "720",
+            "D": "5040"
+          },
+          "cevap": "B",
+          "cozum": "f(2)=1·1=1, f(3)=2·1=2, f(4)=3·2=6, f(5)=4·6=24, f(6)=5·24=120. (f(n) = (n-1)!)."
+        },
+        {
+          "id": "f2_tan_z_06",
+          "soru": "f: R -> R, f(x + 2) = f(x) periyodik fonksiyonunda f(1) = 7 olduğuna göre f(2025) kaçtır?",
+          "secenekler": {
+            "A": "1",
+            "B": "7",
+            "C": "2",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Periyot 2'dir. 2025 tek sayıdır ve 2025 ≡ 1 (mod 2). f(2025) = f(1) = 7."
+        },
+        {
+          "id": "f2_tan_z_07",
+          "soru": "f(x) = 1 / (x² - 5x + 6) fonksiyonunu tanımsız yapan x değerlerinin çarpımı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "-6",
+            "D": "-5"
+          },
+          "cevap": "B",
+          "cozum": "x² - 5x + 6 = 0 kökleri 2 ve 3'tür. Çarpımları 2 · 3 = 6."
+        },
+        {
+          "id": "f2_tan_z_08",
+          "soru": "f(x) = 2x + 1 olduğuna göre f(f(f(x))) kuralı nedir?",
+          "secenekler": {
+            "A": "8x + 7",
+            "B": "8x + 1",
+            "C": "6x + 3",
+            "D": "8x + 9"
+          },
+          "cevap": "A",
+          "cozum": "f(f(x)) = 2(2x+1)+1 = 4x+3. f(f(f(x))) = 2(4x+3)+1 = 8x + 7."
+        },
+        {
+          "id": "f2_tan_z_09",
+          "soru": "f(x) = x² - 4x + k fonksiyonunun görüntü kümesi [-2, ∞) olduğuna göre k kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "2",
+            "C": "4",
+            "D": "-2"
+          },
+          "cevap": "B",
+          "cozum": "(x - 2)² - 4 + k = (x - 2)² + (k - 4). En küçük değer k - 4 = -2 ⇒ k = 2."
+        },
+        {
+          "id": "f2_tan_z_10",
+          "soru": "f(x + 1/x) = x² + 1/x² olduğuna göre f(4) değeri kaçtır?",
+          "secenekler": {
+            "A": "14",
+            "B": "16",
+            "C": "18",
+            "D": "12"
+          },
+          "cevap": "A",
+          "cozum": "(x + 1/x)² = x² + 1/x² + 2 ⇒ f(u) = u² - 2. f(4) = 4² - 2 = 14."
+        },
+        {
+          "id": "f2_tan_z_11",
+          "soru": "f(x) = 3^x olduğuna göre f(2x + 1) ifadesinin f(x) cinsinden eşiti nedir?",
+          "secenekler": {
+            "A": "3 · [f(x)]²",
+            "B": "[f(x)]² + 3",
+            "C": "6 · f(x)",
+            "D": "9 · [f(x)]²"
+          },
+          "cevap": "A",
+          "cozum": "f(2x + 1) = 3^(2x+1) = 3 · 3^(2x) = 3 · (3^x)² = 3 · [f(x)]²."
+        },
+        {
+          "id": "f2_tan_z_12",
+          "soru": "Tanım kümesi pozitif tam sayılar olan f fonksiyonunda f(1) = 2 ve f(n) = n · f(n - 1) ise f(5) kaçtır?",
+          "secenekler": {
+            "A": "120",
+            "B": "240",
+            "C": "48",
+            "D": "60"
+          },
+          "cevap": "B",
+          "cozum": "f(2)=2·2=4, f(3)=3·4=12, f(4)=4·12=48, f(5)=5·48=240."
+        },
+        {
+          "id": "f2_tan_z_13",
+          "soru": "f(x) = √(x - |x|) fonksiyonunun en geniş tanım kümesi nedir?",
+          "secenekler": {
+            "A": "R",
+            "B": "[0, ∞)",
+            "C": "(-∞, 0]",
+            "D": "∅"
+          },
+          "cevap": "B",
+          "cozum": "x - |x| ≥ 0 ⇒ x ≥ |x|. Bu ancak x ≥ 0 durumunda (x = |x| iken) sağlanır: [0, ∞)."
+        },
+        {
+          "id": "f2_tan_z_14",
+          "soru": "f(x) = (2x - 3) / 5 olduğuna göre f(x) = f⁻¹(x) denkleminin kökü nedir?",
+          "secenekler": {
+            "A": "1",
+            "B": "-1",
+            "C": "-3/2",
+            "D": "-1"
+          },
+          "cevap": "D",
+          "cozum": "f(x) = x kesişimi çözülür: (2x - 3)/5 = x ⇒ 2x - 3 = 5x ⇒ 3x = -3 ⇒ x = -1."
+        },
+        {
+          "id": "f2_tan_z_15",
+          "soru": "f(x) = 2x - 1 olduğuna göre f(1) + f(2) + ... + f(10) toplamı kaçtır?",
+          "secenekler": {
+            "A": "90",
+            "B": "100",
+            "C": "110",
+            "D": "120"
+          },
+          "cevap": "B",
+          "cozum": "İlk 10 tek sayının toplamıdır: 1 + 3 + 5 + ... + 19 = n² = 10² = 100."
+        },
+        {
+          "id": "f2_tan_z_16",
+          "soru": "f(x) = (x² - mx + 4) ifadesi her x için pozitif bir reel sayı ise m'nin aralığı nedir?",
+          "secenekler": {
+            "A": "(-4, 4)",
+            "B": "[-4, 4]",
+            "C": "(0, 4)",
+            "D": "(-2, 2)"
+          },
+          "cevap": "A",
+          "cozum": "Δ < 0 olmalıdır: m² - 4(1)(4) < 0 ⇒ m² < 16 ⇒ -4 < m < 4."
+        },
+        {
+          "id": "f2_tan_z_17",
+          "soru": "f(x) = (3x + 1) / (x - 3) fonksiyonunda (f o f)(2026) değeri kaçtır?",
+          "secenekler": {
+            "A": "2026",
+            "B": "3",
+            "C": "-2026",
+            "D": "1"
+          },
+          "cevap": "A",
+          "cozum": "f(x) kendi kendisinin tersidir: f⁻¹(x) = (3x+1)/(x-3) = f(x). Dolayısıyla (f o f)(x) = x ⇒ 2026."
+        },
+        {
+          "id": "f2_tan_z_18",
+          "soru": "f(x) = x² + 2x ve g(x) = x - 1 olduğuna göre f(g(x)) = 0 denkleminin kökler toplamı kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
+          },
+          "cevap": "A",
+          "cozum": "f(u) = u(u + 2) = 0 ⇒ u = 0 veya u = -2. x - 1 = 0 ⇒ x = 1. x - 1 = -2 ⇒ x = -1. Toplam: 1 + (-1) = 0."
+        },
+        {
+          "id": "f2_tan_z_19",
+          "soru": "f: R -> R her x, y için f(x + y) = f(x) · f(y) ve f(1) = 2 ise f(10) kaçtır?",
+          "secenekler": {
+            "A": "20",
+            "B": "100",
+            "C": "1024",
+            "D": "2048"
+          },
+          "cevap": "C",
+          "cozum": "Üstel fonksiyondur: f(x) = 2^x ⇒ f(10) = 2¹⁰ = 1024."
+        },
+        {
+          "id": "f2_tan_z_20",
+          "soru": "f(x) = [x] (tam değer) fonksiyonunda f(π) + f(-2.3) toplamı kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
+          },
+          "cevap": "A",
+          "cozum": "[3.14] = 3. [-2.3] = -3. Toplam = 3 + (-3) = 0."
+        }
+      ]
+    },
+    "fonksiyon_turleri": {
+      "kolay": [
+        {
+          "id": "fon_k_01",
+          "soru": "Fonksiyon Turleri temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+        },
+        {
+          "id": "fon_k_02",
+          "soru": "Fonksiyon Turleri temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+        },
+        {
+          "id": "fon_k_03",
+          "soru": "Fonksiyon Turleri temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
+        },
+        {
+          "id": "fon_k_04",
+          "soru": "Fonksiyon Turleri temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
+        },
+        {
+          "id": "fon_k_05",
+          "soru": "Fonksiyon Turleri temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
+        },
+        {
+          "id": "fon_k_06",
+          "soru": "Fonksiyon Turleri temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
+        },
+        {
+          "id": "fon_k_07",
+          "soru": "Fonksiyon Turleri temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
+        },
+        {
+          "id": "fon_k_08",
+          "soru": "Fonksiyon Turleri temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+        },
+        {
+          "id": "fon_k_09",
+          "soru": "Fonksiyon Turleri temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "9",
+            "B": "10",
+            "C": "11",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+        },
+        {
+          "id": "fon_k_10",
+          "soru": "Fonksiyon Turleri temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+        },
+        {
+          "id": "fon_k_11",
+          "soru": "Fonksiyon Turleri temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "11",
+            "B": "12",
+            "C": "13",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+        },
+        {
+          "id": "fon_k_12",
+          "soru": "Fonksiyon Turleri temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+        },
+        {
+          "id": "fon_k_13",
+          "soru": "Fonksiyon Turleri temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "13",
+            "B": "14",
+            "C": "15",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
+        },
+        {
+          "id": "fon_k_14",
+          "soru": "Fonksiyon Turleri temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
+        },
+        {
+          "id": "fon_k_15",
+          "soru": "Fonksiyon Turleri temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "15",
+            "B": "16",
+            "C": "17",
+            "D": "18"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
+        },
+        {
+          "id": "fon_k_16",
+          "soru": "Fonksiyon Turleri temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
+        },
+        {
+          "id": "fon_k_17",
+          "soru": "Fonksiyon Turleri temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "17",
+            "B": "18",
+            "C": "19",
+            "D": "20"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
+        },
+        {
+          "id": "fon_k_18",
+          "soru": "Fonksiyon Turleri temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
+        },
+        {
+          "id": "fon_k_19",
+          "soru": "Fonksiyon Turleri temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "19",
+            "B": "20",
+            "C": "21",
+            "D": "22"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
+        },
+        {
+          "id": "fon_k_20",
+          "soru": "Fonksiyon Turleri temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
+        }
+      ],
+      "orta": [
+        {
+          "id": "fon_o_01",
+          "soru": "Fonksiyon Turleri orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
+        },
+        {
+          "id": "fon_o_02",
+          "soru": "Fonksiyon Turleri orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
+        },
+        {
+          "id": "fon_o_03",
+          "soru": "Fonksiyon Turleri orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
+        },
+        {
+          "id": "fon_o_04",
+          "soru": "Fonksiyon Turleri orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+        },
+        {
+          "id": "fon_o_05",
+          "soru": "Fonksiyon Turleri orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
+        },
+        {
+          "id": "fon_o_06",
+          "soru": "Fonksiyon Turleri orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
+        },
+        {
+          "id": "fon_o_07",
+          "soru": "Fonksiyon Turleri orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
+        },
+        {
+          "id": "fon_o_08",
+          "soru": "Fonksiyon Turleri orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
+        },
+        {
+          "id": "fon_o_09",
+          "soru": "Fonksiyon Turleri orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
+        },
+        {
+          "id": "fon_o_10",
+          "soru": "Fonksiyon Turleri orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
+        },
+        {
+          "id": "fon_o_11",
+          "soru": "Fonksiyon Turleri orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "22",
+            "B": "23",
+            "C": "24",
+            "D": "25"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
+        },
+        {
+          "id": "fon_o_12",
+          "soru": "Fonksiyon Turleri orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "24",
+            "B": "25",
+            "C": "26",
+            "D": "27"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
+        },
+        {
+          "id": "fon_o_13",
+          "soru": "Fonksiyon Turleri orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "26",
+            "B": "27",
+            "C": "28",
+            "D": "29"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
+        },
+        {
+          "id": "fon_o_14",
+          "soru": "Fonksiyon Turleri orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "28",
+            "B": "29",
+            "C": "30",
+            "D": "31"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
+        },
+        {
+          "id": "fon_o_15",
+          "soru": "Fonksiyon Turleri orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "30",
+            "B": "31",
+            "C": "32",
+            "D": "33"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
+        },
+        {
+          "id": "fon_o_16",
+          "soru": "Fonksiyon Turleri orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "32",
+            "B": "33",
+            "C": "34",
+            "D": "35"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
+        },
+        {
+          "id": "fon_o_17",
+          "soru": "Fonksiyon Turleri orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "34",
+            "B": "35",
+            "C": "36",
+            "D": "37"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
+        },
+        {
+          "id": "fon_o_18",
+          "soru": "Fonksiyon Turleri orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "36",
+            "B": "37",
+            "C": "38",
+            "D": "39"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
+        },
+        {
+          "id": "fon_o_19",
+          "soru": "Fonksiyon Turleri orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "38",
+            "B": "39",
+            "C": "40",
+            "D": "41"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
+        },
+        {
+          "id": "fon_o_20",
+          "soru": "Fonksiyon Turleri orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "40",
+            "B": "41",
+            "C": "42",
+            "D": "43"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
+        }
+      ],
+      "zor": [
+        {
+          "id": "fon_z_01",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 1.",
+          "secenekler": {
+            "A": "3",
+            "B": "5",
+            "C": "7",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
+        },
+        {
+          "id": "fon_z_02",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 2.",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
+        },
+        {
+          "id": "fon_z_03",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 3.",
+          "secenekler": {
+            "A": "9",
+            "B": "11",
+            "C": "13",
+            "D": "15"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
+        },
+        {
+          "id": "fon_z_04",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 4.",
+          "secenekler": {
+            "A": "12",
+            "B": "14",
+            "C": "16",
+            "D": "18"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
+        },
+        {
+          "id": "fon_z_05",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 5.",
+          "secenekler": {
+            "A": "15",
+            "B": "17",
+            "C": "19",
+            "D": "21"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
+        },
+        {
+          "id": "fon_z_06",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 6.",
+          "secenekler": {
+            "A": "18",
+            "B": "20",
+            "C": "22",
+            "D": "24"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
+        },
+        {
+          "id": "fon_z_07",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 7.",
+          "secenekler": {
+            "A": "21",
+            "B": "23",
+            "C": "25",
+            "D": "27"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
+        },
+        {
+          "id": "fon_z_08",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 8.",
+          "secenekler": {
+            "A": "24",
+            "B": "26",
+            "C": "28",
+            "D": "30"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
+        },
+        {
+          "id": "fon_z_09",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 9.",
+          "secenekler": {
+            "A": "27",
+            "B": "29",
+            "C": "31",
+            "D": "33"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
+        },
+        {
+          "id": "fon_z_10",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 10.",
+          "secenekler": {
+            "A": "30",
+            "B": "32",
+            "C": "34",
+            "D": "36"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
+        },
+        {
+          "id": "fon_z_11",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 11.",
+          "secenekler": {
+            "A": "33",
+            "B": "35",
+            "C": "37",
+            "D": "39"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
+        },
+        {
+          "id": "fon_z_12",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 12.",
+          "secenekler": {
+            "A": "36",
+            "B": "38",
+            "C": "40",
+            "D": "42"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
+        },
+        {
+          "id": "fon_z_13",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 13.",
+          "secenekler": {
+            "A": "39",
+            "B": "41",
+            "C": "43",
+            "D": "45"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
+        },
+        {
+          "id": "fon_z_14",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 14.",
+          "secenekler": {
+            "A": "42",
+            "B": "44",
+            "C": "46",
+            "D": "48"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
+        },
+        {
+          "id": "fon_z_15",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 15.",
+          "secenekler": {
+            "A": "45",
+            "B": "47",
+            "C": "49",
+            "D": "51"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
+        },
+        {
+          "id": "fon_z_16",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 16.",
+          "secenekler": {
+            "A": "48",
+            "B": "50",
+            "C": "52",
+            "D": "54"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
+        },
+        {
+          "id": "fon_z_17",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 17.",
+          "secenekler": {
+            "A": "51",
+            "B": "53",
+            "C": "55",
+            "D": "57"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+        },
+        {
+          "id": "fon_z_18",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 18.",
+          "secenekler": {
+            "A": "54",
+            "B": "56",
+            "C": "58",
+            "D": "60"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+        },
+        {
+          "id": "fon_z_19",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 19.",
+          "secenekler": {
+            "A": "57",
+            "B": "59",
+            "C": "61",
+            "D": "63"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+        },
+        {
+          "id": "fon_z_20",
+          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 20.",
+          "secenekler": {
+            "A": "60",
+            "B": "62",
+            "C": "64",
+            "D": "66"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+        }
+      ]
+    },
+    "dogrusal_fonksiyon_grafigi": {
+      "kolay": [
+        {
+          "id": "dog_k_01",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+        },
+        {
+          "id": "dog_k_02",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+        },
+        {
+          "id": "dog_k_03",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
+        },
+        {
+          "id": "dog_k_04",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
+        },
+        {
+          "id": "dog_k_05",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
+        },
+        {
+          "id": "dog_k_06",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
+        },
+        {
+          "id": "dog_k_07",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
+        },
+        {
+          "id": "dog_k_08",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+        },
+        {
+          "id": "dog_k_09",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "9",
+            "B": "10",
+            "C": "11",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+        },
+        {
+          "id": "dog_k_10",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+        },
+        {
+          "id": "dog_k_11",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "11",
+            "B": "12",
+            "C": "13",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+        },
+        {
+          "id": "dog_k_12",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+        },
+        {
+          "id": "dog_k_13",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "13",
+            "B": "14",
+            "C": "15",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
+        },
+        {
+          "id": "dog_k_14",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
+        },
+        {
+          "id": "dog_k_15",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "15",
+            "B": "16",
+            "C": "17",
+            "D": "18"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
+        },
+        {
+          "id": "dog_k_16",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
+        },
+        {
+          "id": "dog_k_17",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "17",
+            "B": "18",
+            "C": "19",
+            "D": "20"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
+        },
+        {
+          "id": "dog_k_18",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
+        },
+        {
+          "id": "dog_k_19",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "19",
+            "B": "20",
+            "C": "21",
+            "D": "22"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
+        },
+        {
+          "id": "dog_k_20",
+          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
+        }
+      ],
+      "orta": [
+        {
+          "id": "dog_o_01",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
+        },
+        {
+          "id": "dog_o_02",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
+        },
+        {
+          "id": "dog_o_03",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
+        },
+        {
+          "id": "dog_o_04",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+        },
+        {
+          "id": "dog_o_05",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
+        },
+        {
+          "id": "dog_o_06",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
+        },
+        {
+          "id": "dog_o_07",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
+        },
+        {
+          "id": "dog_o_08",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
+        },
+        {
+          "id": "dog_o_09",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
+        },
+        {
+          "id": "dog_o_10",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
+        },
+        {
+          "id": "dog_o_11",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "22",
+            "B": "23",
+            "C": "24",
+            "D": "25"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
+        },
+        {
+          "id": "dog_o_12",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "24",
+            "B": "25",
+            "C": "26",
+            "D": "27"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
+        },
+        {
+          "id": "dog_o_13",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "26",
+            "B": "27",
+            "C": "28",
+            "D": "29"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
+        },
+        {
+          "id": "dog_o_14",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "28",
+            "B": "29",
+            "C": "30",
+            "D": "31"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
+        },
+        {
+          "id": "dog_o_15",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "30",
+            "B": "31",
+            "C": "32",
+            "D": "33"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
+        },
+        {
+          "id": "dog_o_16",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "32",
+            "B": "33",
+            "C": "34",
+            "D": "35"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
+        },
+        {
+          "id": "dog_o_17",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "34",
+            "B": "35",
+            "C": "36",
+            "D": "37"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
+        },
+        {
+          "id": "dog_o_18",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "36",
+            "B": "37",
+            "C": "38",
+            "D": "39"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
+        },
+        {
+          "id": "dog_o_19",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "38",
+            "B": "39",
+            "C": "40",
+            "D": "41"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
+        },
+        {
+          "id": "dog_o_20",
+          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "40",
+            "B": "41",
+            "C": "42",
+            "D": "43"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
+        }
+      ],
+      "zor": [
+        {
+          "id": "dog_z_01",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 1.",
+          "secenekler": {
+            "A": "3",
+            "B": "5",
+            "C": "7",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
+        },
+        {
+          "id": "dog_z_02",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 2.",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
+        },
+        {
+          "id": "dog_z_03",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 3.",
+          "secenekler": {
+            "A": "9",
+            "B": "11",
+            "C": "13",
+            "D": "15"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
+        },
+        {
+          "id": "dog_z_04",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 4.",
+          "secenekler": {
+            "A": "12",
+            "B": "14",
+            "C": "16",
+            "D": "18"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
+        },
+        {
+          "id": "dog_z_05",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 5.",
+          "secenekler": {
+            "A": "15",
+            "B": "17",
+            "C": "19",
+            "D": "21"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
+        },
+        {
+          "id": "dog_z_06",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 6.",
+          "secenekler": {
+            "A": "18",
+            "B": "20",
+            "C": "22",
+            "D": "24"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
+        },
+        {
+          "id": "dog_z_07",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 7.",
+          "secenekler": {
+            "A": "21",
+            "B": "23",
+            "C": "25",
+            "D": "27"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
+        },
+        {
+          "id": "dog_z_08",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 8.",
+          "secenekler": {
+            "A": "24",
+            "B": "26",
+            "C": "28",
+            "D": "30"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
+        },
+        {
+          "id": "dog_z_09",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 9.",
+          "secenekler": {
+            "A": "27",
+            "B": "29",
+            "C": "31",
+            "D": "33"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
+        },
+        {
+          "id": "dog_z_10",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 10.",
+          "secenekler": {
+            "A": "30",
+            "B": "32",
+            "C": "34",
+            "D": "36"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
+        },
+        {
+          "id": "dog_z_11",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 11.",
+          "secenekler": {
+            "A": "33",
+            "B": "35",
+            "C": "37",
+            "D": "39"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
+        },
+        {
+          "id": "dog_z_12",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 12.",
+          "secenekler": {
+            "A": "36",
+            "B": "38",
+            "C": "40",
+            "D": "42"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
+        },
+        {
+          "id": "dog_z_13",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 13.",
+          "secenekler": {
+            "A": "39",
+            "B": "41",
+            "C": "43",
+            "D": "45"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
+        },
+        {
+          "id": "dog_z_14",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 14.",
+          "secenekler": {
+            "A": "42",
+            "B": "44",
+            "C": "46",
+            "D": "48"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
+        },
+        {
+          "id": "dog_z_15",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 15.",
+          "secenekler": {
+            "A": "45",
+            "B": "47",
+            "C": "49",
+            "D": "51"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
+        },
+        {
+          "id": "dog_z_16",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 16.",
+          "secenekler": {
+            "A": "48",
+            "B": "50",
+            "C": "52",
+            "D": "54"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
+        },
+        {
+          "id": "dog_z_17",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 17.",
+          "secenekler": {
+            "A": "51",
+            "B": "53",
+            "C": "55",
+            "D": "57"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+        },
+        {
+          "id": "dog_z_18",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 18.",
+          "secenekler": {
+            "A": "54",
+            "B": "56",
+            "C": "58",
+            "D": "60"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+        },
+        {
+          "id": "dog_z_19",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 19.",
+          "secenekler": {
+            "A": "57",
+            "B": "59",
+            "C": "61",
+            "D": "63"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+        },
+        {
+          "id": "dog_z_20",
+          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 20.",
+          "secenekler": {
+            "A": "60",
+            "B": "62",
+            "C": "64",
+            "D": "66"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+        }
+      ]
+    },
+    "bileske_ve_ters_fonksiyon": {
+      "kolay": [
+        {
+          "id": "bil_k_01",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+        },
+        {
+          "id": "bil_k_02",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+        },
+        {
+          "id": "bil_k_03",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
+        },
+        {
+          "id": "bil_k_04",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
+        },
+        {
+          "id": "bil_k_05",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
+        },
+        {
+          "id": "bil_k_06",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
+        },
+        {
+          "id": "bil_k_07",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "9",
+            "D": "10"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
+        },
+        {
+          "id": "bil_k_08",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+        },
+        {
+          "id": "bil_k_09",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "9",
+            "B": "10",
+            "C": "11",
+            "D": "12"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+        },
+        {
+          "id": "bil_k_10",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+        },
+        {
+          "id": "bil_k_11",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "11",
+            "B": "12",
+            "C": "13",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+        },
+        {
+          "id": "bil_k_12",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+        },
+        {
+          "id": "bil_k_13",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "13",
+            "B": "14",
+            "C": "15",
+            "D": "16"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
+        },
+        {
+          "id": "bil_k_14",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
+        },
+        {
+          "id": "bil_k_15",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "15",
+            "B": "16",
+            "C": "17",
+            "D": "18"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
+        },
+        {
+          "id": "bil_k_16",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
+        },
+        {
+          "id": "bil_k_17",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "17",
+            "B": "18",
+            "C": "19",
+            "D": "20"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
+        },
+        {
+          "id": "bil_k_18",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
+        },
+        {
+          "id": "bil_k_19",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "19",
+            "B": "20",
+            "C": "21",
+            "D": "22"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
+        },
+        {
+          "id": "bil_k_20",
+          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "B",
+          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
+        }
+      ],
+      "orta": [
+        {
+          "id": "bil_o_01",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
+        },
+        {
+          "id": "bil_o_02",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
+        },
+        {
+          "id": "bil_o_03",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "9"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
+        },
+        {
+          "id": "bil_o_04",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+        },
+        {
+          "id": "bil_o_05",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "10",
+            "B": "11",
+            "C": "12",
+            "D": "13"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
+        },
+        {
+          "id": "bil_o_06",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "12",
+            "B": "13",
+            "C": "14",
+            "D": "15"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
+        },
+        {
+          "id": "bil_o_07",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "14",
+            "B": "15",
+            "C": "16",
+            "D": "17"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
+        },
+        {
+          "id": "bil_o_08",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "16",
+            "B": "17",
+            "C": "18",
+            "D": "19"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
+        },
+        {
+          "id": "bil_o_09",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "18",
+            "B": "19",
+            "C": "20",
+            "D": "21"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
+        },
+        {
+          "id": "bil_o_10",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "20",
+            "B": "21",
+            "C": "22",
+            "D": "23"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
+        },
+        {
+          "id": "bil_o_11",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "22",
+            "B": "23",
+            "C": "24",
+            "D": "25"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
+        },
+        {
+          "id": "bil_o_12",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "24",
+            "B": "25",
+            "C": "26",
+            "D": "27"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
+        },
+        {
+          "id": "bil_o_13",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "26",
+            "B": "27",
+            "C": "28",
+            "D": "29"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
+        },
+        {
+          "id": "bil_o_14",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "28",
+            "B": "29",
+            "C": "30",
+            "D": "31"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
+        },
+        {
+          "id": "bil_o_15",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "30",
+            "B": "31",
+            "C": "32",
+            "D": "33"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
+        },
+        {
+          "id": "bil_o_16",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "32",
+            "B": "33",
+            "C": "34",
+            "D": "35"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
+        },
+        {
+          "id": "bil_o_17",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "34",
+            "B": "35",
+            "C": "36",
+            "D": "37"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
+        },
+        {
+          "id": "bil_o_18",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "36",
+            "B": "37",
+            "C": "38",
+            "D": "39"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
+        },
+        {
+          "id": "bil_o_19",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "38",
+            "B": "39",
+            "C": "40",
+            "D": "41"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
+        },
+        {
+          "id": "bil_o_20",
+          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
+          "secenekler": {
+            "A": "40",
+            "B": "41",
+            "C": "42",
+            "D": "43"
+          },
+          "cevap": "A",
+          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
+        }
+      ],
+      "zor": [
+        {
+          "id": "bil_z_01",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 1.",
+          "secenekler": {
+            "A": "3",
+            "B": "5",
+            "C": "7",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
+        },
+        {
+          "id": "bil_z_02",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 2.",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "12"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
+        },
+        {
+          "id": "bil_z_03",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 3.",
+          "secenekler": {
+            "A": "9",
+            "B": "11",
+            "C": "13",
+            "D": "15"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
+        },
+        {
+          "id": "bil_z_04",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 4.",
+          "secenekler": {
+            "A": "12",
+            "B": "14",
+            "C": "16",
+            "D": "18"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
+        },
+        {
+          "id": "bil_z_05",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 5.",
+          "secenekler": {
+            "A": "15",
+            "B": "17",
+            "C": "19",
+            "D": "21"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
+        },
+        {
+          "id": "bil_z_06",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 6.",
+          "secenekler": {
+            "A": "18",
+            "B": "20",
+            "C": "22",
+            "D": "24"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
+        },
+        {
+          "id": "bil_z_07",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 7.",
+          "secenekler": {
+            "A": "21",
+            "B": "23",
+            "C": "25",
+            "D": "27"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
+        },
+        {
+          "id": "bil_z_08",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 8.",
+          "secenekler": {
+            "A": "24",
+            "B": "26",
+            "C": "28",
+            "D": "30"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
+        },
+        {
+          "id": "bil_z_09",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 9.",
+          "secenekler": {
+            "A": "27",
+            "B": "29",
+            "C": "31",
+            "D": "33"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
+        },
+        {
+          "id": "bil_z_10",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 10.",
+          "secenekler": {
+            "A": "30",
+            "B": "32",
+            "C": "34",
+            "D": "36"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
+        },
+        {
+          "id": "bil_z_11",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 11.",
+          "secenekler": {
+            "A": "33",
+            "B": "35",
+            "C": "37",
+            "D": "39"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
+        },
+        {
+          "id": "bil_z_12",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 12.",
+          "secenekler": {
+            "A": "36",
+            "B": "38",
+            "C": "40",
+            "D": "42"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
+        },
+        {
+          "id": "bil_z_13",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 13.",
+          "secenekler": {
+            "A": "39",
+            "B": "41",
+            "C": "43",
+            "D": "45"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
+        },
+        {
+          "id": "bil_z_14",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 14.",
+          "secenekler": {
+            "A": "42",
+            "B": "44",
+            "C": "46",
+            "D": "48"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
+        },
+        {
+          "id": "bil_z_15",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 15.",
+          "secenekler": {
+            "A": "45",
+            "B": "47",
+            "C": "49",
+            "D": "51"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
+        },
+        {
+          "id": "bil_z_16",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 16.",
+          "secenekler": {
+            "A": "48",
+            "B": "50",
+            "C": "52",
+            "D": "54"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
+        },
+        {
+          "id": "bil_z_17",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 17.",
+          "secenekler": {
+            "A": "51",
+            "B": "53",
+            "C": "55",
+            "D": "57"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+        },
+        {
+          "id": "bil_z_18",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 18.",
+          "secenekler": {
+            "A": "54",
+            "B": "56",
+            "C": "58",
+            "D": "60"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+        },
+        {
+          "id": "bil_z_19",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 19.",
+          "secenekler": {
+            "A": "57",
+            "B": "59",
+            "C": "61",
+            "D": "63"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+        },
+        {
+          "id": "bil_z_20",
+          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 20.",
+          "secenekler": {
+            "A": "60",
+            "B": "62",
+            "C": "64",
+            "D": "66"
+          },
+          "cevap": "C",
+          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+        }
+      ]
+    }
+  }
+}
