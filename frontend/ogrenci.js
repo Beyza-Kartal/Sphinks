@@ -447,131 +447,89 @@ function renderDiagnosisView() {
 }
 
 // 4. Öğrenme Dakikaları (Minutes View)
-async function renderMinutesView() {
+// DUZELTME (kullanici istegi): Gomulu video YOK artik. Sadece eksik olan
+// konu(lar) icin "hangi dakikada hangi konu var" listesi gosteriliyor;
+// "izle" butonu direkt YouTube'a o saniyeden acilir (yeni sekme).
+// Boylece oynatma cubugu/kontrol sorunu diye bir sey kalmiyor - gercek
+// YouTube sayfasinda her zaman tam kontrol olur.
+function formatKonuAdi(slug) {
+  if (!slug) return "Konu";
+  const map = {
+    kumeler_ve_ikililer: "Kümeler ve İkililer",
+    cebirsel_ifadeler: "Cebirsel İfadeler",
+    koordinat_sistemi: "Koordinat Sistemi",
+    birinci_derece_denklemler: "Birinci Derece Denklemler",
+    fonksiyon_tanimi_ve_deger: "Fonksiyon Tanımı ve Değeri",
+    fonksiyon_turleri: "Fonksiyon Türleri",
+    dogrusal_fonksiyon_grafigi: "Doğrusal Fonksiyon Grafiği",
+    bileske_ve_ters_fonksiyon: "Bileşke ve Ters Fonksiyon",
+  };
+  return map[slug] || slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function renderMinutesView() {
   document.getElementById("topStepText").textContent = "Öğrenme Dakikaları";
   const main = document.getElementById("mainContainer");
   const eksikKonu = state.diagnosis?.eksik || "Eksik konu";
 
   // DUZELTME: bos dizi ([]) JS'te "truthy"dir, "|| varsayilan" hic
-  // devreye girmiyordu; backend video bulamazsa activeVideo undefined
-  // olup sayfa sessizce cokuyordu (JS hatasi, hicbir sey olmuyor gibi
-  // gorunuyordu). Artik dizinin GERCEKTEN dolu olup olmadigina bakiyoruz
-  // ve hic video yoksa kullaniciya acik bir mesaj gosteriyoruz.
-  const gelenVideolar = state.diagnosis?.videolar || [];
-  const videolar =
-    gelenVideolar.length > 0
-      ? gelenVideolar
-      : [{ kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslangic_sn: 2224, bitis_sn: 2380 }];
+  // devreye girmiyordu; backend video bulamazsa sayfa sessizce cokuyordu.
+  const videolar = state.diagnosis?.videolar || [];
 
-  if (gelenVideolar.length === 0) {
-    main.innerHTML = `
-      <div class="center-page">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Video hazırlanıyor</div>
-        <h1>Bu konu için video henüz hazırlanmadı.</h1>
-        <p class="lead">Öğretmenin bu konuya bir video eklediğinde burada otomatik görünecek.</p>
-        <button class="primary-button" id="btnGoHomeFromMinutes">Ana Sayfaya Dön</button>
-      </div>
-    `;
-    const btn = document.getElementById("btnGoHomeFromMinutes");
-    if (btn) btn.addEventListener("click", () => { state.view = "home"; renderHomeView(); });
-    return;
+  function dk(sn) {
+    return `${Math.floor(sn / 60)}:${String(sn % 60).padStart(2, "0")}`;
   }
-
-  const activeVideo = videolar[state.selectedChannelIndex] || videolar[0];
-
-  function formatKonuAdi(slug) {
-    if (!slug) return "Konu";
-    const map = {
-      kumeler_ve_ikililer: "Kümeler ve İkililer",
-      cebirsel_ifadeler: "Cebirsel İfadeler",
-      fonksiyon_tanimi: "Fonksiyon Tanımı",
-    };
-    return map[slug] || slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-  }
-
-  const sureSn = (activeVideo.bitis_sn || 0) - (activeVideo.baslangic_sn || 0);
-  const sureDk = Math.ceil(sureSn / 60);
 
   main.innerHTML = `
-    <div class="video-page">
-      <div class="video-heading">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Sana özel ${sureDk} dakika</div>
-          <h1>${formatKonuAdi(eksikKonu)} konusunu birlikte çalışalım.</h1>
+    <div class="center-page">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Eksiğin bulundu</div>
+      <h1>${formatKonuAdi(eksikKonu)} — tam o dakikaya git</h1>
+      <p class="lead">Aşağıdaki seçeneklerden birine tıkla, YouTube'da doğrudan o dakikadan açılsın.</p>
+
+      ${
+        videolar.length === 0
+          ? `<p class="lead" style="color: var(--muted);">Bu konu için video henüz hazırlanmadı. Öğretmenin eklediğinde burada görünecek.</p>`
+          : `
+        <div class="video-minute-list" style="display: flex; flex-direction: column; gap: 10px; max-width: 520px; margin: 24px auto;">
+          ${videolar
+            .map(
+              (v, idx) => `
+            <a
+              href="https://www.youtube.com/watch?v=${v.youtube_id}&t=${v.baslangic_sn || 0}s"
+              target="_blank" rel="noopener" data-video-index="${idx}"
+              class="primary-button"
+              style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: 16px 20px;"
+            >
+              <span style="text-align: left;">
+                <strong style="display: block;">${v.kanal_adi}</strong>
+                <small style="opacity: .85;">${dk(v.baslangic_sn)} – ${dk(v.bitis_sn)}</small>
+              </span>
+              <span>İzle ↗</span>
+            </a>
+          `
+            )
+            .join("")}
         </div>
-        <button class="bridge-link" id="btnGoToBridge">
-          ✨ Bir benzetmeyle anlat
-        </button>
-      </div>
-      <div class="learning-grid">
-        <section>
-          <div class="video-frame">
-            <iframe
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              src="https://www.youtube.com/embed/${activeVideo.youtube_id}?start=${activeVideo.baslangic_sn || 0}&end=${activeVideo.bitis_sn || 300}&controls=1&rel=0"
-              title="${activeVideo.kanal_adi}"
-            ></iframe>
-          </div>
-          <a
-            href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}&t=${activeVideo.baslangic_sn || 0}s"
-            target="_blank" rel="noopener"
-            class="secondary-button"
-            style="display: inline-flex; margin-top: 12px; text-decoration: none;"
-          >
-            ↗ Videoyu YouTube'da aç (tam kontrol + tüm dakikalar)
-          </a>
-
-          <section class="video-map" style="margin-top: 18px; background: var(--bg-card); border-radius: 16px; padding: 16px; border: 1px solid var(--line);">
-            <p class="card-kicker" style="margin: 0 0 10px;">Bu videoda hangi dakikada ne anlatılıyor</p>
-            <div id="videoMapContainer"><span class="spinner small"></span> Yükleniyor...</div>
-          </section>
-
-          <details class="transcript">
-            <summary>Bu bölümün transkripti <span>${sureDk} dk</span></summary>
-            <div>
-              <p><strong>Kanal:</strong> ${activeVideo.kanal_adi}</p>
-              <p><strong>Başlık:</strong> ${activeVideo.baslik || "Konu Anlatımı"}</p>
-              <p><strong>Süre:</strong> ${Math.floor(activeVideo.baslangic_sn / 60)}:${String(activeVideo.baslangic_sn % 60).padStart(2, "0")} – ${Math.floor(activeVideo.bitis_sn / 60)}:${String(activeVideo.bitis_sn % 60).padStart(2, "0")}</p>
-              ${
-                activeVideo.transkript
-                  ? `<p style="color: var(--muted); line-height: 1.6;">${activeVideo.transkript}</p>`
-                  : `<p style="color: var(--muted);">Bu bölüm için transkript henüz hazırlanmadı.</p>`
-              }
-            </div>
-          </details>
-        </section>
-        <aside class="channel-panel">
-          <p class="card-kicker">Anlatıcını seç</p>
-          <h2>Hangisi sana daha uygun?</h2>
-          <div class="channel-list">
+        <details class="transcript" style="max-width: 520px; margin: 0 auto;">
+          <summary>Okumak istersen: transkript</summary>
+          <div>
             ${videolar
               .map(
-                (v, idx) => `
-              <button class="channel ${state.selectedChannelIndex === idx ? "active" : ""}" data-vid-index="${idx}">
-                <span class="channel-avatar">${idx + 1}</span>
-                <span><strong>${v.kanal_adi}</strong><small>${v.baslik || "Kişiselleştirilmiş video"}</small></span>
-              </button>
+                (v) => `
+              <p style="margin-bottom: 10px;"><strong>${v.kanal_adi}</strong> (${dk(v.baslangic_sn)}–${dk(v.bitis_sn)}):</p>
+              <p style="color: var(--muted); line-height: 1.6; margin-bottom: 18px;">${v.transkript || "Transkript henüz hazırlanmadı."}</p>
             `
               )
               .join("")}
           </div>
-          <div class="tip">
-            <span>Videoyu kendi hızında izleyebilir, anlamadığın yerde geri sarabilirsin.</span>
-          </div>
-          <button class="primary-button" id="btnWatchedVideo">İzledim</button>
-        </aside>
-      </div>
+        </details>
+      `
+      }
+
+      <button class="bridge-link" id="btnGoToBridge" style="margin-top: 18px;">✨ Bir benzetmeyle anlat</button>
+      <button class="primary-button" id="btnWatchedVideo" style="margin-top: 10px;">İzledim</button>
     </div>
   `;
-
-  // Kanal seçimi
-  main.querySelectorAll("button[data-vid-index]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      state.selectedChannelIndex = parseInt(btn.getAttribute("data-vid-index"), 10);
-      renderMinutesView();
-    });
-  });
 
   document.getElementById("btnGoToBridge").addEventListener("click", () => {
     state.view = "bridge";
@@ -579,31 +537,6 @@ async function renderMinutesView() {
   });
 
   document.getElementById("btnWatchedVideo").addEventListener("click", startRetest);
-
-  // Videonun TUM bolumlerini (hangi dakikada hangi konu) getir ve acikca
-  // goster - katlanir kutuda gizli degil, direkt sayfada.
-  if (activeVideo.video_id) {
-    apiCall(`/api/video/${activeVideo.video_id}/bolumler`).then((data) => {
-      const mapBox = document.getElementById("videoMapContainer");
-      if (!mapBox) return;
-      const bolumler = data.bolumler || [];
-      if (bolumler.length === 0) {
-        mapBox.innerHTML = `<span style="color: var(--muted); font-size: 13px;">Bu video için bölüm haritası henüz hazır değil.</span>`;
-        return;
-      }
-      mapBox.innerHTML = bolumler
-        .map((b) => {
-          const dk = (sn) => `${Math.floor(sn / 60)}:${String(sn % 60).padStart(2, "0")}`;
-          return `
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
-            <span style="font-size: 13px;"><strong>${dk(b.baslangic_sn)} – ${dk(b.bitis_sn)}</strong> · ${formatKonuAdi(b.alt_konu_id)}</span>
-            <a href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}&t=${b.baslangic_sn}s" target="_blank" rel="noopener" style="font-size: 12px; color: var(--green); text-decoration: none;">izle →</a>
-          </div>
-        `;
-        })
-        .join("");
-    });
-  }
 }
 
 // 5. Bilişsel Köprü (Bridge View)
