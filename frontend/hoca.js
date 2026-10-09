@@ -19,6 +19,7 @@ const state = {
   hocaIsim: sessionStorage.getItem("hoca_isim") || "Öğretmen",
   sinifId: null, // gercek int id, sinif listesi yuklenince doldurulur
   sinifKodu: null,
+  sinifDersId: null, // "/api/video-ekle" icin hangi derse ekleniyor bilgisi
   isDemo: new URLSearchParams(window.location.search).get("demo") === "1" || sessionStorage.getItem("is_demo") === "true",
   panelData: null,
 };
@@ -172,6 +173,7 @@ async function loadSiniflar(oncekiSinifId) {
     opt.value = s.sinif_id;
     opt.textContent = `${s.kod} (${ALT_KONU_ETIKET[s.ders_id] || s.ders_id})`;
     opt.dataset.kod = s.kod;
+    opt.dataset.ders = s.ders_id;
     selectClass.appendChild(opt);
   });
 
@@ -179,6 +181,7 @@ async function loadSiniflar(oncekiSinifId) {
   selectClass.value = secilecek.sinif_id;
   state.sinifId = secilecek.sinif_id;
   state.sinifKodu = secilecek.kod;
+  state.sinifDersId = secilecek.ders_id;
   badgeWrap.style.display = "inline-flex";
   badgeClassCode.textContent = secilecek.kod;
   document.getElementById("modalClassCode").textContent = secilecek.kod;
@@ -223,6 +226,7 @@ async function initHocaPanel() {
     const secilen = e.target.selectedOptions[0];
     state.sinifId = e.target.value;
     state.sinifKodu = secilen ? secilen.dataset.kod : null;
+    state.sinifDersId = secilen ? secilen.dataset.ders : null;
     document.getElementById("badgeClassCode").textContent = state.sinifKodu || "—";
     document.getElementById("modalClassCode").textContent = state.sinifKodu || "—";
     loadPanelData();
@@ -288,12 +292,26 @@ async function initHocaPanel() {
     btn.innerHTML = `<span class="spinner small"></span> Bölümleniyor...`;
 
     const url = document.getElementById("inputYoutubeUrl").value.trim();
-    await apiCall("/api/video-ekle", "POST", { konu_id: 1, youtube_url: url });
-
-    btn.disabled = false;
-    btn.textContent = "Bölümle ve Ekle";
-    document.getElementById("modalAddVideo").style.display = "none";
-    alert("Video başarıyla eklendi ve AI tarafından eksik konulara göre bölümlendi!");
+    // apiCall() HTTP hatalarini da mock veriyle yutuyor (demo modu icin
+    // kasitli), gercek hata mesajini gormek icin burada direkt fetch kullan.
+    try {
+      const res = await fetch("/api/video-ekle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ders_id: state.sinifDersId || "fonksiyonlar", youtube_url: url }),
+      });
+      const sonuc = await res.json();
+      if (!res.ok) throw new Error(sonuc.detail || `HTTP ${res.status}`);
+      const bolumSayisi = sonuc.bolumler ? sonuc.bolumler.length : 0;
+      document.getElementById("modalAddVideo").style.display = "none";
+      alert(`Video eklendi! AI, videoyu ${bolumSayisi} alt konuya böldü.`);
+    } catch (err) {
+      alert(`Video eklenemedi: ${err.message || "linki ve altyazısı olup olmadığını kontrol et."}`);
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Bölümle ve Ekle";
+    }
   });
 }
 

@@ -45,13 +45,56 @@ def _en_uzun_bolumler(bolumler: list[dict]) -> list[dict]:
     return list(en_iyi.values())
 
 
+def isle_tek_video(session: Session, youtube_url: str, ders_id: str, kanal_adi: str) -> models.Video:
+    # Tek bir videoyu uctan uca isler (altyazi -> Groq bolumleme -> Video+Bolum
+    # kaydi) ve olusan Video satirini doner. Hem toplu on-isleme scripti
+    # (isle()) hem de hoca'nin canli "/api/video-ekle" ucu bunu kullanir.
+    servis = AltyaziServisi()
+    altyazi = servis.altyazi_getir(youtube_url)
+    video_id_str = altyazi["video_id"]
+
+    mevcut = session.exec(
+        select(models.Video).where(models.Video.youtube_id == video_id_str)
+    ).first()
+    if mevcut:
+        raise ValueError("Bu video zaten eklenmis.")
+
+    alt_konular = _alt_konular(ders_id)
+    bolumler = altyazi_bolumle(altyazi["parcalar"], alt_konular)
+    en_iyi_bolumler = _en_uzun_bolumler(bolumler)
+    if not en_iyi_bolumler:
+        raise ValueError("Videoda bu derse ait hicbir alt konu tespit edilemedi.")
+
+    video = models.Video(
+        ders_id=ders_id,
+        kanal_adi=kanal_adi,
+        youtube_id=video_id_str,
+        toplam_sure=int(altyazi["parcalar"][-1]["bitis"]) if altyazi["parcalar"] else 0,
+    )
+    session.add(video)
+    session.commit()
+    session.refresh(video)
+
+    for b in en_iyi_bolumler:
+        session.add(
+            models.Bolum(
+                video_id=video.id,
+                alt_konu_id=b["alt_konu"],
+                baslik=b["alt_konu"].replace("_", " ").title(),
+                baslangic_sn=int(b["baslangic_sn"]),
+                bitis_sn=int(b["bitis_sn"]),
+                transkript=_transkript_metni(altyazi["parcalar"], b["baslangic_sn"], b["bitis_sn"]),
+            )
+        )
+    session.commit()
+    return video
+
+
 def isle():
     create_db_and_tables()
 
     with open(VIDEOLAR_JSON, encoding="utf-8") as f:
         videolar = json.load(f)
-
-    servis = AltyaziServisi()
 
     with Session(engine) as session:
         for v in videolar:
@@ -63,36 +106,16 @@ def isle():
                 continue
 
             print(f"Isleniyor: {v['kanal_adi']} - {v['youtube_id']}")
-            altyazi = servis.altyazi_getir(v["youtube_url"])
+            try:
+                video = isle_tek_video(session, v["youtube_url"], v["konu_id"], v["kanal_adi"])
+            except ValueError as e:
+                print(f"  -> atlandi: {e}")
+                continue
 
-            ders_id = v["konu_id"]
-            alt_konular = _alt_konular(ders_id)
-            bolumler = altyazi_bolumle(altyazi["parcalar"], alt_konular)
-            en_iyi_bolumler = _en_uzun_bolumler(bolumler)
-
-            video = models.Video(
-                ders_id=ders_id,
-                kanal_adi=v["kanal_adi"],
-                youtube_id=v["youtube_id"],
-                toplam_sure=int(altyazi["parcalar"][-1]["bitis"]) if altyazi["parcalar"] else 0,
+            bolum_sayisi = len(
+                session.exec(select(models.Bolum).where(models.Bolum.video_id == video.id)).all()
             )
-            session.add(video)
-            session.commit()
-            session.refresh(video)
-
-            for b in en_iyi_bolumler:
-                session.add(
-                    models.Bolum(
-                        video_id=video.id,
-                        alt_konu_id=b["alt_konu"],
-                        baslik=b["alt_konu"].replace("_", " ").title(),
-                        baslangic_sn=int(b["baslangic_sn"]),
-                        bitis_sn=int(b["bitis_sn"]),
-                        transkript=_transkript_metni(altyazi["parcalar"], b["baslangic_sn"], b["bitis_sn"]),
-                    )
-                )
-            session.commit()
-            print(f"  -> {len(en_iyi_bolumler)} bolum kaydedildi.")
+            print(f"  -> {bolum_sayisi} bolum kaydedildi.")
 
 
 if __name__ == "__main__":

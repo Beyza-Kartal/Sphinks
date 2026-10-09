@@ -20,6 +20,7 @@ from sqlmodel import Session, select
 from backend import models
 from backend.db import get_session
 from backend.icerik_meta import UNITELER
+from backend.video_isle import isle_tek_video
 
 router = APIRouter()
 
@@ -78,6 +79,12 @@ class SifreDegistirIstegi(BaseModel):
 class SinifEkleIstegi(BaseModel):
     hoca_id: int
     unite_id: str
+
+
+class VideoEkleIstegi(BaseModel):
+    ders_id: str
+    youtube_url: str
+    kanal_adi: str = "Hoca Eklentisi"
 
 
 @router.post("/api/hoca/kayit")
@@ -234,4 +241,34 @@ def panel(sinif_id: int, session: Session = Depends(get_session)):
         "hazir_orani": hazir_orani,
         "eksik_dagilimi": eksik_dagilimi,
         "ogrenciler": ogrenci_listesi,
+    }
+
+
+@router.post("/api/video-ekle")
+def video_ekle(istek: VideoEkleIstegi, session: Session = Depends(get_session)):
+    # EK2: hoca kendi videosunu ekler, canli istek sirasinda altyazi cekilip
+    # Groq ile bolumlenir (bkz. video_isle.isle_tek_video - toplu scriptle
+    # aynı mantik, tek fark burada DB'ye kaydedilecek Video tek basina).
+    try:
+        video = isle_tek_video(session, istek.youtube_url, istek.ders_id, istek.kanal_adi)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    bolumler = session.exec(
+        select(models.Bolum).where(models.Bolum.video_id == video.id)
+    ).all()
+
+    return {
+        "video_id": video.id,
+        "youtube_id": video.youtube_id,
+        "kanal_adi": video.kanal_adi,
+        "bolumler": [
+            {
+                "alt_konu_id": b.alt_konu_id,
+                "baslik": b.baslik,
+                "baslangic_sn": b.baslangic_sn,
+                "bitis_sn": b.bitis_sn,
+            }
+            for b in bolumler
+        ],
     }

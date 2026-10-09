@@ -33,9 +33,4 @@ def ozet(deneme_id: int):
     return {"sonuc": "basarili", "izlenen_saniye": 60, "toplam_saniye": 90}
 
 
-@app.post("/api/video-ekle")
-def video_ekle():
-    return {"video_id": 2, "yeni_secenek": {"kanal_adi": "Kanal B", "youtube_id": "dQw4w9WgXcQ"}}
-
-
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
