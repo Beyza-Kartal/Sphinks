@@ -133,10 +133,15 @@ function getLocalMock(url, method, body) {
     return {
       eksik: "kumeler_ve_ikililer",
       videolar: [
-        { kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslik: "Kumeler Ve Ikililer", baslangic_sn: 2224, bitis_sn: 2380 },
-        { kanal_adi: "Net Anlatım", youtube_id: "9VZsMY15xeU", baslik: "Kümeler Konu Anlatımı", baslangic_sn: 30, bitis_sn: 210 },
+        { video_id: 1, kanal_adi: "Matematiğin Güler Yüzü", youtube_id: "M-Bufmo1Bz8", baslik: "Kumeler Ve Ikililer", baslangic_sn: 2224, bitis_sn: 2380, transkript: "" },
+        { video_id: 2, kanal_adi: "Net Anlatım", youtube_id: "9VZsMY15xeU", baslik: "Kümeler Konu Anlatımı", baslangic_sn: 30, bitis_sn: 210, transkript: "" },
       ],
     };
+  }
+
+  // GET /api/video/{video_id}/bolumler
+  if (url.includes("/bolumler")) {
+    return { bolumler: [] };
   }
 
   if (url.includes("/api/benzetme")) {
@@ -442,7 +447,7 @@ function renderDiagnosisView() {
 }
 
 // 4. Öğrenme Dakikaları (Minutes View)
-function renderMinutesView() {
+async function renderMinutesView() {
   document.getElementById("topStepText").textContent = "Öğrenme Dakikaları";
   const main = document.getElementById("mainContainer");
   const eksikKonu = state.diagnosis?.eksik || "Eksik konu";
@@ -516,15 +521,21 @@ function renderMinutesView() {
           >
             ↗ Videoyu YouTube'da aç (tam kontrol + tüm dakikalar)
           </a>
+
+          <section class="video-map" style="margin-top: 18px; background: var(--bg-card); border-radius: 16px; padding: 16px; border: 1px solid var(--line);">
+            <p class="card-kicker" style="margin: 0 0 10px;">Bu videoda hangi dakikada ne anlatılıyor</p>
+            <div id="videoMapContainer"><span class="spinner small"></span> Yükleniyor...</div>
+          </section>
+
           <details class="transcript">
-            <summary>Video bilgisi ve transkript <span>${sureDk} dk</span></summary>
+            <summary>Bu bölümün transkripti <span>${sureDk} dk</span></summary>
             <div>
               <p><strong>Kanal:</strong> ${activeVideo.kanal_adi}</p>
               <p><strong>Başlık:</strong> ${activeVideo.baslik || "Konu Anlatımı"}</p>
               <p><strong>Süre:</strong> ${Math.floor(activeVideo.baslangic_sn / 60)}:${String(activeVideo.baslangic_sn % 60).padStart(2, "0")} – ${Math.floor(activeVideo.bitis_sn / 60)}:${String(activeVideo.bitis_sn % 60).padStart(2, "0")}</p>
               ${
                 activeVideo.transkript
-                  ? `<p><strong>Bu bölümde anlatılanlar:</strong></p><p style="color: var(--muted); line-height: 1.6;">${activeVideo.transkript}</p>`
+                  ? `<p style="color: var(--muted); line-height: 1.6;">${activeVideo.transkript}</p>`
                   : `<p style="color: var(--muted);">Bu bölüm için transkript henüz hazırlanmadı.</p>`
               }
             </div>
@@ -568,6 +579,31 @@ function renderMinutesView() {
   });
 
   document.getElementById("btnWatchedVideo").addEventListener("click", startRetest);
+
+  // Videonun TUM bolumlerini (hangi dakikada hangi konu) getir ve acikca
+  // goster - katlanir kutuda gizli degil, direkt sayfada.
+  if (activeVideo.video_id) {
+    apiCall(`/api/video/${activeVideo.video_id}/bolumler`).then((data) => {
+      const mapBox = document.getElementById("videoMapContainer");
+      if (!mapBox) return;
+      const bolumler = data.bolumler || [];
+      if (bolumler.length === 0) {
+        mapBox.innerHTML = `<span style="color: var(--muted); font-size: 13px;">Bu video için bölüm haritası henüz hazır değil.</span>`;
+        return;
+      }
+      mapBox.innerHTML = bolumler
+        .map((b) => {
+          const dk = (sn) => `${Math.floor(sn / 60)}:${String(sn % 60).padStart(2, "0")}`;
+          return `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
+            <span style="font-size: 13px;"><strong>${dk(b.baslangic_sn)} – ${dk(b.bitis_sn)}</strong> · ${formatKonuAdi(b.alt_konu_id)}</span>
+            <a href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}&t=${b.baslangic_sn}s" target="_blank" rel="noopener" style="font-size: 12px; color: var(--green); text-decoration: none;">izle →</a>
+          </div>
+        `;
+        })
+        .join("");
+    });
+  }
 }
 
 // 5. Bilişsel Köprü (Bridge View)

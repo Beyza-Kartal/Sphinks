@@ -30,6 +30,7 @@ def teshis(deneme_id: int, session: Session = Depends(get_session)):
 
     videolar = [
         {
+            "video_id": video.id,
             "kanal_adi": video.kanal_adi,
             "youtube_id": video.youtube_id,
             "baslik": bolum.baslik,
@@ -41,3 +42,25 @@ def teshis(deneme_id: int, session: Session = Depends(get_session)):
     ]
 
     return {"eksik": deneme.bulunan_alt_konu, "videolar": videolar}
+
+
+@router.get("/api/video/{video_id}/bolumler")
+def video_bolumleri(video_id: int, session: Session = Depends(get_session)):
+    # Videonun TUM bolumlerini (hangi dakikada hangi konu) dondurur -
+    # ogrenci "bu videoda baska ne var" diye bakmak isterse (EK2: "videonun
+    # tum bolumleri").
+    bolumler = session.exec(
+        select(models.Bolum).where(models.Bolum.video_id == video_id).order_by(models.Bolum.baslangic_sn)
+    ).all()
+    return {
+        "bolumler": [
+            {
+                "alt_konu_id": b.alt_konu_id,
+                "baslik": b.baslik,
+                "baslangic_sn": b.baslangic_sn,
+                "bitis_sn": b.bitis_sn,
+                "transkript": b.transkript,
+            }
+            for b in bolumler
+        ]
+    }
