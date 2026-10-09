@@ -9,47 +9,19 @@ from fastapi.staticfiles import StaticFiles
 
 from backend.db import create_db_and_tables
 from backend import models  # noqa: F401 - tablo tanimlari metadata'ya kaydolsun diye
+from backend.api_ogrenci import router as ogrenci_router
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 os.makedirs(FRONTEND_DIR, exist_ok=True)
 
 app = FastAPI(title="HazirMisin?")
+app.include_router(ogrenci_router)
 
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-
-
-@app.post("/api/giris")
-def giris():
-    return {"ogrenci_id": 1, "konu": {"id": 1, "ad": "Ikinci Dereceden Denklemler"}}
-
-
-@app.post("/api/test/basla")
-def test_basla():
-    return {
-        "deneme_id": 1,
-        "soru": {
-            "id": 1,
-            "metin": "6x + 9 ifadesinde ortak carpan nedir?",
-            "secenekler": ["2", "3", "x", "6"],
-        },
-    }
-
-
-@app.post("/api/cevap")
-def cevap():
-    return {
-        "dogru_mu": False,
-        "bitti": False,
-        "soru": {
-            "id": 2,
-            "metin": "Ornek soru 2",
-            "secenekler": ["A", "B", "C", "D"],
-        },
-    }
 
 
 @app.get("/api/teshis/{deneme_id}")
