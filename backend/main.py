@@ -28,16 +28,6 @@ def on_startup():
     create_db_and_tables()
 
 
-@app.post("/api/tekrar/basla")
-def tekrar_basla():
-    return {
-        "deneme_id": 1,
-        "sorular": [
-            {"id": 10, "metin": "Tekrar sorusu 1", "secenekler": ["A", "B", "C", "D"]},
-        ],
-    }
-
-
 @app.post("/api/benzetme")
 def benzetme():
     return {"metin": "Ortak carpan, bir pastayi esit dilimlere bolmek gibidir."}

@@ -17,14 +17,20 @@ from sqlmodel import Session, select
 from backend import models
 from backend.db import get_session
 from backend.icerik_meta import UNITELER
+from backend.kavram_testi_secici import KavramTestiSecici
 from backend.on_test_secici import OnTestSecici
 
 router = APIRouter()
 _secici = OnTestSecici()
+_kavram_secici = KavramTestiSecici()
 
 # deneme_id -> dogru cevaplariyla BIRLIKTE orijinal test paketi.
 # Sadece sunucu tarafinda tutulur, ogrenciye hic gonderilmez (guvenlik).
 _aktif_testler: dict[int, dict] = {}
+
+# deneme_id -> video sonrasi "tekrar testi" (kavram testi) paketi, ayni
+# guvenlik mantigiyla (dogru cevap sunucuda kalir).
+_aktif_tekrar_testleri: dict[int, dict] = {}
 
 
 class GirisIstegi(BaseModel):
@@ -40,6 +46,15 @@ class TestBaslaIstegi(BaseModel):
 class TestBitirIstegi(BaseModel):
     deneme_id: int
     cevaplar: dict[str, str]  # {soru_id: secilen_harf}
+
+
+class TekrarBaslaIstegi(BaseModel):
+    deneme_id: int
+
+
+class TekrarBitirIstegi(BaseModel):
+    deneme_id: int
+    cevaplar: dict[str, str]
 
 
 def _ogrenciye_gonderilecek_sorular(test_paketi: dict) -> list[dict]:
@@ -140,4 +155,45 @@ def test_bitir(istek: TestBitirIstegi, session: Session = Depends(get_session)):
     session.commit()
 
     del _aktif_testler[istek.deneme_id]
+    return sonuc
+
+
+@router.post("/api/tekrar/basla")
+def tekrar_basla(istek: TekrarBaslaIstegi, session: Session = Depends(get_session)):
+    # Video izledikten sonra, SADECE bulunan eksik konudan buse'nin
+    # kavram_testi_secici.py'si 6 soru uretir (2 kolay+2orta+2zor).
+    deneme = session.get(models.Deneme, istek.deneme_id)
+    if not deneme:
+        raise HTTPException(status_code=404, detail="Deneme bulunamadi")
+    if not deneme.bulunan_alt_konu:
+        raise HTTPException(status_code=400, detail="Bu deneme icin eksik konu bulunamadi")
+
+    sinif = session.get(models.Sinif, deneme.sinif_id)
+    test_verisi = _kavram_secici.test_olustur(sinif.ders_id, deneme.bulunan_alt_konu)
+    _aktif_tekrar_testleri[deneme.id] = test_verisi
+
+    # dogru_cevap ve cozum CIKARILIYOR; ogrenci gormemeli.
+    sorular = [
+        {"soru_id": s["soru_id"], "alt_konu": s["alt_konu"], "soru": s["soru"], "secenekler": s["secenekler"]}
+        for s in test_verisi["sorular"]
+    ]
+    return {"deneme_id": deneme.id, "sorular": sorular}
+
+
+@router.post("/api/tekrar/bitir")
+def tekrar_bitir(istek: TekrarBitirIstegi, session: Session = Depends(get_session)):
+    deneme = session.get(models.Deneme, istek.deneme_id)
+    test_verisi = _aktif_tekrar_testleri.get(istek.deneme_id)
+    if not deneme or not test_verisi:
+        raise HTTPException(status_code=404, detail="Tekrar testi bulunamadi ya da suresi doldu")
+
+    sonuc = _kavram_secici.cevaplari_degerlendir(test_verisi, istek.cevaplar)
+
+    if sonuc["calisma_ise_yaradi_mi"]:
+        # eksik kapandi, ogrenci artik bu konuda "hazir"
+        deneme.bulunan_alt_konu = None
+        session.add(deneme)
+        session.commit()
+
+    del _aktif_tekrar_testleri[istek.deneme_id]
     return sonuc

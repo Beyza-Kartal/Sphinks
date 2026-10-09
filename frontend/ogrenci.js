@@ -30,7 +30,9 @@ const state = {
   analogyText: "",
   retestQuestions: [],
   retestIndex: 0,
-  retestSelectedKey: null,
+  retestSelectedKey: null, // secilen sik harfi ("A".."D")
+  retestCevaplar: {},      // { soru_id: "B", ... } biriktirilen tekrar testi cevaplari
+  retestSonuc: null,       // /api/tekrar/bitir sonucu
   summaryData: null,
   // Test bitir sonuçları
   testSonuc: null,
@@ -151,10 +153,14 @@ function getLocalMock(url, method, body) {
     return {
       deneme_id: 1,
       sorular: [
-        { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
-        { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
+        { soru_id: "r1", soru: "A ∩ B kümesi neyi ifade eder?", secenekler: { A: "Birleşim", B: "Kesişim", C: "Fark", D: "Tümleyen" } },
+        { soru_id: "r2", soru: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: { A: "8", B: "9", C: "10", D: "12" } },
       ],
     };
+  }
+
+  if (url.includes("/api/tekrar/bitir")) {
+    return { toplam_soru: 2, dogru: 2, yanlis: 0, puan: 100.0, basari_esigi: 75, calisma_ise_yaradi_mi: true, mesaj: "Tebrikler, eksiğini kapattın!" };
   }
 
   if (url.includes("/api/ozet")) {
@@ -498,10 +504,15 @@ function renderMinutesView() {
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-              src="https://www.youtube.com/embed/${activeVideo.youtube_id}?start=${activeVideo.baslangic_sn || 0}&end=${activeVideo.bitis_sn || 300}&rel=0"
+              src="https://www.youtube.com/embed/${activeVideo.youtube_id}?start=${activeVideo.baslangic_sn || 0}&end=${activeVideo.bitis_sn || 300}&controls=1&rel=0"
               title="${activeVideo.kanal_adi}"
             ></iframe>
           </div>
+          <p class="microcopy" style="margin-top: 10px;">
+            Anlamadığın yere gelince oynatma çubuğunu kullanarak geri alabilirsin.
+            Videonun diğer bölümlerini de görmek istersen:
+            <a href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}" target="_blank" rel="noopener">tam videoyu YouTube'da aç →</a>
+          </p>
           <details class="transcript">
             <summary>Video bilgisi <span>${sureDk} dk</span></summary>
             <div>
@@ -618,17 +629,16 @@ function renderBridgeView() {
   });
 }
 
-// 6. Tekrar Testi (Retest View)
+// 6. Tekrar Testi (Retest View) — gercek /api/tekrar/basla sorulari,
+// secenekler pretest ile ayni formatta (sozluk: {A,B,C,D})
 function renderRetestView() {
   document.getElementById("topStepText").textContent = "Tekrar Testi";
   const main = document.getElementById("mainContainer");
-  const total = state.retestQuestions.length || 2;
+  const total = state.retestQuestions.length;
   const current = state.retestIndex + 1;
-  const q = state.retestQuestions[state.retestIndex] || {
-    metin: "A ∩ B kümesi neyi ifade eder?",
-    secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"],
-  };
+  const q = state.retestQuestions[state.retestIndex];
   const progressPercent = (current / total) * 100;
+  const secenekKeys = Object.keys(q.secenekler);
 
   main.innerHTML = `
     <div class="quiz-page">
@@ -638,20 +648,20 @@ function renderRetestView() {
       </div>
       <section class="question-card">
         <div class="question-number">Soru ${current}</div>
-        <h1>${q.metin}</h1>
+        <h1>${q.soru}</h1>
         <div class="options">
-          ${q.secenekler
+          ${secenekKeys
             .map(
-              (opt, idx) => `
-            <button class="option ${state.retestSelectedKey === idx ? "selected" : ""}" data-index="${idx}">
-              <span>${String.fromCharCode(65 + idx)}</span>${opt}
+              (key) => `
+            <button class="option ${state.retestSelectedKey === key ? "selected" : ""}" data-key="${key}">
+              <span>${key}</span>${q.secenekler[key]}
             </button>
           `
             )
             .join("")}
         </div>
         <div class="quiz-actions">
-          <p>Cevabından emin olmasan da sorun değil.</p>
+          <p>Bu sefer ciddi — eksiğin kapandığını gösteren asıl test.</p>
           <button class="primary-button" id="btnNextRetest" ${state.retestSelectedKey === null ? "disabled" : ""}>
             ${current === total ? "Testi tamamla" : "Sonraki soru"}
           </button>
@@ -660,9 +670,9 @@ function renderRetestView() {
     </div>
   `;
 
-  main.querySelectorAll("button[data-index]").forEach((btn) => {
+  main.querySelectorAll("button[data-key]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      state.retestSelectedKey = parseInt(btn.getAttribute("data-index"), 10);
+      state.retestSelectedKey = btn.getAttribute("data-key");
       renderRetestView();
     });
   });
@@ -675,30 +685,37 @@ function renderSummaryView() {
   document.getElementById("topStepText").textContent = "Sonuç & Özet";
   const main = document.getElementById("mainContainer");
   const konuAd = state.konu?.ad || "Fonksiyonlar";
+  const sonuc = state.retestSonuc;
+  const basarili = sonuc?.calisma_ise_yaradi_mi ?? true;
+  const puan = sonuc?.puan ?? 100;
+  const dogru = sonuc?.dogru ?? state.retestQuestions.length;
+  const toplam = sonuc?.toplam_soru ?? state.retestQuestions.length;
 
-  main.innerHTML = `
+  main.innerHTML = basarili
+    ? `
     <div class="summary-page">
       <div class="confetti c1"></div><div class="confetti c2"></div><div class="confetti c3"></div><div class="confetti c4"></div>
       <div class="summary-check">✓</div>
       <div class="eyebrow"><span class="eyebrow-dot"></span> Konu tamamlandı</div>
       <h1>Hazırsın, ${state.ogrenciIsim}.</h1>
       <p>Eksik parçayı yerine koydun. Şimdi ${konuAd.toLowerCase()} çok daha net.</p>
-      <section class="time-earned">
-        <div style="font-size: 24px;">⏱️</div>
-        <span>
-          <small>Kazandığın süre</small>
-          <strong>8 dakika</strong>
-        </span>
-        <i>Bugünkü hedefin tamamlandı</i>
-      </section>
       <div class="summary-stats">
-        <div><strong>${state.retestQuestions.length || 2}/${state.retestQuestions.length || 2}</strong><span>Tekrar testi</span></div>
+        <div><strong>${dogru}/${toplam}</strong><span>Tekrar testi</span></div>
+        <div><strong>%${puan.toFixed ? puan.toFixed(0) : puan}</strong><span>Başarı</span></div>
         <div><strong>1</strong><span>Kapatılan eksik</span></div>
-        <div><strong>4 dk</strong><span>Öğrenme süresi</span></div>
       </div>
       <button class="secondary-button restart" id="btnSummaryRestart">
         ↺ Ana sayfaya dön
       </button>
+    </div>
+  `
+    : `
+    <div class="summary-page">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Biraz daha çalışalım</div>
+      <h1>${sonuc?.mesaj || "Henüz hazır değilsin, videoyu bir kez daha izlemeni öneririz."}</h1>
+      <p>${dogru}/${toplam} doğru (%${puan.toFixed ? puan.toFixed(0) : puan}) — hedef %${sonuc?.basari_esigi || 75}.</p>
+      <button class="primary-button" id="btnWatchAgain">Videoyu tekrar izle</button>
+      <button class="secondary-button restart" id="btnSummaryRestart">↺ Ana sayfaya dön</button>
     </div>
   `;
 
@@ -706,6 +723,13 @@ function renderSummaryView() {
     state.view = "home";
     renderHomeView();
   });
+
+  if (!basarili) {
+    document.getElementById("btnWatchAgain").addEventListener("click", () => {
+      state.view = "minutes";
+      renderMinutesView();
+    });
+  }
 }
 
 // --- AKIŞ AKSİYONLARI ---
@@ -778,7 +802,8 @@ async function submitAnswer() {
   }
 }
 
-// Tekrar Testi Başlat: POST /api/tekrar/basla
+// Tekrar Testi Başlat: POST /api/tekrar/basla — SADECE bulunan eksik
+// konudan 6 soru gelir (2 kolay+2orta+2zor, buse'nin kavram_testi_secici.py'si)
 async function startRetest() {
   const btn = document.getElementById("btnWatchedVideo");
   if (btn) btn.disabled = true;
@@ -789,26 +814,32 @@ async function startRetest() {
 
   // DUZELTME: bos dizi "truthy" oldugu icin "|| varsayilan" calismiyordu
   // (bkz. renderMinutesView'daki ayni hata). data.sorular boyutuna gore
-  // kontrol ediyoruz.
+  // kontrol ediyoruz. Yeni format: secenekler sozluk {A,B,C,D} (pretest ile ayni).
   state.retestQuestions =
     data.sorular && data.sorular.length > 0
       ? data.sorular
       : [
-          { id: 6, metin: "A ∩ B kümesi neyi ifade eder?", secenekler: ["Birleşim", "Kesişim", "Fark", "Tümleyen"] },
-          { id: 7, metin: "f(x) = x² + 1 ise f(3) kaçtır?", secenekler: ["8", "9", "10", "12"] },
+          { soru_id: "r1", soru: "A ∩ B kümesi neyi ifade eder?", secenekler: { A: "Birleşim", B: "Kesişim", C: "Fark", D: "Tümleyen" } },
         ];
   state.retestIndex = 0;
   state.retestSelectedKey = null;
+  state.retestCevaplar = {};
   state.view = "retest";
   renderRetestView();
 }
 
-// Tekrar Testi Cevapla
+// Tekrar Testi Cevapla — hepsi bitince POST /api/tekrar/bitir ile
+// toplu gonderilir (pretest ile ayni mantik).
 async function submitRetestAnswer() {
+  const q = state.retestQuestions[state.retestIndex];
+  state.retestCevaplar[q.soru_id] = state.retestSelectedKey;
+
   if (state.retestIndex === state.retestQuestions.length - 1) {
-    // Özet çek: GET /api/ozet/{deneme_id}
-    const ozetData = await apiCall(`/api/ozet/${state.denemeId || 1}`);
-    state.summaryData = ozetData;
+    const sonuc = await apiCall("/api/tekrar/bitir", "POST", {
+      deneme_id: state.denemeId || 1,
+      cevaplar: state.retestCevaplar,
+    });
+    state.retestSonuc = sonuc;
     state.view = "summary";
     renderSummaryView();
   } else {
