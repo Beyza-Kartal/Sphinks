@@ -49,7 +49,6 @@ Sphinks/
 ├── frontend/
 │   ├── hoca.html                  # Öğretmen canlı sınıf takip paneli (Responsive, Dashboard)
 │   └── hoca.js                    # Canlı veri akışı, 5sn otomatik yenileme ve dinamik QR kod motoru
-├── SUNUM_VE_DEMO_REHBERI.md       # 7 dakikalık jüri sunumu, 3 dakikalık canlı demo senaryosu ve SSS rehberi
 └── README.md                      # Proje ana dokümantasyonu
 ```
 
@@ -107,13 +106,8 @@ python backend/kavram_testi_secici.py
 
 ---
 
-## 🎤 Jüri Sunumu ve Canlı Demo
 
-Yarışma ve jüri sunumu için hazırlanan **7 Dakikalık Slayt Taslağı**, **3 Dakikalık Rol Dağılımlı Canlı Demo Senaryosu** ve **Jüri Soru-Cevap (Q&A) Savunma Kartları** için detaylı rehberimize göz atabilirsiniz:
-
-👉 **[SUNUM_VE_DEMO_REHBERI.md](SUNUM_VE_DEMO_REHBERI.md)**
-
----
 
 ## 📄 Lisans
 Bu proje açık kaynak topluluğu ve eğitimde fırsat eşitliği için MIT lisansı altında geliştirilmiştir.
+
