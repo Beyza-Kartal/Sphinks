@@ -1963,8 +1963,8 @@
             "C": "III. Bölge",
             "D": "IV. Bölge"
           },
-          "cevap": "B",
-          "cozum": "a² daima pozitif olduğundan a²·b < 0 ise b < 0'dır. b³ negatif olduğundan a·b³ < 0 ise a > 0 olmalıdır. a > 0, b < 0 olduğundan (+, -) yani IV. bölgededir (Düzeltme: Apsis +, ordinat - ⇒ IV. bölge)."
+          "cevap": "D",
+          "cozum": "a² daima pozitif olduğundan a²·b < 0 ise b < 0'dır. b³ negatif olduğundan a·b³ < 0 ise a > 0 olmalıdır. a > 0, b < 0 olduğundan (+, -) yani IV. bölgededir."
         },
         {
           "id": "kor_z_03",
@@ -2059,8 +2059,8 @@
             "C": "7",
             "D": "9"
           },
-          "cevap": "C",
-          "cozum": "(4 - m)² + (m - 2)² = 10 ⇒ 16 - 8m + m² + m² - 4m + 4 = 10 ⇒ 2m² - 12m + 10 = 0 ⇒ m² - 6m + 5 = 0. Kökler çarpımı c/a = 5 (veya hesapla: m=1, m=5 ⇒ 1·5 = 5)."
+          "cevap": "B",
+          "cozum": "(4 - m)² + (m - 2)² = 10 ⇒ 16 - 8m + m² + m² - 4m + 4 = 10 ⇒ 2m² - 12m + 10 = 0 ⇒ m² - 6m + 5 = 0. Kökler çarpımı c/a = 5."
         },
         {
           "id": "kor_z_11",
@@ -2782,13 +2782,13 @@
           "id": "den_z_10",
           "soru": "(x - 2) / 3 - (x - 4) / 5 = (x + 1) / 15 denkleminde x kaçtır?",
           "secenekler": {
-            "A": "1",
-            "B": "2",
-            "C": "3",
-            "D": "4"
+            "A": "-1",
+            "B": "1",
+            "C": "2",
+            "D": "3"
           },
           "cevap": "A",
-          "cozum": "Paydalar 15'te eşitlenir: 5(x - 2) - 3(x - 4) = x + 1 ⇒ 5x - 10 - 3x + 12 = x + 1 ⇒ 2x + 2 = x + 1 ⇒ x = -1 (veya şıklara göre kontrol: x = 1)."
+          "cozum": "Paydalar 15'te eşitlenir: 5(x - 2) - 3(x - 4) = x + 1 ⇒ 5x - 10 - 3x + 12 = x + 1 ⇒ 2x + 2 = x + 1 ⇒ x = -1."
         },
         {
           "id": "den_z_11",
