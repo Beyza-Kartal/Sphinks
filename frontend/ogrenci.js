@@ -597,10 +597,26 @@ async function renderMinutesView() {
         mapBox.innerHTML = `<span style="color: var(--muted); font-size: 13px;">Bu video için bölüm haritası henüz hazır değil.</span>`;
         return;
       }
-      mapBox.innerHTML = bolumler
+
+      // Oncelik sirasi: en oncelikli eksik konu (eksikKonu) once, sonra
+      // diger eksik konular, sonra geri kalanlar - hepsi kirmizi/⚡
+      // isaretli ama en onemlisi en ustte gozuksun diye siraliyoruz.
+      const eksikListesi = state.testSonuc?.eksik_alt_konular?.length
+        ? state.testSonuc.eksik_alt_konular
+        : eksikKonu
+        ? [eksikKonu]
+        : [];
+      const oncelik = (konuId) => {
+        if (konuId === eksikKonu) return 0;
+        if (eksikListesi.includes(konuId)) return 1;
+        return 2;
+      };
+      const siraliBolumler = [...bolumler].sort((a, b) => oncelik(a.alt_konu_id) - oncelik(b.alt_konu_id));
+
+      mapBox.innerHTML = siraliBolumler
         .map((b) => {
           const dk = (sn) => `${Math.floor(sn / 60)}:${String(sn % 60).padStart(2, "0")}`;
-          const eksikMi = b.alt_konu_id === eksikKonu;
+          const eksikMi = eksikListesi.includes(b.alt_konu_id);
           return `
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
             <span style="font-size: 13px; color: ${eksikMi ? "var(--coral)" : "inherit"};"><strong>${dk(b.baslangic_sn)} – ${dk(b.bitis_sn)}</strong> · ${formatKonuAdi(b.alt_konu_id)}${eksikMi ? " ⚡" : ""}</span>
