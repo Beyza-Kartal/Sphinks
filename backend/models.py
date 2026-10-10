@@ -58,6 +58,12 @@ class Deneme(SQLModel, table=True):
     sinif_id: int = Field(foreign_key="sinif.id")
     durum: str = "basladi"  # basladi | test_bitti
     bulunan_alt_konu: Optional[str] = None
+    # NOT: bu alan kullanilmiyor (video artik dis link, izleme suresi
+    # olculemiyor) ama DB'deki eski sutun NOT NULL oldugu icin SQLModel'den
+    # tamamen cikarmak INSERT'leri kiriyordu (bkz. GUNLUK.md - canli hata).
+    # Sutunu DB'den gercekten silmek riskli/gereksiz, alan burada sadece
+    # INSERT'in calismasini saglamak icin duruyor.
+    izlenen_saniye: int = 0
     son_tekrar_dogru: Optional[int] = None
     son_tekrar_toplam: Optional[int] = None
     son_tekrar_puan: Optional[float] = None
