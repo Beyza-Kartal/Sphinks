@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 os.makedirs(FRONTEND_DIR, exist_ok=True)
 
-app = FastAPI(title="HazirMisin?")
+app = FastAPI(title="Kıvılcım")
 app.include_router(ogrenci_router)
 app.include_router(hoca_router)
 app.include_router(teshis_router)
