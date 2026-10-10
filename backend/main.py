@@ -27,6 +27,23 @@ def on_startup():
     create_db_and_tables()
 
 
+_PUBLIC_URL_FILE = os.path.join(BASE_DIR, "tools", "public_url.txt")
+
+
+def _cloudflared_public_url() -> str | None:
+    # cloudflared quick tunnel'in yerel bir API'si yok (ngrok'taki 4040 gibi),
+    # URL'i sadece surec basladiginda konsola yazdiriyor. Bu yuzden tunel
+    # baslatilirken bu adres tools/public_url.txt dosyasina yazilir, burada
+    # okunur. ngrok'un ucretsiz plandaki zorunlu "Visit Site" ara uyari
+    # sayfasi (ERR_NGROK_6024) cloudflared'da olmadigi icin tercih edilir.
+    try:
+        with open(_PUBLIC_URL_FILE, encoding="utf-8") as f:
+            url = f.read().strip()
+            return url or None
+    except FileNotFoundError:
+        return None
+
+
 def _ngrok_public_url() -> str | None:
     # ngrok calisiyorsa, kendi yerel API'sinden (localhost:4040) su an acik
     # olan tunelin genel (https) adresini okur. Boylece ayni wifi'de olmayan
@@ -56,7 +73,7 @@ def sunucu_bilgisi():
         lan_ip = "127.0.0.1"
     finally:
         s.close()
-    return {"lan_ip": lan_ip, "public_url": _ngrok_public_url()}
+    return {"lan_ip": lan_ip, "public_url": _cloudflared_public_url() or _ngrok_public_url()}
 
 
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
