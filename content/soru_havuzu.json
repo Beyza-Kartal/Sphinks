@@ -3646,727 +3646,727 @@
       "kolay": [
         {
           "id": "fon_k_01",
-          "soru": "Fonksiyon Turleri temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = (a - 1)x + 8 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "-1",
+            "C": "1",
+            "D": "0"
+          },
+          "cevap": "C",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 1 = 0 => a = 1 bulunur."
+        },
+        {
+          "id": "fon_k_02",
+          "soru": "f(x) = (a - 2)x + 2 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "3",
+            "C": "1",
+            "D": "2"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 2 = 0 => a = 2 bulunur."
+        },
+        {
+          "id": "fon_k_03",
+          "soru": "f(x) = (a - -3)x + 8 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-2",
+            "B": "-5",
+            "C": "-3",
+            "D": "-4"
+          },
+          "cevap": "C",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -3 = 0 => a = -3 bulunur."
+        },
+        {
+          "id": "fon_k_04",
+          "soru": "f(x) = (a - 1)x + 1 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 1 = 0 => a = 1 bulunur."
+        },
+        {
+          "id": "fon_k_05",
+          "soru": "f(x) = (a - -1)x + 4 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-2",
+            "B": "0",
+            "C": "-3",
+            "D": "-1"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -1 = 0 => a = -1 bulunur."
+        },
+        {
+          "id": "fon_k_06",
+          "soru": "f(x) = (a - 4)x + 6 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "3",
+            "C": "2",
+            "D": "4"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 4 = 0 => a = 4 bulunur."
+        },
+        {
+          "id": "fon_k_07",
+          "soru": "f(x) = (a - -2)x + 9 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "-2",
+            "C": "-4",
+            "D": "-1"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -2 = 0 => a = -2 bulunur."
+        },
+        {
+          "id": "fon_k_08",
+          "soru": "f(x) = (a - 2)x + 6 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
           "secenekler": {
             "A": "1",
             "B": "2",
             "C": "3",
-            "D": "4"
+            "D": "0"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 2 = 0 => a = 2 bulunur."
         },
         {
-          "id": "fon_k_02",
-          "soru": "Fonksiyon Turleri temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_k_09",
+          "soru": "f(x) = (a - -1)x + 8 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-2",
+            "B": "-1",
+            "C": "0",
+            "D": "-3"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -1 = 0 => a = -1 bulunur."
+        },
+        {
+          "id": "fon_k_10",
+          "soru": "f(x) = (a - -4)x + 2 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "-6",
+            "C": "-5",
+            "D": "-4"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -4 = 0 => a = -4 bulunur."
+        },
+        {
+          "id": "fon_k_11",
+          "soru": "f(x) = (a - 2)x + 3 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "1",
+            "C": "0",
+            "D": "2"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 2 = 0 => a = 2 bulunur."
+        },
+        {
+          "id": "fon_k_12",
+          "soru": "f(x) = (a - 5)x + 2 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "3",
+            "C": "6",
+            "D": "4"
+          },
+          "cevap": "A",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 5 = 0 => a = 5 bulunur."
+        },
+        {
+          "id": "fon_k_13",
+          "soru": "f(x) = (a - 2)x + 1 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
           "secenekler": {
             "A": "2",
             "B": "3",
-            "C": "4",
-            "D": "5"
+            "C": "0",
+            "D": "1"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+          "cevap": "A",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 2 = 0 => a = 2 bulunur."
         },
         {
-          "id": "fon_k_03",
-          "soru": "Fonksiyon Turleri temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_k_14",
+          "soru": "f(x) = (a - -1)x + 5 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
           "secenekler": {
-            "A": "3",
-            "B": "4",
-            "C": "5",
-            "D": "6"
+            "A": "0",
+            "B": "-2",
+            "C": "-1",
+            "D": "-3"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
+          "cevap": "C",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -1 = 0 => a = -1 bulunur."
         },
         {
-          "id": "fon_k_04",
-          "soru": "Fonksiyon Turleri temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_k_15",
+          "soru": "f(x) = (a - -5)x + 5 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
           "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
+            "A": "-4",
+            "B": "-5",
+            "C": "-7",
+            "D": "-6"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -5 = 0 => a = -5 bulunur."
         },
         {
-          "id": "fon_k_05",
-          "soru": "Fonksiyon Turleri temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_k_16",
+          "soru": "f(x) = (a - 1)x + 10 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 1 = 0 => a = 1 bulunur."
+        },
+        {
+          "id": "fon_k_17",
+          "soru": "f(x) = (a - -3)x + 4 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-5",
+            "B": "-2",
+            "C": "-3",
+            "D": "-4"
+          },
+          "cevap": "C",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -3 = 0 => a = -3 bulunur."
+        },
+        {
+          "id": "fon_k_18",
+          "soru": "f(x) = (a - -5)x + 4 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-6",
+            "B": "-5",
+            "C": "-4",
+            "D": "-7"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -5 = 0 => a = -5 bulunur."
+        },
+        {
+          "id": "fon_k_19",
+          "soru": "f(x) = (a - -1)x + 2 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "-3",
+            "B": "-2",
+            "C": "0",
+            "D": "-1"
+          },
+          "cevap": "D",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - -1 = 0 => a = -1 bulunur."
+        },
+        {
+          "id": "fon_k_20",
+          "soru": "f(x) = (a - 1)x + 1 fonksiyonu sabit bir fonksiyon olduğuna göre, a kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "1",
+            "C": "2",
+            "D": "-1"
+          },
+          "cevap": "B",
+          "cozum": "Sabit fonksiyonda x'li terim olmaz. Bu yüzden x'in katsayısı 0 olmalıdır. a - 1 = 0 => a = 1 bulunur."
+        }
+      ],
+      "orta": [
+        {
+          "id": "fon_o_01",
+          "soru": "f(x) = (a - 1)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
           "secenekler": {
             "A": "5",
-            "B": "6",
-            "C": "7",
-            "D": "8"
+            "B": "7",
+            "C": "6",
+            "D": "4"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
+          "cevap": "C",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 4 = 0 => b = 4. Toplam: 2 + 4 = 6."
         },
         {
-          "id": "fon_k_06",
-          "soru": "Fonksiyon Turleri temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_o_02",
+          "soru": "f(x) = (a - 4)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
           "secenekler": {
-            "A": "6",
+            "A": "10",
             "B": "7",
             "C": "8",
             "D": "9"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
+          "cevap": "D",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 4 = 1 => a = 5. b - 4 = 0 => b = 4. Toplam: 5 + 4 = 9."
         },
         {
-          "id": "fon_k_07",
-          "soru": "Fonksiyon Turleri temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_o_03",
+          "soru": "f(x) = (a - 3)x + (b - 3) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "6",
+            "C": "8",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 3 = 0 => b = 3. Toplam: 4 + 3 = 7."
+        },
+        {
+          "id": "fon_o_04",
+          "soru": "f(x) = (a - 1)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "5",
+            "C": "4",
+            "D": "6"
+          },
+          "cevap": "D",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 4 = 0 => b = 4. Toplam: 2 + 4 = 6."
+        },
+        {
+          "id": "fon_o_05",
+          "soru": "f(x) = (a - 2)x + (b - 5) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
           "secenekler": {
             "A": "7",
             "B": "8",
             "C": "9",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 2 = 1 => a = 3. b - 5 = 0 => b = 5. Toplam: 3 + 5 = 8."
+        },
+        {
+          "id": "fon_o_06",
+          "soru": "f(x) = (a - 3)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "5",
+            "C": "6",
+            "D": "4"
+          },
+          "cevap": "C",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 2 = 0 => b = 2. Toplam: 4 + 2 = 6."
+        },
+        {
+          "id": "fon_o_07",
+          "soru": "f(x) = (a - 4)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "8",
+            "D": "7"
+          },
+          "cevap": "D",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 4 = 1 => a = 5. b - 2 = 0 => b = 2. Toplam: 5 + 2 = 7."
+        },
+        {
+          "id": "fon_o_08",
+          "soru": "f(x) = (a - 1)x + (b - 1) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "2",
+            "C": "1",
+            "D": "3"
+          },
+          "cevap": "D",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 1 = 0 => b = 1. Toplam: 2 + 1 = 3."
+        },
+        {
+          "id": "fon_o_09",
+          "soru": "f(x) = (a - 3)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "8",
+            "B": "7",
+            "C": "9",
+            "D": "6"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 4 = 0 => b = 4. Toplam: 4 + 4 = 8."
+        },
+        {
+          "id": "fon_o_10",
+          "soru": "f(x) = (a - 1)x + (b - 5) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "8",
+            "C": "7",
+            "D": "5"
+          },
+          "cevap": "C",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 5 = 0 => b = 5. Toplam: 2 + 5 = 7."
+        },
+        {
+          "id": "fon_o_11",
+          "soru": "f(x) = (a - 1)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "5",
+            "C": "3",
+            "D": "2"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 2 = 0 => b = 2. Toplam: 2 + 2 = 4."
+        },
+        {
+          "id": "fon_o_12",
+          "soru": "f(x) = (a - 2)x + (b - 1) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "4",
+            "B": "2",
+            "C": "5",
+            "D": "3"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 2 = 1 => a = 3. b - 1 = 0 => b = 1. Toplam: 3 + 1 = 4."
+        },
+        {
+          "id": "fon_o_13",
+          "soru": "f(x) = (a - 3)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "4",
+            "C": "6",
+            "D": "7"
+          },
+          "cevap": "C",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 2 = 0 => b = 2. Toplam: 4 + 2 = 6."
+        },
+        {
+          "id": "fon_o_14",
+          "soru": "f(x) = (a - 3)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 2 = 0 => b = 2. Toplam: 4 + 2 = 6."
+        },
+        {
+          "id": "fon_o_15",
+          "soru": "f(x) = (a - 4)x + (b - 2) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "5",
+            "D": "6"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 4 = 1 => a = 5. b - 2 = 0 => b = 2. Toplam: 5 + 2 = 7."
+        },
+        {
+          "id": "fon_o_16",
+          "soru": "f(x) = (a - 5)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "10",
+            "B": "8",
+            "C": "11",
+            "D": "9"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 5 = 1 => a = 6. b - 4 = 0 => b = 4. Toplam: 6 + 4 = 10."
+        },
+        {
+          "id": "fon_o_17",
+          "soru": "f(x) = (a - 2)x + (b - 5) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "7",
+            "B": "8",
+            "C": "6",
+            "D": "9"
+          },
+          "cevap": "B",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 2 = 1 => a = 3. b - 5 = 0 => b = 5. Toplam: 3 + 5 = 8."
+        },
+        {
+          "id": "fon_o_18",
+          "soru": "f(x) = (a - 3)x + (b - 3) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "5",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 3 = 1 => a = 4. b - 3 = 0 => b = 3. Toplam: 4 + 3 = 7."
+        },
+        {
+          "id": "fon_o_19",
+          "soru": "f(x) = (a - 1)x + (b - 5) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "7",
+            "C": "6",
+            "D": "8"
+          },
+          "cevap": "B",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 5 = 0 => b = 5. Toplam: 2 + 5 = 7."
+        },
+        {
+          "id": "fon_o_20",
+          "soru": "f(x) = (a - 1)x + (b - 4) fonksiyonu birim fonksiyon olduğuna göre, a + b toplamı kaçtır?",
+          "secenekler": {
+            "A": "6",
+            "B": "7",
+            "C": "4",
+            "D": "5"
+          },
+          "cevap": "A",
+          "cozum": "Birim fonksiyon f(x) = x şeklindedir. Yani x'in katsayısı 1, sabit terim 0 olmalıdır. a - 1 = 1 => a = 2. b - 4 = 0 => b = 4. Toplam: 2 + 4 = 6."
+        }
+      ],
+      "zor": [
+        {
+          "id": "fon_z_01",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "12",
+            "B": "11",
+            "C": "9",
             "D": "10"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 7'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 7 + 4 = 11."
         },
         {
-          "id": "fon_k_08",
-          "soru": "Fonksiyon Turleri temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_z_02",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 4 ve f(2) = 8 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "8",
-            "B": "9",
-            "C": "10",
-            "D": "11"
+            "A": "12",
+            "B": "11",
+            "C": "13",
+            "D": "10"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+          "cevap": "A",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 4'den 8'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 8 + 4 = 12."
         },
         {
-          "id": "fon_k_09",
-          "soru": "Fonksiyon Turleri temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_z_03",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 6 ve f(2) = 11 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "9",
-            "B": "10",
-            "C": "11",
-            "D": "12"
+            "A": "14",
+            "B": "17",
+            "C": "15",
+            "D": "16"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 6'den 11'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 11 + 5 = 16."
         },
         {
-          "id": "fon_k_10",
-          "soru": "Fonksiyon Turleri temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_z_04",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
             "A": "10",
             "B": "11",
             "C": "12",
-            "D": "13"
+            "D": "9"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 7'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 7 + 4 = 11."
         },
         {
-          "id": "fon_k_11",
-          "soru": "Fonksiyon Turleri temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_z_05",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 7 ve f(2) = 12 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "16",
+            "B": "15",
+            "C": "18",
+            "D": "17"
+          },
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 7'den 12'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 12 + 5 = 17."
+        },
+        {
+          "id": "fon_z_06",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 5 ve f(2) = 10 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "13",
+            "B": "15",
+            "C": "16",
+            "D": "14"
+          },
+          "cevap": "B",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 5'den 10'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 10 + 5 = 15."
+        },
+        {
+          "id": "fon_z_07",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 1 ve f(2) = 4 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "7",
+            "C": "8",
+            "D": "6"
+          },
+          "cevap": "B",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 1'den 4'ye (3 birim) artmıştır. x, 2'den 3'e artarken de 3 birim artar: 4 + 3 = 7."
+        },
+        {
+          "id": "fon_z_08",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "12",
+            "B": "9",
+            "C": "10",
+            "D": "11"
+          },
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 7'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 7 + 4 = 11."
+        },
+        {
+          "id": "fon_z_09",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 0 ve f(2) = 2 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "2",
+            "B": "3",
+            "C": "5",
+            "D": "4"
+          },
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 0'den 2'ye (2 birim) artmıştır. x, 2'den 3'e artarken de 2 birim artar: 2 + 2 = 4."
+        },
+        {
+          "id": "fon_z_10",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 5 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "6",
+            "C": "8",
+            "D": "7"
+          },
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 5'ye (2 birim) artmıştır. x, 2'den 3'e artarken de 2 birim artar: 5 + 2 = 7."
+        },
+        {
+          "id": "fon_z_11",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 5 ve f(2) = 9 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
             "A": "11",
             "B": "12",
             "C": "13",
             "D": "14"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+          "cevap": "C",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 5'den 9'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 9 + 4 = 13."
         },
         {
-          "id": "fon_k_12",
-          "soru": "Fonksiyon Turleri temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "fon_z_12",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 0 ve f(2) = 2 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "12",
-            "B": "13",
+            "A": "4",
+            "B": "2",
+            "C": "5",
+            "D": "3"
+          },
+          "cevap": "A",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 0'den 2'ye (2 birim) artmıştır. x, 2'den 3'e artarken de 2 birim artar: 2 + 2 = 4."
+        },
+        {
+          "id": "fon_z_13",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 5 ve f(2) = 10 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "13",
+            "B": "16",
             "C": "14",
             "D": "15"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 5'den 10'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 10 + 5 = 15."
         },
         {
-          "id": "fon_k_13",
-          "soru": "Fonksiyon Turleri temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "13",
-            "B": "14",
-            "C": "15",
-            "D": "16"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
-        },
-        {
-          "id": "fon_k_14",
-          "soru": "Fonksiyon Turleri temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
-        },
-        {
-          "id": "fon_k_15",
-          "soru": "Fonksiyon Turleri temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "15",
-            "B": "16",
-            "C": "17",
-            "D": "18"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
-        },
-        {
-          "id": "fon_k_16",
-          "soru": "Fonksiyon Turleri temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
-        },
-        {
-          "id": "fon_k_17",
-          "soru": "Fonksiyon Turleri temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "17",
-            "B": "18",
-            "C": "19",
-            "D": "20"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
-        },
-        {
-          "id": "fon_k_18",
-          "soru": "Fonksiyon Turleri temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
-        },
-        {
-          "id": "fon_k_19",
-          "soru": "Fonksiyon Turleri temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "19",
-            "B": "20",
-            "C": "21",
-            "D": "22"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
-        },
-        {
-          "id": "fon_k_20",
-          "soru": "Fonksiyon Turleri temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
-        }
-      ],
-      "orta": [
-        {
-          "id": "fon_o_01",
-          "soru": "Fonksiyon Turleri orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "5"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
-        },
-        {
-          "id": "fon_o_02",
-          "soru": "Fonksiyon Turleri orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
-        },
-        {
-          "id": "fon_o_03",
-          "soru": "Fonksiyon Turleri orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "6",
-            "B": "7",
-            "C": "8",
-            "D": "9"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
-        },
-        {
-          "id": "fon_o_04",
-          "soru": "Fonksiyon Turleri orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "id": "fon_z_14",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 6 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
             "A": "8",
             "B": "9",
-            "C": "10",
-            "D": "11"
+            "C": "7",
+            "D": "10"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+          "cevap": "B",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 6'ye (3 birim) artmıştır. x, 2'den 3'e artarken de 3 birim artar: 6 + 3 = 9."
         },
         {
-          "id": "fon_o_05",
-          "soru": "Fonksiyon Turleri orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "id": "fon_z_15",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "11",
+            "B": "9",
+            "C": "12",
+            "D": "10"
+          },
+          "cevap": "A",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 7'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 7 + 4 = 11."
+        },
+        {
+          "id": "fon_z_16",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 3 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
+          "secenekler": {
+            "A": "12",
+            "B": "10",
+            "C": "11",
+            "D": "9"
+          },
+          "cevap": "C",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 3'den 7'ye (4 birim) artmıştır. x, 2'den 3'e artarken de 4 birim artar: 7 + 4 = 11."
+        },
+        {
+          "id": "fon_z_17",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 5 ve f(2) = 8 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
             "A": "10",
             "B": "11",
             "C": "12",
-            "D": "13"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
-        },
-        {
-          "id": "fon_o_06",
-          "soru": "Fonksiyon Turleri orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "12",
-            "B": "13",
-            "C": "14",
-            "D": "15"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
-        },
-        {
-          "id": "fon_o_07",
-          "soru": "Fonksiyon Turleri orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
-        },
-        {
-          "id": "fon_o_08",
-          "soru": "Fonksiyon Turleri orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
-        },
-        {
-          "id": "fon_o_09",
-          "soru": "Fonksiyon Turleri orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
-        },
-        {
-          "id": "fon_o_10",
-          "soru": "Fonksiyon Turleri orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
-        },
-        {
-          "id": "fon_o_11",
-          "soru": "Fonksiyon Turleri orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "22",
-            "B": "23",
-            "C": "24",
-            "D": "25"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
-        },
-        {
-          "id": "fon_o_12",
-          "soru": "Fonksiyon Turleri orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "24",
-            "B": "25",
-            "C": "26",
-            "D": "27"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
-        },
-        {
-          "id": "fon_o_13",
-          "soru": "Fonksiyon Turleri orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "26",
-            "B": "27",
-            "C": "28",
-            "D": "29"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
-        },
-        {
-          "id": "fon_o_14",
-          "soru": "Fonksiyon Turleri orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "28",
-            "B": "29",
-            "C": "30",
-            "D": "31"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
-        },
-        {
-          "id": "fon_o_15",
-          "soru": "Fonksiyon Turleri orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "30",
-            "B": "31",
-            "C": "32",
-            "D": "33"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
-        },
-        {
-          "id": "fon_o_16",
-          "soru": "Fonksiyon Turleri orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "32",
-            "B": "33",
-            "C": "34",
-            "D": "35"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
-        },
-        {
-          "id": "fon_o_17",
-          "soru": "Fonksiyon Turleri orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "34",
-            "B": "35",
-            "C": "36",
-            "D": "37"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
-        },
-        {
-          "id": "fon_o_18",
-          "soru": "Fonksiyon Turleri orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "36",
-            "B": "37",
-            "C": "38",
-            "D": "39"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
-        },
-        {
-          "id": "fon_o_19",
-          "soru": "Fonksiyon Turleri orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "38",
-            "B": "39",
-            "C": "40",
-            "D": "41"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
-        },
-        {
-          "id": "fon_o_20",
-          "soru": "Fonksiyon Turleri orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
-          "secenekler": {
-            "A": "40",
-            "B": "41",
-            "C": "42",
-            "D": "43"
-          },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
-        }
-      ],
-      "zor": [
-        {
-          "id": "fon_z_01",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 1.",
-          "secenekler": {
-            "A": "3",
-            "B": "5",
-            "C": "7",
             "D": "9"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
-        },
-        {
-          "id": "fon_z_02",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 2.",
-          "secenekler": {
-            "A": "6",
-            "B": "8",
-            "C": "10",
-            "D": "12"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
-        },
-        {
-          "id": "fon_z_03",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 3.",
-          "secenekler": {
-            "A": "9",
-            "B": "11",
-            "C": "13",
-            "D": "15"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
-        },
-        {
-          "id": "fon_z_04",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 4.",
-          "secenekler": {
-            "A": "12",
-            "B": "14",
-            "C": "16",
-            "D": "18"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
-        },
-        {
-          "id": "fon_z_05",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 5.",
-          "secenekler": {
-            "A": "15",
-            "B": "17",
-            "C": "19",
-            "D": "21"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
-        },
-        {
-          "id": "fon_z_06",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 6.",
-          "secenekler": {
-            "A": "18",
-            "B": "20",
-            "C": "22",
-            "D": "24"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
-        },
-        {
-          "id": "fon_z_07",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 7.",
-          "secenekler": {
-            "A": "21",
-            "B": "23",
-            "C": "25",
-            "D": "27"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
-        },
-        {
-          "id": "fon_z_08",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 8.",
-          "secenekler": {
-            "A": "24",
-            "B": "26",
-            "C": "28",
-            "D": "30"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
-        },
-        {
-          "id": "fon_z_09",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 9.",
-          "secenekler": {
-            "A": "27",
-            "B": "29",
-            "C": "31",
-            "D": "33"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
-        },
-        {
-          "id": "fon_z_10",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 10.",
-          "secenekler": {
-            "A": "30",
-            "B": "32",
-            "C": "34",
-            "D": "36"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
-        },
-        {
-          "id": "fon_z_11",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 11.",
-          "secenekler": {
-            "A": "33",
-            "B": "35",
-            "C": "37",
-            "D": "39"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
-        },
-        {
-          "id": "fon_z_12",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 12.",
-          "secenekler": {
-            "A": "36",
-            "B": "38",
-            "C": "40",
-            "D": "42"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
-        },
-        {
-          "id": "fon_z_13",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 13.",
-          "secenekler": {
-            "A": "39",
-            "B": "41",
-            "C": "43",
-            "D": "45"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
-        },
-        {
-          "id": "fon_z_14",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 14.",
-          "secenekler": {
-            "A": "42",
-            "B": "44",
-            "C": "46",
-            "D": "48"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
-        },
-        {
-          "id": "fon_z_15",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 15.",
-          "secenekler": {
-            "A": "45",
-            "B": "47",
-            "C": "49",
-            "D": "51"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
-        },
-        {
-          "id": "fon_z_16",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 16.",
-          "secenekler": {
-            "A": "48",
-            "B": "50",
-            "C": "52",
-            "D": "54"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
-        },
-        {
-          "id": "fon_z_17",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 17.",
-          "secenekler": {
-            "A": "51",
-            "B": "53",
-            "C": "55",
-            "D": "57"
-          },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+          "cevap": "B",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 5'den 8'ye (3 birim) artmıştır. x, 2'den 3'e artarken de 3 birim artar: 8 + 3 = 11."
         },
         {
           "id": "fon_z_18",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 18.",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 2 ve f(2) = 7 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "54",
-            "B": "56",
-            "C": "58",
-            "D": "60"
+            "A": "11",
+            "B": "13",
+            "C": "10",
+            "D": "12"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 2'den 7'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 7 + 5 = 12."
         },
         {
           "id": "fon_z_19",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 19.",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 5 ve f(2) = 10 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "57",
-            "B": "59",
-            "C": "61",
-            "D": "63"
+            "A": "16",
+            "B": "14",
+            "C": "13",
+            "D": "15"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+          "cevap": "D",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 5'den 10'ye (5 birim) artmıştır. x, 2'den 3'e artarken de 5 birim artar: 10 + 5 = 15."
         },
         {
           "id": "fon_z_20",
-          "soru": "Fonksiyon Turleri ileri düzey analitik/özdeşlik sorusu 20.",
+          "soru": "f(x) doğrusal bir fonksiyondur. f(1) = 1 ve f(2) = 4 olduğuna göre f(3) değeri kaçtır?",
           "secenekler": {
-            "A": "60",
-            "B": "62",
-            "C": "64",
-            "D": "66"
+            "A": "5",
+            "B": "7",
+            "C": "6",
+            "D": "8"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+          "cevap": "B",
+          "cozum": "Doğrusal fonksiyon olduğu için artış miktarı sabittir. x, 1'den 2'ye artarken f(x) 1'den 4'ye (3 birim) artmıştır. x, 2'den 3'e artarken de 3 birim artar: 4 + 3 = 7."
         }
       ]
     },
@@ -4374,727 +4374,727 @@
       "kolay": [
         {
           "id": "dog_k_01",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + (-8) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
+          "secenekler": {
+            "A": "5",
+            "B": "2",
+            "C": "4",
+            "D": "3"
+          },
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 2x -8 = 0 => 2x = 8 => x = 4 bulunur."
+        },
+        {
+          "id": "dog_k_02",
+          "soru": "f(x) = 4x + (-8) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "1",
+            "C": "0",
+            "D": "2"
+          },
+          "cevap": "D",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -8 = 0 => 4x = 8 => x = 2 bulunur."
+        },
+        {
+          "id": "dog_k_03",
+          "soru": "f(x) = 3x + (-3) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
+          "secenekler": {
+            "A": "0",
+            "B": "2",
+            "C": "1",
+            "D": "-1"
+          },
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -3 = 0 => 3x = 3 => x = 1 bulunur."
+        },
+        {
+          "id": "dog_k_04",
+          "soru": "f(x) = 4x + (-12) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "1",
+            "C": "2",
+            "D": "4"
+          },
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -12 = 0 => 4x = 12 => x = 3 bulunur."
+        },
+        {
+          "id": "dog_k_05",
+          "soru": "f(x) = 4x + (-12) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
             "A": "1",
             "B": "2",
             "C": "3",
             "D": "4"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -12 = 0 => 4x = 12 => x = 3 bulunur."
         },
         {
-          "id": "dog_k_02",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "dog_k_06",
+          "soru": "f(x) = 3x + (-3) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "5"
+            "A": "1",
+            "B": "2",
+            "C": "0",
+            "D": "-1"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -3 = 0 => 3x = 3 => x = 1 bulunur."
         },
         {
-          "id": "dog_k_03",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "id": "dog_k_07",
+          "soru": "f(x) = 5x + (-15) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
+          "secenekler": {
+            "A": "3",
+            "B": "4",
+            "C": "2",
+            "D": "1"
+          },
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 5x -15 = 0 => 5x = 15 => x = 3 bulunur."
+        },
+        {
+          "id": "dog_k_08",
+          "soru": "f(x) = 5x + (-25) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
             "A": "3",
             "B": "4",
             "C": "5",
             "D": "6"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
-        },
-        {
-          "id": "dog_k_04",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
-        },
-        {
-          "id": "dog_k_05",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "5",
-            "B": "6",
-            "C": "7",
-            "D": "8"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
-        },
-        {
-          "id": "dog_k_06",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "6",
-            "B": "7",
-            "C": "8",
-            "D": "9"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
-        },
-        {
-          "id": "dog_k_07",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "7",
-            "B": "8",
-            "C": "9",
-            "D": "10"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
-        },
-        {
-          "id": "dog_k_08",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
-          "secenekler": {
-            "A": "8",
-            "B": "9",
-            "C": "10",
-            "D": "11"
-          },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 5x -25 = 0 => 5x = 25 => x = 5 bulunur."
         },
         {
           "id": "dog_k_09",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + (-10) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "9",
-            "B": "10",
-            "C": "11",
-            "D": "12"
+            "A": "3",
+            "B": "6",
+            "C": "4",
+            "D": "5"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+          "cevap": "D",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 2x -10 = 0 => 2x = 10 => x = 5 bulunur."
         },
         {
           "id": "dog_k_10",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + (-15) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
+            "A": "6",
+            "B": "5",
+            "C": "3",
+            "D": "4"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -15 = 0 => 3x = 15 => x = 5 bulunur."
         },
         {
           "id": "dog_k_11",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + (-15) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "11",
-            "B": "12",
-            "C": "13",
-            "D": "14"
+            "A": "6",
+            "B": "4",
+            "C": "5",
+            "D": "3"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -15 = 0 => 3x = 15 => x = 5 bulunur."
         },
         {
           "id": "dog_k_12",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 5x + (-25) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "12",
-            "B": "13",
-            "C": "14",
-            "D": "15"
+            "A": "5",
+            "B": "3",
+            "C": "6",
+            "D": "4"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 5x -25 = 0 => 5x = 25 => x = 5 bulunur."
         },
         {
           "id": "dog_k_13",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 4x + (-8) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "13",
-            "B": "14",
-            "C": "15",
-            "D": "16"
+            "A": "0",
+            "B": "3",
+            "C": "1",
+            "D": "2"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
+          "cevap": "D",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -8 = 0 => 4x = 8 => x = 2 bulunur."
         },
         {
           "id": "dog_k_14",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + (-15) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
+            "A": "5",
+            "B": "4",
+            "C": "6",
+            "D": "3"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -15 = 0 => 3x = 15 => x = 5 bulunur."
         },
         {
           "id": "dog_k_15",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + (-3) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "15",
-            "B": "16",
-            "C": "17",
-            "D": "18"
+            "A": "-1",
+            "B": "0",
+            "C": "1",
+            "D": "2"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -3 = 0 => 3x = 3 => x = 1 bulunur."
         },
         {
           "id": "dog_k_16",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 4x + (-20) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
+            "A": "6",
+            "B": "5",
+            "C": "3",
+            "D": "4"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -20 = 0 => 4x = 20 => x = 5 bulunur."
         },
         {
           "id": "dog_k_17",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 4x + (-8) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "17",
-            "B": "18",
-            "C": "19",
-            "D": "20"
+            "A": "0",
+            "B": "1",
+            "C": "3",
+            "D": "2"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
+          "cevap": "D",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 4x -8 = 0 => 4x = 8 => x = 2 bulunur."
         },
         {
           "id": "dog_k_18",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + (-15) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
+            "A": "4",
+            "B": "3",
+            "C": "5",
+            "D": "6"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
+          "cevap": "C",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 3x -15 = 0 => 3x = 15 => x = 5 bulunur."
         },
         {
           "id": "dog_k_19",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + (-2) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "19",
-            "B": "20",
-            "C": "21",
-            "D": "22"
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 2x -2 = 0 => 2x = 2 => x = 1 bulunur."
         },
         {
           "id": "dog_k_20",
-          "soru": "Dogrusal Fonksiyon Grafigi temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 5x + (-5) fonksiyonunun grafiğinin x eksenini kestiği noktanın apsisi kaçtır?",
           "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
+            "A": "1",
+            "B": "-1",
+            "C": "0",
+            "D": "2"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
+          "cevap": "A",
+          "cozum": "x eksenini kestiği noktada f(x) = 0 olmalıdır. 5x -5 = 0 => 5x = 5 => x = 1 bulunur."
         }
       ],
       "orta": [
         {
           "id": "dog_o_01",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "5"
+            "A": "4x + 2y = 8",
+            "B": "2x + 4y = 8",
+            "C": "4x - 2y = 8",
+            "D": "2x - 4y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
+          "cevap": "D",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-2 = 1. Paydalar 8'te eşitlenirse 2x - 4y = 8 bulunur."
         },
         {
           "id": "dog_o_02",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
+            "A": "4x + 2y = 8",
+            "B": "2x - 4y = 8",
+            "C": "2x + 4y = 8",
+            "D": "4x - 2y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
+          "cevap": "D",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-4 = 1. Paydalar 8'te eşitlenirse 4x - 2y = 8 bulunur."
         },
         {
           "id": "dog_o_03",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "6",
-            "B": "7",
-            "C": "8",
-            "D": "9"
+            "A": "4x - 4y = 16",
+            "B": "4x + 4y = 16",
+            "C": "4x + 4y = 16",
+            "D": "4x - 4y = 16"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-4 = 1. Paydalar 16'te eşitlenirse 4x - 4y = 16 bulunur."
         },
         {
           "id": "dog_o_04",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -3'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "8",
-            "B": "9",
-            "C": "10",
-            "D": "11"
+            "A": "2x - 3y = 6",
+            "B": "3x + 2y = 6",
+            "C": "3x - 2y = 6",
+            "D": "2x + 3y = 6"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-3 = 1. Paydalar 6'te eşitlenirse 3x - 2y = 6 bulunur."
         },
         {
           "id": "dog_o_05",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
+            "A": "2x - 4y = 8",
+            "B": "4x + 2y = 8",
+            "C": "4x - 2y = 8",
+            "D": "2x + 4y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-4 = 1. Paydalar 8'te eşitlenirse 4x - 2y = 8 bulunur."
         },
         {
           "id": "dog_o_06",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -3'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "12",
-            "B": "13",
-            "C": "14",
-            "D": "15"
+            "A": "4x - 3y = 12",
+            "B": "3x - 4y = 12",
+            "C": "4x + 3y = 12",
+            "D": "3x + 4y = 12"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-3 = 1. Paydalar 12'te eşitlenirse 3x - 4y = 12 bulunur."
         },
         {
           "id": "dog_o_07",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
+            "A": "4x + 2y = 8",
+            "B": "4x - 2y = 8",
+            "C": "2x + 4y = 8",
+            "D": "2x - 4y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-4 = 1. Paydalar 8'te eşitlenirse 4x - 2y = 8 bulunur."
         },
         {
           "id": "dog_o_08",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
+            "A": "4x + 3y = 12",
+            "B": "3x + 4y = 12",
+            "C": "4x - 3y = 12",
+            "D": "3x - 4y = 12"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-4 = 1. Paydalar 12'te eşitlenirse 4x - 3y = 12 bulunur."
         },
         {
           "id": "dog_o_09",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
+            "A": "3x + 4y = 12",
+            "B": "4x - 3y = 12",
+            "C": "4x + 3y = 12",
+            "D": "3x - 4y = 12"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-4 = 1. Paydalar 12'te eşitlenirse 4x - 3y = 12 bulunur."
         },
         {
           "id": "dog_o_10",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
+            "A": "2x - 2y = 4",
+            "B": "2x + 2y = 4",
+            "C": "2x + 2y = 4",
+            "D": "2x - 2y = 4"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-2 = 1. Paydalar 4'te eşitlenirse 2x - 2y = 4 bulunur."
         },
         {
           "id": "dog_o_11",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "22",
-            "B": "23",
-            "C": "24",
-            "D": "25"
+            "A": "4x - 4y = 16",
+            "B": "4x - 4y = 16",
+            "C": "4x + 4y = 16",
+            "D": "4x + 4y = 16"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-4 = 1. Paydalar 16'te eşitlenirse 4x - 4y = 16 bulunur."
         },
         {
           "id": "dog_o_12",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "24",
-            "B": "25",
-            "C": "26",
-            "D": "27"
+            "A": "4x + 3y = 12",
+            "B": "3x + 4y = 12",
+            "C": "3x - 4y = 12",
+            "D": "4x - 3y = 12"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
+          "cevap": "D",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-4 = 1. Paydalar 12'te eşitlenirse 4x - 3y = 12 bulunur."
         },
         {
           "id": "dog_o_13",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "26",
-            "B": "27",
-            "C": "28",
-            "D": "29"
+            "A": "2x + 2y = 4",
+            "B": "2x + 2y = 4",
+            "C": "2x - 2y = 4",
+            "D": "2x - 2y = 4"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-2 = 1. Paydalar 4'te eşitlenirse 2x - 2y = 4 bulunur."
         },
         {
           "id": "dog_o_14",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "28",
-            "B": "29",
-            "C": "30",
-            "D": "31"
+            "A": "2x - 4y = 8",
+            "B": "4x + 2y = 8",
+            "C": "2x + 4y = 8",
+            "D": "4x - 2y = 8"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-2 = 1. Paydalar 8'te eşitlenirse 2x - 4y = 8 bulunur."
         },
         {
           "id": "dog_o_15",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "30",
-            "B": "31",
-            "C": "32",
-            "D": "33"
+            "A": "3x + 4y = 12",
+            "B": "3x - 4y = 12",
+            "C": "4x - 3y = 12",
+            "D": "4x + 3y = 12"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-4 = 1. Paydalar 12'te eşitlenirse 4x - 3y = 12 bulunur."
         },
         {
           "id": "dog_o_16",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "32",
-            "B": "33",
-            "C": "34",
-            "D": "35"
+            "A": "4x - 2y = 8",
+            "B": "4x + 2y = 8",
+            "C": "2x - 4y = 8",
+            "D": "2x + 4y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-2 = 1. Paydalar 8'te eşitlenirse 2x - 4y = 8 bulunur."
         },
         {
           "id": "dog_o_17",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 2'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "34",
-            "B": "35",
-            "C": "36",
-            "D": "37"
+            "A": "4x + 2y = 8",
+            "B": "4x - 2y = 8",
+            "C": "2x + 4y = 8",
+            "D": "2x - 4y = 8"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/2 + y/-4 = 1. Paydalar 8'te eşitlenirse 4x - 2y = 8 bulunur."
         },
         {
           "id": "dog_o_18",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "36",
-            "B": "37",
-            "C": "38",
-            "D": "39"
+            "A": "4x - 3y = 12",
+            "B": "4x + 3y = 12",
+            "C": "3x + 4y = 12",
+            "D": "3x - 4y = 12"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-4 = 1. Paydalar 12'te eşitlenirse 4x - 3y = 12 bulunur."
         },
         {
           "id": "dog_o_19",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 3'te, y eksenini -2'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "38",
-            "B": "39",
-            "C": "40",
-            "D": "41"
+            "A": "2x + 3y = 6",
+            "B": "3x + 2y = 6",
+            "C": "2x - 3y = 6",
+            "D": "3x - 2y = 6"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
+          "cevap": "C",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/3 + y/-2 = 1. Paydalar 6'te eşitlenirse 2x - 3y = 6 bulunur."
         },
         {
           "id": "dog_o_20",
-          "soru": "Dogrusal Fonksiyon Grafigi orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "Koordinat düzleminde x eksenini 4'te, y eksenini -4'de kesen doğrunun denklemi hangisidir?",
           "secenekler": {
-            "A": "40",
-            "B": "41",
-            "C": "42",
-            "D": "43"
+            "A": "4x + 4y = 16",
+            "B": "4x - 4y = 16",
+            "C": "4x - 4y = 16",
+            "D": "4x + 4y = 16"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
+          "cevap": "B",
+          "cozum": "Eksenleri kestiği bilinen doğru denklemi: x/a + y/b = 1'dir. x/4 + y/-4 = 1. Paydalar 16'te eşitlenirse 4x - 4y = 16 bulunur."
         }
       ],
       "zor": [
         {
           "id": "dog_z_01",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 1.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -2x + 4 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "3",
-            "B": "5",
-            "C": "7",
-            "D": "9"
+            "A": "4",
+            "B": "8",
+            "C": "6",
+            "D": "7"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
+          "cozum": "f(1) = -2(1) + 4 = 2. f(0) = 4 = 4. Toplamları 2 + 4 = 6 olur."
         },
         {
           "id": "dog_z_02",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 2.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "6",
-            "B": "8",
-            "C": "10",
-            "D": "12"
+            "A": "7",
+            "B": "10",
+            "C": "9",
+            "D": "11"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
+          "cozum": "f(1) = 3(1) + 3 = 6. f(0) = 3 = 3. Toplamları 6 + 3 = 9 olur."
         },
         {
           "id": "dog_z_03",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 3.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -2x + 5 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
             "A": "9",
-            "B": "11",
-            "C": "13",
-            "D": "15"
+            "B": "8",
+            "C": "6",
+            "D": "10"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
+          "cevap": "B",
+          "cozum": "f(1) = -2(1) + 5 = 3. f(0) = 5 = 5. Toplamları 3 + 5 = 8 olur."
         },
         {
           "id": "dog_z_04",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 4.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -3x + 2 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "12",
-            "B": "14",
-            "C": "16",
-            "D": "18"
+            "A": "1",
+            "B": "-1",
+            "C": "3",
+            "D": "2"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
+          "cevap": "A",
+          "cozum": "f(1) = -3(1) + 2 = -1. f(0) = 2 = 2. Toplamları -1 + 2 = 1 olur."
         },
         {
           "id": "dog_z_05",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 5.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "15",
-            "B": "17",
-            "C": "19",
-            "D": "21"
+            "A": "11",
+            "B": "9",
+            "C": "10",
+            "D": "7"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
+          "cevap": "B",
+          "cozum": "f(1) = 3(1) + 3 = 6. f(0) = 3 = 3. Toplamları 6 + 3 = 9 olur."
         },
         {
           "id": "dog_z_06",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 6.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -3x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "18",
-            "B": "20",
-            "C": "22",
-            "D": "24"
+            "A": "4",
+            "B": "1",
+            "C": "3",
+            "D": "5"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
+          "cozum": "f(1) = -3(1) + 3 = 0. f(0) = 3 = 3. Toplamları 0 + 3 = 3 olur."
         },
         {
           "id": "dog_z_07",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 7.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 1 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "21",
-            "B": "23",
-            "C": "25",
-            "D": "27"
+            "A": "7",
+            "B": "5",
+            "C": "3",
+            "D": "6"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
+          "cevap": "B",
+          "cozum": "f(1) = 3(1) + 1 = 4. f(0) = 1 = 1. Toplamları 4 + 1 = 5 olur."
         },
         {
           "id": "dog_z_08",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 8.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -3x + 2 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "24",
-            "B": "26",
-            "C": "28",
-            "D": "30"
+            "A": "1",
+            "B": "2",
+            "C": "-1",
+            "D": "3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
+          "cevap": "A",
+          "cozum": "f(1) = -3(1) + 2 = -1. f(0) = 2 = 2. Toplamları -1 + 2 = 1 olur."
         },
         {
           "id": "dog_z_09",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 9.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 4 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "27",
-            "B": "29",
-            "C": "31",
-            "D": "33"
+            "A": "12",
+            "B": "13",
+            "C": "11",
+            "D": "9"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
+          "cozum": "f(1) = 3(1) + 4 = 7. f(0) = 4 = 4. Toplamları 7 + 4 = 11 olur."
         },
         {
           "id": "dog_z_10",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 10.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 2 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "30",
-            "B": "32",
-            "C": "34",
-            "D": "36"
+            "A": "9",
+            "B": "7",
+            "C": "8",
+            "D": "5"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
+          "cevap": "B",
+          "cozum": "f(1) = 3(1) + 2 = 5. f(0) = 2 = 2. Toplamları 5 + 2 = 7 olur."
         },
         {
           "id": "dog_z_11",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 11.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 2x + 2 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "33",
-            "B": "35",
-            "C": "37",
-            "D": "39"
+            "A": "8",
+            "B": "6",
+            "C": "4",
+            "D": "7"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
+          "cevap": "B",
+          "cozum": "f(1) = 2(1) + 2 = 4. f(0) = 2 = 2. Toplamları 4 + 2 = 6 olur."
         },
         {
           "id": "dog_z_12",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 12.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -2x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "36",
-            "B": "38",
-            "C": "40",
-            "D": "42"
+            "A": "5",
+            "B": "6",
+            "C": "4",
+            "D": "2"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
+          "cozum": "f(1) = -2(1) + 3 = 1. f(0) = 3 = 3. Toplamları 1 + 3 = 4 olur."
         },
         {
           "id": "dog_z_13",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 13.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 5 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "39",
-            "B": "41",
-            "C": "43",
-            "D": "45"
+            "A": "13",
+            "B": "14",
+            "C": "11",
+            "D": "15"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
+          "cevap": "A",
+          "cozum": "f(1) = 3(1) + 5 = 8. f(0) = 5 = 5. Toplamları 8 + 5 = 13 olur."
         },
         {
           "id": "dog_z_14",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 14.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 2x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "42",
-            "B": "44",
-            "C": "46",
-            "D": "48"
+            "A": "10",
+            "B": "6",
+            "C": "9",
+            "D": "8"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
+          "cevap": "D",
+          "cozum": "f(1) = 2(1) + 3 = 5. f(0) = 3 = 3. Toplamları 5 + 3 = 8 olur."
         },
         {
           "id": "dog_z_15",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 15.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 5 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "45",
-            "B": "47",
-            "C": "49",
-            "D": "51"
+            "A": "13",
+            "B": "14",
+            "C": "15",
+            "D": "11"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
+          "cevap": "A",
+          "cozum": "f(1) = 3(1) + 5 = 8. f(0) = 5 = 5. Toplamları 8 + 5 = 13 olur."
         },
         {
           "id": "dog_z_16",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 16.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -3x + 1 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "48",
-            "B": "50",
-            "C": "52",
-            "D": "54"
+            "A": "-3",
+            "B": "1",
+            "C": "-1",
+            "D": "0"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
+          "cozum": "f(1) = -3(1) + 1 = -2. f(0) = 1 = 1. Toplamları -2 + 1 = -1 olur."
         },
         {
           "id": "dog_z_17",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 17.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 2x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "51",
-            "B": "53",
-            "C": "55",
-            "D": "57"
+            "A": "6",
+            "B": "9",
+            "C": "8",
+            "D": "10"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+          "cozum": "f(1) = 2(1) + 3 = 5. f(0) = 3 = 3. Toplamları 5 + 3 = 8 olur."
         },
         {
           "id": "dog_z_18",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 18.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "54",
-            "B": "56",
-            "C": "58",
-            "D": "60"
+            "A": "10",
+            "B": "11",
+            "C": "9",
+            "D": "7"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+          "cozum": "f(1) = 3(1) + 3 = 6. f(0) = 3 = 3. Toplamları 6 + 3 = 9 olur."
         },
         {
           "id": "dog_z_19",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 19.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = -2x + 5 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "57",
-            "B": "59",
-            "C": "61",
-            "D": "63"
+            "A": "6",
+            "B": "9",
+            "C": "10",
+            "D": "8"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+          "cevap": "D",
+          "cozum": "f(1) = -2(1) + 5 = 3. f(0) = 5 = 5. Toplamları 3 + 5 = 8 olur."
         },
         {
           "id": "dog_z_20",
-          "soru": "Dogrusal Fonksiyon Grafigi ileri düzey analitik/özdeşlik sorusu 20.",
+          "soru": "Grafiği verilen f(x) doğrusal fonksiyonunun denklemi y = 3x + 3 şeklindedir. Buna göre f(1) + f(0) kaçtır?",
           "secenekler": {
-            "A": "60",
-            "B": "62",
-            "C": "64",
-            "D": "66"
+            "A": "9",
+            "B": "10",
+            "C": "7",
+            "D": "11"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+          "cevap": "A",
+          "cozum": "f(1) = 3(1) + 3 = 6. f(0) = 3 = 3. Toplamları 6 + 3 = 9 olur."
         }
       ]
     },
@@ -5102,727 +5102,727 @@
       "kolay": [
         {
           "id": "bil_k_01",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 1: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 2 ve g(x) = x - 1 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "1",
-            "B": "2",
-            "C": "3",
-            "D": "4"
+            "A": "2x + 4",
+            "B": "2x - 4",
+            "C": "2x - 3",
+            "D": "2x + 0"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 2 bulunur."
+          "cevap": "D",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 1) = 2(x - 1) + 2 = 2x - 2 + 2 = 2x + 0."
         },
         {
           "id": "bil_k_02",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 2: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 4 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "5"
+            "A": "3x - 13",
+            "B": "3x - 5",
+            "C": "3x - 7",
+            "D": "3x + 13"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 3 bulunur."
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 3(x - 3) + 4 = 3x - 9 + 4 = 3x - 5."
         },
         {
           "id": "bil_k_03",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 3: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 4 ve g(x) = x - 2 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "3",
-            "B": "4",
-            "C": "5",
-            "D": "6"
+            "A": "3x - 10",
+            "B": "3x - 2",
+            "C": "3x + 10",
+            "D": "3x - 6"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 4 bulunur."
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 2) = 3(x - 2) + 4 = 3x - 6 + 4 = 3x - 2."
         },
         {
           "id": "bil_k_04",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 4: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 1 ve g(x) = x - 1 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
+            "A": "3x + 4",
+            "B": "3x - 2",
+            "C": "3x - 2",
+            "D": "3x - 4"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 5 bulunur."
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 1) = 3(x - 1) + 1 = 3x - 3 + 1 = 3x - 2."
         },
         {
           "id": "bil_k_05",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 5: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 3 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "5",
-            "B": "6",
-            "C": "7",
-            "D": "8"
+            "A": "3x - 6",
+            "B": "3x - 6",
+            "C": "3x - 12",
+            "D": "3x + 12"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 6 bulunur."
+          "cevap": "A",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 3(x - 3) + 3 = 3x - 9 + 3 = 3x - 6."
         },
         {
           "id": "bil_k_06",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 6: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 2 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "6",
-            "B": "7",
-            "C": "8",
-            "D": "9"
+            "A": "2x + 8",
+            "B": "2x - 5",
+            "C": "2x - 4",
+            "D": "2x - 8"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 7 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 2(x - 3) + 2 = 2x - 6 + 2 = 2x - 4."
         },
         {
           "id": "bil_k_07",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 7: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 1 ve g(x) = x - 2 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "7",
-            "B": "8",
-            "C": "9",
-            "D": "10"
+            "A": "3x + 7",
+            "B": "3x - 3",
+            "C": "3x - 7",
+            "D": "3x - 5"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 8 bulunur."
+          "cevap": "D",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 2) = 3(x - 2) + 1 = 3x - 6 + 1 = 3x - 5."
         },
         {
           "id": "bil_k_08",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 8: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 1 ve g(x) = x - 1 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "8",
-            "B": "9",
-            "C": "10",
-            "D": "11"
+            "A": "2x + 3",
+            "B": "2x - 1",
+            "C": "2x - 3",
+            "D": "2x - 2"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 9 bulunur."
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 1) = 2(x - 1) + 1 = 2x - 2 + 1 = 2x - 1."
         },
         {
           "id": "bil_k_09",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 9: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 4 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "9",
-            "B": "10",
-            "C": "11",
-            "D": "12"
+            "A": "2x - 10",
+            "B": "2x - 7",
+            "C": "2x - 2",
+            "D": "2x + 10"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 10 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 2(x - 3) + 4 = 2x - 6 + 4 = 2x - 2."
         },
         {
           "id": "bil_k_10",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 10: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 4 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
+            "A": "3x + 13",
+            "B": "3x - 7",
+            "C": "3x - 13",
+            "D": "3x - 5"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 11 bulunur."
+          "cevap": "D",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 3(x - 3) + 4 = 3x - 9 + 4 = 3x - 5."
         },
         {
           "id": "bil_k_11",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 11: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 1 ve g(x) = x - 1 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "11",
-            "B": "12",
-            "C": "13",
-            "D": "14"
+            "A": "3x + 4",
+            "B": "3x - 4",
+            "C": "3x - 2",
+            "D": "3x - 2"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 12 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 1) = 3(x - 1) + 1 = 3x - 3 + 1 = 3x - 2."
         },
         {
           "id": "bil_k_12",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 12: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 3 ve g(x) = x - 2 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "12",
-            "B": "13",
-            "C": "14",
-            "D": "15"
+            "A": "3x - 9",
+            "B": "3x - 5",
+            "C": "3x + 9",
+            "D": "3x - 3"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 13 bulunur."
+          "cevap": "D",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 2) = 3(x - 2) + 3 = 3x - 6 + 3 = 3x - 3."
         },
         {
           "id": "bil_k_13",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 13: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 3 ve g(x) = x - 2 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "13",
-            "B": "14",
-            "C": "15",
-            "D": "16"
+            "A": "3x + 9",
+            "B": "3x - 5",
+            "C": "3x - 9",
+            "D": "3x - 3"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 14 bulunur."
+          "cevap": "D",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 2) = 3(x - 2) + 3 = 3x - 6 + 3 = 3x - 3."
         },
         {
           "id": "bil_k_14",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 14: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 4 ve g(x) = x - 4 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
+            "A": "2x - 4",
+            "B": "2x - 8",
+            "C": "2x + 12",
+            "D": "2x - 12"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 15 bulunur."
+          "cevap": "A",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 4) = 2(x - 4) + 4 = 2x - 8 + 4 = 2x - 4."
         },
         {
           "id": "bil_k_15",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 15: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 2 ve g(x) = x - 4 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "15",
-            "B": "16",
-            "C": "17",
-            "D": "18"
+            "A": "3x - 6",
+            "B": "3x - 14",
+            "C": "3x - 10",
+            "D": "3x + 14"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 16 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 4) = 3(x - 4) + 2 = 3x - 12 + 2 = 3x - 10."
         },
         {
           "id": "bil_k_16",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 16: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 1 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
+            "A": "3x + 10",
+            "B": "3x - 10",
+            "C": "3x - 8",
+            "D": "3x - 4"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 17 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 3(x - 3) + 1 = 3x - 9 + 1 = 3x - 8."
         },
         {
           "id": "bil_k_17",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 17: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 3x + 4 ve g(x) = x - 3 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "17",
-            "B": "18",
-            "C": "19",
-            "D": "20"
+            "A": "3x + 13",
+            "B": "3x - 5",
+            "C": "3x - 13",
+            "D": "3x - 7"
           },
           "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 18 bulunur."
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 3) = 3(x - 3) + 4 = 3x - 9 + 4 = 3x - 5."
         },
         {
           "id": "bil_k_18",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 18: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 3 ve g(x) = x - 1 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
+            "A": "2x - 5",
+            "B": "2x - 4",
+            "C": "2x + 1",
+            "D": "2x + 5"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 19 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 1) = 2(x - 1) + 3 = 2x - 2 + 3 = 2x + 1."
         },
         {
           "id": "bil_k_19",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 19: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 3 ve g(x) = x - 4 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "19",
-            "B": "20",
-            "C": "21",
-            "D": "22"
+            "A": "2x + 11",
+            "B": "2x - 11",
+            "C": "2x - 5",
+            "D": "2x - 7"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 20 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 4) = 2(x - 4) + 3 = 2x - 8 + 3 = 2x - 5."
         },
         {
           "id": "bil_k_20",
-          "soru": "Bileske Ve Ters Fonksiyon temel düzey soru 20: Birim/sabit veya değer kuralı hesaplaması.",
+          "soru": "f(x) = 2x + 3 ve g(x) = x - 4 olduğuna göre, (f o g)(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
+            "A": "2x + 11",
+            "B": "2x - 7",
+            "C": "2x - 5",
+            "D": "2x - 11"
           },
-          "cevap": "B",
-          "cozum": "Temel tanım uygulandığında doğru cevap 21 bulunur."
+          "cevap": "C",
+          "cozum": "(f o g)(x) = f(g(x)) = f(x - 4) = 2(x - 4) + 3 = 2x - 8 + 3 = 2x - 5."
         }
       ],
       "orta": [
         {
           "id": "bil_o_01",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 1: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "5"
+            "A": "(x + 2) / 5",
+            "B": "x / 5 - 2",
+            "C": "(x - 2) / 5",
+            "D": "5x + 2"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 2 elde edilir."
+          "cozum": "y = 5x - 2 => y + 2 = 5x => x = (y + 2) / 5. Demek ki f⁻¹(x) = (x + 2) / 5 olur."
         },
         {
           "id": "bil_o_02",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 2: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "4",
-            "B": "5",
-            "C": "6",
-            "D": "7"
+            "A": "(x - 2) / 5",
+            "B": "x / 5 - 2",
+            "C": "(x + 2) / 5",
+            "D": "5x + 2"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 4 elde edilir."
+          "cevap": "C",
+          "cozum": "y = 5x - 2 => y + 2 = 5x => x = (y + 2) / 5. Demek ki f⁻¹(x) = (x + 2) / 5 olur."
         },
         {
           "id": "bil_o_03",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 3: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 4x - 4 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "6",
-            "B": "7",
-            "C": "8",
-            "D": "9"
+            "A": "(x - 4) / 4",
+            "B": "4x + 4",
+            "C": "x / 4 - 4",
+            "D": "(x + 4) / 4"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 6 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 4x - 4 => y + 4 = 4x => x = (y + 4) / 4. Demek ki f⁻¹(x) = (x + 4) / 4 olur."
         },
         {
           "id": "bil_o_04",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 4: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "8",
-            "B": "9",
-            "C": "10",
-            "D": "11"
+            "A": "(x + 3) / 3",
+            "B": "(x - 3) / 3",
+            "C": "3x + 3",
+            "D": "x / 3 - 3"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 8 elde edilir."
+          "cozum": "y = 3x - 3 => y + 3 = 3x => x = (y + 3) / 3. Demek ki f⁻¹(x) = (x + 3) / 3 olur."
         },
         {
           "id": "bil_o_05",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 5: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 4 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "10",
-            "B": "11",
-            "C": "12",
-            "D": "13"
+            "A": "x / 5 - 4",
+            "B": "5x + 4",
+            "C": "(x - 4) / 5",
+            "D": "(x + 4) / 5"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 10 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 5x - 4 => y + 4 = 5x => x = (y + 4) / 5. Demek ki f⁻¹(x) = (x + 4) / 5 olur."
         },
         {
           "id": "bil_o_06",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 6: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 2x - 5 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "12",
-            "B": "13",
-            "C": "14",
-            "D": "15"
+            "A": "2x + 5",
+            "B": "(x + 5) / 2",
+            "C": "(x - 5) / 2",
+            "D": "x / 2 - 5"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 12 elde edilir."
+          "cevap": "B",
+          "cozum": "y = 2x - 5 => y + 5 = 2x => x = (y + 5) / 2. Demek ki f⁻¹(x) = (x + 5) / 2 olur."
         },
         {
           "id": "bil_o_07",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 7: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 2x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "14",
-            "B": "15",
-            "C": "16",
-            "D": "17"
+            "A": "(x - 3) / 2",
+            "B": "2x + 3",
+            "C": "x / 2 - 3",
+            "D": "(x + 3) / 2"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 14 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 2x - 3 => y + 3 = 2x => x = (y + 3) / 2. Demek ki f⁻¹(x) = (x + 3) / 2 olur."
         },
         {
           "id": "bil_o_08",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 8: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 5 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "16",
-            "B": "17",
-            "C": "18",
-            "D": "19"
+            "A": "5x + 5",
+            "B": "(x - 5) / 5",
+            "C": "x / 5 - 5",
+            "D": "(x + 5) / 5"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 16 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 5x - 5 => y + 5 = 5x => x = (y + 5) / 5. Demek ki f⁻¹(x) = (x + 5) / 5 olur."
         },
         {
           "id": "bil_o_09",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 9: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "18",
-            "B": "19",
-            "C": "20",
-            "D": "21"
+            "A": "x / 3 - 2",
+            "B": "(x - 2) / 3",
+            "C": "3x + 2",
+            "D": "(x + 2) / 3"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 18 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 3x - 2 => y + 2 = 3x => x = (y + 2) / 3. Demek ki f⁻¹(x) = (x + 2) / 3 olur."
         },
         {
           "id": "bil_o_10",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 10: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 4x - 4 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "20",
-            "B": "21",
-            "C": "22",
-            "D": "23"
+            "A": "x / 4 - 4",
+            "B": "(x - 4) / 4",
+            "C": "(x + 4) / 4",
+            "D": "4x + 4"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 20 elde edilir."
+          "cevap": "C",
+          "cozum": "y = 4x - 4 => y + 4 = 4x => x = (y + 4) / 4. Demek ki f⁻¹(x) = (x + 4) / 4 olur."
         },
         {
           "id": "bil_o_11",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 11: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "22",
-            "B": "23",
-            "C": "24",
-            "D": "25"
+            "A": "(x + 2) / 3",
+            "B": "x / 3 - 2",
+            "C": "(x - 2) / 3",
+            "D": "3x + 2"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 22 elde edilir."
+          "cozum": "y = 3x - 2 => y + 2 = 3x => x = (y + 2) / 3. Demek ki f⁻¹(x) = (x + 2) / 3 olur."
         },
         {
           "id": "bil_o_12",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 12: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 4x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "24",
-            "B": "25",
-            "C": "26",
-            "D": "27"
+            "A": "(x + 2) / 4",
+            "B": "x / 4 - 2",
+            "C": "(x - 2) / 4",
+            "D": "4x + 2"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 24 elde edilir."
+          "cozum": "y = 4x - 2 => y + 2 = 4x => x = (y + 2) / 4. Demek ki f⁻¹(x) = (x + 2) / 4 olur."
         },
         {
           "id": "bil_o_13",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 13: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "26",
-            "B": "27",
-            "C": "28",
-            "D": "29"
+            "A": "(x + 3) / 3",
+            "B": "x / 3 - 3",
+            "C": "3x + 3",
+            "D": "(x - 3) / 3"
           },
           "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 26 elde edilir."
+          "cozum": "y = 3x - 3 => y + 3 = 3x => x = (y + 3) / 3. Demek ki f⁻¹(x) = (x + 3) / 3 olur."
         },
         {
           "id": "bil_o_14",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 14: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "28",
-            "B": "29",
-            "C": "30",
-            "D": "31"
+            "A": "5x + 3",
+            "B": "x / 5 - 3",
+            "C": "(x + 3) / 5",
+            "D": "(x - 3) / 5"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 28 elde edilir."
+          "cevap": "C",
+          "cozum": "y = 5x - 3 => y + 3 = 5x => x = (y + 3) / 5. Demek ki f⁻¹(x) = (x + 3) / 5 olur."
         },
         {
           "id": "bil_o_15",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 15: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 4 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "30",
-            "B": "31",
-            "C": "32",
-            "D": "33"
+            "A": "x / 5 - 4",
+            "B": "5x + 4",
+            "C": "(x + 4) / 5",
+            "D": "(x - 4) / 5"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 30 elde edilir."
+          "cevap": "C",
+          "cozum": "y = 5x - 4 => y + 4 = 5x => x = (y + 4) / 5. Demek ki f⁻¹(x) = (x + 4) / 5 olur."
         },
         {
           "id": "bil_o_16",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 16: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 2x - 4 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "32",
-            "B": "33",
-            "C": "34",
-            "D": "35"
+            "A": "2x + 4",
+            "B": "(x - 4) / 2",
+            "C": "x / 2 - 4",
+            "D": "(x + 4) / 2"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 32 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 2x - 4 => y + 4 = 2x => x = (y + 4) / 2. Demek ki f⁻¹(x) = (x + 4) / 2 olur."
         },
         {
           "id": "bil_o_17",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 17: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 2x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "34",
-            "B": "35",
-            "C": "36",
-            "D": "37"
+            "A": "(x - 3) / 2",
+            "B": "2x + 3",
+            "C": "(x + 3) / 2",
+            "D": "x / 2 - 3"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 34 elde edilir."
+          "cevap": "C",
+          "cozum": "y = 2x - 3 => y + 3 = 2x => x = (y + 3) / 2. Demek ki f⁻¹(x) = (x + 3) / 2 olur."
         },
         {
           "id": "bil_o_18",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 18: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 5x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "36",
-            "B": "37",
-            "C": "38",
-            "D": "39"
+            "A": "5x + 2",
+            "B": "(x + 2) / 5",
+            "C": "(x - 2) / 5",
+            "D": "x / 5 - 2"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 36 elde edilir."
+          "cevap": "B",
+          "cozum": "y = 5x - 2 => y + 2 = 5x => x = (y + 2) / 5. Demek ki f⁻¹(x) = (x + 2) / 5 olur."
         },
         {
           "id": "bil_o_19",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 19: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 3 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "38",
-            "B": "39",
-            "C": "40",
-            "D": "41"
+            "A": "3x + 3",
+            "B": "(x + 3) / 3",
+            "C": "x / 3 - 3",
+            "D": "(x - 3) / 3"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 38 elde edilir."
+          "cevap": "B",
+          "cozum": "y = 3x - 3 => y + 3 = 3x => x = (y + 3) / 3. Demek ki f⁻¹(x) = (x + 3) / 3 olur."
         },
         {
           "id": "bil_o_20",
-          "soru": "Bileske Ve Ters Fonksiyon orta düzey soru 20: Katsayı eşitleme ve denklem çözümü.",
+          "soru": "f(x) = 3x - 2 fonksiyonunun tersi f⁻¹(x) aşağıdakilerden hangisidir?",
           "secenekler": {
-            "A": "40",
-            "B": "41",
-            "C": "42",
-            "D": "43"
+            "A": "3x + 2",
+            "B": "(x - 2) / 3",
+            "C": "x / 3 - 2",
+            "D": "(x + 2) / 3"
           },
-          "cevap": "A",
-          "cozum": "Özellikler yerine konulduğunda cevap 40 elde edilir."
+          "cevap": "D",
+          "cozum": "y = 3x - 2 => y + 2 = 3x => x = (y + 2) / 3. Demek ki f⁻¹(x) = (x + 2) / 3 olur."
         }
       ],
       "zor": [
         {
           "id": "bil_z_01",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 1.",
+          "soru": "f(x) = 3x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "3",
-            "B": "5",
-            "C": "7",
-            "D": "9"
+            "A": "7",
+            "B": "4",
+            "C": "5",
+            "D": "6"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 7 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 1 = 2. Sonra bu değer f'de yerine yazılır: f(2) = 3(2) - 1 = 5."
         },
         {
           "id": "bil_z_02",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 2.",
+          "soru": "f(x) = 2x - 2 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "6",
-            "B": "8",
-            "C": "10",
-            "D": "12"
+            "A": "-3",
+            "B": "-2",
+            "C": "0",
+            "D": "-1"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 10 bulunur."
+          "cevap": "B",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 2 = 0. Sonra bu değer f'de yerine yazılır: f(0) = 2(0) - 2 = -2."
         },
         {
           "id": "bil_z_03",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 3.",
+          "soru": "f(x) = 2x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "9",
-            "B": "11",
-            "C": "13",
-            "D": "15"
+            "A": "3",
+            "B": "1",
+            "C": "0",
+            "D": "2"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 13 bulunur."
+          "cevap": "B",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 1 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 2(1) - 1 = 1."
         },
         {
           "id": "bil_z_04",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 4.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "12",
-            "B": "14",
-            "C": "16",
-            "D": "18"
+            "A": "-5",
+            "B": "-6",
+            "C": "-4",
+            "D": "-3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 16 bulunur."
+          "cevap": "A",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_05",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 5.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "15",
-            "B": "17",
-            "C": "19",
-            "D": "21"
+            "A": "-6",
+            "B": "-3",
+            "C": "-5",
+            "D": "-4"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 19 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_06",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 6.",
+          "soru": "f(x) = 3x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "18",
-            "B": "20",
-            "C": "22",
-            "D": "24"
+            "A": "7",
+            "B": "6",
+            "C": "5",
+            "D": "4"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 22 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 1 = 2. Sonra bu değer f'de yerine yazılır: f(2) = 3(2) - 1 = 5."
         },
         {
           "id": "bil_z_07",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 7.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "21",
-            "B": "23",
-            "C": "25",
-            "D": "27"
+            "A": "-5",
+            "B": "-6",
+            "C": "-4",
+            "D": "-3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 25 bulunur."
+          "cevap": "A",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_08",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 8.",
+          "soru": "f(x) = 3x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "24",
-            "B": "26",
-            "C": "28",
-            "D": "30"
+            "A": "-1",
+            "B": "-2",
+            "C": "-4",
+            "D": "-3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 28 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 3 = 0. Sonra bu değer f'de yerine yazılır: f(0) = 3(0) - 3 = -3."
         },
         {
           "id": "bil_z_09",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 9.",
+          "soru": "f(x) = 3x - 2 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "27",
-            "B": "29",
-            "C": "31",
-            "D": "33"
+            "A": "3",
+            "B": "1",
+            "C": "0",
+            "D": "2"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 31 bulunur."
+          "cevap": "B",
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 2 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 3(1) - 2 = 1."
         },
         {
           "id": "bil_z_10",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 10.",
+          "soru": "f(x) = 2x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "30",
-            "B": "32",
-            "C": "34",
-            "D": "36"
+            "A": "2",
+            "B": "3",
+            "C": "1",
+            "D": "0"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 34 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 1 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 2(1) - 1 = 1."
         },
         {
           "id": "bil_z_11",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 11.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "33",
-            "B": "35",
-            "C": "37",
-            "D": "39"
+            "A": "-6",
+            "B": "-3",
+            "C": "-4",
+            "D": "-5"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 37 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_12",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 12.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "36",
-            "B": "38",
-            "C": "40",
-            "D": "42"
+            "A": "-4",
+            "B": "-5",
+            "C": "-6",
+            "D": "-3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 40 bulunur."
+          "cevap": "B",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_13",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 13.",
+          "soru": "f(x) = 2x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "39",
-            "B": "41",
-            "C": "43",
-            "D": "45"
+            "A": "-3",
+            "B": "-4",
+            "C": "-6",
+            "D": "-5"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 43 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 3 = -1. Sonra bu değer f'de yerine yazılır: f(-1) = 2(-1) - 3 = -5."
         },
         {
           "id": "bil_z_14",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 14.",
+          "soru": "f(x) = 3x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "42",
-            "B": "44",
-            "C": "46",
-            "D": "48"
+            "A": "-1",
+            "B": "-4",
+            "C": "-3",
+            "D": "-2"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 46 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 3 = 0. Sonra bu değer f'de yerine yazılır: f(0) = 3(0) - 3 = -3."
         },
         {
           "id": "bil_z_15",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 15.",
+          "soru": "f(x) = 3x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "45",
-            "B": "47",
-            "C": "49",
-            "D": "51"
+            "A": "7",
+            "B": "6",
+            "C": "4",
+            "D": "5"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 49 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 1 = 2. Sonra bu değer f'de yerine yazılır: f(2) = 3(2) - 1 = 5."
         },
         {
           "id": "bil_z_16",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 16.",
+          "soru": "f(x) = 3x - 3 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "48",
-            "B": "50",
-            "C": "52",
-            "D": "54"
+            "A": "-2",
+            "B": "-1",
+            "C": "-4",
+            "D": "-3"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 52 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 3 = 0. Sonra bu değer f'de yerine yazılır: f(0) = 3(0) - 3 = -3."
         },
         {
           "id": "bil_z_17",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 17.",
+          "soru": "f(x) = 2x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "51",
-            "B": "53",
-            "C": "55",
-            "D": "57"
+            "A": "0",
+            "B": "3",
+            "C": "2",
+            "D": "1"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 55 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 1 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 2(1) - 1 = 1."
         },
         {
           "id": "bil_z_18",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 18.",
+          "soru": "f(x) = 3x - 2 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "54",
-            "B": "56",
-            "C": "58",
-            "D": "60"
+            "A": "2",
+            "B": "3",
+            "C": "1",
+            "D": "0"
           },
           "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 58 bulunur."
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 2 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 3(1) - 2 = 1."
         },
         {
           "id": "bil_z_19",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 19.",
+          "soru": "f(x) = 2x - 1 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "57",
-            "B": "59",
-            "C": "61",
-            "D": "63"
+            "A": "3",
+            "B": "1",
+            "C": "2",
+            "D": "0"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 61 bulunur."
+          "cevap": "B",
+          "cozum": "Önce f(1) bulunur: f(1) = 2(1) - 1 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 2(1) - 1 = 1."
         },
         {
           "id": "bil_z_20",
-          "soru": "Bileske Ve Ters Fonksiyon ileri düzey analitik/özdeşlik sorusu 20.",
+          "soru": "f(x) = 3x - 2 olmak üzere, (f o f)(1) değeri kaçtır?",
           "secenekler": {
-            "A": "60",
-            "B": "62",
-            "C": "64",
-            "D": "66"
+            "A": "3",
+            "B": "2",
+            "C": "0",
+            "D": "1"
           },
-          "cevap": "C",
-          "cozum": "Bileşke ve ters fonksiyon teoremi uygulandığında sonuç 64 bulunur."
+          "cevap": "D",
+          "cozum": "Önce f(1) bulunur: f(1) = 3(1) - 2 = 1. Sonra bu değer f'de yerine yazılır: f(1) = 3(1) - 2 = 1."
         }
       ]
     }
