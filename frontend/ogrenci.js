@@ -627,7 +627,6 @@ function renderBridgeView() {
       <div class="bridge-intro">
         <div class="eyebrow">✨ Bu soruyu başka türlü düşünelim</div>
         <h1>Yanlış yaptığın soruları adım adım çözelim.</h1>
-        <p>Benzetme yerine, tam olarak takıldığın soruları basit dille açıklıyoruz.</p>
       </div>
       <div id="bridgeCarousel">
         <div class="feedback-card" role="status">

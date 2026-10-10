@@ -19,9 +19,20 @@ SORU_HAVUZU_JSON = os.path.join(BASE_DIR, "content", "soru_havuzu.json")
 
 
 def _alt_konular(ders_id: str) -> list[str]:
+    # DUZELTME: soru_havuzu.json'da "fonksiyonlar" ve "fonksiyonlar_2" AYRI
+    # ust seviye anahtarlar (bkz. icerik_meta.py ustundeki ayni hatanin
+    # gecmisi) ama ikisi de ayni gercek konunun ("Fonksiyonlar") parcasi.
+    # "Full tekrar" gibi videolar HER iki parcayi da anlatiyor olabilir -
+    # sadece ders_id'nin ait oldugu 4 konuyu Groq'a sorarsak, videoda
+    # gecen diger 4 konu hic bulunamiyor. Bu yuzden TUM derslerin alt
+    # konularinin BIRLESIMINI ariyoruz (alt_konu id'leri zaten birbiriyle
+    # cakismiyor, global olarak benzersiz).
     with open(SORU_HAVUZU_JSON, encoding="utf-8") as f:
         havuz = json.load(f)
-    return list(havuz.get(ders_id, {}).keys())
+    tum_konular: list[str] = []
+    for ders_konulari in havuz.values():
+        tum_konular.extend(ders_konulari.keys())
+    return tum_konular
 
 
 def _transkript_metni(parcalar: list[dict], baslangic_sn: float, bitis_sn: float) -> str:

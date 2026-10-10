@@ -9,6 +9,7 @@
 import json
 import logging
 import os
+import time
 
 from dotenv import load_dotenv
 from groq import Groq
@@ -37,7 +38,13 @@ def altyazi_bolumle(parcalar: list[dict], alt_konular: list[str]) -> list[dict]:
     """
     bulunan = []
 
-    for basla in range(0, len(parcalar), SATIR_BASINA_PARCA):
+    for i, basla in enumerate(range(0, len(parcalar), SATIR_BASINA_PARCA)):
+        if i > 0:
+            # Groq'un dakikalik token limitine (TPM) art arda hizli istekle
+            # takilmamak icin parcalar arasi kisa bir bekleme (bkz. GUNLUK.md -
+            # "full tekrar" videolarini yeniden islerken TPM/TPD limitine
+            # takilip veri kaybettigimiz olay).
+            time.sleep(20)
         bitis = min(basla + SATIR_BASINA_PARCA, len(parcalar))
         metin = _numarali_metin(parcalar, basla, bitis)
 
@@ -56,6 +63,8 @@ def altyazi_bolumle(parcalar: list[dict], alt_konular: list[str]) -> list[dict]:
                 model=MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
+                max_completion_tokens=4000,
+                reasoning_effort="medium",
             )
             veri = json.loads(resp.choices[0].message.content)
         except Exception:
