@@ -357,7 +357,7 @@
           try {
             const res = await fetch("/api/giris", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
               body: JSON.stringify({ sinif_kodu: sinif_kodu, isim: isim }),
             });
 
@@ -419,7 +419,7 @@
           try {
             const res = await fetch("/api/hoca/giris", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
               body: JSON.stringify({ email: email, sifre: sifre }),
             });
 
@@ -469,7 +469,7 @@
           try {
             const res = await fetch("/api/hoca/kayit", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
               body: JSON.stringify({ email: email, sifre: sifre }),
             });
 

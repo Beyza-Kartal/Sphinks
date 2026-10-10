@@ -34,7 +34,10 @@ function escapeHtml(text) {
 // --- API Çağrı Yardımcısı ---
 async function apiCall(url, method = "GET", body = null) {
   try {
-    const opts = { method, headers: { "Content-Type": "application/json" } };
+    const opts = {
+      method,
+      headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
+    };
     if (body) opts.body = JSON.stringify(body);
 
     const res = await fetch(url, opts);
@@ -350,7 +353,10 @@ async function initHocaPanel() {
 
     try {
       const hocaId = state.hocaId ? parseInt(state.hocaId, 10) : 1;
-      const res = await fetch(`/api/hoca/sinif/${state.sinifId}?hoca_id=${hocaId}`, { method: "DELETE" });
+      const res = await fetch(`/api/hoca/sinif/${state.sinifId}?hoca_id=${hocaId}`, {
+        method: "DELETE",
+        headers: { "ngrok-skip-browser-warning": "true" },
+      });
       if (!res.ok) {
         const hata = await res.json().catch(() => ({}));
         throw new Error(hata.detail || `HTTP ${res.status}`);
@@ -396,7 +402,7 @@ async function initHocaPanel() {
     try {
       const res = await fetch("/api/video-ekle", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
         body: JSON.stringify({ ders_id: state.sinifDersId || "fonksiyonlar", youtube_url: url }),
       });
       const sonuc = await res.json();
@@ -568,7 +574,9 @@ async function openQrModal() {
   let origin = window.location.origin;
   if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
     try {
-      const res = await fetch("/api/sunucu-bilgisi");
+      const res = await fetch("/api/sunucu-bilgisi", {
+        headers: { "ngrok-skip-browser-warning": "true" },
+      });
       const data = await res.json();
       if (data.public_url) {
         // ngrok calisiyor: farkli ag/cihazdan da erisilebilen genel adres,

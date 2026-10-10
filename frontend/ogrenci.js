@@ -61,7 +61,10 @@ try {
 // --- API Çağrı Yardımcısı ---
 async function apiCall(url, method = "GET", body = null) {
   try {
-    const opts = { method, headers: { "Content-Type": "application/json" } };
+    const opts = {
+      method,
+      headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },
+    };
     if (body) opts.body = JSON.stringify(body);
 
     const res = await fetch(url, opts);
