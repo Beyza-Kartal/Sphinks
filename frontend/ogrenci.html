@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kıvılcım – Öğrenci Paneli</title>
+    <meta
+      name="description"
+      content="Öğrenme eksiklerini tespit edip gideren kişiselleştirilmiş öğrenci akışı."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Üst Bar -->
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">
+            <span></span><span></span><span></span>
+          </div>
+          Kıvılcım
+        </a>
+        <div class="top-step" id="topStepText">Öğrenme Planı</div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div class="profile-pill">
+            <span id="userInitial">Ö</span>
+            <span id="userNameText">Öğrenci</span>
+          </div>
+          <button class="text-button" id="btnLogout" style="font-size: 13px; padding: 6px 12px; color: var(--coral);">
+            Çıkış
+          </button>
+        </div>
+      </header>
+
+      <!-- Ana İçerik Konteyneri -->
+      <main class="page" id="mainContainer">
+        <!-- Dinamik görünümler ogrenci.js tarafından buraya yerleştirilir -->
+      </main>
+    </div>
+
+    <!-- Tema Değiştirme Butonu -->
+    <button
+      id="btnThemeToggle"
+      style="
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 16px rgba(23,108,88,0.3);
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      title="Temayı Değiştir"
+    >
+      🌙
+    </button>
+
+    <!-- Öğrenci Mantığı & API Çağrıları -->
+    <script src="./ogrenci.js"></script>
+  </body>
+</html>

@@ -1,470 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HazırMısın? - Öğretmen Canlı Takip Paneli</title>
-  <!-- Basit ve Güvenilir QR Kod Kütüphanesi -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <style>
-    :root {
-      --bg-color: #f4f6fb;
-      --card-bg: #ffffff;
-      --primary: #4338ca;
-      --primary-light: #6366f1;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: 24px;
-      line-height: 1.5;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Üst Başlık ve Kontrol Alanı */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--card-bg);
-      padding: 20px 28px;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .header-info h1 {
-      font-size: 24px;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-info p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ecfdf5;
-      color: var(--success);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--success);
-      border-radius: 50%;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.2); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    .select-input {
-      padding: 8px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 14px;
-      outline: none;
-      background-color: #fff;
-    }
-
-    /* Ana İki Kolonlu Izgara */
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    /* Kart Genel Yapısı */
-    .card {
-      background: var(--card-bg);
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* İlerleme Çubuğu ve Hazır Olma Alanı */
-    .progress-stats-box {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 20px;
-    }
-
-    .percentage-circle-text {
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .percentage-meta {
-      flex: 1;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 18px;
-      background-color: #e2e8f0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 8px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--primary-light), var(--success));
-      border-radius: 10px;
-      transition: width 0.6s ease;
-    }
-
-    .stats-summary {
-      display: flex;
-      gap: 16px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .stat-pill {
-      flex: 1;
-      background: #f8fafc;
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
-      border: 1px solid var(--border-color);
-    }
-
-    .stat-pill .number {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .stat-pill .label {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* Eksik Dağılımı Listesi */
-    .eksik-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .eksik-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      background: #f8fafc;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border-left: 4px solid var(--warning);
-    }
-
-    .eksik-info {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .eksik-bar-track {
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .eksik-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--warning);
-      border-radius: 4px;
-      transition: width 0.5s ease;
-    }
-
-    /* QR Kod ve Katılım Alanı */
-    .qr-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      text-align: center;
-    }
-
-    .qr-box {
-      width: 170px;
-      height: 170px;
-      background: #ffffff;
-      padding: 10px;
-      border: 2px dashed var(--primary-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .qr-input-group {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .qr-input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 13px;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-light);
-    }
-
-    /* Öğrenci Tablosu */
-    .table-container {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    th {
-      background-color: #f8fafc;
-      color: var(--text-muted);
-      font-weight: 600;
-      padding: 12px 16px;
-      border-bottom: 2px solid var(--border-color);
-    }
-
-    td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    tr:hover {
-      background-color: #fbfcfe;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .badge-hazir {
-      background-color: #d1fae5;
-      color: #065f46;
-    }
-
-    .badge-eksik {
-      background-color: #fee2e2;
-      color: #991b1b;
-    }
-
-    .badge-devam {
-      background-color: #fef3c7;
-      color: #92400e;
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Üst Bar -->
-    <header>
-      <div class="header-info">
-        <h1>🎓 HazırMısın? Hoca Paneli</h1>
-        <p>Konu: <strong>İkinci Dereceden Denklemler</strong> | Gerçek Zamanlı Sınıf Hazırlık Analizi</p>
-      </div>
-      <div class="header-actions">
-        <select id="sinifSelect" class="select-input">
-          <option value="10A">10-A Şubesi</option>
-          <option value="10B">10-B Şubesi</option>
-          <option value="11A">11-A Şubesi</option>
-        </select>
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>Canlı Dinleme (5sn)</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kıvılcım – Öğretmen Paneli</title>
+    <meta
+      name="description"
+      content="Sınıfın anlık öğrenme durumunu ve ortak eksiklerini takip eden hoca paneli."
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Üst Bar -->
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">
+            <span></span><span></span><span></span>
+          </div>
+          Kıvılcım
+        </a>
+        <div class="top-step" id="topStepText">Canlı Sınıf Takibi</div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div class="profile-pill">
+            <span id="teacherInitial">Ö</span>
+            <span id="teacherNameText">Öğretmen</span>
+          </div>
+          <button class="text-button" id="btnLogout" style="font-size: 13px; padding: 6px 12px; color: var(--coral);">
+            Çıkış
+          </button>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Gösterge Kartları Izgarası -->
-    <div class="dashboard-grid">
-      <!-- Sınıf Hazır Olma Durumu -->
-      <div class="card">
-        <div class="card-title">
-          <span>📊 Sınıf Hazır Olma Oranı</span>
-          <span id="sonGuncelleme" style="font-size: 12px; font-weight: normal; color: var(--text-muted);">Güncelleniyor...</span>
-        </div>
-        
-        <div class="progress-stats-box">
-          <div class="percentage-circle-text" id="hazirYuzdeMetin">%0</div>
-          <div class="percentage-meta">
-            <span style="font-size: 14px; color: var(--text-muted);">Hedef derse geçiş eşiği: <strong>%70</strong></span>
-            <div class="progress-track">
-              <div id="hazirProgressBar" class="progress-fill"></div>
+      <!-- Ana İçerik -->
+      <main class="page">
+        <div class="teacher-page">
+          <!-- Başlık ve Aksiyonlar -->
+          <div class="teacher-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-dot"></span> Sınıf Yönetimi</div>
+              <h1 id="welcomeText">Günaydın, Öğretmen.</h1>
+              <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
+                <select id="selectClass" style="padding: 8px 24px 8px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-card); font-weight: 700; color: var(--ink);">
+                  <option value="KIV6A2" selected>6-A Sınıfı</option>
+                  <option value="KIV6B1">6-B Sınıfı</option>
+                </select>
+                <span style="font-size: 12px; font-weight: 700; background: var(--mint); color: var(--green); padding: 6px 12px; border-radius: 8px;">
+                  Katılım Kodu: <strong id="badgeClassCode" style="letter-spacing: 1px;">KIV6A2</strong>
+                </span>
+                <p style="margin: 0; color: var(--muted); font-size: 14px;">öğrenme yolculuğunu buradan takip edebilirsin.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button class="primary-button" id="btnAddVideo">
+                + Video / Konu Ekle
+              </button>
+              <button class="secondary-button" id="btnShowQr">
+                Tahta QR Kodu
+              </button>
             </div>
           </div>
-        </div>
 
-        <div class="stats-summary">
-          <div class="stat-pill">
-            <div class="number" id="toplamOgrenciSayisi">0</div>
-            <div class="label">Toplam Öğrenci</div>
+          <!-- Canlı İstatistikler -->
+          <div class="teacher-stats">
+            <article>
+              <span>Sınıf Hazır Oranı</span>
+              <strong id="statHazirOrani">%0</strong>
+              <small id="statHazirDetail">Hesaplanıyor</small>
+            </article>
+            <article>
+              <span>Derse Katılan</span>
+              <strong id="statKatilanSayisi">0</strong>
+              <small id="statKatilanDetail">Öğrenci</small>
+            </article>
+            <article>
+              <span>Ortak Eksik</span>
+              <strong id="statOrtakEksik">—</strong>
+              <small id="statEksikDetail">Veri toplanıyor</small>
+            </article>
           </div>
-          <div class="stat-pill">
-            <div class="number" id="hazirOgrenciSayisi" style="color: var(--success);">0</div>
-            <div class="label">Derse Hazır</div>
-          </div>
-          <div class="stat-pill">
-            <div class="number" id="eksikOgrenciSayisi" style="color: var(--danger);">0</div>
-            <div class="label">Eksik Çalışan</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Mobil Katılım & QR Kod -->
-      <div class="card">
-        <div class="card-title">
-          <span>📱 Öğrenci Katılım QR Kodu</span>
-        </div>
-        <div class="qr-container">
-          <div id="qrcode" class="qr-box"></div>
-          <div class="qr-input-group">
-            <input type="text" id="ngrokUrlInput" class="qr-input" placeholder="ngrok veya sunucu adresi girin" value="http://localhost:8000">
-            <button id="btnQrGuncelle" class="btn-primary">QR Kodu Güncelle</button>
+          <!-- Tablo ve İçgörü Izgarası -->
+          <div class="dashboard-grid">
+            <!-- Öğrenci Tablosu -->
+            <section class="student-table">
+              <div class="section-heading">
+                <div>
+                  <p class="card-kicker">Canlı takip</p>
+                  <h2>Öğrenci İlerlemesi</h2>
+                </div>
+                <span><i id="onlineDot"></i> <span id="onlineCountText">0 çevrimiçi</span></span>
+              </div>
+              <div id="studentListContainer">
+                <!-- Öğrenciler hoca.js tarafından buraya yerleştirilir -->
+              </div>
+            </section>
+
+            <!-- Sınıf İçgörüsü -->
+            <aside class="insight-panel" id="insightPanel">
+              <div class="insight-icon">⚡</div>
+              <p class="card-kicker">Sınıf İçgörüsü</p>
+              <h2 id="insightTitle">Veri Toplanıyor</h2>
+              <p id="insightDesc">Öğrenciler ön test ve etkinlikleri tamamladıkça sınıfın zorlandığı ortak eksikler burada analiz edilecektir.</p>
+              <button class="secondary-button" id="btnInsightDetail" disabled style="opacity: 0.6; cursor: not-allowed;">
+                Detay Bekleniyor
+              </button>
+            </aside>
           </div>
         </div>
+      </main>
+    </div>
+
+    <!-- QR Kod Modalı -->
+    <div id="modalQr" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+        <div class="eyebrow" style="justify-content: center;"><span class="eyebrow-dot"></span> Canlı Tahta QR Kodu</div>
+        <h2 style="font-size: 26px; margin: 8px 0;">Öğrencilerini Davet Et</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Öğrenciler telefon kamerasıyla tarayarak doğrudan bu sınıfa katılır.</p>
+        <div id="qrFrameBox" style="width: 280px; height: 280px; margin: 0 auto 16px; background: #fafafa; border-radius: 16px; display: grid; place-items: center; overflow: hidden;">
+          <span class="spinner"></span>
+        </div>
+        <p style="color: var(--muted); font-size: 12px; margin: 0;">Sınıf Kodu</p>
+        <strong id="modalClassCode" style="font-size: 32px; letter-spacing: 4px; color: var(--green); display: block; margin: 4px 0 16px;">KIV6A2</strong>
+        <button class="primary-button" id="btnCloseQr" style="width: 100%;">Pano Görünümüne Dön</button>
       </div>
     </div>
 
-    <!-- Eksik Dağılımı ve Analiz -->
-    <div class="card" style="margin-bottom: 24px;">
-      <div class="card-title">
-        <span>🔍 Konu Bazlı Eksik Dağılımı</span>
-        <span style="font-size: 12px; color: var(--text-muted);">Öğrencilerin takıldığı kavramsal noktalar</span>
-      </div>
-      <div id="eksikDagilimListesi" class="eksik-list">
-        <!-- JS ile dinamik olarak doldurulacaktır -->
-        <p style="color: var(--text-muted); font-size: 14px;">Eksik verisi yükleniyor...</p>
-      </div>
-    </div>
-
-    <!-- Öğrenci Durum Listesi -->
-    <div class="card">
-      <div class="card-title">
-        <span>👥 Öğrenci Durum Listesi</span>
-        <span id="ogrenciSayisiBadge" style="font-size: 13px; color: var(--text-muted);">0 Öğrenci</span>
-      </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Öğrenci Adı Soyadı</th>
-              <th>Ön Test Durumu</th>
-              <th>Tespit Edilen Eksik</th>
-              <th>Puan / Seviye</th>
-              <th>Mevcut Durum</th>
-            </tr>
-          </thead>
-          <tbody id="ogrenciTabloGovdesi">
-            <!-- JS ile dinamik olarak doldurulacaktır -->
-            <tr>
-              <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">Veriler backend servisinden yükleniyor...</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Video Ekleme Modalı (POST /api/video-ekle) -->
+    <div id="modalAddVideo" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Otomatik Bölümleme</div>
+        <h2 style="font-size: 24px; margin: 8px 0 16px;">YouTube Dersi Ekle</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">Eklediğin video AI ile transkriptlenir ve eksik konulara göre otomatik bölümlere ayrılır.</p>
+        <form id="formAddVideo">
+          <label style="display: flex; flex-direction: column; gap: 8px; font-weight: 700; font-size: 13px; margin-bottom: 16px;">
+            YouTube Video Linki / ID
+            <input
+              id="inputYoutubeUrl"
+              placeholder="https://www.youtube.com/watch?v=..."
+              required
+              style="height: 50px; border-radius: 12px; border: 1px solid var(--line); padding: 0 14px; background: var(--bg-input);"
+            />
+          </label>
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <button class="primary-button" type="submit" id="btnSubmitVideo">
+              Bölümle ve Ekle
+            </button>
+            <button class="text-button" type="button" id="btnCloseAddVideo">
+              İptal
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
-    <div class="footer-note">
-      HazırMısın? Akıllı Öğrenme Platformu &copy; 2026 - Her 5 saniyede bir otomatik senkronize edilir.
-    </div>
-  </div>
+    <!-- Tema Değiştirme Butonu -->
+    <button
+      id="btnThemeToggle"
+      style="
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 16px rgba(23,108,88,0.3);
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      title="Temayı Değiştir"
+    >
+      🌙
+    </button>
 
-  <!-- Hoca Paneli Mantık Scripti -->
-  <script src="hoca.js"></script>
-</body>
+    <script src="./hoca.js"></script>
+  </body>
 </html>
