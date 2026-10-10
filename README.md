@@ -106,7 +106,10 @@ Sphinks/
 ---
 
 ## 🔮 Geliştirilebilir Alanlar
-- **Tahta QR Kodu:** Projeksiyondan yansıtılan dinamik QR kodu okutan öğrenciler anında teste başlar.
+- **Tahta QR Kodu ile Hızlı Katılım:** Öğretmenin akıllı tahtaya yansıttığı dinamik QR kod sayesinde öğrencilerin kod girmeden telefon kamerasıyla tek tıkla teste dahil olması.
+- **MEB EBA & e-Okul Entegrasyonu:** MEB kazanım kodlarıyla tam uyumlu çalışarak öğretmenin tek tıkla sınıf hazır bulunuşluk ve eksik haritası raporunu EBA portföyüne aktarabilmesi.
+- **Diğer Branş ve Kademelere Genişleme (Fizik, Kimya, Biyoloji & LGS/YKS):** Platformun sadece 10. sınıf matematikle sınırlı kalmayıp ön koşul bağımlılığı yüksek diğer sayısal derslere ve sınav hazırlık modüllerine genişletilmesi.
+- **Çevrimdışı / PWA (Offline Okul Modu) Desteği:** İnternet bağlantısı kısıtlı olan okullarda yerel ağ (LAN) üzerinden kesintisiz çalışabilen ve sonradan senkronize olan çevrimdışı çalışma modu.
 
 ---
 
