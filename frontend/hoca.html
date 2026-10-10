@@ -48,9 +48,15 @@
                 <button class="secondary-button" id="btnYeniSinif" style="padding: 8px 16px; font-size: 13px;">
                   + Yeni Sınıf
                 </button>
+                <button class="secondary-button" id="btnDersEkle" style="padding: 8px 16px; font-size: 13px;">
+                  + Ders Ekle
+                </button>
                 <span id="badgeClassCodeWrap" style="font-size: 12px; font-weight: 700; background: var(--mint); color: var(--green); padding: 6px 12px; border-radius: 8px; display: none;">
                   Katılım Kodu: <strong id="badgeClassCode" style="letter-spacing: 1px;">—</strong>
                 </span>
+                <button class="text-button" id="btnSinifSil" style="font-size: 13px; padding: 6px 12px; color: var(--coral);">
+                  Sınıfı Sil
+                </button>
                 <p style="margin: 0; color: var(--muted); font-size: 14px;">öğrenme yolculuğunu buradan takip edebilirsin.</p>
               </div>
             </div>
@@ -129,11 +135,11 @@
       </div>
     </div>
 
-    <!-- Yeni Sınıf Modalı (GET /api/hoca/uniteler, POST /api/hoca/sinif-ekle) -->
+    <!-- Yeni Sınıf / Ders Ekle Modalı (GET /api/hoca/uniteler, POST /api/hoca/sinif-ekle veya /api/hoca/sinif-ders-ekle) -->
     <div id="modalYeniSinif" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
       <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 460px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Yeni Sınıf</div>
-        <h2 style="font-size: 24px; margin: 8px 0 16px;">Ders ve Ünite Seç</h2>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> <span id="modalYeniSinifEyebrow">Yeni Sınıf</span></div>
+        <h2 id="modalYeniSinifBaslik" style="font-size: 24px; margin: 8px 0 16px;">Ders ve Ünite Seç</h2>
 
         <label style="display: flex; flex-direction: column; gap: 8px; font-weight: 700; font-size: 13px; margin-bottom: 14px;">
           Ders
@@ -162,6 +168,16 @@
             İptal
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Ortak Eksik Detay Modalı -->
+    <div id="modalEksikDetay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: var(--bg-card); border-radius: 28px; padding: 36px; max-width: 440px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Sınıf İçgörüsü</div>
+        <h2 style="font-size: 22px; margin: 8px 0 16px;">Tüm Konulardaki Eksik Oranı</h2>
+        <div id="eksikDetayListesi" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;"></div>
+        <button class="primary-button" id="btnCloseEksikDetay" style="width: 100%;">Kapat</button>
       </div>
     </div>
 

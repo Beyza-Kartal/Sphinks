@@ -28,6 +28,9 @@ const state = {
   diagnosis: null,
   selectedChannelIndex: 0,
   analogyText: "",
+  bridgeKartlar: [],       // /api/adim-adim -> [{soru, aciklama}, ...]
+  bridgeIndex: 0,
+  bridgeAnim: "",          // kart gecis animasyonu icin gecici css sinifi
   retestQuestions: [],
   retestIndex: 0,
   retestSelectedKey: null, // secilen sik harfi ("A".."D")
@@ -147,8 +150,11 @@ function getLocalMock(url, method, body) {
   // POST /api/adim-adim (eski /api/benzetme'nin yerine gecti)
   if (url.includes("/api/adim-adim")) {
     return {
-      soru: "2x + 3 = 11 denkleminde x kaçtır?",
-      aciklama: "1. Her iki taraftan 3 çıkar: 2x = 8\n2. Her iki tarafı 2'ye böl: x = 4\n\nDoğru sonuç: 4",
+      kartlar: [
+        { soru: "2x + 3 = 11 denkleminde x kaçtır?", aciklama: "1. Her iki taraftan 3 çıkar: 2x = 8\n2. Her iki tarafı 2'ye böl: x = 4\n\nDoğru sonuç: 4" },
+        { soru: "3x - 5 = 10 denkleminde x kaçtır?", aciklama: "1. Her iki tarafa 5 ekle: 3x = 15\n2. Her iki tarafı 3'e böl: x = 5\n\nDoğru sonuç: 5" },
+      ],
+      aciklama: null,
     };
   }
 
@@ -163,7 +169,7 @@ function getLocalMock(url, method, body) {
   }
 
   if (url.includes("/api/tekrar/bitir")) {
-    return { toplam_soru: 2, dogru: 2, yanlis: 0, puan: 100.0, basari_esigi: 75, calisma_ise_yaradi_mi: true, mesaj: "Tebrikler, eksiğini kapattın!" };
+    return { toplam_soru: 2, dogru: 2, yanlis: 0, puan: 100.0, basari_esigi: 75, calisma_ise_yaradi_mi: true, mesaj: "Tebrikler, eksiğini kapattın!", yanlis_sorular: [] };
   }
 
   if (url.includes("/api/ozet")) {
@@ -591,9 +597,10 @@ async function renderMinutesView() {
       mapBox.innerHTML = bolumler
         .map((b) => {
           const dk = (sn) => `${Math.floor(sn / 60)}:${String(sn % 60).padStart(2, "0")}`;
+          const eksikMi = b.alt_konu_id === eksikKonu;
           return `
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
-            <span style="font-size: 13px;"><strong>${dk(b.baslangic_sn)} – ${dk(b.bitis_sn)}</strong> · ${formatKonuAdi(b.alt_konu_id)}</span>
+            <span style="font-size: 13px; color: ${eksikMi ? "var(--coral)" : "inherit"};"><strong>${dk(b.baslangic_sn)} – ${dk(b.bitis_sn)}</strong> · ${formatKonuAdi(b.alt_konu_id)}${eksikMi ? " ⚡" : ""}</span>
             <a href="https://www.youtube.com/watch?v=${activeVideo.youtube_id}&t=${b.baslangic_sn}s" target="_blank" rel="noopener" style="font-size: 12px; color: var(--green); text-decoration: none;">izle →</a>
           </div>
         `;
@@ -616,10 +623,10 @@ function renderBridgeView() {
     <div class="bridge-page">
       <div class="bridge-intro">
         <div class="eyebrow">✨ Bu soruyu başka türlü düşünelim</div>
-        <h1>Yanlış yaptığın soruyu adım adım çözelim.</h1>
-        <p>Benzetme yerine, tam olarak takıldığın soruyu basit dille açıklıyoruz.</p>
+        <h1>Yanlış yaptığın soruları adım adım çözelim.</h1>
+        <p>Benzetme yerine, tam olarak takıldığın soruları basit dille açıklıyoruz.</p>
       </div>
-      <div id="analogyContainer">
+      <div id="bridgeCarousel">
         <div class="feedback-card" role="status">
           <span class="spinner"></span>
           <p>Hazırlanıyor...</p>
@@ -629,31 +636,70 @@ function renderBridgeView() {
   `;
 
   (async () => {
-    const data = await apiCall("/api/adim-adim", "POST", { deneme_id: state.denemeId || 1 });
-    const analogyBox = document.getElementById("analogyContainer");
-
-    if (!data.soru) {
-      analogyBox.innerHTML = `
-        <div class="feedback-card" role="status">
-          <h2>${data.aciklama || "Şu an gösterilecek bir şey yok."}</h2>
-          <button class="primary-button" id="btnBackToVideo">Geri dön</button>
-        </div>
-      `;
-    } else {
-      analogyBox.innerHTML = `
-        <section class="analogy-card">
-          <div class="analogy-label">✨ Soru: ${data.soru}</div>
-          <blockquote style="white-space: pre-line;">${data.aciklama}</blockquote>
-          <button class="primary-button" id="btnBackToVideo">Şimdi videoya dön</button>
-        </section>
-      `;
+    // Ayni deneme icin tekrar fetch etmeye gerek yok (Groq istekleri yavas).
+    if (state.bridgeKartlar.length === 0) {
+      const data = await apiCall("/api/adim-adim", "POST", { deneme_id: state.denemeId || 1 });
+      state.bridgeKartlar = data.kartlar && data.kartlar.length > 0 ? data.kartlar : [];
+      state.bridgeIndex = 0;
+      state.bridgeEmptyMessage = data.aciklama || "Şu an gösterilecek bir şey yok.";
     }
+    renderBridgeCard();
+  })();
+}
 
+// Carousel'in TEK bir karti - sadece ok ile ileri/geri gidilir (sayfa
+// numarasi YOK, kullanici karariyla). Her kart soru + adim adim aciklamayi
+// BIRLIKTE gosterir.
+function renderBridgeCard() {
+  const box = document.getElementById("bridgeCarousel");
+  if (!box) return;
+
+  if (state.bridgeKartlar.length === 0) {
+    box.innerHTML = `
+      <div class="feedback-card" role="status">
+        <h2>${state.bridgeEmptyMessage || "Şu an gösterilecek bir şey yok."}</h2>
+        <button class="primary-button" id="btnBackToVideo">Geri dön</button>
+      </div>
+    `;
     document.getElementById("btnBackToVideo").addEventListener("click", () => {
       state.view = "minutes";
       renderMinutesView();
     });
-  })();
+    return;
+  }
+
+  const kart = state.bridgeKartlar[state.bridgeIndex];
+  const total = state.bridgeKartlar.length;
+
+  box.innerHTML = `
+    <div class="bridge-carousel">
+      <button class="bridge-arrow" id="btnBridgePrev" ${state.bridgeIndex === 0 ? "disabled" : ""} aria-label="Önceki soru">‹</button>
+      <section class="analogy-card bridge-card ${state.bridgeAnim}">
+        <div class="analogy-label">✨ Soru ${state.bridgeIndex + 1}/${total}</div>
+        <h2 style="margin: 18px 0 10px; font-size: 20px;">${kart.soru}</h2>
+        <blockquote style="white-space: pre-line;">${kart.aciklama}</blockquote>
+      </section>
+      <button class="bridge-arrow" id="btnBridgeNext" ${state.bridgeIndex === total - 1 ? "disabled" : ""} aria-label="Sonraki soru">›</button>
+    </div>
+    <button class="primary-button" id="btnBackToVideo" style="margin-top: 22px;">Şimdi videoya dön</button>
+  `;
+
+  document.getElementById("btnBridgePrev").addEventListener("click", () => goBridgeCard(-1));
+  document.getElementById("btnBridgeNext").addEventListener("click", () => goBridgeCard(1));
+  document.getElementById("btnBackToVideo").addEventListener("click", () => {
+    state.view = "minutes";
+    renderMinutesView();
+  });
+}
+
+function goBridgeCard(direction) {
+  const total = state.bridgeKartlar.length;
+  const hedef = state.bridgeIndex + direction;
+  if (hedef < 0 || hedef >= total) return;
+  state.bridgeIndex = hedef;
+  state.bridgeAnim = direction > 0 ? "slide-in-right" : "slide-in-left";
+  renderBridgeCard();
+  setTimeout(() => { state.bridgeAnim = ""; }, 350);
 }
 
 // 6. Tekrar Testi (Retest View) — gercek /api/tekrar/basla sorulari,
@@ -717,6 +763,27 @@ function renderSummaryView() {
   const puan = sonuc?.puan ?? 100;
   const dogru = sonuc?.dogru ?? state.retestQuestions.length;
   const toplam = sonuc?.toplam_soru ?? state.retestQuestions.length;
+  const yanlisSorular = sonuc?.yanlis_sorular || [];
+
+  const yanlisBlok =
+    yanlisSorular.length > 0
+      ? `
+    <section class="diagnosis-card" style="text-align: left; margin-top: 24px;">
+      <p class="card-kicker" style="margin: 0 0 14px;">Yanlış yaptığın sorular</p>
+      ${yanlisSorular
+        .map(
+          (s, i) => `
+        <div style="padding: 14px 0; ${i > 0 ? "border-top: 1px solid var(--line);" : ""}">
+          <p style="font-weight: 700; margin: 0 0 8px;">${s.soru}</p>
+          <p style="margin: 0; font-size: 13px; color: var(--coral);">Senin cevabın: ${s.senin_cevabin ? `${s.senin_cevabin}) ${s.secenekler[s.senin_cevabin] || ""}` : "Boş bırakıldı"}</p>
+          <p style="margin: 4px 0 0; font-size: 13px; color: var(--green);">Doğru cevap: ${s.dogru_cevap}) ${s.secenekler[s.dogru_cevap] || ""}</p>
+        </div>
+      `
+        )
+        .join("")}
+    </section>
+  `
+      : "";
 
   main.innerHTML = basarili
     ? `
@@ -731,6 +798,7 @@ function renderSummaryView() {
         <div><strong>%${puan.toFixed ? puan.toFixed(0) : puan}</strong><span>Başarı</span></div>
         <div><strong>1</strong><span>Kapatılan eksik</span></div>
       </div>
+      ${yanlisBlok}
       <button class="secondary-button restart" id="btnSummaryRestart">
         ↺ Ana sayfaya dön
       </button>
@@ -741,6 +809,7 @@ function renderSummaryView() {
       <div class="eyebrow"><span class="eyebrow-dot"></span> Biraz daha çalışalım</div>
       <h1>${sonuc?.mesaj || "Henüz hazır değilsin, videoyu bir kez daha izlemeni öneririz."}</h1>
       <p>${dogru}/${toplam} doğru (%${puan.toFixed ? puan.toFixed(0) : puan}) — hedef %${sonuc?.basari_esigi || 75}.</p>
+      ${yanlisBlok}
       <button class="primary-button" id="btnWatchAgain">Videoyu tekrar izle</button>
       <button class="secondary-button restart" id="btnSummaryRestart">↺ Ana sayfaya dön</button>
     </div>
@@ -779,6 +848,8 @@ async function startTest() {
   state.cevaplar = {};
   state.questionIndex = 0;
   state.selectedOptionKey = null;
+  state.bridgeKartlar = [];
+  state.bridgeIndex = 0;
   state.view = "pretest";
 
   if (state.allQuestions.length === 0) {

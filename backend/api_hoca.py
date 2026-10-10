@@ -81,6 +81,12 @@ class SinifEkleIstegi(BaseModel):
     unite_id: str
 
 
+class SinifDersEkleIstegi(BaseModel):
+    hoca_id: int
+    sinif_id: int
+    unite_id: str
+
+
 class VideoEkleIstegi(BaseModel):
     ders_id: str
     youtube_url: str
@@ -177,6 +183,70 @@ def sinif_ekle(istek: SinifEkleIstegi, session: Session = Depends(get_session)):
     }
 
 
+@router.post("/api/hoca/sinif-ders-ekle")
+def sinif_ders_ekle(istek: SinifDersEkleIstegi, session: Session = Depends(get_session)):
+    # Mevcut (kayitli, kodu ogrencilerde zaten olan) bir sinifa YENI bir
+    # unite/test atar. Kullanici karariyla: kod AYNI kalir (ogrenciler tekrar
+    # kod girmek zorunda kalmaz), ESKI Deneme/Cevap kayitlari SILINMEZ
+    # (hoca gecmis sinavlara gore de ogrencilerini gorebilsin ister) - panel
+    # zaten her ogrencinin EN SON denemesini gosterdigi icin yeni test
+    # otomatik olarak onceliklenir, ekstra temizlik mantigina gerek yok.
+    sinif = session.get(models.Sinif, istek.sinif_id)
+    if not sinif or sinif.hoca_id != istek.hoca_id:
+        raise HTTPException(status_code=404, detail="Sinif bulunamadi")
+
+    unite = UNITELER.get(istek.unite_id)
+    if not unite:
+        raise HTTPException(status_code=400, detail="Gecersiz unite_id")
+    if _unite_soru_sayisi(unite) == 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Bu unite icin henuz soru eklenmedi, su an test atanamaz",
+        )
+
+    sinif.ders_id = unite["ders_id"]
+    sinif.unite_id = istek.unite_id
+    session.add(sinif)
+    session.commit()
+    session.refresh(sinif)
+    return {
+        "sinif_id": sinif.id,
+        "kod": sinif.kod,
+        "ders_id": sinif.ders_id,
+        "unite_id": sinif.unite_id,
+    }
+
+
+@router.delete("/api/hoca/sinif/{sinif_id}")
+def sinif_sil(sinif_id: int, hoca_id: int, session: Session = Depends(get_session)):
+    # Yil sonu temizligi icin: sinifi VE ona ait TUM veriyi (ogrenciler,
+    # denemeler, cevaplar) kalici olarak siler. SQLite/SQLModel iliskilerde
+    # otomatik cascade yok, elle siliyoruz (once en alttaki tablodan).
+    sinif = session.get(models.Sinif, sinif_id)
+    if not sinif or sinif.hoca_id != hoca_id:
+        raise HTTPException(status_code=404, detail="Sinif bulunamadi")
+
+    ogrenciler = session.exec(
+        select(models.Ogrenci).where(models.Ogrenci.sinif_id == sinif_id)
+    ).all()
+    for ogrenci in ogrenciler:
+        denemeler = session.exec(
+            select(models.Deneme).where(models.Deneme.ogrenci_id == ogrenci.id)
+        ).all()
+        for deneme in denemeler:
+            cevaplar = session.exec(
+                select(models.Cevap).where(models.Cevap.deneme_id == deneme.id)
+            ).all()
+            for cevap in cevaplar:
+                session.delete(cevap)
+            session.delete(deneme)
+        session.delete(ogrenci)
+
+    session.delete(sinif)
+    session.commit()
+    return {"sonuc": "silindi"}
+
+
 @router.get("/api/hoca/sinif-listesi/{hoca_id}")
 def sinif_listesi(hoca_id: int, session: Session = Depends(get_session)):
     siniflar = session.exec(
@@ -232,14 +302,38 @@ def panel(sinif_id: int, session: Session = Depends(get_session)):
 
         ogrenci_listesi.append({"isim": ogrenci.isim, "durum": durum})
 
-    toplam = len(ogrenciler)
-    hazir_orani = round(hazir_sayisi / toplam, 2) if toplam else 0.0
+    # DUZELTME (kullanici istegi): yuzdeler eskiden TUM kayitli ogrenci
+    # sayisina (hic_baslamadi dahil) bolunuyordu - sinifin cogu daha
+    # baslamamissa oran yapay olarak cok dusuk/0 cikip "neye gore 0" diye
+    # kafa karistiriyordu. Artik SADECE testi BITIRMIS (test_bitti)
+    # ogrenciler payda - "testi bitirenlerin kac tanesi hazir/bu konuda
+    # eksik" sorusuna cevap veriyor, daha anlamli.
+    tamamlayan_sayisi = hazir_sayisi + sum(eksik_dagilimi.values())
+    hazir_orani = round(hazir_sayisi / tamamlayan_sayisi, 2) if tamamlayan_sayisi else 0.0
+
+    # Hoca "ortak eksik" karti icin TEK bir konuyu degil, TUM konulardaki
+    # yuzdeyi gorebilsin diye hazir siralanmis liste donuyoruz (frontend
+    # tiklayinca detay acar).
+    eksik_yuzdeleri = sorted(
+        (
+            {
+                "alt_konu_id": konu,
+                "ogrenci_sayisi": sayi,
+                "yuzde": round((sayi / tamamlayan_sayisi) * 100, 1) if tamamlayan_sayisi else 0.0,
+            }
+            for konu, sayi in eksik_dagilimi.items()
+        ),
+        key=lambda x: x["ogrenci_sayisi"],
+        reverse=True,
+    )
 
     return {
         "sinif_id": sinif_id,
         "kod": sinif.kod,
         "hazir_orani": hazir_orani,
+        "tamamlayan_sayisi": tamamlayan_sayisi,
         "eksik_dagilimi": eksik_dagilimi,
+        "eksik_yuzdeleri": eksik_yuzdeleri,
         "ogrenciler": ogrenci_listesi,
     }
 

@@ -194,6 +194,22 @@ def tekrar_bitir(istek: TekrarBitirIstegi, session: Session = Depends(get_sessio
 
     sonuc = _kavram_secici.cevaplari_degerlendir(test_verisi, istek.cevaplar)
 
+    # Hangi sorulari yanlis yaptigini ogrenciye gosterebilmek icin (test
+    # BITTI, artik dogru cevabi gostermek guvenlik sorunu degil).
+    yanlis_sorular = []
+    for s in test_verisi["sorular"]:
+        verilen = istek.cevaplar.get(s["soru_id"], "").upper().strip()
+        if verilen != s["dogru_cevap"]:
+            yanlis_sorular.append(
+                {
+                    "soru": s["soru"],
+                    "secenekler": s["secenekler"],
+                    "senin_cevabin": verilen or None,
+                    "dogru_cevap": s["dogru_cevap"],
+                }
+            )
+    sonuc["yanlis_sorular"] = yanlis_sorular
+
     # Sonucu Deneme'ye kaydediyoruz (/api/ozet bunu okuyor, sayfa yenilense
     # ya da hoca sonradan baksa bile gercek son tekrar sonucu kalici olsun).
     deneme.son_tekrar_dogru = sonuc["dogru"]
@@ -213,23 +229,35 @@ def tekrar_bitir(istek: TekrarBitirIstegi, session: Session = Depends(get_sessio
 def adim_adim(istek: AdimAdimIstegi, session: Session = Depends(get_session)):
     # "Bilissel Kopru" (benzetme) yerine geldi: ilgi alani/benzetme YOK,
     # matematik icin bu uygun degil (kullanici karariyla). Bunun yerine
-    # ogrencinin GERCEKTEN yanlis yaptigi soruyu bulup, buse'nin hazir
+    # ogrencinin GERCEKTEN yanlis yaptigi TUM sorulari bulup, buse'nin hazir
     # cozum notunu temel alarak Groq'a sade bir dilde adim adim anlatiyoruz.
-    yanlis_cevap = session.exec(
+    # DUZELTME (kullanici istegi): eskiden sadece en son yanlis soru
+    # gosteriliyordu (.first()) - artik o denemedeki butun yanlis sorular
+    # icin ayri aciklama uretip liste olarak donuyoruz (frontend kart kart gezdiriyor).
+    # DUZELTME 2 (kullanici istegi, "HEPSİNİ İSTİYORUM"): alt konuya gore
+    # filtrelemekten vazgecildi - ogrenci bu denemede yanlis yaptigi HER
+    # soruyu gormek istiyor, sadece su an calisilan eksik konuya ait olanlari degil.
+    yanlis_cevaplar = session.exec(
         select(models.Cevap)
         .where(models.Cevap.deneme_id == istek.deneme_id, models.Cevap.dogru_mu == False)  # noqa: E712
-        .order_by(models.Cevap.id.desc())
-    ).first()
+        .order_by(models.Cevap.id.asc())
+    ).all()
 
-    if not yanlis_cevap:
-        return {"soru": None, "aciklama": "Tebrikler, bu denemede yanlış cevabın yok!"}
+    if not yanlis_cevaplar:
+        return {"kartlar": [], "aciklama": "Tebrikler, bu denemede yanlış cevabın yok!"}
 
-    soru = soru_bul(yanlis_cevap.soru_id)
-    if not soru:
-        return {"soru": None, "aciklama": "Bu soru için açıklama bulunamadı."}
+    kartlar = []
+    for yanlis_cevap in yanlis_cevaplar:
+        soru = soru_bul(yanlis_cevap.soru_id)
+        if not soru:
+            continue
+        aciklama = adim_adim_acikla(soru["soru"], soru["secenekler"], soru["cevap"], soru["cozum"])
+        kartlar.append({"soru": soru["soru"], "aciklama": aciklama})
 
-    aciklama = adim_adim_acikla(soru["soru"], soru["secenekler"], soru["cevap"], soru["cozum"])
-    return {"soru": soru["soru"], "aciklama": aciklama}
+    if not kartlar:
+        return {"kartlar": [], "aciklama": "Bu sorular için açıklama bulunamadı."}
+
+    return {"kartlar": kartlar, "aciklama": None}
 
 
 @router.get("/api/ozet/{deneme_id}")

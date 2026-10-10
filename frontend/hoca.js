@@ -22,6 +22,7 @@ const state = {
   sinifDersId: null, // "/api/video-ekle" icin hangi derse ekleniyor bilgisi
   isDemo: new URLSearchParams(window.location.search).get("demo") === "1" || sessionStorage.getItem("is_demo") === "true",
   panelData: null,
+  dersEkleModu: false, // true: modalYeniSinif "+ Ders Ekle" ile acildi, mevcut sinifa yeni unite atanacak
 };
 
 // --- API Çağrı Yardımcısı ---
@@ -47,15 +48,28 @@ function getHocaMock(url, method, body) {
     return { siniflar: state.isDemo ? [{ sinif_id: 1, kod: "DEMO01", ders_id: "fonksiyonlar" }] : [] };
   }
 
+  if (url.includes("/api/hoca/sinif-ders-ekle")) {
+    return { sinif_id: state.sinifId || 1, kod: state.sinifKodu || "DEMO01", ders_id: "fonksiyonlar", unite_id: body ? body.unite_id : null };
+  }
+
   if (url.includes("/api/hoca/sinif-ekle")) {
     return { sinif_id: 1, kod: "DEMO01", ders_id: "fonksiyonlar" };
+  }
+
+  if (method === "DELETE" && url.includes("/api/hoca/sinif/")) {
+    return { sonuc: "silindi" };
   }
 
   if (url.includes("/api/hoca/panel")) {
     if (state.isDemo) {
       return {
         hazir_orani: 0.68,
+        tamamlayan_sayisi: 16,
         eksik_dagilimi: { "kumeler_ve_ikililer": 12, "cebirsel_ifadeler": 4 },
+        eksik_yuzdeleri: [
+          { alt_konu_id: "kumeler_ve_ikililer", ogrenci_sayisi: 12, yuzde: 75.0 },
+          { alt_konu_id: "cebirsel_ifadeler", ogrenci_sayisi: 4, yuzde: 25.0 },
+        ],
         ogrenciler: [
           { isim: "Deniz A.", durum: "test_suruyor", progress: 40 },
           { isim: "Ece K.", durum: "eksigi_var", progress: 68 },
@@ -66,7 +80,9 @@ function getHocaMock(url, method, body) {
     } else {
       return {
         hazir_orani: 0,
+        tamamlayan_sayisi: 0,
         eksik_dagilimi: {},
+        eksik_yuzdeleri: [],
         ogrenciler: [],
       };
     }
@@ -234,15 +250,36 @@ async function initHocaPanel() {
 
   // Yeni Sınıf Modalını Aç (ders/ünite/konu seçimi)
   document.getElementById("btnYeniSinif").addEventListener("click", async () => {
+    state.dersEkleModu = false;
+    document.getElementById("modalYeniSinifEyebrow").textContent = "Yeni Sınıf";
+    document.getElementById("modalYeniSinifBaslik").textContent = "Ders ve Ünite Seç";
+    document.getElementById("btnOlusturSinif").textContent = "Oluştur";
     document.getElementById("modalYeniSinif").style.display = "flex";
     await doldurUniteSecici();
   });
+
+  // Ders Ekle Modalını Ac - AYNI modal, ama MEVCUT secili sinifa yeni unite
+  // atamak icin (kod/ogrenciler/eski denemeler AYNEN kalir, bkz. sinif-ders-ekle).
+  document.getElementById("btnDersEkle").addEventListener("click", async () => {
+    if (!state.sinifId) {
+      alert("Önce bir sınıf seç ya da oluştur.");
+      return;
+    }
+    state.dersEkleModu = true;
+    document.getElementById("modalYeniSinifEyebrow").textContent = "Ders Ekle";
+    document.getElementById("modalYeniSinifBaslik").textContent = `${state.sinifKodu || ""} Sınıfına Yeni Test Ata`;
+    document.getElementById("btnOlusturSinif").textContent = "Ata";
+    document.getElementById("modalYeniSinif").style.display = "flex";
+    await doldurUniteSecici();
+  });
+
   document.getElementById("btnCloseYeniSinif").addEventListener("click", () => {
     document.getElementById("modalYeniSinif").style.display = "none";
   });
   document.getElementById("selectUniteYeni").addEventListener("change", gosterUniteKonulari);
 
-  // Yeni Sınıf Oluştur (POST /api/hoca/sinif-ekle) — secilen uniteyle
+  // Yeni Sınıf Oluştur (POST /api/hoca/sinif-ekle) veya Mevcut Sinifa Ders
+  // Ekle (POST /api/hoca/sinif-ders-ekle) — hangisi state.dersEkleModu'na gore
   document.getElementById("btnOlusturSinif").addEventListener("click", async () => {
     const uniteId = document.getElementById("selectUniteYeni").value;
     if (!uniteId) {
@@ -251,23 +288,71 @@ async function initHocaPanel() {
     }
     const btn = document.getElementById("btnOlusturSinif");
     btn.disabled = true;
-    btn.textContent = "Oluşturuluyor...";
+    btn.textContent = state.dersEkleModu ? "Atanıyor..." : "Oluşturuluyor...";
     try {
-      const yeni = await apiCall("/api/hoca/sinif-ekle", "POST", {
-        hoca_id: state.hocaId ? parseInt(state.hocaId, 10) : 1,
-        unite_id: uniteId,
-      });
-      document.getElementById("modalYeniSinif").style.display = "none";
-      await loadSiniflar(yeni.sinif_id);
-      await loadPanelData();
-      alert(`Yeni sınıf oluşturuldu!\nKatılım kodu: ${yeni.kod}\n\nBu kodu öğrencilerinle paylaş.`);
+      if (state.dersEkleModu) {
+        const sonuc = await apiCall("/api/hoca/sinif-ders-ekle", "POST", {
+          hoca_id: state.hocaId ? parseInt(state.hocaId, 10) : 1,
+          sinif_id: state.sinifId,
+          unite_id: uniteId,
+        });
+        document.getElementById("modalYeniSinif").style.display = "none";
+        await loadSiniflar(sonuc.sinif_id);
+        await loadPanelData();
+        alert(`Yeni test atandı!\nKatılım kodu değişmedi: ${sonuc.kod}\n\nÖğrenciler aynı kodla bağlanıp yeni testi görecek.`);
+      } else {
+        const yeni = await apiCall("/api/hoca/sinif-ekle", "POST", {
+          hoca_id: state.hocaId ? parseInt(state.hocaId, 10) : 1,
+          unite_id: uniteId,
+        });
+        document.getElementById("modalYeniSinif").style.display = "none";
+        await loadSiniflar(yeni.sinif_id);
+        await loadPanelData();
+        alert(`Yeni sınıf oluşturuldu!\nKatılım kodu: ${yeni.kod}\n\nBu kodu öğrencilerinle paylaş.`);
+      }
     } catch (err) {
-      alert("Sınıf oluşturulamadı — seçtiğin ünitede henüz soru olmayabilir.");
+      alert(
+        state.dersEkleModu
+          ? "Test atanamadı — seçtiğin ünitede henüz soru olmayabilir."
+          : "Sınıf oluşturulamadı — seçtiğin ünitede henüz soru olmayabilir."
+      );
       console.error(err);
     } finally {
       btn.disabled = false;
-      btn.textContent = "Oluştur";
+      btn.textContent = state.dersEkleModu ? "Ata" : "Oluştur";
     }
+  });
+
+  // Sınıfı Sil (DELETE /api/hoca/sinif/{id}) — yil sonu temizligi, geri alinamaz.
+  document.getElementById("btnSinifSil").addEventListener("click", async () => {
+    if (!state.sinifId) {
+      alert("Silinecek bir sınıf seçili değil.");
+      return;
+    }
+    const onay = confirm(
+      `"${state.sinifKodu}" sınıfını silmek istediğine emin misin?\n\nBu sınıfa ait TÜM öğrenci, test ve cevap verileri kalıcı olarak silinecek. Bu işlem GERİ ALINAMAZ.`
+    );
+    if (!onay) return;
+
+    try {
+      const hocaId = state.hocaId ? parseInt(state.hocaId, 10) : 1;
+      const res = await fetch(`/api/hoca/sinif/${state.sinifId}?hoca_id=${hocaId}`, { method: "DELETE" });
+      if (!res.ok) {
+        const hata = await res.json().catch(() => ({}));
+        throw new Error(hata.detail || `HTTP ${res.status}`);
+      }
+      await loadSiniflar();
+      await loadPanelData();
+      alert("Sınıf ve tüm verileri silindi.");
+    } catch (err) {
+      alert(`Sınıf silinemedi: ${err.message || "bilinmeyen hata"}`);
+      console.error(err);
+    }
+  });
+
+  // Ortak Eksik Detay Modalı Kapat
+  document.getElementById("btnCloseEksikDetay").addEventListener("click", () => {
+    document.getElementById("modalEksikDetay").style.display = "none";
   });
 
   // QR Modal Butonları
@@ -350,12 +435,14 @@ function renderDashboard(data) {
   document.getElementById("statKatilanSayisi").textContent = ogrenciler.length;
   document.getElementById("statKatilanDetail").textContent = ogrenciler.length > 0 ? "Canlı takip ediliyor" : "Henüz katılım yok";
 
-  // Ortak Eksik
-  const eksikler = data.eksik_dagilimi || {};
-  const enCokEksikKey = Object.keys(eksikler).reduce((a, b) => (eksikler[a] > eksikler[b] ? a : b), null);
-  if (enCokEksikKey) {
-    document.getElementById("statOrtakEksik").textContent = `%${Math.round((eksikler[enCokEksikKey] / (ogrenciler.length || 1)) * 100)}`;
-    document.getElementById("statEksikDetail").textContent = ALT_KONU_ETIKET[enCokEksikKey] || enCokEksikKey;
+  // Ortak Eksik — yuzdeler artik backend'den geliyor (eksik_yuzdeleri), payda
+  // SADECE testi bitirmis ogrenciler (tamamlayan_sayisi), tum kayitli sinif
+  // degil - oyle olunca hic baslamayanlar orani yapay dusuruyordu.
+  const eksikYuzdeleri = data.eksik_yuzdeleri || [];
+  const enCokEksik = eksikYuzdeleri[0] || null;
+  if (enCokEksik) {
+    document.getElementById("statOrtakEksik").textContent = `%${Math.round(enCokEksik.yuzde)}`;
+    document.getElementById("statEksikDetail").textContent = ALT_KONU_ETIKET[enCokEksik.alt_konu_id] || enCokEksik.alt_konu_id;
   } else {
     document.getElementById("statOrtakEksik").textContent = "—";
     document.getElementById("statEksikDetail").textContent = "Veri toplanıyor";
@@ -411,16 +498,16 @@ function renderDashboard(data) {
   const insightDesc = document.getElementById("insightDesc");
   const btnDetail = document.getElementById("btnInsightDetail");
 
-  if (state.isDemo && enCokEksikKey) {
-    insightTitle.textContent = "12 öğrenci aynı adımda zorlanıyor.";
-    insightDesc.textContent = "Paydaları eşitleme konusunda sınıfa kısa bir hatırlatma yapabilir veya yeni video atayabilirsin.";
+  if (enCokEksik) {
+    insightTitle.textContent = state.isDemo
+      ? "12 öğrenci aynı adımda zorlanıyor."
+      : `${enCokEksik.ogrenci_sayisi} öğrenci aynı konuda zorlanıyor.`;
+    insightDesc.textContent = `${ALT_KONU_ETIKET[enCokEksik.alt_konu_id] || enCokEksik.alt_konu_id} konusunda sınıfa kısa bir hatırlatma yapabilir veya yeni video atayabilirsin.`;
     btnDetail.disabled = false;
     btnDetail.style.opacity = "1";
     btnDetail.style.cursor = "pointer";
     btnDetail.textContent = "Detayı görüntüle →";
-    btnDetail.onclick = () => {
-      alert("Ortak Eksik: Payda Eşitleme\n12 öğrenci farklı paydaları eşitlemeden toplamayı denedi.");
-    };
+    btnDetail.onclick = () => gosterEksikDetayModal(eksikYuzdeleri);
   } else {
     insightTitle.textContent = "Yeterli Veri Toplanmadı";
     insightDesc.textContent = "Öğrenciler ön test ve ders etkinliklerini tamamladıkça sınıfın ortak eksikleri burada analiz edilecektir.";
@@ -429,6 +516,32 @@ function renderDashboard(data) {
     btnDetail.style.cursor = "not-allowed";
     btnDetail.textContent = "Analiz Bekleniyor";
   }
+}
+
+// Ortak Eksik karti tiklaninca TUM konulardaki yuzdeyi gosteren modal
+// (eski davranis sadece en cok eksik olan TEK konuyu alert ile gosteriyordu).
+function gosterEksikDetayModal(eksikYuzdeleri) {
+  const liste = document.getElementById("eksikDetayListesi");
+  if (!eksikYuzdeleri || eksikYuzdeleri.length === 0) {
+    liste.innerHTML = `<span style="color: var(--muted); font-size: 14px;">Henüz veri yok.</span>`;
+  } else {
+    liste.innerHTML = eksikYuzdeleri
+      .map(
+        (e) => `
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 4px;">
+            <span>${ALT_KONU_ETIKET[e.alt_konu_id] || e.alt_konu_id}</span>
+            <span>%${e.yuzde} (${e.ogrenci_sayisi} öğrenci)</span>
+          </div>
+          <div style="height: 8px; border-radius: 6px; background: var(--line); overflow: hidden;">
+            <div style="height: 100%; width: ${e.yuzde}%; background: var(--green);"></div>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  }
+  document.getElementById("modalEksikDetay").style.display = "flex";
 }
 
 // --- QR Kod Modalı Açma ---
