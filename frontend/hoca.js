@@ -551,7 +551,20 @@ async function openQrModal() {
   modal.style.display = "flex";
   box.innerHTML = `<span class="spinner"></span>`;
 
-  const joinUrl = `${window.location.origin}/index.html?sinif=${encodeURIComponent(state.sinifKodu || "")}`;
+  let origin = window.location.origin;
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    try {
+      const res = await fetch("/api/sunucu-bilgisi");
+      const data = await res.json();
+      if (data.lan_ip) {
+        const port = window.location.port ? `:${window.location.port}` : "";
+        origin = `${window.location.protocol}//${data.lan_ip}${port}`;
+      }
+    } catch (err) {
+      // LAN IP alinamazsa mevcut origin (localhost) ile devam edilir
+    }
+  }
+  const joinUrl = `${origin}/index.html?sinif=${encodeURIComponent(state.sinifKodu || "")}`;
   try {
     if (window.QRCode && typeof window.QRCode.toDataURL === "function") {
       const dataUrl = await window.QRCode.toDataURL(joinUrl, {
