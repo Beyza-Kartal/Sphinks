@@ -25,6 +25,12 @@ const state = {
   dersEkleModu: false, // true: modalYeniSinif "+ Ders Ekle" ile acildi, mevcut sinifa yeni unite atanacak
 };
 
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text ?? "";
+  return div.innerHTML;
+}
+
 // --- API Çağrı Yardımcısı ---
 async function apiCall(url, method = "GET", body = null) {
   try {
@@ -248,6 +254,14 @@ async function initHocaPanel() {
     loadPanelData();
   });
 
+  // Öğrenciler katıldıkça/test bitirdikçe hoca'nın elle yenile demesine
+  // gerek kalmasın diye panel düzenli aralıklarla kendiliğinden güncellenir.
+  setInterval(() => {
+    if (state.sinifId && document.visibilityState === "visible") {
+      loadPanelData();
+    }
+  }, 6000);
+
   // Yeni Sınıf Modalını Aç (ders/ünite/konu seçimi)
   document.getElementById("btnYeniSinif").addEventListener("click", async () => {
     state.dersEkleModu = false;
@@ -470,7 +484,7 @@ function renderDashboard(data) {
           const { metin, progress: prog } = durumEtiketle(s.durum);
           return `
           <div class="student-row">
-            <span class="student-name"><i>${s.isim ? s.isim[0] : "Ö"}</i>${s.isim}</span>
+            <span class="student-name"><i>${escapeHtml(s.isim ? s.isim[0] : "Ö")}</i>${escapeHtml(s.isim)}</span>
             <span><b class="state-tag ${prog === 100 ? "state-100" : ""}">${metin}</b></span>
             <span class="mini-progress">
               <i><b style="width: ${prog}%;"></b></i>
@@ -556,12 +570,17 @@ async function openQrModal() {
     try {
       const res = await fetch("/api/sunucu-bilgisi");
       const data = await res.json();
-      if (data.lan_ip) {
+      if (data.public_url) {
+        // ngrok calisiyor: farkli ag/cihazdan da erisilebilen genel adres,
+        // ayni wifi'deki cihaz izolasyonu (orn. kampus wifi) dahi sorun olmaz.
+        origin = data.public_url;
+      } else if (data.lan_ip) {
+        // ngrok yok: sadece ayni wifi'deki cihazlar icin yedek cozum.
         const port = window.location.port ? `:${window.location.port}` : "";
         origin = `${window.location.protocol}//${data.lan_ip}${port}`;
       }
     } catch (err) {
-      // LAN IP alinamazsa mevcut origin (localhost) ile devam edilir
+      // Hicbiri alinamazsa mevcut origin (localhost) ile devam edilir
     }
   }
   const joinUrl = `${origin}/index.html?sinif=${encodeURIComponent(state.sinifKodu || "")}`;

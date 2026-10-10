@@ -1,6 +1,7 @@
 import os
 import socket
 
+import requests
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -26,10 +27,27 @@ def on_startup():
     create_db_and_tables()
 
 
+def _ngrok_public_url() -> str | None:
+    # ngrok calisiyorsa, kendi yerel API'sinden (localhost:4040) su an acik
+    # olan tunelin genel (https) adresini okur. Boylece ayni wifi'de olmayan
+    # (farkli ag/mobil veri, kampus wifi'sindeki cihaz izolasyonu vb.)
+    # cihazlar da QR/link ile erisebilir - LAN IP bunu saglayamaz.
+    try:
+        resp = requests.get("http://127.0.0.1:4040/api/tunnels", timeout=0.5)
+        resp.raise_for_status()
+        for tunnel in resp.json().get("tunnels", []):
+            if tunnel.get("proto") == "https":
+                return tunnel["public_url"]
+    except requests.exceptions.RequestException:
+        pass
+    return None
+
+
 @app.get("/api/sunucu-bilgisi")
 def sunucu_bilgisi():
     # QR kod ile telefon katilimi icin: hoca paneli localhost uzerinden acilsa bile
-    # QR linkinin ayni wifi'deki telefonlardan erisilebilir bir IP'yi kodlamasi gerekiyor.
+    # QR linkinin erisilebilir bir adresi kodlamasi gerekiyor. Oncelik ngrok
+    # (her ag/cihazdan calisir), yoksa LAN IP'ye (sadece ayni wifi) dusulur.
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         s.connect(("8.8.8.8", 80))
@@ -38,7 +56,7 @@ def sunucu_bilgisi():
         lan_ip = "127.0.0.1"
     finally:
         s.close()
-    return {"lan_ip": lan_ip}
+    return {"lan_ip": lan_ip, "public_url": _ngrok_public_url()}
 
 
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

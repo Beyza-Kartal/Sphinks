@@ -36,6 +36,11 @@ class Hoca(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     email: str
     sifre_hash: str
+    # NOT: eski (salt'tan once olusturulmus) hesaplarda bu alan bos ("") kalir.
+    # sifre_hashle(sifre, salt="") == eski sha256(sifre) ile ayni sonucu verir,
+    # bu yuzden mevcut hesaplar bu alan eklenince bozulmaz (bkz. GUNLUK.md -
+    # canli veritabanini kirmama kurali).
+    salt: str = ""
 
 
 class Sinif(SQLModel, table=True):

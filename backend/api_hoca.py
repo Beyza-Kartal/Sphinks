@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 import random
+import secrets
 import string
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -47,8 +48,10 @@ def _unite_soru_sayisi(unite: dict) -> int:
     return toplam
 
 
-def sifre_hashle(sifre: str) -> str:
-    return hashlib.sha256(sifre.encode()).hexdigest()
+def sifre_hashle(sifre: str, salt: str = "") -> str:
+    # salt="" (eski hesaplar) icin bu, salt eklenmeden onceki sha256(sifre)
+    # ile AYNI sonucu verir - mevcut hesaplar bozulmaz.
+    return hashlib.sha256((salt + sifre).encode()).hexdigest()
 
 
 def _benzersiz_sinif_kodu(session: Session) -> str:
@@ -101,7 +104,8 @@ def kayit(istek: KayitIstegi, session: Session = Depends(get_session)):
     if mevcut:
         raise HTTPException(status_code=400, detail="Bu email zaten kayitli")
 
-    hoca = models.Hoca(email=istek.email, sifre_hash=sifre_hashle(istek.sifre))
+    salt = secrets.token_hex(8)
+    hoca = models.Hoca(email=istek.email, sifre_hash=sifre_hashle(istek.sifre, salt), salt=salt)
     session.add(hoca)
     session.commit()
     session.refresh(hoca)
@@ -113,7 +117,7 @@ def giris(istek: GirisIstegi, session: Session = Depends(get_session)):
     hoca = session.exec(
         select(models.Hoca).where(models.Hoca.email == istek.email)
     ).first()
-    if not hoca or hoca.sifre_hash != sifre_hashle(istek.sifre):
+    if not hoca or hoca.sifre_hash != sifre_hashle(istek.sifre, hoca.salt):
         raise HTTPException(status_code=401, detail="Email ya da sifre hatali")
 
     return {"hoca_id": hoca.id, "email": hoca.email}
@@ -127,7 +131,8 @@ def sifre_degistir(istek: SifreDegistirIstegi, session: Session = Depends(get_se
     if not hoca:
         raise HTTPException(status_code=404, detail="Bu email ile kayitli hoca yok")
 
-    hoca.sifre_hash = sifre_hashle(istek.yeni_sifre)
+    hoca.salt = secrets.token_hex(8)
+    hoca.sifre_hash = sifre_hashle(istek.yeni_sifre, hoca.salt)
     session.add(hoca)
     session.commit()
     return {"sonuc": "sifre guncellendi"}

@@ -7,12 +7,15 @@
 # saniyeyi biz (parcalar listesinden) hesapliyoruz. Boylece model sayida
 # hata yapsa bile saniyeler hep gercek veriden gelir.
 import json
+import logging
 import os
 
 from dotenv import load_dotenv
 from groq import Groq
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 MODEL = "openai/gpt-oss-20b"
 SATIR_BASINA_PARCA = 150  # tek istekte Groq'a gonderilecek altyazi satiri sayisi
@@ -56,6 +59,7 @@ def altyazi_bolumle(parcalar: list[dict], alt_konular: list[str]) -> list[dict]:
             )
             veri = json.loads(resp.choices[0].message.content)
         except Exception:
+            logger.exception("Groq altyazi bolumleme basarisiz (satir %s-%s)", basla, bitis)
             continue  # bu parca basarisiz olursa atla, digerlerine devam et
 
         for bolum in veri.get("bolumler", []):
@@ -123,4 +127,5 @@ def adim_adim_acikla(soru_metni: str, secenekler: dict, dogru_harf: str, cozum: 
     except Exception:
         # Groq basarisiz olursa (ya da bos/reddedilmis cevap donerse),
         # en azindan hazir cozum notunu goster.
+        logger.exception("Groq adim adim aciklama basarisiz")
         return f"{cozum}\n\nDoğru sonuç: {dogru_deger}"
